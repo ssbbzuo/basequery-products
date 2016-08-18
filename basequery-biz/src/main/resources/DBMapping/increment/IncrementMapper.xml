@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.increment.Increment" >
+	<resultMap type="com.eenet.basequery.increment.Increment" id="default">
+		<result column="INCREMENT_TITLE" property="incrementTitle" jdbcType="VARCHAR" />
+		<result column="INCREMENT_NUM" property="incrementNum" jdbcType="INTEGER" />
+		<result column="INCREMENT_TYPE" property="incrementType" jdbcType="VARCHAR" />
+		<result column="INCREMENT_BGCOLOR" property="incrementBgColor" jdbcType="VARCHAR" />
+		<result column="INCREMENT_ICON" property="incrementIcon" jdbcType="VARCHAR" />
+		<result column="INCREMENT_DATE" property="incrementDate" jdbcType="DATE" />
+		<result column="ORDER_NO" property="orderNo" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				TMP_INCREMENT
+		 WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT
+				INCREMENT_TITLE,
+				INCREMENT_NUM,
+				INCREMENT_TYPE,
+				INCREMENT_BGCOLOR,
+				INCREMENT_ICON,
+				INCREMENT_DATE,
+				ORDER_NO 
+			FROM
+				TMP_INCREMENT
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
+	</select>
+
+</mapper>

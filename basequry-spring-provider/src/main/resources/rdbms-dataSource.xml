@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd   
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+      
+        <!-- 数据库连接（主库） -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${connection.url}" />
+		<property name="username" value="${connection.user}" />
+		<property name="password" value="${connection.password}" />
+		<property name="maxActive" value="1000"/>
+        <property name="maxWait" value="60000"/>
+        <property name="initialSize" value="20"/>
+        <property name="removeAbandoned" value="true"/>
+        
+        <property name="testWhileIdle" value="true"/><!-- 起了一个Evict的TimerTask定时线程进行控制,定时对线程池中的链接进行校验 -->
+	    <property name="timeBetweenEvictionRunsMillis" value="30000"/><!-- 设置的线程的时间，单位ms，大于0才会开启evict检查线程 -->
+        <property name="validationQuery" value="SELECT 1 FROM DUAL"/><!-- 检查sql -->
+        <property name="validationQueryTimeout" value='1'/><!-- 检查超时 1ms -->
+        <property name="testOnBorrow" value="false"/>
+    	<property name="testOnReturn" value="false"/> 
+	</bean>
+	
+	<!-- 主数据库session -->
+	<bean id="batisSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="batisSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="batisSessionFactory" />
+	</bean>
+	
+	<!-- 定义数据库访问实现类（公共） -->
+	<bean id="GenericDAO" class="com.eenet.base.dao.BaseDAOImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>
+</beans>
