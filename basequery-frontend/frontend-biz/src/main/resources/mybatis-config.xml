@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<mappers>
+		<!--公共SQL配置-->
+        <mapper resource="conf/base.Oracle.mbt.xml" />
+        <mapper resource="conf/base.PostgreSQL.mbt.xml" />
+        <mapper resource="conf/base.MySQL.mbt.xml" />
+        <!-- 业务模块 -->
+       
+        <!-- 业务模块 -->
+        <mapper resource="DBMapping/QuerySqlMapper.xml" />
+	</mappers>
+</configuration>
