@@ -55,5 +55,12 @@
 	<dubbo:reference interface="com.eenet.basequery.sales.SaleStudentService" id="SaleStudentService" />    
 	
 		<!-- 增量信息-->
-	<dubbo:reference interface="com.eenet.basequery.increment.IncrementService" id="incrementService" />                                               
+	<dubbo:reference interface="com.eenet.basequery.increment.IncrementService" id="incrementService" />
+	
+	<!-- test-->
+ <dubbo:reference id="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
+<!-- test02-->
+ <dubbo:reference id="chart02Service" interface="com.eenet.basequery.chart.Chart02Service"/> 
+<!-- test02-->
+ <dubbo:reference id="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>                                               
 </beans>										  

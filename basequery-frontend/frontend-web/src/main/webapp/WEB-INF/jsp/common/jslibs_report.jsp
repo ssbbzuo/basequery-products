@@ -30,6 +30,9 @@
 <!-- custom css -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/base.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/page.css">
+<!-- retrunTop css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/static/plugins/returnTop/css/returnTop.css">
 <!-- jqueryTab -->	
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/static/plugins/jqueryTab/css/easy-responsive-tabs.css">
@@ -114,22 +117,3 @@
 <script
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.js"></script>		
 		
-<script type="text/javascript">
-   $(document).ready(function(){
-    $(".down_btn").click(function(){
-    	if($(".slide_box").height()>150){
-    		 $(".slide_box").animate({height:"150px"});
-    	}else{
-	      $(".slide_box").animate({height:"320px"});
-    	}
-    	setTimeout("parent.setIframeHeight($(document.body).outerHeight())",300);
-    });
-    $(".btn-primary").click(function(){
-    	$("input[name='pageCurrent']").val(1);
-    	 document.forms[0].submit();
-    });
-    parent.setIframeHeight($(document.body).outerHeight());
-  });
-  
-</script>
-

@@ -23,5 +23,9 @@
         <mapper resource="DBMapping/sales/SaleStudentDynaMapper.xml" />   
         <mapper resource="DBMapping/sales/SaleStudentMapper.xml" />   
         <mapper resource="DBMapping/increment/IncrementMapper.xml" />   
+        
+        <mapper resource="DBMapping/chart/TestMapper.xml"/> 
+        <mapper resource="DBMapping/chart/Test02Mapper.xml"/>
+        <mapper resource="DBMapping/chart/Test03Mapper.xml"/>
 	</mappers>
 </configuration>

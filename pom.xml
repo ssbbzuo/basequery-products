@@ -51,7 +51,7 @@
 				<!-- 打war包名称 -->
 			</properties>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
 		
@@ -73,7 +73,7 @@
 				<!-- 打war包名称 -->
 			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 		

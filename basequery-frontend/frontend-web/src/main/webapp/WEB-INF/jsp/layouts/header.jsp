@@ -1,7 +1,36 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Left side column. contains the logo and sidebar -->
+<!-- retrunTop css -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/returnTop/css/returnTop.css">
+<script	src="<%=request.getContextPath()%>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <header class="main-header"> <a href="#" class="logo">
+  <script>
+	$(document).ready(function(){			
+				//返回顶部按钮动作
+				$("#leftsead a").hover(function(){
+					if($(this).prop("className")=="youhui"){
+						$(this).children("img.hides").show();
+					}else{
+						$(this).children("img.hides").show();
+						$(this).children("img.shows").hide();
+						$(this).children("img.hides").animate({marginRight:'0px'},'slow'); 
+					}
+				},function(){ 
+					if($(this).prop("className")=="youhui"){
+						$(this).children("img.hides").hide('slow');
+					}else{
+						$(this).children("img.hides").animate({marginRight:'-143px'},'slow',function(){$(this).hide();$(this).next("img.shows").show();});
+					}
+				});
+				$("#top_btn").click(function(){
+					if(scroll=="off") return;
+						$("html,body").animate({scrollTop: 0}, 300);
+					}
+				);		
+			}
+		);	
+  </script>
     <div class="logo-wrap"><img src="<%=request.getContextPath() %>/static/dist/img/images/eenet_standard_logo.png"></div>
     <span class="logo-mini"><b>管理员</b></span> <span class="logo-lg"><b>远程教育数据中心</b></span> </a>
     <nav class="navbar navbar-static-top" role="navigation"> <a href="<%=request.getContextPath() %>/static/#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <span class="sr-only">首页</span> </a>
@@ -23,6 +52,7 @@
                 <c:if test="${adminUserLoginInfo.loginAccount eq 'account04' || adminUserLoginInfo.loginAccount eq 'admin' }">
 		              <li data-id="4">市场与营销查询</li>
               </c:if>
+                <li data-id="5">报表查询</li>
             </ul>
             <div class="dropdown operion-more-menu">
             <!-- 
@@ -85,6 +115,17 @@
                   </ul>
                 </li>
                 </c:if>
+                
+                  <li data-id="5"> <a role="menuitem" href="#">报表查询</a>
+                  <ul class="menu-temp hide">
+                    <li class="header">报表查询</li>
+                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getTest"> <i class="fa  fa-sellsy"></i> <span>报表1</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    </li>
+                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>报表2</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    </li>
+                  </ul>
+                </li>
+                
               </ul>
             </div>
           </li>
@@ -223,5 +264,15 @@
 					</a></li> -->
         </ul>
       </div>
+      	<div id="leftsead">
+		<ul>	
+			<li>
+				<a id="top_btn">
+					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/ll06.png" width="131" height="49" class="hides"/>
+					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/l06.png" width="47" height="49" class="shows" />
+				</a>
+			</li>
+		</ul>
+	</div>
     </nav>
   </header>

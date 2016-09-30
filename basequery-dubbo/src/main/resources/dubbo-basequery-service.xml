@@ -55,5 +55,12 @@
 	
 		<!-- 增量信息-->
 	<dubbo:service interface="com.eenet.basequery.increment.IncrementService" ref="incrementService" />
+	
+	<!-- test -->
+ <dubbo:service ref="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
+<!-- test02 -->
+ <dubbo:service ref="chart02Service" interface="com.eenet.basequery.chart.Chart02Service"/> 
+<!-- test02 -->
+ <dubbo:service ref="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>
 </beans>
 
