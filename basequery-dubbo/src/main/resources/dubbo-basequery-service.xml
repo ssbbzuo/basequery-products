@@ -56,6 +56,9 @@
 		<!-- 增量信息-->
 	<dubbo:service interface="com.eenet.basequery.increment.IncrementService" ref="incrementService" />
 	
+	<!-- sql查询页面信息-->
+	<dubbo:service interface="com.eenet.basequery.sqlquery.QuerySqlService" ref="querySqlService" />
+	
 	<!-- test -->
  <dubbo:service ref="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
 <!-- test02 -->

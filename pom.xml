@@ -16,7 +16,7 @@
     <module>basequery-dubbo</module>
     <module>basequry-spring-provider</module>
     <module>basequery_test</module>
-    <module>basequery-frontend</module>
+    <module>basequery-web</module>
   </modules>
   
    <properties>

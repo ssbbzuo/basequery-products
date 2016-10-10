@@ -13,6 +13,10 @@
 		<property name="batisSession" ref="batisSession" />
 	</bean>
 
+	<bean id="querySqlDaoService" class="com.eenet.basequery.sqlquery.dao.impl.QuerySqlDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>
+	
 	<!-- 产品销售情况查询服务 -->
 	<bean id="productQueryService" class="com.eenet.basequery.learncenter.ProductQueryServiceImpl">
 			<property name="productQueryDaoService" ref="productQueryDaoService" />
@@ -87,6 +91,11 @@
 	<bean id="incrementService" class="com.eenet.basequery.increment.IncrementServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
 	</bean>
+	
+	<!-- sql查询 -->
+	<bean id="querySqlService" class="com.eenet.basequery.sqlquery.QuerySqlServiceImpl">
+			<property name="querySqlDaoService" ref="querySqlDaoService" />
+	</bean>	
 	
 	<!-- test -->
  <bean class="com.eenet.basequery.chart.ChartServiceImpl" id="chartService"> 
