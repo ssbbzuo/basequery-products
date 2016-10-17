@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.ThemeFunnelReadColleges" >
+	<resultMap type="com.eenet.basequery.chart.ThemeFunnelReadColleges" id="default">
+		<result column="DIM_COLLEGES" property="DIM_COLLEGES" jdbcType="VARCHAR" />
+		<result column="READ_COUNT" property="READ_COUNT" jdbcType="VARCHAR" />
+		<result column="SELL_TOTAL_AMT" property="SELL_TOTAL_AMT" jdbcType="VARCHAR" />
+		<result column="SELL_FAV_AMT" property="SELL_FAV_AMT" jdbcType="VARCHAR" />
+		<result column="SELL_RECEIVABLE_AMT" property="SELL_RECEIVABLE_AMT" jdbcType="VARCHAR" />
+		<result column="SELL_PAY_AMT" property="SELL_PAY_AMT" jdbcType="VARCHAR" />								
+		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM (
+			SELECT SUM(READ_COUNT) AS READ_COUNT,
+				SUM(SELL_TOTAL_AMT) AS SELL_TOTAL_AMT,
+				SUM(SELL_FAV_AMT) AS SELL_FAV_AMT,
+				SUM(SELL_RECEIVABLE_AMT) AS SELL_RECEIVABLE_AMT,
+				SUM(SELL_PAY_AMT) AS SELL_PAY_AMT,
+				DIM_COLLEGES
+			FROM DM_FACT_FUNNEL_STUDENT_READ_COLLEGES
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_COLLEGES)S
+		]]>		
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT SUM(READ_COUNT) AS READ_COUNT,
+				SUM(SELL_TOTAL_AMT) AS SELL_TOTAL_AMT,
+				SUM(SELL_FAV_AMT) AS SELL_FAV_AMT,
+				SUM(SELL_RECEIVABLE_AMT) AS SELL_RECEIVABLE_AMT,
+				SUM(SELL_PAY_AMT) AS SELL_PAY_AMT,
+				DIM_COLLEGES
+			FROM DM_FACT_FUNNEL_STUDENT_READ_COLLEGES
+			WHERE 1=1 		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_COLLEGES
+		]]>
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>
