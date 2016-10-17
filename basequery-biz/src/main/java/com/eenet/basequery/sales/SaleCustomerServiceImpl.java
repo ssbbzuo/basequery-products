@@ -11,11 +11,11 @@ import com.eenet.base.query.Rank;
 public class SaleCustomerServiceImpl extends SimpleBizImpl implements SaleCustomerService {
 
 	@Override
-	public SimpleResultSet<SaleCustomer> getSaleCustomer(QueryCondition condition) {
+	public SimpleResultSet<SaleCustomer> query(QueryCondition condition) {
 		if(condition.getOrderBySet()== null ||condition.getOrderBySet().isEmpty()){
 			ArrayList<OrderBy> orderList = new ArrayList<OrderBy>();
 			OrderBy order = new OrderBy();
-			order.setAttName("activateDt");
+			order.setAttName("createdDt");
 			order.setRank(Rank.DESC);
 			orderList.add(order);
 			condition.setOrderBySet(orderList);

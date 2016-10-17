@@ -116,19 +116,24 @@
 		
 <script type="text/javascript">
    $(document).ready(function(){
-    $(".down_btn").click(function(){
-    	if($(".slide_box").height()>150){
-    		 $(".slide_box").animate({height:"150px"});
-    	}else{
-	      $(".slide_box").animate({height:"320px"});
-    	}
-    	setTimeout("parent.setIframeHeight($(document.body).outerHeight())",300);
-    });
-    $(".btn-primary").click(function(){
-    	$("input[name='pageCurrent']").val(1);
-    	 document.forms[0].submit();
-    });
-    parent.setIframeHeight($(document.body).outerHeight());
+	    var slide_box_height = 0;
+		$(".col-md-12").each(function (){
+			slide_box_height = slide_box_height+50;
+		})
+	    $(".down_btn").click(function(){
+	    	if($(".slide_box").height()>150){
+	    		 $(".slide_box").animate({height:"150px"});
+	    	}else{
+	    	  
+		      $(".slide_box").animate({height:slide_box_height});
+	    	}
+	    	setTimeout("parent.setIframeHeight($(document.body).outerHeight())",300);
+	    });
+	    $(".btn-primary").click(function(){
+	    	$("input[name='pageCurrent']").val(1);
+	    	 document.forms[0].submit();
+	    });
+	    parent.setIframeHeight($(document.body).outerHeight());
   });
   
 </script>

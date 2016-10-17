@@ -12,52 +12,28 @@
 						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 						http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
-	<!-- 产品销售查询服务 -->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.ProductQueryService"  id="productQueryService" />
-	
-		<!-- 学习中心学员学情-->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentDynaService" id="LCStudentDynaService" />
-	
-		<!-- 学习中心学员学籍 -->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentStatusService" id="LCStudentStatusService" />
-	
-		<!-- 预报读订单情况-->
+		<!--学习中心 预报读订单情况-->
 	<dubbo:reference interface="com.eenet.basequery.learncenter.LCReserveOrderService" id="LCReserveOrderService" />
 	
-		<!-- 平台中心学员学习情况-->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentDynaService" id="PFStudentDynaService" />
+	<!-- 学习中心 预报读订单跟踪情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCReserveFollowService" id="LCReserveFollowService" />
 	
-		<!-- 平台中心学员学籍 -->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentStatusService" id="PFStudentStatusService" />
+	<!--学习中心  订单情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCOrderInfoService" id="LCOrderInfoService" />
 	
-		<!-- 平台中心学员信息-->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentService" id="PFStudentService" />
+	<!-- 学习中心 学员情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentService" id="LCStudentService" />
 	
-		<!-- 资源中心课程信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.RECourseService" id="RECourseService" />
+	<!-- 市场营销  客户详情-->
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService"  id="SaleCustomer" />
 	
-		<!-- 资源中心课程考核信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.REStudentAssessService" id="REStudentAssessService" />
+	<!-- 市场营销  客户跟进详情-->
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerFollowService" id="SaleCustomerFollow" />
 	
-		<!-- 资源中心学员报读信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.REStudentStatusService" id="REStudentStatusService" />
-	
-		<!-- 推广客户企业信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService" id="SaleCustomerService" />
-	
-		<!-- 销售订单信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleOrderService" id="SaleOrderService" />
-	
-		<!-- 推广学员学情信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleStudentDynaService" id="SaleStudentDynaService" />
-	
-			<!-- 推广学员信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleStudentService" id="SaleStudentService" />    
-	
-		<!-- 增量信息-->
+	<!-- 增量信息-->
 	<dubbo:reference interface="com.eenet.basequery.increment.IncrementService" id="incrementService" />
 	
-		<!-- sql查询页面信息-->
+	<!-- sql查询页面信息-->
 	<dubbo:reference interface="com.eenet.basequery.sqlquery.QuerySqlService" id="querySqlService" />
 	
 	<!-- test-->

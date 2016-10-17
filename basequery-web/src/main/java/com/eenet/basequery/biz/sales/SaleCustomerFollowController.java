@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.QueryCondition;
 import com.eenet.basequery.page.Pagination;
-import com.eenet.basequery.sales.SaleCustomer;
-import com.eenet.basequery.sales.SaleCustomerService;
+import com.eenet.basequery.sales.SaleCustomerFollow;
+import com.eenet.basequery.sales.SaleCustomerFollowService;
 
 @Controller
-@RequestMapping("/salecustomer")
-public class SaleCustomerController {
+@RequestMapping("/salecustomerfollow")
+public class SaleCustomerFollowController {
 	
 	@Autowired
-	private SaleCustomerService saleCustomerService;
+	private SaleCustomerFollowService saleCustomerFollowService;
 	
 	@RequestMapping(value="/query")
 	public String query(QueryCondition queryCondition,Pagination pagination ,Model model){
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
-		SimpleResultSet<SaleCustomer>  result =  saleCustomerService.query(queryCondition);
+		SimpleResultSet<SaleCustomerFollow>  result =  saleCustomerFollowService.query(queryCondition);
 		model.addAttribute("resultMap", result);
 		pagination.setTotal(result.getCount());
 		model.addAttribute("pagination", pagination);
-		return "sales/saleCustomerList";
+		return "sales/saleCustomerFollowList";
 	}
 	
 }

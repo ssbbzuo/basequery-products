@@ -36,7 +36,7 @@
           
        <div class="col-md-12	">
 				<div class="form-group">
-				  <label class="control-label col-sm-3">预报读时间</label>
+				  <label class="control-label col-sm-3">下单时间</label>
 				  <div class="col-sm-4">
 					<input type="hidden"  value="createdDt"  name="conditions[0].fieldName"/> 
 					<input type="hidden"  value="LESS2GREAT"  name="conditions[0].rangeType"/> 
@@ -52,46 +52,44 @@
 			  </div>
            <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label col-sm-3">预报读订单状态</label>
+              <label class="control-label col-sm-3">订单状态</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="status"  name="conditions[1].fieldName"/> 
+              	<input type="hidden"  value="orderStatus"  name="conditions[1].fieldName"/> 
               	<input type="hidden"  value="EQUAL"  name="conditions[1].rangeType"/> 
                 <select class="form-control" name="conditions[1].rangeFrom">
                   <option value="" >全部</option>
-                  <option value="A"  <c:if test="${queryCondition.conditions[1].rangeFrom == 'A'}" >selected</c:if> >待处理</option>
-                  <option value="B" <c:if test="${queryCondition.conditions[1].rangeFrom == 'B'}" >selected</c:if> >已下单</option>
-                  <option value="C" <c:if test="${queryCondition.conditions[1].rangeFrom == 'C'}" >selected</c:if> >废弃</option>
+               <option value="0"  <c:if test="${queryCondition.conditions[1].rangeFrom == '0'}" >selected</c:if>>未完成</option>
+                  <option value="1" <c:if test="${queryCondition.conditions[1].rangeFrom == '1'}" >selected</c:if>>待发货</option>
+                  <option value="10" <c:if test="${queryCondition.conditions[1].rangeFrom == '10'}" >selected</c:if> >部分发货</option>
+                  <option value="2" <c:if test="${queryCondition.conditions[1].rangeFrom == '2'}" >selected</c:if> >已发货</option>
+                  <option value="3" <c:if test="${queryCondition.conditions[1].rangeFrom == '3'}" >selected</c:if> >交易成功</option>
+                  <option value="4" <c:if test="${queryCondition.conditions[1].rangeFrom == '4'}" >selected</c:if> >交易关闭</option>
+                  <option value="5" <c:if test="${queryCondition.conditions[1].rangeFrom == '5'}" >selected</c:if> >退费申请中</option>
+                  <option value="6" <c:if test="${queryCondition.conditions[1].rangeFrom == '6'}" >selected</c:if> >部分退费</option>
+                  <option value="7" <c:if test="${queryCondition.conditions[1].rangeFrom == '7'}" >selected</c:if> >已退费</option>
+                  <option value="8" <c:if test="${queryCondition.conditions[1].rangeFrom == '8'}" >selected</c:if> >申请退费</option>
+                  <option value="9" <c:if test="${queryCondition.conditions[1].rangeFrom == '9'}" >selected</c:if> >待退费</option>
                 </select>
               </div>
             </div>
           </div>
            <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label col-sm-3">招生顾问</label>
+              <label class="control-label col-sm-3">班主任</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="salemanName"  name="conditions[2].fieldName"/> 
+              	<input type="hidden"  value="staffName"  name="conditions[2].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[2].rangeType"/> 
                  <input type="text" class="form-control "   value="${queryCondition.conditions[2].rangeFrom}"  name="conditions[2].rangeFrom">
               </div>
             </div>
           </div>
-           <div class="col-md-12">
+          <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">客户</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="companyName"  name="conditions[3].fieldName"/> 
+              	<input type="hidden"  value="customerName"  name="conditions[3].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[3].rangeType"/> 
                  <input type="text" class="form-control "   value="${queryCondition.conditions[3].rangeFrom}"  name="conditions[3].rangeFrom">
-              </div>
-            </div>
-          </div>
-             <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label col-sm-3">院校</label>
-              <div class="col-sm-9">
-              	<input type="hidden"  value="schoolChineseName"  name="conditions[6].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[6].rangeType"/> 
-                <input type="text" class="form-control "  value="${queryCondition.conditions[6].rangeFrom}"   name="conditions[6].rangeFrom">
               </div>
             </div>
           </div>
@@ -115,12 +113,21 @@
               </div>
             </div>
           </div>
-        
+           <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-sm-3">院校</label>
+              <div class="col-sm-9">
+              	<input type="hidden"  value="schoolchinesename"  name="conditions[6].fieldName"/> 
+              	<input type="hidden"  value="INCLUDE"  name="conditions[6].rangeType"/> 
+                <input type="text" class="form-control "  value="${queryCondition.conditions[6].rangeFrom}"   name="conditions[6].rangeFrom">
+              </div>
+            </div>
+          </div>
               <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label col-sm-3">渠道</label>
+              <label class="control-label col-sm-3">学员</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="channelName"  name="conditions[7].fieldName"/> 
+              	<input type="hidden"  value="studentName"  name="conditions[7].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[7].rangeType"/> 
                 <input type="text" class="form-control "  value="${queryCondition.conditions[7].rangeFrom}"   name="conditions[7].rangeFrom">
               </div>
@@ -150,18 +157,18 @@
         <th><input type="checkbox" class="select-all"></th>
         <th>学员</th>
         <th>手机</th>
-        <th>市场人员</th>
-        <th>招生顾问</th>
-        <th>班主任</th>
-        <th>招生单号</th>
-        <th>学习中心</th>
-        <th>产品</th>
-        <th>培养层次</th>
         <th>院校</th>
-        <th>渠道</th>
+        <th>学习中心</th>
+        <th>班主任</th>
+        <th>产品</th>
+        <th>应收金额</th>
+        <th>优惠金额</th>
+        <th>实收金额</th>
+        <th>订单状态</th>
+        <th>下单时间</th>
+        <th>支付方式</th>
+        <th>支付时间</th>
         <th>客户</th>
-        <th>预报读订单状态</th>
-        <th>预报读时间</th>
         </tr>
       </thead>
       <tbody>
@@ -170,20 +177,20 @@
         	<c:forEach items="${resultMap.resultSet }"  var="resultSet">
         <tr>
 		          <td><input type="checkbox"></td>
-		          <td>${resultSet.userName }<c:if test="${ empty resultSet.userName }">暂无</c:if></td>
+		          <td>${resultSet.studentName }<c:if test="${ empty resultSet.studentName }">暂无</c:if></td>
 		          <td>${resultSet.mobile }<c:if test="${ empty resultSet.mobile }">暂无</c:if></td>
-		          <td>${resultSet.marketerName }<c:if test="${ empty resultSet.marketerName }">暂无</c:if></td>
-		          <td>${resultSet.salemanName }<c:if test="${ empty resultSet.salemanName }">暂无</c:if></td>
-		          <td>${resultSet.headTeacherName }<c:if test="${ empty resultSet.headTeacherName }">暂无</c:if></td>
-		          <td>${resultSet.enrolNo }<c:if test="${ empty resultSet.enrolNo }">暂无</c:if></td>
-		          <td>${resultSet.learncenterName }<c:if test="${ empty resultSet.learncenterName }">暂无</c:if></td>
-		          <td>${resultSet.productName}<c:if test="${ empty resultSet.productName }">暂无</c:if></td>
-		          <td>${resultSet.educationLevelName }<c:if test="${ empty resultSet.educationLevelName }">暂无</c:if></td>
 		          <td>${resultSet.schoolChineseName }<c:if test="${ empty resultSet.schoolChineseName }">暂无</c:if></td>
-		          <td>${resultSet.channelName }<c:if test="${ empty resultSet.channelName }">暂无</c:if></td>
-		          <td>${resultSet.companyName }<c:if test="${ empty resultSet.companyName }">暂无</c:if></td>
+		           <td>${resultSet.learncenterName }<c:if test="${ empty resultSet.learncenterName }">暂无</c:if></td>
+		          <td>${resultSet.staffName }<c:if test="${ empty resultSet.staffName }">暂无</c:if></td>
+		          <td>${resultSet.productName}<c:if test="${ empty resultSet.productName }">暂无</c:if></td>
+		          <td>${resultSet.receivableTotalAmt }<c:if test="${ empty resultSet.receivableTotalAmt }">暂无</c:if></td>
+		          <td>${resultSet.favAmt }<c:if test="${ empty resultSet.favAmt }">暂无</c:if></td>
+		          <td>${resultSet.orderPaidAmt }<c:if test="${ empty resultSet.orderPaidAmt }">暂无</c:if></td>
 		          <td>${resultSet.orderStatusName }<c:if test="${ empty resultSet.orderStatusName }">暂无</c:if></td>
 		          <td><fmt:formatDate  value="${resultSet.createdDt }"  type="both" pattern="yyyy-MM-dd " /></td>
+		          <td>${resultSet.payTypeName }<c:if test="${ empty resultSet.payTypeName }">暂无</c:if></td>
+		          <td><fmt:formatDate  value="${resultSet.payDate }"  type="both" pattern="yyyy-MM-dd " /></td>
+		          <td>${resultSet.customerName }<c:if test="${ empty resultSet.customerName }">暂无</c:if></td>
         </tr>
           	</c:forEach>
           	</c:when>
@@ -201,8 +208,8 @@
 <jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 </body>
 <script>
-    $("#createdDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
-    $("#createdDtId02").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
+    $("#createdDtId01").datepicker({language: 'zh-CN', autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
+    $("#createdDtId02").datepicker({language: 'zh-CN',autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
         onSelect: function(dateText,inst){  
             var time=dateText.split("-");  
             var year = time[0];  

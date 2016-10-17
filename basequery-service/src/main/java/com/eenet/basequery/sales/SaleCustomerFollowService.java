@@ -3,13 +3,13 @@ package com.eenet.basequery.sales;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.QueryCondition;
 
-public interface SaleCustomerService {
+public interface SaleCustomerFollowService {
 	
 	/**
-	 * 获取推广客户情况
+	 * 获取市场营销客户跟进详情
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<SaleCustomer> query(QueryCondition condition);
+	public SimpleResultSet<SaleCustomerFollow> query(QueryCondition condition);
 
 }

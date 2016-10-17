@@ -3,12 +3,12 @@ package com.eenet.basequery.learncenter;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.QueryCondition;
 
-public interface LCReserveOrderService {
+public interface LCStudentService {
 
 	/**
-	 * 获取预报读订单情况
+	 * 获取学员情况
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<LCReserveOrder> query(QueryCondition condition);
+	public SimpleResultSet<LCStudent> query(QueryCondition condition);
 }

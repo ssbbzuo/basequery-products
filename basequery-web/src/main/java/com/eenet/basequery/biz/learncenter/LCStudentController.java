@@ -1,4 +1,4 @@
-package com.eenet.basequery.biz.sales;
+package com.eenet.basequery.biz.learncenter;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.QueryCondition;
+import com.eenet.basequery.learncenter.LCStudent;
+import com.eenet.basequery.learncenter.LCStudentService;
 import com.eenet.basequery.page.Pagination;
-import com.eenet.basequery.sales.SaleCustomer;
-import com.eenet.basequery.sales.SaleCustomerService;
 
 @Controller
-@RequestMapping("/salecustomer")
-public class SaleCustomerController {
+@RequestMapping("/lcstudent")
+public class LCStudentController {
 	
 	@Autowired
-	private SaleCustomerService saleCustomerService;
+	private LCStudentService lcStudentService;
 	
 	@RequestMapping(value="/query")
 	public String query(QueryCondition queryCondition,Pagination pagination ,Model model){
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
-		SimpleResultSet<SaleCustomer>  result =  saleCustomerService.query(queryCondition);
+		SimpleResultSet<LCStudent>  result =  lcStudentService.query(queryCondition);
 		model.addAttribute("resultMap", result);
 		pagination.setTotal(result.getCount());
 		model.addAttribute("pagination", pagination);
-		return "sales/saleCustomerList";
+		return "learncenter/lcStudentList";
 	}
 	
 }

@@ -7,56 +7,44 @@ import com.eenet.base.BaseEntity;
 public class LCReserveOrder extends BaseEntity{
 
 	private static final long serialVersionUID = -4540913346929793572L;
-	private String userId;//用户ID
-	private String userAccountId;//用户账号
-	private String studentName;//用户名称
-	private String mobile;//用户手机
-	private String productId;//产品ID
-	private String productName;//产品名称
-	private String colleges;//院校
-	private String schoolchinesename;//院校名称
-	private String learncenterId;//跟进人所在学习中心ID
-	private String learncenterName;//跟进人所在学习中心名称
-	private String learncenterUserId;//跟进人账号ID
-	private String loginAccount;//跟进人账号
-	private String staffName;//跟进人姓名
-	private String followResult;//跟进结果编码
-	private String followResultName;//跟进结果名称
-	private String followContent;//跟进内容
-	private Date followDate;//跟进时间
-	private String orderStatus;//预报读订单状态编码
-	private String orderStatusName;//预报读订单状态名称
-	private Date createdDt;//预报读订单创建时间
-	
-	public String getFollowResultName() {
-		return followResultName;
+	private String studentId;//学员ID
+	private String userName;//学员名称
+	private String mobile;//学员手机
+	private String marketerId;//市场人员ID
+	private String marketerAccount;//市场人员账号
+	private String marketerName;//市场人员名称
+	private String salemanId;//招生顾问ID
+	private String salemanAccount;//招生顾问账号
+	private String salemanName;//招生顾问名称
+	private String headTeacherId;//班主任ID
+	private String headTeacherAccount;//班主任账号
+	private String headTeacherName;//班主任名称
+	private String enrolNo;//招生单号
+	private String learncenterCode;//学习中心编码
+	private String learncenterName;//学习中心名称
+	private Date createdDt;//预报读创建时间
+	private String status;//订单状态编码
+	private String orderStatusName;//订单状态
+	private String channelCode;//渠道编码
+	private String channelName;//渠道名称
+	private String colleges;//院校编码
+	private String schoolChineseName;//院校名称
+	private String companyName;//企业名称
+	private String eproductId;//招生产品ID
+	private String productName;//招生产品名称
+	private String educationLevel;//培养层次编码
+	private String educationLevelName;//培养层次
+	public String getStudentId() {
+		return studentId;
 	}
-	public void setFollowResultName(String followResultName) {
-		this.followResultName = followResultName;
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
 	}
-	public String getOrderStatusName() {
-		return orderStatusName;
+	public String getUserName() {
+		return userName;
 	}
-	public void setOrderStatusName(String orderStatusName) {
-		this.orderStatusName = orderStatusName;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getUserAccountId() {
-		return userAccountId;
-	}
-	public void setUserAccountId(String userAccountId) {
-		this.userAccountId = userAccountId;
-	}
-	public String getStudentName() {
-		return studentName;
-	}
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getMobile() {
 		return mobile;
@@ -64,35 +52,71 @@ public class LCReserveOrder extends BaseEntity{
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getProductId() {
-		return productId;
+	public String getMarketerId() {
+		return marketerId;
 	}
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setMarketerId(String marketerId) {
+		this.marketerId = marketerId;
 	}
-	public String getProductName() {
-		return productName;
+	public String getMarketerAccount() {
+		return marketerAccount;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setMarketerAccount(String marketerAccount) {
+		this.marketerAccount = marketerAccount;
 	}
-	public String getColleges() {
-		return colleges;
+	public String getMarketerName() {
+		return marketerName;
 	}
-	public void setColleges(String colleges) {
-		this.colleges = colleges;
+	public void setMarketerName(String marketerName) {
+		this.marketerName = marketerName;
 	}
-	public String getSchoolchinesename() {
-		return schoolchinesename;
+	public String getSalemanId() {
+		return salemanId;
 	}
-	public void setSchoolchinesename(String schoolchinesename) {
-		this.schoolchinesename = schoolchinesename;
+	public void setSalemanId(String salemanId) {
+		this.salemanId = salemanId;
 	}
-	public String getLearncenterId() {
-		return learncenterId;
+	public String getSalemanAccount() {
+		return salemanAccount;
 	}
-	public void setLearncenterId(String learncenterId) {
-		this.learncenterId = learncenterId;
+	public void setSalemanAccount(String salemanAccount) {
+		this.salemanAccount = salemanAccount;
+	}
+	public String getSalemanName() {
+		return salemanName;
+	}
+	public void setSalemanName(String salemanName) {
+		this.salemanName = salemanName;
+	}
+	public String getHeadTeacherId() {
+		return headTeacherId;
+	}
+	public void setHeadTeacherId(String headTeacherId) {
+		this.headTeacherId = headTeacherId;
+	}
+	public String getHeadTeacherAccount() {
+		return headTeacherAccount;
+	}
+	public void setHeadTeacherAccount(String headTeacherAccount) {
+		this.headTeacherAccount = headTeacherAccount;
+	}
+	public String getHeadTeacherName() {
+		return headTeacherName;
+	}
+	public void setHeadTeacherName(String headTeacherName) {
+		this.headTeacherName = headTeacherName;
+	}
+	public String getEnrolNo() {
+		return enrolNo;
+	}
+	public void setEnrolNo(String enrolNo) {
+		this.enrolNo = enrolNo;
+	}
+	public String getLearncenterCode() {
+		return learncenterCode;
+	}
+	public void setLearncenterCode(String learncenterCode) {
+		this.learncenterCode = learncenterCode;
 	}
 	public String getLearncenterName() {
 		return learncenterName;
@@ -100,52 +124,77 @@ public class LCReserveOrder extends BaseEntity{
 	public void setLearncenterName(String learncenterName) {
 		this.learncenterName = learncenterName;
 	}
-	public String getLearncenterUserId() {
-		return learncenterUserId;
-	}
-	public void setLearncenterUserId(String learncenterUserId) {
-		this.learncenterUserId = learncenterUserId;
-	}
-	public String getLoginAccount() {
-		return loginAccount;
-	}
-	public void setLoginAccount(String loginAccount) {
-		this.loginAccount = loginAccount;
-	}
-	public String getStaffName() {
-		return staffName;
-	}
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
-	}
-	public String getFollowResult() {
-		return followResult;
-	}
-	public void setFollowResult(String followResult) {
-		this.followResult = followResult;
-	}
-	public String getFollowContent() {
-		return followContent;
-	}
-	public void setFollowContent(String followContent) {
-		this.followContent = followContent;
-	}
-	public Date getFollowDate() {
-		return followDate;
-	}
-	public void setFollowDate(Date followDate) {
-		this.followDate = followDate;
-	}
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
 	public Date getCreatedDt() {
 		return createdDt;
 	}
 	public void setCreatedDt(Date createdDt) {
 		this.createdDt = createdDt;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getOrderStatusName() {
+		return orderStatusName;
+	}
+	public void setOrderStatusName(String orderStatusName) {
+		this.orderStatusName = orderStatusName;
+	}
+	public String getChannelCode() {
+		return channelCode;
+	}
+	public void setChannelCode(String channelCode) {
+		this.channelCode = channelCode;
+	}
+	public String getChannelName() {
+		return channelName;
+	}
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
+	}
+	public String getColleges() {
+		return colleges;
+	}
+	public void setColleges(String colleges) {
+		this.colleges = colleges;
+	}
+	public String getSchoolChineseName() {
+		return schoolChineseName;
+	}
+	public void setSchoolChineseName(String schoolChineseName) {
+		this.schoolChineseName = schoolChineseName;
+	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getEproductId() {
+		return eproductId;
+	}
+	public void setEproductId(String eproductId) {
+		this.eproductId = eproductId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getEducationLevel() {
+		return educationLevel;
+	}
+	public void setEducationLevel(String educationLevel) {
+		this.educationLevel = educationLevel;
+	}
+	public String getEducationLevelName() {
+		return educationLevelName;
+	}
+	public void setEducationLevelName(String educationLevelName) {
+		this.educationLevelName = educationLevelName;
+	}
+
 }
