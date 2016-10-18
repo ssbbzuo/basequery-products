@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/sysdata-tag.tld" prefix="eenet"%>
 <!DOCTYPE html>
 <html class="reset">
 <head>
@@ -57,18 +58,7 @@
               	<input type="hidden"  value="orderStatus"  name="conditions[1].fieldName"/> 
               	<input type="hidden"  value="EQUAL"  name="conditions[1].rangeType"/> 
                 <select class="form-control" name="conditions[1].rangeFrom">
-                  <option value="" >全部</option>
-               <option value="0"  <c:if test="${queryCondition.conditions[1].rangeFrom == '0'}" >selected</c:if>>未完成</option>
-                  <option value="1" <c:if test="${queryCondition.conditions[1].rangeFrom == '1'}" >selected</c:if>>待发货</option>
-                  <option value="10" <c:if test="${queryCondition.conditions[1].rangeFrom == '10'}" >selected</c:if> >部分发货</option>
-                  <option value="2" <c:if test="${queryCondition.conditions[1].rangeFrom == '2'}" >selected</c:if> >已发货</option>
-                  <option value="3" <c:if test="${queryCondition.conditions[1].rangeFrom == '3'}" >selected</c:if> >交易成功</option>
-                  <option value="4" <c:if test="${queryCondition.conditions[1].rangeFrom == '4'}" >selected</c:if> >交易关闭</option>
-                  <option value="5" <c:if test="${queryCondition.conditions[1].rangeFrom == '5'}" >selected</c:if> >退费申请中</option>
-                  <option value="6" <c:if test="${queryCondition.conditions[1].rangeFrom == '6'}" >selected</c:if> >部分退费</option>
-                  <option value="7" <c:if test="${queryCondition.conditions[1].rangeFrom == '7'}" >selected</c:if> >已退费</option>
-                  <option value="8" <c:if test="${queryCondition.conditions[1].rangeFrom == '8'}" >selected</c:if> >申请退费</option>
-                  <option value="9" <c:if test="${queryCondition.conditions[1].rangeFrom == '9'}" >selected</c:if> >待退费</option>
+               	 	<eenet:sysdata typeCode="ORDER_STATUS"  curValue="${queryCondition.conditions[1].rangeFrom}"></eenet:sysdata>
                 </select>
               </div>
             </div>

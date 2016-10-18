@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.sys.SysData" >
+	<resultMap type="com.eenet.basequery.sys.SysData" id="default">
+		<result column="DICT_TYPE_CODE" property="dictTypeCode" jdbcType="VARCHAR" />
+	    <result column="CODE_VALUE" property="codeValue" jdbcType="VARCHAR" />
+	    <result column="DICT_TYPE_NAME" property="dictTypeName" jdbcType="VARCHAR" />
+	    <result column="CODE_NAME" property="codeName" jdbcType="VARCHAR" />
+	    <result column="IS_DEFAULT" property="isDefault" jdbcType="VARCHAR" />
+	    <result column="DICT_LEVEL" property="dictLevel" jdbcType="DECIMAL" />
+	    <result column="ORDER_NO" property="orderNo" jdbcType="DECIMAL" />
+	    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				DWSDATA.DW_SYS_DATA
+		 WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT
+				DICT_TYPE_CODE, CODE_VALUE, DICT_TYPE_NAME, CODE_NAME, IS_DEFAULT, DICT_LEVEL, ORDER_NO,  PARENT_ID 
+			FROM
+				DWSDATA.DW_SYS_DATA
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
+	</select>
+
+</mapper>

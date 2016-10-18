@@ -99,7 +99,7 @@
 		<dependency>
 			<groupId>eenet.security.oauth2</groupId>
 			<artifactId>pojo</artifactId>
-			<version>2.03</version>
+			<version>${authen-framework.version}</version>
 			<type>bundle</type>
 		</dependency>
   </dependencies>

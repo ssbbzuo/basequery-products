@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/sysdata-tag.tld" prefix="eenet"%>
 <!DOCTYPE html>
 <html class="reset">
 <head>
@@ -71,7 +72,9 @@
               <div class="col-sm-9">
                 <input type="hidden"  value="personsScale"  name="conditions[2].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[2].rangeType"/> 
-                 <input type="text" class="form-control "  value="${queryCondition.conditions[2].rangeFrom}"   name="conditions[2].rangeFrom">
+                 <select class="form-control" name="conditions[2].rangeFrom">
+                	 <eenet:sysdata typeCode="COMPANY_SCALE"  curValue="${queryCondition.conditions[2].rangeFrom}"></eenet:sysdata>
+                 </select>
               </div>
             </div>
           </div>
@@ -81,7 +84,9 @@
               <div class="col-sm-9">
               	<input type="hidden"  value="customerProp"  name="conditions[3].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[3].rangeType"/> 
-                <input type="text" class="form-control "   value="${queryCondition.conditions[3].rangeFrom}"  name="conditions[3].rangeFrom">
+              	  <select class="form-control" name="conditions[3].rangeFrom">
+                	 <eenet:sysdata typeCode="ORG_PROPERTY"  curValue="${queryCondition.conditions[3].rangeFrom}"></eenet:sysdata>
+                 </select>
               </div>
             </div>
           </div>
@@ -95,7 +100,6 @@
               </div>
             </div>
           </div>
-         
           <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">客户</label>

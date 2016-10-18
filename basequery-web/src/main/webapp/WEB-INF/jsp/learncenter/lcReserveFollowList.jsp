@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/sysdata-tag.tld" prefix="eenet"%>
 <!DOCTYPE html>
 <html class="reset">
 <head>
@@ -73,12 +74,7 @@
               	<input type="hidden"  value="followResult"  name="conditions[5].fieldName"/> 
               	<input type="hidden"  value="EQUAL"  name="conditions[5].rangeType"/> 
                 <select class="form-control" name="conditions[5].rangeFrom">
-	                  <option value="" >全部</option>
-	                  <option value="A"  <c:if test="${queryCondition.conditions[5].rangeFrom == 'A'}" >selected</c:if> >待跟进</option>
-	                  <option value="B" <c:if test="${queryCondition.conditions[5].rangeFrom == 'B'}" >selected</c:if> >继续跟进</option>
-	                  <option value="C" <c:if test="${queryCondition.conditions[5].rangeFrom == 'C'}" >selected</c:if> >已确认下单</option>
-	                  <option value="D" <c:if test="${queryCondition.conditions[5].rangeFrom == 'D'}" >selected</c:if> >已确认弃单</option>
-	                  <option value="E" <c:if test="${queryCondition.conditions[5].rangeFrom == 'E'}" >selected</c:if> > 已缴费</option>
+						<eenet:sysdata typeCode="FOLLOW_RESULT"  curValue="${queryCondition.conditions[5].rangeFrom}"></eenet:sysdata>
                 </select>
               </div>
             </div>

@@ -44,7 +44,10 @@
 			<property name="baseDAOService" ref="GenericDAO" />
 	</bean>
 	
-	
+	<!-- 公共数据字典信息-->
+	<bean id="sysDataService" class="com.eenet.basequery.sys.SysDataServiceImpl">
+			<property name="baseDAOService" ref="GenericDAO" />
+	</bean>
 		<!-- 增量信息-->
 	<bean id="incrementService" class="com.eenet.basequery.increment.IncrementServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />

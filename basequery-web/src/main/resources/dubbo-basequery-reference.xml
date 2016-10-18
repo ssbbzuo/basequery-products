@@ -30,6 +30,9 @@
 	<!-- 市场营销  客户跟进详情-->
 	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerFollowService" id="SaleCustomerFollow" />
 	
+	<!-- 公共数据字典信息 -->
+	<dubbo:reference interface="com.eenet.basequery.sys.SysDataService" id="sysDataService" />
+	
 	<!-- 增量信息-->
 	<dubbo:reference interface="com.eenet.basequery.increment.IncrementService" id="incrementService" />
 	
