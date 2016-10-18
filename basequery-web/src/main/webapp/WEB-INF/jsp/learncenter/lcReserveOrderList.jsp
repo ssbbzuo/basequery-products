@@ -40,7 +40,7 @@
 				  <div class="col-sm-4">
 					<input type="hidden"  value="createdDt"  name="conditions[0].fieldName"/> 
 					<input type="hidden"  value="LESS2GREAT"  name="conditions[0].rangeType"/> 
-					<input type="text" class="form-control "  value="${queryCondition.conditions[0].rangeFrom}"  id="createdDtId01" name="conditions[0].rangeFrom">
+					<input type="text" class="form-control"  value="${queryCondition.conditions[0].rangeFrom}"  id="createdDtId01" name="conditions[0].rangeFrom">
 				  </div>
 				  <div class="col-sm-1" style="text-align: center;line-height: 34px;">
 					至

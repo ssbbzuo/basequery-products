@@ -67,4 +67,61 @@
  <bean class="com.eenet.basequery.chart.FunnelServiceImpl" id="FunnelService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean>
+ 
+ <!-- 预报读阶段-->
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFReadCollegesServiceImpl" id="ThemeFunnelFReadCollegesService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFReadLearnCenterServiceImpl" id="ThemeFunnelFReadLearnCenterService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFReadCompanyServiceImpl" id="ThemeFunnelFReadCompanyService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFReadSalemanServiceImpl" id="ThemeFunnelFReadSalemanService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>  
+ <!-- 预报读跟踪阶段-->
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFllowCollegesServiceImpl" id="ThemeFunnelFllowCollegesService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterServiceImpl" id="ThemeFunnelFllowLearnCenterService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFllowCompanyServiceImpl" id="ThemeFunnelFllowCompanyService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterUserServiceImpl" id="ThemeFunnelFllowLearnCenterUserService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>  
+ <!-- 报读阶段-->
+ <bean class="com.eenet.basequery.chart.ThemeFunnelReadCollegesServiceImpl" id="ThemeFunnelReadCollegesService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterServiceImpl" id="ThemeFunnelReadLearnCenterService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelReadCompanyServiceImpl" id="ThemeFunnelReadCompanyService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterUserServiceImpl" id="ThemeFunnelReadLearnCenterUserService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>   
+ <!-- 销售阶段-->
+ <bean class="com.eenet.basequery.chart.ThemeFunnelSellCollegesServiceImpl" id="ThemeFunnelSellCollegesService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterServiceImpl" id="ThemeFunnelSellLearnCenterService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelSellCompanyServiceImpl" id="ThemeFunnelSellCompanyService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterUserServiceImpl" id="ThemeFunnelSellLearnCenterUserService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+  <!-- 学员漏斗主表 -->
+ <bean class="com.eenet.basequery.chart.ThemeFunnelStudentServiceImpl" id="ThemeFunnelStudentService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
 </beans>

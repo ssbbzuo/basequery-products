@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.ThemeFunnelFReadColleges" >
+	<resultMap type="com.eenet.basequery.chart.ThemeFunnelFReadColleges" id="default">
+		<result column="DIM_COLLEGES" property="DIM_COLLEGES" jdbcType="VARCHAR" />
+		<result column="FORECAST_READ_COUNT" property="FORECAST_READ_COUNT" jdbcType="VARCHAR" />
+		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
+		<result column="RANK" property="RANK" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM (
+			SELECT SUM(FORECAST_READ_COUNT) AS FORECAST_READ_COUNT,	DIM_COLLEGES
+			FROM DM_FACT_FUNNEL_STUDENT_FORECAST_READ_COLLEGES
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_COLLEGES)S
+		]]>		
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT SUM(FORECAST_READ_COUNT) AS FORECAST_READ_COUNT, DIM_COLLEGES 
+			FROM DM_FACT_FUNNEL_STUDENT_FORECAST_READ_COLLEGES 
+			WHERE 1=1 		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_COLLEGES
+		]]>
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>

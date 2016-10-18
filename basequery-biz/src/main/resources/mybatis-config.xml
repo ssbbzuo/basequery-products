@@ -20,5 +20,28 @@
         <mapper resource="DBMapping/chart/TestMapper.xml"/> 
         <mapper resource="DBMapping/chart/Test02Mapper.xml"/>
         <mapper resource="DBMapping/chart/Test03Mapper.xml"/>
+        
+        <!-- 预报读 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadSalemanMapper.xml"/>    
+        <!-- 预报读跟踪 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowLearnCenterUserMapper.xml"/>        
+        <!-- 报读 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelReadCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelReadLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelReadCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelReadLearnCenterUserMapper.xml"/>         
+        <!-- 销售 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelSellCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelSellCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterUserMapper.xml"/>    
+        <!-- 漏斗主图 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelStudentMapper.xml"/>   
 	</mappers>
 </configuration>

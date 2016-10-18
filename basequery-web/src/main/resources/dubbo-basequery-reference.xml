@@ -41,5 +41,28 @@
 <!-- test02-->
  <dubbo:reference id="chart02Service" interface="com.eenet.basequery.chart.Chart02Service"/> 
 <!-- test02-->
- <dubbo:reference id="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>                                               
+ <dubbo:reference id="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>         
+ 
+ <!-- 预报读阶段 -->
+ <dubbo:reference id="ThemeFunnelFReadCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelFReadCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelFReadLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelFReadLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelFReadCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelFReadCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelFReadSalemanService" interface="com.eenet.basequery.chart.ThemeFunnelFReadSalemanService"/>    
+ <!-- 预报读跟踪阶段 -->
+ <dubbo:reference id="ThemeFunnelFllowCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelFllowCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelFllowLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelFllowCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelFllowCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelFllowLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterUserService"/>  
+ <!-- 报读阶段 -->
+ <dubbo:reference id="ThemeFunnelReadCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelReadCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelReadLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelReadCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelReadCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelReadLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterUserService"/>   
+ <!-- 销售阶段 -->
+ <dubbo:reference id="ThemeFunnelSellCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelSellCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelSellLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelSellCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelSellCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelSellLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterUserService"/> 
+ <!-- 学员漏斗主表 -->
+ <dubbo:reference id="ThemeFunnelStudentService" interface="com.eenet.basequery.chart.ThemeFunnelStudentService"/>   
 </beans>										  
