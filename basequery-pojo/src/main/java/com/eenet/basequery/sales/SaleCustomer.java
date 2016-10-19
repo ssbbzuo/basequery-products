@@ -8,25 +8,38 @@ public class SaleCustomer extends BaseEntity{
 
 	private static final long serialVersionUID = 1293028116411820946L;
 	private String customerName;//客户名称
-	private String personsScale;//客户人员规模
-	private String regFund;//客户注册资金
-	private String cooperateStatus;//客户合作状态
-	private String cooperateStatusName;//客户合作状态
-	private String provinceCode;//省份编码
-	private String provinceName;//省名称
-	private String cityCode;//城市编码
-	private String cityName;//城市名称
-	private String districtCode;//区编码
-	private String distinctName;//区名称
+	private String customerCode;//客户编码
+	private String personsScale;//客户规模编码
+	private String personsScaleName;//客户规模
+	private String customerProp;//客户性质编码
+	private String customerPropName;//客户性质
+	private String cooperateStatus;//合作状态编码
+	private String cooperateStatusName;//合作状态
 	private Date activateDt;//激活时间
-	private String channelName;//渠道名称
-	private String channelCode;//渠道编码
-	private String staffName;//推广人员名称
-	public String getCooperateStatusName() {
-		return cooperateStatusName;
+	private Date createdDt;//创建时间
+	private String province;//省份编码
+	private String provinceName;//省份
+	private String city;//市编码
+	private String cityName;//市
+	private String district;//区编码
+	private String districtName;//区名称
+	public String getPersonsScaleName() {
+		return personsScaleName;
 	}
-	public void setCooperateStatusName(String cooperateStatusName) {
-		this.cooperateStatusName = cooperateStatusName;
+	public void setPersonsScaleName(String personsScaleName) {
+		this.personsScaleName = personsScaleName;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	public String getDistrictName() {
+		return districtName;
+	}
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
 	}
 	public String getCustomerName() {
 		return customerName;
@@ -34,17 +47,29 @@ public class SaleCustomer extends BaseEntity{
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
+	public String getCustomerCode() {
+		return customerCode;
+	}
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
+	}
 	public String getPersonsScale() {
 		return personsScale;
 	}
 	public void setPersonsScale(String personsScale) {
 		this.personsScale = personsScale;
 	}
-	public String getRegFund() {
-		return regFund;
+	public String getCustomerProp() {
+		return customerProp;
 	}
-	public void setRegFund(String regFund) {
-		this.regFund = regFund;
+	public void setCustomerProp(String customerProp) {
+		this.customerProp = customerProp;
+	}
+	public String getCustomerPropName() {
+		return customerPropName;
+	}
+	public void setCustomerPropName(String customerPropName) {
+		this.customerPropName = customerPropName;
 	}
 	public String getCooperateStatus() {
 		return cooperateStatus;
@@ -52,41 +77,11 @@ public class SaleCustomer extends BaseEntity{
 	public void setCooperateStatus(String cooperateStatus) {
 		this.cooperateStatus = cooperateStatus;
 	}
-	public String getProvinceCode() {
-		return provinceCode;
+	public String getCooperateStatusName() {
+		return cooperateStatusName;
 	}
-	public void setProvinceCode(String provinceCode) {
-		this.provinceCode = provinceCode;
-	}
-	public String getProvinceName() {
-		return provinceName;
-	}
-	public void setProvinceName(String provinceName) {
-		this.provinceName = provinceName;
-	}
-	public String getCityCode() {
-		return cityCode;
-	}
-	public void setCityCode(String cityCode) {
-		this.cityCode = cityCode;
-	}
-	public String getCityName() {
-		return cityName;
-	}
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
-	public String getDistrictCode() {
-		return districtCode;
-	}
-	public void setDistrictCode(String districtCode) {
-		this.districtCode = districtCode;
-	}
-	public String getDistinctName() {
-		return distinctName;
-	}
-	public void setDistinctName(String distinctName) {
-		this.distinctName = distinctName;
+	public void setCooperateStatusName(String cooperateStatusName) {
+		this.cooperateStatusName = cooperateStatusName;
 	}
 	public Date getActivateDt() {
 		return activateDt;
@@ -94,24 +89,35 @@ public class SaleCustomer extends BaseEntity{
 	public void setActivateDt(Date activateDt) {
 		this.activateDt = activateDt;
 	}
-	public String getChannelName() {
-		return channelName;
+	public Date getCreatedDt() {
+		return createdDt;
 	}
-	public void setChannelName(String channelName) {
-		this.channelName = channelName;
+	public void setCreatedDt(Date createdDt) {
+		this.createdDt = createdDt;
 	}
-	public String getChannelCode() {
-		return channelCode;
+	public String getProvince() {
+		return province;
 	}
-	public void setChannelCode(String channelCode) {
-		this.channelCode = channelCode;
+	public void setProvince(String province) {
+		this.province = province;
 	}
-	public String getStaffName() {
-		return staffName;
+	public String getProvinceName() {
+		return provinceName;
 	}
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
 	}
-	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
 	
 }

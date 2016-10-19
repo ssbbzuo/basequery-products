@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.learncenter.LCOrderInfo" >
+	<resultMap type="com.eenet.basequery.learncenter.LCOrderInfo" id="default">
+		<result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+		<result column="STUDENT_NAME" property="studentName" jdbcType="VARCHAR" />
+		<result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+		<result column="NETWORK_SCHOOL_CODE" property="networkSchoolCode" jdbcType="VARCHAR" />
+		<result column="SCHOOL_CHINESE_NAME" property="schoolChineseName" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_CODE" property="learncenterCode" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_NAME" property="learncenterName" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_USER_ID" property="learncenterUserId" jdbcType="VARCHAR" />
+		<result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
+		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+		<result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+		<result column="RECEIVABLE_TOTAL_AMT" property="receivableTotalAmt" jdbcType="VARCHAR" />
+		<result column="FAV_AMT" property="favAmt" jdbcType="VARCHAR" />
+		<result column="ORDER_PAID_AMT" property="orderPaidAmt" jdbcType="VARCHAR" />
+		<result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+		<result column="PAY_TYPE_NAME" property="payTypeName" jdbcType="VARCHAR" />
+		<result column="ORDER_STATUS" property="orderStatus" jdbcType="VARCHAR" />
+		<result column="ORDER_STATUS_NAME" property="orderStatusName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+		<result column="CREATED_DT" property="createdDt" jdbcType="DATE" />
+		<result column="PAY_DATE" property="payDate" jdbcType="DATE" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				DM_LC_ORDERINFO
+		 WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT
+				STUDENT_ID,
+				STUDENT_NAME,
+				MOBILE,
+				NETWORK_SCHOOL_CODE,
+				SCHOOL_CHINESE_NAME,
+				LEARNCENTER_CODE,
+				LEARNCENTER_NAME,
+				LEARNCENTER_USER_ID,
+				STAFF_NAME,
+				PRODUCT_ID,
+				PRODUCT_NAME,
+				RECEIVABLE_TOTAL_AMT,
+				FAV_AMT,
+				ORDER_PAID_AMT,
+				PAY_TYPE,
+				ORDER_STATUS,
+				CUSTOMER_ID,
+				CUSTOMER_NAME,
+				CREATED_DT
+			FROM
+				DM_LC_ORDERINFO
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
+	</select>
+
+</mapper>

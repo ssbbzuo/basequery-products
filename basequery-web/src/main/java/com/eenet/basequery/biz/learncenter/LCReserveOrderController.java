@@ -13,16 +13,17 @@ import com.eenet.basequery.learncenter.LCReserveOrderService;
 import com.eenet.basequery.page.Pagination;
 
 @Controller
+@RequestMapping("/lcreserveorder")
 public class LCReserveOrderController {
 	
 	@Autowired
 	private LCReserveOrderService lcRrserveOrderService;
 	
-	@RequestMapping(value="/getLCReserveOrder")
-	public String getLCReserveOrder(QueryCondition queryCondition,Pagination pagination ,Model model){
+	@RequestMapping(value="/query")
+	public String query(QueryCondition queryCondition,Pagination pagination ,Model model){
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
-		SimpleResultSet<LCReserveOrder>  result =  lcRrserveOrderService.getLCReserveOrder(queryCondition);
+		SimpleResultSet<LCReserveOrder>  result =  lcRrserveOrderService.query(queryCondition);
 		model.addAttribute("resultMap", result);
 		pagination.setTotal(result.getCount());
 		model.addAttribute("pagination", pagination);

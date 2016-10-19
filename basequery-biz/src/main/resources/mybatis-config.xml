@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
@@ -8,27 +9,45 @@
         <mapper resource="conf/base.PostgreSQL.mbt.xml" />
         <mapper resource="conf/base.MySQL.mbt.xml" />
         <!-- 业务模块 -->
-        <mapper resource="DBMapping/learncenter/ProductQueryMapper.xml" />
-        <mapper resource="DBMapping/learncenter/LCStudentDynaMapper.xml" />
-        <mapper resource="DBMapping/learncenter/LCStudentStatusMapper.xml" />
-        <mapper resource="DBMapping/learncenter/LCReserveOrderMapper.xml" />
-        <mapper resource="DBMapping/platform/PFStudentDynaMapper.xml" />
-        <mapper resource="DBMapping/platform/PFStudentMapper.xml" />            
-        <mapper resource="DBMapping/platform/PFStudentStatusMapper.xml" />       
-        <mapper resource="DBMapping/resource/RECourseMapper.xml" />   
-        <mapper resource="DBMapping/resource/REStudentAssessMapper.xml" />
-        <mapper resource="DBMapping/resource/REStudentStatusMapper.xml" />
-        <mapper resource="DBMapping/sales/SaleCustomerMapper.xml" />
-        <mapper resource="DBMapping/sales/SaleOrderMapper.xml" />            
-        <mapper resource="DBMapping/sales/SaleStudentDynaMapper.xml" />   
-        <mapper resource="DBMapping/sales/SaleStudentMapper.xml" />   
-        <mapper resource="DBMapping/increment/IncrementMapper.xml" />   
-        <mapper resource="DBMapping/sqlquery/QuerySqlMapper.xml" />
-        <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
-        <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>   
+        <mapper resource="DBMapping/learncenter/LCOrderInfoMapper.xml" />
+        <mapper resource="DBMapping/learncenter/LCReserveFollowMapper.xml" />
+       <mapper resource="DBMapping/learncenter/LCReserveOrderMapper.xml" />
+       <mapper resource="DBMapping/learncenter/LCStudentMapper.xml" />
+       <mapper resource="DBMapping/sales/SaleCustomerMapper.xml" />
+       <mapper resource="DBMapping/sales/SaleCustomerFollowMapper.xml" />
         
+          <mapper resource="DBMapping/sys/AreaMapper.xml" />  
+        <mapper resource="DBMapping/sys/SysdataMapper.xml" />  
+        <mapper resource="DBMapping/increment/IncrementMapper.xml" />   
+        <mapper resource="DBMapping/sqlquery/QuerySqlMapper.xml" />   
         <mapper resource="DBMapping/chart/TestMapper.xml"/> 
         <mapper resource="DBMapping/chart/Test02Mapper.xml"/>
         <mapper resource="DBMapping/chart/Test03Mapper.xml"/>
+        
+        <!-- 预报读 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelFReadSalemanMapper.xml"/>    
+        <!-- 预报读跟踪 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelFllowLearnCenterUserMapper.xml"/>        
+        <!-- 报读 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelReadCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelReadLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelReadCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelReadLearnCenterUserMapper.xml"/>         
+        <!-- 销售 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelSellCollegesMapper.xml"/>     
+        <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterMapper.xml"/>            
+        <mapper resource="DBMapping/chart/ThemeFunnelSellCompanyMapper.xml"/>  
+        <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterUserMapper.xml"/>    
+        <!-- 漏斗主图 -->
+        <mapper resource="DBMapping/chart/ThemeFunnelStudentMapper.xml"/>   
+        
+        <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
+        <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  
 	</mappers>
 </configuration>

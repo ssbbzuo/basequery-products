@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -12,63 +13,68 @@
 						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 						http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
-	<!-- 产品销售查询服务 -->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.ProductQueryService"  id="productQueryService" />
-	
-		<!-- 学习中心学员学情-->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentDynaService" id="LCStudentDynaService" />
-	
-		<!-- 学习中心学员学籍 -->
-	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentStatusService" id="LCStudentStatusService" />
-	
-		<!-- 预报读订单情况-->
+		<!--学习中心 预报读订单情况-->
 	<dubbo:reference interface="com.eenet.basequery.learncenter.LCReserveOrderService" id="LCReserveOrderService" />
 	
-		<!-- 平台中心学员学习情况-->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentDynaService" id="PFStudentDynaService" />
+	<!-- 学习中心 预报读订单跟踪情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCReserveFollowService" id="LCReserveFollowService" />
 	
-		<!-- 平台中心学员学籍 -->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentStatusService" id="PFStudentStatusService" />
+	<!--学习中心  订单情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCOrderInfoService" id="LCOrderInfoService" />
 	
-		<!-- 平台中心学员信息-->
-	<dubbo:reference interface="com.eenet.basequery.platform.PFStudentService" id="PFStudentService" />
+	<!-- 学习中心 学员情况-->
+	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentService" id="LCStudentService" />
 	
-		<!-- 资源中心课程信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.RECourseService" id="RECourseService" />
+	<!-- 市场营销  客户详情-->
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService"  id="SaleCustomer" />
 	
-		<!-- 资源中心课程考核信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.REStudentAssessService" id="REStudentAssessService" />
+	<!-- 市场营销  客户跟进详情-->
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerFollowService" id="SaleCustomerFollow" />
 	
-		<!-- 资源中心学员报读信息-->
-	<dubbo:reference interface="com.eenet.basequery.resource.REStudentStatusService" id="REStudentStatusService" />
+	<!-- 区域信息 -->
+	<dubbo:reference interface="com.eenet.basequery.sys.AreaService" id="areaService" />
 	
-		<!-- 推广客户企业信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService" id="SaleCustomerService" />
+	<!-- 公共数据字典信息 -->
+	<dubbo:reference interface="com.eenet.basequery.sys.SysDataService" id="sysDataService" />
 	
-		<!-- 销售订单信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleOrderService" id="SaleOrderService" />
-	
-		<!-- 推广学员学情信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleStudentDynaService" id="SaleStudentDynaService" />
-	
-			<!-- 推广学员信息-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleStudentService" id="SaleStudentService" />    
-	
-		<!-- 增量信息-->
+	<!-- 增量信息-->
 	<dubbo:reference interface="com.eenet.basequery.increment.IncrementService" id="incrementService" />
 	
-		<!-- sql查询页面信息-->
+	<!-- sql查询页面信息-->
 	<dubbo:reference interface="com.eenet.basequery.sqlquery.QuerySqlService" id="querySqlService" />
 	
-		<!-- 用户信息 -->
-	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
-		<!-- 权限树信息 -->
-<!-- 	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService" /> -->
-	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService"></dubbo:reference>	
 	<!-- test-->
  <dubbo:reference id="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
 <!-- test02-->
  <dubbo:reference id="chart02Service" interface="com.eenet.basequery.chart.Chart02Service"/> 
 <!-- test02-->
- <dubbo:reference id="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>                                               
+ <dubbo:reference id="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>         
+ 
+ <!-- 预报读阶段 -->
+ <dubbo:reference id="ThemeFunnelFReadCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelFReadCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelFReadLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelFReadLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelFReadCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelFReadCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelFReadSalemanService" interface="com.eenet.basequery.chart.ThemeFunnelFReadSalemanService"/>    
+ <!-- 预报读跟踪阶段 -->
+ <dubbo:reference id="ThemeFunnelFllowCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelFllowCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelFllowLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelFllowCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelFllowCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelFllowLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelFllowLearnCenterUserService"/>  
+ <!-- 报读阶段 -->
+ <dubbo:reference id="ThemeFunnelReadCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelReadCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelReadLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelReadCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelReadCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelReadLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelReadLearnCenterUserService"/>   
+ <!-- 销售阶段 -->
+ <dubbo:reference id="ThemeFunnelSellCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelSellCollegesService"/> 
+ <dubbo:reference id="ThemeFunnelSellLearnCenterService" interface="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterService"/>
+ <dubbo:reference id="ThemeFunnelSellCompanyService" interface="com.eenet.basequery.chart.ThemeFunnelSellCompanyService"/> 
+ <dubbo:reference id="ThemeFunnelSellLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterUserService"/> 
+ <!-- 学员漏斗主表 -->
+ <dubbo:reference id="ThemeFunnelStudentService" interface="com.eenet.basequery.chart.ThemeFunnelStudentService"/>   
+ 
+ <!-- 用户信息 -->
+	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
+	<!-- 权限树信息 -->
+	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService"></dubbo:reference>	
 </beans>										  

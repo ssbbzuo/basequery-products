@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.ThemeFunnelStudent" >
+	<resultMap type="com.eenet.basequery.chart.ThemeFunnelStudent" id="default">
+		<result column="DIM_COLLEGES" property="DIM_COLLEGES" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_FORECAST_READ_COUNT" property="FUNNEL_FORECAST_READ_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FLLOW_COUNT" property="FUNNEL_FLLOW_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_READ_COUNT" property="FUNNEL_READ_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_SELL_COUNT" property="FUNNEL_SELL_COUNT" jdbcType="VARCHAR" />		
+			
+		<result column="FUNNEL_FORECAST_READ_PER" property="FUNNEL_FORECAST_READ_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FLLOW_PER" property="FUNNEL_FLLOW_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_READ_PER" property="FUNNEL_READ_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_SELL_PER" property="FUNNEL_SELL_PER" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_FORECAST_READ_WANT" property="FUNNEL_FORECAST_READ_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FORECAST_READ_SUCCESS" property="FUNNEL_FORECAST_READ_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FORECAST_READ_LOST" property="FUNNEL_FORECAST_READ_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_FLLOW_WANT" property="FUNNEL_FLLOW_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FLLOW_SUCCESS" property="FUNNEL_FLLOW_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_FLLOW_LOST" property="FUNNEL_FLLOW_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_READ_WANT" property="FUNNEL_READ_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_READ_SUCCESS" property="FUNNEL_READ_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_READ_LOST" property="FUNNEL_READ_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_SELL_WANT" property="FUNNEL_SELL_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_SELL_SUCCESS" property="FUNNEL_SELL_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_SELL_LOST" property="FUNNEL_SELL_LOST" jdbcType="VARCHAR" />
+		
+		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM (
+			SELECT SUM(FUNNEL_FORECAST_READ_COUNT) AS FUNNEL_FORECAST_READ_COUNT,
+				SUM(FUNNEL_FLLOW_COUNT) AS FUNNEL_FLLOW_COUNT,
+				SUM(FUNNEL_READ_COUNT) AS FUNNEL_READ_COUNT,
+				SUM(FUNNEL_SELL_COUNT) AS FUNNEL_SELL_COUNT
+			FROM DM_FACT_FUNNEL_STUDENT
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			)S
+		]]>
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+		SELECT 	FUNNEL_FORECAST_READ_COUNT,
+						FUNNEL_FLLOW_COUNT,
+						FUNNEL_READ_COUNT,
+						FUNNEL_SELL_COUNT,
+						FORMAT(FUNNEL_FORECAST_READ_COUNT/FUNNEL_FORECAST_READ_COUNT*100,2) AS FUNNEL_FORECAST_READ_PER,
+						FORMAT(FUNNEL_FLLOW_COUNT/FUNNEL_FORECAST_READ_COUNT*100,2) AS FUNNEL_FLLOW_PER,
+						FORMAT(FUNNEL_READ_COUNT/FUNNEL_FLLOW_COUNT*100,2) AS FUNNEL_READ_PER,
+						FORMAT(FUNNEL_SELL_COUNT/FUNNEL_READ_COUNT*100,2) AS FUNNEL_SELL_PER,
+						FUNNEL_FORECAST_READ_COUNT AS FUNNEL_FORECAST_READ_WANT,
+						FUNNEL_FORECAST_READ_COUNT AS FUNNEL_FORECAST_READ_SUCCESS,
+						FUNNEL_FORECAST_READ_COUNT-FUNNEL_FORECAST_READ_COUNT AS FUNNEL_FORECAST_READ_LOST,
+						FUNNEL_FORECAST_READ_COUNT AS FUNNEL_FLLOW_WANT,
+						FUNNEL_FLLOW_COUNT AS FUNNEL_FLLOW_SUCCESS,
+						FUNNEL_FLLOW_COUNT-FUNNEL_FORECAST_READ_COUNT AS FUNNEL_FLLOW_LOST,
+						FUNNEL_FLLOW_COUNT AS FUNNEL_READ_WANT,
+						FUNNEL_READ_COUNT AS FUNNEL_READ_SUCCESS,
+						FUNNEL_READ_COUNT-FUNNEL_FLLOW_COUNT AS FUNNEL_READ_LOST,
+						FUNNEL_READ_COUNT AS FUNNEL_SELL_WANT,
+						FUNNEL_SELL_COUNT AS FUNNEL_SELL_SUCCESS,
+						FUNNEL_SELL_COUNT-FUNNEL_READ_COUNT AS FUNNEL_SELL_LOST
+			FROM(
+			SELECT SUM(FUNNEL_FORECAST_READ_COUNT) AS FUNNEL_FORECAST_READ_COUNT,
+				SUM(FUNNEL_FLLOW_COUNT) AS FUNNEL_FLLOW_COUNT,
+				SUM(FUNNEL_READ_COUNT) AS FUNNEL_READ_COUNT,
+				SUM(FUNNEL_SELL_COUNT) AS FUNNEL_SELL_COUNT
+			FROM DM_FACT_FUNNEL_STUDENT
+			WHERE 1=1		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			)S
+		]]>		
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>

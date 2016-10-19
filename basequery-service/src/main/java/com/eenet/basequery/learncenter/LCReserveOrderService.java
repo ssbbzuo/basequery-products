@@ -10,5 +10,5 @@ public interface LCReserveOrderService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<LCReserveOrder> getLCReserveOrder(QueryCondition condition);
+	public SimpleResultSet<LCReserveOrder> query(QueryCondition condition);
 }

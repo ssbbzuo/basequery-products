@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/sysdata-tag.tld" prefix="eenet"%>
 <!DOCTYPE html>
 <html class="reset">
 <head>
@@ -8,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>远程教育数据中心</title>
 <jsp:include page="/WEB-INF/jsp/common/jslibs.jsp"/>
+<script type="text/javascript"  src="<%=request.getContextPath()%>/static/dist/js/area.js"></script>
 </head>
 <body class="inner-page-body">
   <!-- 
@@ -33,7 +35,7 @@
       <div class="form-horizontal oh slide_box">
         <div class="row reset-form-horizontal pad-t15">
           
-       <div class="col-md-12	">
+       		<div class="col-md-12	">
 				<div class="form-group">
 				  <label class="control-label col-sm-3">激活时间</label>
 				  <div class="col-sm-4">
@@ -49,37 +51,72 @@
 				  </div>
 				</div>
 			  </div>
+			  <div class="col-md-12	">
+				<div class="form-group">
+				  <label class="control-label col-sm-3">创建时间</label>
+				  <div class="col-sm-4">
+					<input type="hidden"  value="createdDt"  name="conditions[1].fieldName"/> 
+					<input type="hidden"  value="LESS2GREAT"  name="conditions[1].rangeType"/> 
+					<input type="text" class="form-control "   value="${queryCondition.conditions[1].rangeFrom}"  id="createdDtId01" name="conditions[1].rangeFrom">
+				  </div>
+				  <div class="col-sm-1" style="text-align: center;line-height: 34px;">
+					至
+				  </div>
+				   <div class="col-sm-4">
+					<input type="text" class="form-control "   value="${queryCondition.conditions[1].rangeTo}"  id="createdDtId02" name="conditions[1].rangeTo">
+				  </div>
+				</div>
+			  </div>
+			<div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-sm-3">所属区域</label>
+              <div class="col-sm-3">
+              		<input type="hidden"  value="province"  name="conditions[7].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[7].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[7].rangeFrom}"  name="provinceValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[7].rangeFrom"></select>
+              </div>
+               <div class="col-sm-3">
+               		<input type="hidden"  value="city"  name="conditions[5].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[5].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[5].rangeFrom}"  name="cityValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[5].rangeFrom">
+              		</select>
+              </div>
+              	 <div class="col-sm-3">
+              	 	<input type="hidden"  value="district"  name="conditions[6].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[6].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[6].rangeFrom}"  name="districtValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[6].rangeFrom">
+              		</select>
+              </div>
+          </div>
+          </div>
 			   <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label col-sm-3">推广人员</label>
+              <label class="control-label col-sm-3">企业规模</label>
               <div class="col-sm-9">
-                <input type="hidden"  value="staffName"  name="conditions[3].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[3].rangeType"/> 
-                 <input type="text" class="form-control "  value="${queryCondition.conditions[3].rangeFrom}"   name="conditions[3].rangeFrom">
+                <input type="hidden"  value="personsScale"  name="conditions[2].fieldName"/> 
+              	<input type="hidden"  value="INCLUDE"  name="conditions[2].rangeType"/> 
+                 <select class="form-control" name="conditions[2].rangeFrom">
+                	 <eenet:sysdata typeCode="COMPANY_SCALE"  curValue="${queryCondition.conditions[2].rangeFrom}"></eenet:sysdata>
+                 </select>
               </div>
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label col-sm-3">省</label>
+              <label class="control-label col-sm-3">企业性质</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="provinceName"  name="conditions[1].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[1].rangeType"/> 
-                <input type="text" class="form-control "   value="${queryCondition.conditions[1].rangeFrom}"  name="conditions[1].rangeFrom">
+              	<input type="hidden"  value="customerProp"  name="conditions[3].fieldName"/> 
+              	<input type="hidden"  value="INCLUDE"  name="conditions[3].rangeType"/> 
+              	  <select class="form-control" name="conditions[3].rangeFrom">
+                	 <eenet:sysdata typeCode="ORG_PROPERTY"  curValue="${queryCondition.conditions[3].rangeFrom}"></eenet:sysdata>
+                 </select>
               </div>
             </div>
           </div>
-           <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label col-sm-3">渠道</label>
-              <div class="col-sm-9">
-              	<input type="hidden"  value="channelName"  name="conditions[2].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[2].rangeType"/> 
-                <input type="text" class="form-control "   value="${queryCondition.conditions[2].rangeFrom}"   name="conditions[2].rangeFrom">
-              </div>
-            </div>
-          </div>
-         
+          
           <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">客户</label>
@@ -96,6 +133,10 @@
     </div> 
     </div> 
   
+    <div class="callout callout-info">
+        <p>当前客户总数为：${pagination.total }</p>
+   </div>
+   
   <div class="box margin-bottom-none">
     <div class="box-header with-border">
       <div class="fr">
@@ -109,16 +150,14 @@
       <thead>
         <tr>
         <th><input type="checkbox" class="select-all"></th>
-        <th>推广人员</th>
-        <th>渠道</th>
-        <th>客户</th>     
-        <th>客户规模</th>
-        <th>注册资金</th>
+        <th>客户</th>
+        <th>客户编码</th>
+        <th>区域</th>     
+        <th>规模</th>
+        <th>性质</th>
         <th>合作状态</th>
-        <th>省</th>
-        <th>市</th>
-        <th>区</th>
         <th>激活时间</th>
+        <th>创建时间</th>
         </tr>
       </thead>
       <tbody>
@@ -127,16 +166,16 @@
         	<c:forEach items="${resultMap.resultSet }"  var="resultSet">
         <tr>
 		          <td><input type="checkbox"></td>
-		      	  <td>${resultSet.staffName }<c:if test="${ empty resultSet.staffName }">暂无</c:if></td>
-		          <td>	${resultSet.channelName }<c:if test="${ empty resultSet.channelName }">暂无</c:if></td>
-		          <td>	${resultSet.customerName }<c:if test="${ empty resultSet.customerName }">暂无</c:if></td>
+		      	  <td>${resultSet.customerName }<c:if test="${ empty resultSet.customerName }">暂无</c:if></td>
+		          <td>	${resultSet.customerCode }<c:if test="${ empty resultSet.customerCode }">暂无</c:if></td>
+		          <td>	${resultSet.provinceName }${resultSet.cityName }${resultSet.districtName }
+		          		<c:if test="${ empty resultSet.provinceName &&  empty resultSet.cityName  && empty resultSet.districtName }">暂无</c:if>
+		          	</td>
 		          <td>${resultSet.personsScale }<c:if test="${ empty resultSet.personsScale }">暂无</c:if></td>
-		          <td>${resultSet.regFund }<c:if test="${ empty resultSet.regFund }">暂无</c:if></td>
+		          <td>${resultSet.customerPropName }<c:if test="${ empty resultSet.customerPropName }">暂无</c:if></td>
 		          <td>${resultSet.cooperateStatusName }<c:if test="${ empty resultSet.cooperateStatusName }">暂无</c:if></td>
-		          <td>${resultSet.provinceName }<c:if test="${ empty resultSet.provinceName }">暂无</c:if></td>
-		          <td>${resultSet.cityName }<c:if test="${ empty resultSet.cityName }">暂无</c:if></td>
-		          <td>${resultSet.distinctName }<c:if test="${ empty resultSet.distinctName }">暂无</c:if></td>
 		         <td><fmt:formatDate  value="${resultSet.activateDt }"  type="both" pattern="yyyy-MM-dd " /></td>
+		         <td><fmt:formatDate  value="${resultSet.createdDt }"  type="both" pattern="yyyy-MM-dd " /></td>
         </tr>
           	</c:forEach>
           	</c:when>
@@ -166,5 +205,6 @@
             );  
         }  
     });  
+    $(".selectcssquery").select2();
 </script>
 </html>
