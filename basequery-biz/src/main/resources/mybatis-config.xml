@@ -15,6 +15,7 @@
        <mapper resource="DBMapping/sales/SaleCustomerMapper.xml" />
        <mapper resource="DBMapping/sales/SaleCustomerFollowMapper.xml" />
         
+          <mapper resource="DBMapping/sys/AreaMapper.xml" />  
         <mapper resource="DBMapping/sys/SysdataMapper.xml" />  
         <mapper resource="DBMapping/increment/IncrementMapper.xml" />   
         <mapper resource="DBMapping/sqlquery/QuerySqlMapper.xml" />   

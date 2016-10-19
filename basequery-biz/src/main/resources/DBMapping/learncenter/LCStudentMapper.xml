@@ -14,6 +14,12 @@
 		<result column="ID_CARD" property="idCard" jdbcType="VARCHAR" />
 		<result column="UNIT_CODE" property="unitCode" jdbcType="VARCHAR" />
 		<result column="CREATED_DT" property="createdDt" jdbcType="VARCHAR" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
@@ -42,7 +48,13 @@
 				DEGREE_name,
 				ID_CARD,
 				UNIT_CODE,
-				CREATED_DT
+				CREATED_DT,
+				PROVINCE,
+				PROVINCE_NAME,
+				CITY,
+				CITY_NAME,
+				DISTRICT,
+				DISTRICT_NAME
 			FROM
 				DM_LC_STUDENT
 		  WHERE 1=1 

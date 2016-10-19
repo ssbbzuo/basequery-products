@@ -40,7 +40,6 @@ public class SysDataTag extends RequestContextAwareTag  {
 		
 		SysDataService sysDataService = (SysDataService)this.getRequestContext().getWebApplicationContext().getBean("sysDataService");
 		SimpleResultSet<SysData> result = sysDataService.getByTypeCode(typeCode);
-		System.out.println("--------------------------------------result " +result);
 		if(result!=null && result.getCount()>0){
 			List<SysData> resultList = result.getResultSet();
 			for(SysData data : resultList){

@@ -117,6 +117,10 @@
     
   </div>
   
+    <div class="callout callout-info">
+        <p>当前预报读跟踪记录数为：${pagination.total }</p>
+   </div>
+   
   <div class="box margin-bottom-none">
     <div class="box-header with-border">
       <div class="fr">

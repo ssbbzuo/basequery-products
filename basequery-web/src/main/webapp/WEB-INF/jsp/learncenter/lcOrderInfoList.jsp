@@ -132,6 +132,10 @@
     
   </div>
   
+    <div class="callout callout-info">
+        <p>当前订单总量为：${pagination.total }</p>
+   </div>
+   
   <div class="box margin-bottom-none">
     <div class="box-header with-border">
       <div class="fr">

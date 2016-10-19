@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Left side column. contains the logo and sidebar -->
-<!-- retrunTop css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/returnTop/css/returnTop.css">
-<script	src="<%=request.getContextPath()%>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <header class="main-header"> <a href="#" class="logo">
   <script>
 	$(document).ready(function(){			
@@ -56,15 +53,15 @@
                   <ul class="menu-temp hide">
                     <li class="header">学习中心</li>
                     <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>数据详情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-		                   <ul class="treeview-menu menu-open" style="display: block;">
-				            <li><a href="<%=request.getContextPath() %>/lcreserveorder/query"><i class="fa fa-search"></i>预报读信息</a></li>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				            <li><a href="<%=request.getContextPath() %>/lcreserveorder/query"><i class="fa fa-dashboard"></i>预报读信息</a></li>
 				            <li><a href="<%=request.getContextPath() %>/lcreservefollow/query"><i class="fa fa-mortar-board"></i>预报读跟踪</a></li>
 				            <li><a href="<%=request.getContextPath() %>/lcorderinfo/query"><i class="fa fa-cubes"></i>订单报读信息</a></li>
-				            <li><a href="<%=request.getContextPath() %>/lcstudent/query"><i class="fa fa-dashboard"></i>学员信息</a></li>
+				            <li><a href="<%=request.getContextPath() %>/lcstudent/query"><i class="fa fa-male"></i>学员信息</a></li>
 				          </ul>
                     </li>
                     <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>主题分析数据</span> <i class="fa fa-angle-left pull-right"></i> </a>
-		                   <ul class="treeview-menu menu-open" style="display: block;">
+		                   <ul class="treeview-menu menu-open" style="display: none;">
 				            <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>学员漏斗分析</span> <i class="fa fa-angle-left pull-right"></i> </a>
                     		</li>
 				          </ul>
@@ -87,7 +84,7 @@
                   <ul class="menu-temp hide">
                     <li class="header">市场销售</li>
                     <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>数据详情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-		                   <ul class="treeview-menu menu-open" style="display: block;">
+		                   <ul class="treeview-menu menu-open" style="display: none;">
 				            <li><a href="<%=request.getContextPath() %>/salecustomer/query"><i class="fa fa-sellsy"></i>客户详细信息</a></li>
 				            <li><a href="<%=request.getContextPath() %>/salecustomerfollow/query"><i class="fa fa-user"></i>客户跟进信息</a></li>
 				          </ul>
@@ -233,15 +230,6 @@
 					</a></li> -->
         </ul>
       </div>
-      	<div id="leftsead">
-		<ul>	
-			<li>
-				<a id="top_btn">
-					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/ll06.png" width="131" height="49" class="hides"/>
-					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/l06.png" width="47" height="49" class="shows" />
-				</a>
-			</li>
-		</ul>
-	</div>
+
     </nav>
   </header>

@@ -8,18 +8,60 @@ import com.eenet.base.BaseEntity;
 public class LCStudent extends BaseEntity{
 
 	private static final long serialVersionUID = -4540913346929793572L;
-	 private String studentId;//学员ID
-	 private String studentName;//学员名称
-	 private String post;//职位
-	 private String sex;//性别
-	 private String mobile;//手机
-	 private String birthday;//生日
-	 private String age;//年龄
-	 private String degree;//学历编码
-	 private String degreeName;//学历名称
-	 private String idCard;//身份证
-	 private String unitCode;//所在单位
-	 private Date createdDt;//创建时间
+	private String studentId;//学员ID
+	private String studentName;//学员名称
+	private String post;//职位
+	private String sex;//性别
+	private String mobile;//手机
+	private String birthday;//生日
+	private String age;//年龄
+	private String degree;//学历编码
+	private String degreeName;//学历名称
+	private String idCard;//身份证
+	private String unitCode;//所在单位
+	private Date createdDt;//创建时间
+	private String province;//省份编码
+	private String provinceName;//省份
+	private String city;//市编码
+	private String cityName;//市
+	private String district;//区编码
+	private String districtName;//区名称
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getProvinceName() {
+		return provinceName;
+	}
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	public String getDistrictName() {
+		return districtName;
+	}
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
+	}
 	public Date getCreatedDt() {
 		return createdDt;
 	}

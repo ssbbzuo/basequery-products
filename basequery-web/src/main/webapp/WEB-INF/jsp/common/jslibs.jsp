@@ -37,6 +37,10 @@
 <!-- jqueryPage -->	
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.css">	
+<!-- select2 -->	
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/static/plugins/select2/select2.min.css">		
+	
 <style type="text/css">
 .slide_box{height: 150px;}
 </style>
@@ -113,6 +117,9 @@
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/query.js"></script>			
 <script
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.js"></script>		
+<!--select2 -->
+<script
+		src="<%=request.getContextPath()%>/static/plugins/select2/select2.min.js"></script>	
 		
 <script type="text/javascript">
    $(document).ready(function(){

@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>远程教育数据中心</title>
 <jsp:include page="/WEB-INF/jsp/common/jslibs.jsp"/>
+<script type="text/javascript"  src="<%=request.getContextPath()%>/static/dist/js/area.js"></script>
 </head>
 <body class="inner-page-body">
   <!-- 
@@ -66,6 +67,31 @@
 				  </div>
 				</div>
 			  </div>
+			<div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label col-sm-3">所属区域</label>
+              <div class="col-sm-3">
+              		<input type="hidden"  value="province"  name="conditions[7].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[7].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[7].rangeFrom}"  name="provinceValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[7].rangeFrom"></select>
+              </div>
+               <div class="col-sm-3">
+               		<input type="hidden"  value="city"  name="conditions[5].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[5].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[5].rangeFrom}"  name="cityValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[5].rangeFrom">
+              		</select>
+              </div>
+              	 <div class="col-sm-3">
+              	 	<input type="hidden"  value="district"  name="conditions[6].fieldName"/> 
+					<input type="hidden"  value="EQUAL"  name="conditions[6].rangeType"/> 
+					<input type="hidden"  value="${queryCondition.conditions[6].rangeFrom}"  name="districtValue"/> 
+              		<select class="form-control selectcssquery" name="conditions[6].rangeFrom">
+              		</select>
+              </div>
+          </div>
+          </div>
 			   <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">企业规模</label>
@@ -90,16 +116,7 @@
               </div>
             </div>
           </div>
-           <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label col-sm-3">所属区域</label>
-              <div class="col-sm-9">
-              	<input type="hidden"  value="channelName"  name="conditions[5].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[5].rangeType"/> 
-                <input type="text" class="form-control "   value="${queryCondition.conditions[5].rangeFrom}"   name="conditions[5].rangeFrom">
-              </div>
-            </div>
-          </div>
+          
           <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">客户</label>
@@ -116,6 +133,10 @@
     </div> 
     </div> 
   
+    <div class="callout callout-info">
+        <p>当前客户总数为：${pagination.total }</p>
+   </div>
+   
   <div class="box margin-bottom-none">
     <div class="box-header with-border">
       <div class="fr">
@@ -184,5 +205,6 @@
             );  
         }  
     });  
+    $(".selectcssquery").select2();
 </script>
 </html>
