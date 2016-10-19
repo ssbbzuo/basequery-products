@@ -158,7 +158,6 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 	}
 
 	private void addCachedPriTree(String uid, String pId, String addIds, int type) {
-		System.out.println("addCachedPriTree :　uid：" + uid + ",pId:" + pId + ",addIds:" + addIds + ",type:" + type);
 		try {
 			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type, List.class);
 
@@ -208,8 +207,6 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 	}
 
 	private void removeCachedPriTree(String uid, String pId, String removeIds, int type) {
-		System.out.println(
-				"removeCachedPriTree :　uid：" + uid + ",pId:" + pId + ",removeIds:" + removeIds + ",type:" + type);
 		try {
 			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type, List.class);
 
@@ -242,21 +239,15 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 		try {
 			List cache = RedisClient.getObject("PRI_TREE" + uid + pid + type, List.class);
 			if (cache != null) {
-				System.out.println("getMyPriTree: cache" + cache);
 				return cache;
-				// 143 71 9.7
-				// 145 71.2 9.5
-				// 146.8x73.3 8.2mm
 
 			}
 			result = priTreeDaoService.getMyPriTree(uid, pid, type);
 
 			if (result != null && result.size() > 0) {
-				System.out.println("getMyPriTree: result" + result);
 				RedisClient.setObject("PRI_TREE" + uid + pid + type, result, -1);
 			}
 		} catch (RedisOPException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
