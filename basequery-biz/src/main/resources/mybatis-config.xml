@@ -45,5 +45,8 @@
         <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterUserMapper.xml"/>    
         <!-- 漏斗主图 -->
         <mapper resource="DBMapping/chart/ThemeFunnelStudentMapper.xml"/>   
+        
+        <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
+        <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  
 	</mappers>
 </configuration>
