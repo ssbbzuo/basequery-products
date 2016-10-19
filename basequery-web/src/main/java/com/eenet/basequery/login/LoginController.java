@@ -30,9 +30,6 @@ public class LoginController {
 	@Autowired
 	private IncrementService incrementService;
 	
-	@Autowired
-	private PriTreeService priTreeService;
-
 	@RequestMapping(value="/login")
 	public String login(HttpSession session,String loginAccount,String password,RedirectAttributes redirectAttributes){
 		SimpleResponse errResponse = new SimpleResponse();
@@ -56,7 +53,6 @@ public class LoginController {
 			HashMap<String,String> tokenMap = AuthenUtils.grantToken(code);//获取令牌
 			AdminUserLoginAccount adminUserLoginAccount = AuthenUtils.getAdminUserInfo(tokenMap.get("userId"),tokenMap.get("accessToken"));//获取个人信息
 			if(adminUserLoginAccount!=null){
-				Map<String, List<String>> map = priTreeService.getWholePri("D24FF26BC02D4E5AB5F1F37AE7319F6B");
 				adminUserLoginAccount.setLoginAccount(loginAccount);
 				session.setAttribute(Constant.adminUserLoginInfoSession, adminUserLoginAccount);
 				   return "redirect:/main"; 
