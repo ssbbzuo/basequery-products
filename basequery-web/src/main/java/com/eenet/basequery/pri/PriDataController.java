@@ -160,6 +160,7 @@ public class PriDataController {
 	@RequestMapping(value="/getPriTree")
 	@ResponseBody
 	public List<String> getPriTree(String uid,int type){
+<<<<<<< HEAD
 		PrivilegeType privilegeType = null;
 		
 		switch (type) {
@@ -175,5 +176,9 @@ public class PriDataController {
 		}
 		
 		return priTreeService.getPriTreeByType(uid, privilegeType);
+=======
+		
+		return priTreeService.getPriTreeByType(uid, type);
+>>>>>>> branch '0.0.1' of https://github.com/lhb27/basequery-products
 	}
 }
