@@ -46,7 +46,6 @@
 		              <li data-id="3">产品平台查询</li>
 		               -->
 		              <li data-id="4">市场销售</li>
-                	  <li data-id="5">报表查询</li>
             </ul>
             <div class="dropdown operion-more-menu">
             <!-- 
@@ -62,6 +61,12 @@
 				            <li><a href="<%=request.getContextPath() %>/lcreservefollow/query"><i class="fa fa-mortar-board"></i>预报读跟踪</a></li>
 				            <li><a href="<%=request.getContextPath() %>/lcorderinfo/query"><i class="fa fa-cubes"></i>订单报读信息</a></li>
 				            <li><a href="<%=request.getContextPath() %>/lcstudent/query"><i class="fa fa-dashboard"></i>学员信息</a></li>
+				          </ul>
+                    </li>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>主题分析数据</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: block;">
+				            <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>学员漏斗分析</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    		</li>
 				          </ul>
                     </li>
                   </ul>
@@ -86,16 +91,6 @@
 				            <li><a href="<%=request.getContextPath() %>/salecustomer/query"><i class="fa fa-sellsy"></i>客户详细信息</a></li>
 				            <li><a href="<%=request.getContextPath() %>/salecustomerfollow/query"><i class="fa fa-user"></i>客户跟进信息</a></li>
 				          </ul>
-                    </li>
-                  </ul>
-                </li>
-                
-                  <li data-id="5"> <a role="menuitem" href="#">报表查询</a>
-                  <ul class="menu-temp hide">
-                    <li class="header">报表查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getTest"> <i class="fa  fa-sellsy"></i> <span>报表1</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>报表2</span> <i class="fa fa-angle-left pull-right"></i> </a>
                     </li>
                   </ul>
                 </li>
