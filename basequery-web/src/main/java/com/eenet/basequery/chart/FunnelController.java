@@ -401,8 +401,7 @@ public class FunnelController {
 		queryCondition.setMaxQuantity(value.getPageSize());
 		queryCondition.setStartIndex(value.getCurrentCount());
 
-		SimpleResultSet<ThemeFunnelSellColleges> result = ThemeFunnelSellCollegeservice.getTest(queryCondition);
-		
+		SimpleResultSet<ThemeFunnelSellColleges> result = ThemeFunnelSellCollegeservice.getTest(queryCondition);	
 		jsonObject.put("test", result);
 
 		return jsonObject;
