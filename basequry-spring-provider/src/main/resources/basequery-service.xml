@@ -131,6 +131,10 @@
  <bean class="com.eenet.basequery.chart.ThemeFunnelStudentServiceImpl" id="ThemeFunnelStudentService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean>
+ 
+ 	<bean id="priTreeDaoService" class="com.eenet.basequery.pri.dao.impl.PriTreeDaoServiceImpl">
+ 		<property name="batisSession" ref="batisSession" />
+ 	</bean>
 	
 	<!-- 用户信息 -->
 	<bean id="userInfoService" class="com.eenet.basequery.pri.UserInfoServiceImpl">
