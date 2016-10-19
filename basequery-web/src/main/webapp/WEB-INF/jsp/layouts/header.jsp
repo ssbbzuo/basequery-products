@@ -71,6 +71,34 @@
                     </li>
                      <li class="treeview"> <a href="<%=request.getContextPath() %>/getLCReserveOrder"> <i class="fa fa-dashboard"></i> <span>预报读查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
                     </li>
+                     <li class="treeview">
+			          <a href="#">
+			            <i class="fa fa-dashboard"></i> <span>权限管理</span>
+			              <i class="fa fa-angle-left pull-right"></i>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li>
+			              <a href="#"><i class="fa fa-dashboard"></i>数据权限管理
+			                  <i class="fa fa-angle-left pull-right"></i>
+			              </a>
+			              <ul class="treeview-menu">
+			                <li><a href="<%=request.getContextPath() %>/setPri"><i class="fa fa-circle-o"></i>数据授权</a></li>
+			                <li><a href="#"><i class="fa fa-circle-o"></i>账号管理</a></li>
+			                <li><a href="<%=request.getContextPath() %>/userList"><i class="fa fa-user"></i>用户管理</a></li>
+			              </ul>
+			            </li>
+			            <li>
+			              <a href="#"><i class="fa fa-dashboard"></i>功能权限管理
+			                  <i class="fa fa-angle-left pull-right"></i>
+			              </a>
+			              <ul class="treeview-menu">
+			                <li><a href="#"><i class="fa fa-circle-o"></i>授权管理</a></li>
+			                <li><a href="#"><i class="fa fa-circle-o"></i>菜单管理</a></li>
+			                <li><a href="#"><i class="fa fa-circle-o"></i>角色管理</a></li>
+			              </ul>
+			            </li>
+			          </ul>
+			        </li>
                   </ul>
                 </li>
                 </c:if>

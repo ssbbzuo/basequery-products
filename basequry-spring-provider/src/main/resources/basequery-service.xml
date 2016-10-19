@@ -97,6 +97,22 @@
 			<property name="querySqlDaoService" ref="querySqlDaoService" />
 	</bean>	
 	
+	<bean id="priTreeDaoService" class="com.eenet.basequery.pri.dao.impl.PriTreeDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>	
+	
+	<!-- 用户信息 -->
+	<bean id="userInfoService" class="com.eenet.basequery.pri.UserInfoServiceImpl">
+			<property name="baseDAOService" ref="GenericDAO" />
+	</bean>
+	
+	<!-- 权限树信息 -->
+	<bean id="priTreeService" class="com.eenet.basequery.pri.PriTreeServiceImpl">
+			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="RedisClient" ref="RedisClient"/>
+			<property name="priTreeDaoService" ref="priTreeDaoService" />
+	</bean>
+	
 	<!-- test -->
  <bean class="com.eenet.basequery.chart.ChartServiceImpl" id="chartService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 

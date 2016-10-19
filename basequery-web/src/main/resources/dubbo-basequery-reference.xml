@@ -60,6 +60,11 @@
 		<!-- sql查询页面信息-->
 	<dubbo:reference interface="com.eenet.basequery.sqlquery.QuerySqlService" id="querySqlService" />
 	
+		<!-- 用户信息 -->
+	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
+		<!-- 权限树信息 -->
+<!-- 	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService" /> -->
+	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService"></dubbo:reference>	
 	<!-- test-->
  <dubbo:reference id="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
 <!-- test02-->

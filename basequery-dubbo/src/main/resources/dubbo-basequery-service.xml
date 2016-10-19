@@ -59,6 +59,11 @@
 	<!-- sql查询页面信息-->
 	<dubbo:service interface="com.eenet.basequery.sqlquery.QuerySqlService" ref="querySqlService" />
 	
+	<!-- 用户信息-->
+	<dubbo:service interface="com.eenet.basequery.pri.UserInfoService" ref="userInfoService" />
+	<!-- 树形权限-->
+	<dubbo:service interface="com.eenet.basequery.pri.PriTreeService" ref="priTreeService" />
+	
 	<!-- test -->
  <dubbo:service ref="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
 <!-- test02 -->
