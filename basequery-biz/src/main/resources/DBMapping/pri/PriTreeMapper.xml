@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.pri.PriTree" >
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="default">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+	    <result column="pId" property="pId" jdbcType="VARCHAR" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+		SELECT count(*) FROM (
+			SELECT
+				AREA_CODE id,
+				PARENT_CODE pId,
+				AREA_NAME name 
+			FROM
+				dm_area d
+		) TB WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		
+		<![CDATA[
+		SELECT * FROM (
+			SELECT
+				AREA_CODE id,
+				PARENT_CODE pId,
+				AREA_NAME name,
+				 
+				'true'  isParent
+			FROM
+				dm_area d
+		) TB WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
+	</select>
+	
+	
+	
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="getAreaPriTreeMap">
+		<id column="AREA_CODE" property="id" jdbcType="VARCHAR" />
+	    <result column="PARENT_CODE" property="pId" jdbcType="VARCHAR" />
+	    <result column="AREA_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getAreaPriTree" resultMap="getAreaPriTreeMap" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				AREA_CODE,
+				PARENT_CODE,
+				AREA_NAME,
+				EXISTS(select AREA_CODE from dm_area where PARENT_CODE = d.AREA_CODE)  isParent
+			FROM
+				dm_area d  
+			WHERE 1=1  
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="getNetWorkPriTreeMap">
+		<id column="NETWORK_SCHOOL_ID" property="id" jdbcType="VARCHAR" />
+	    <result column="PARENT_ID" property="pId" jdbcType="VARCHAR" />
+	    <result column="SCHOOL_CHINESE_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getNetWorkPriTree" resultMap="getNetWorkPriTreeMap" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				NETWORK_SCHOOL_ID,
+				PARENT_ID,
+				SCHOOL_CHINESE_NAME, 
+				EXISTS(select NETWORK_SCHOOL_ID from dm_network_school_info where PARENT_ID = d.NETWORK_SCHOOL_ID)  isParent
+			FROM
+				dm_network_school_info d
+			WHERE 1=1
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="getStaffPriTreeMap">
+		<id column="STAFF_ID" property="id" jdbcType="VARCHAR" />
+	    <result column="pId" property="pId" jdbcType="VARCHAR" />
+	    <result column="STAFF_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getStaffPriTree" resultMap="getStaffPriTreeMap" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				STAFF_ID,
+				NULL pId,
+				STAFF_NAME,
+				'false' isParent
+			FROM
+				dm_staff_info 
+			WHERE 1=1 
+		]]>
+<!-- 		<include refid="com.eenet.base.${db.type}.query_quote" /> -->
+	</select>
+	
+	
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="getChanelPriTreeMap">
+		<id column="CHANNEL_ID" property="id" jdbcType="VARCHAR" />
+	    <result column="pId" property="pId" jdbcType="VARCHAR" />
+	    <result column="CHANNEL_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getChanelPriTree" resultMap="getChanelPriTreeMap" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT * FROM ( 
+				SELECT
+					CHANNEL_ID id,
+					null pId ,
+					CHANNEL_NAME  NAME,
+					'false' isParent
+				FROM
+					dm_channel_info
+			) TB WHERE 1=1 	
+		]]>
+<!-- 		<include refid="com.eenet.base.${db.type}.query_quote" /> -->
+	</select>
+	
+	
+	<resultMap type="com.eenet.basequery.pri.PriTree" id="getLearnCenterPriTreeMap">
+		<id column="LEARNCENTER_ID" property="id" jdbcType="VARCHAR" />
+	    <result column="PARENT_ID" property="pId" jdbcType="VARCHAR" />
+	    <result column="LEARNCENTER_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="isParent" property="isParent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getLearnCenterPriTree" resultMap="getLearnCenterPriTreeMap" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT * FROM ( 
+				SELECT
+					LEARNCENTER_ID,
+					PARENT_ID,
+					LEARNCENTER_NAME,
+					EXISTS(select LEARNCENTER_ID from dm_learncenter_info where PARENT_ID = d.LEARNCENTER_ID) isParent
+				FROM
+					dm_learncenter_info d
+			) TB WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<insert id="saveAreaPriTree" parameterType="java.util.Map" >
+		 insert into dm_area_pri (USER_ID,AREA_CODE) values
+	    <foreach collection="addIds" item="id" index="index" separator="," >  
+	        (#{uid},#{id})  
+	    </foreach>  
+	</insert>
+	
+	<delete id="removeAreaPriTree" parameterType="java.util.Map" >
+		<if test="addIds!=null and addIds.length!=0">
+			 delete from dm_area_pri where 1=1 AND 
+		    <foreach collection="addIds" item="id" index="index" separator="or " >  
+		         (USER_ID = #{uid} and AREA_CODE = #{id} )  
+		    </foreach>  
+		</if>
+	</delete>
+	
+	
+	<insert id="saveNetWorkPriTree" parameterType="java.util.Map" >
+		 insert into dm_network_school_info_pri (USER_ID,NETWORK_SCHOOL_ID) values
+	    <foreach collection="addIds" item="id" index="index" separator="," >  
+	        (#{uid},#{id})  
+	    </foreach>  
+	</insert>
+	
+	<delete id="removeNetWorkPriTree" parameterType="java.util.Map" >
+		<if test="addIds!=null and addIds.length!=0">
+			 delete from dm_network_school_info_pri where 1=1 AND 
+		    <foreach collection="addIds" item="id" index="index" separator="or " >  
+		         (USER_ID = #{uid} and NETWORK_SCHOOL_ID = #{id} )  
+		    </foreach>  
+		</if>
+	</delete>
+	
+	
+	
+	<insert id="saveStaffPriTree" parameterType="java.util.Map" >
+		 insert into dm_staff_info_pri (USER_ID,STAFF_ID) values
+	    <foreach collection="addIds" item="id" index="index" separator="," >  
+	        (#{uid},#{id})  
+	    </foreach>  
+	</insert>
+	
+	<delete id="removeStaffPriTree" parameterType="java.util.Map" >
+		<if test="addIds!=null and addIds.length!=0">
+			 delete from dm_staff_info_pri where 1=1 AND 
+		    <foreach collection="addIds" item="id" index="index" separator="or " >  
+		         (USER_ID = #{uid} and STAFF_ID = #{id} )  
+		    </foreach>  
+		</if>
+	</delete>
+	
+	
+	<insert id="saveChanelPriTree" parameterType="java.util.Map" >
+		 insert into dm_channel_info_pri (USER_ID,CHANNEL_ID) values
+	    <foreach collection="addIds" item="id" index="index" separator="," >  
+	        (#{uid},#{id})  
+	    </foreach>  
+	</insert>
+	
+	<delete id="removeChanelPriTree" parameterType="java.util.Map" >
+		<if test="addIds!=null and addIds.length!=0">
+			 delete from dm_channel_info_pri where 1=1 AND 
+		    <foreach collection="addIds" item="id" index="index" separator="or " >  
+		         (USER_ID = #{uid} and CHANNEL_ID = #{id} )  
+		    </foreach>  
+		</if>
+	</delete>
+	
+	<insert id="saveLearnCenterPriTree" parameterType="java.util.Map" >
+		 insert into dm_learncenter_info_pri (USER_ID,LEARNCENTER_ID) values
+	    <foreach collection="addIds" item="id" index="index" separator="," >  
+	        (#{uid},#{id})  
+	    </foreach>  
+	</insert>
+	
+	<delete id="removeLearnCenterPriTree" parameterType="java.util.Map" >
+		<if test="addIds!=null and addIds.length!=0">
+			 delete from dm_learncenter_info_pri where 1=1 AND 
+		    <foreach collection="addIds" item="id" index="index" separator="or " >  
+		         (USER_ID = #{uid} and LEARNCENTER_ID = #{id} )  
+		    </foreach>  
+		</if>
+	</delete>
+	
+	
+	
+	<select id="getMyPriTree" resultType="string" parameterType="java.util.Map">
+			
+			<choose>
+				<when test="type == 1">
+					SELECT
+						d.AREA_CODE id 
+					FROM
+						dm_area d
+					INNER JOIN dm_area_pri dp ON d.AREA_CODE = dp.AREA_CODE
+					WHERE 
+						1 = 1
+					<choose>
+						<when test="pid == 'ISNULL'">
+							AND d.PARENT_CODE IS NULL
+						</when>
+						<otherwise>
+							AND d.PARENT_CODE = #{pid}
+						</otherwise>
+					</choose>
+				</when>
+				
+				<when test="type == 2">
+					SELECT
+						d.NETWORK_SCHOOL_ID id 
+					FROM
+						dm_network_school_info d
+					INNER JOIN dm_network_school_info_pri dp ON d.NETWORK_SCHOOL_ID = dp.NETWORK_SCHOOL_ID
+					WHERE 
+						1 = 1
+					<choose>
+						<when test="pid == 'ISNULL'">
+							AND d.PARENT_ID IS NULL
+						</when>
+						<otherwise>
+							AND d.PARENT_ID = #{pid}
+						</otherwise>
+					</choose>
+				</when>
+				
+				<when test="type == 3">
+					SELECT
+						d.STAFF_ID id 
+					FROM
+						dm_staff_info  d
+					INNER JOIN dm_staff_info_pri dp ON d.STAFF_ID = dp.STAFF_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 4">
+					SELECT
+						d.CHANNEL_ID id 
+					FROM
+						dm_channel_info d
+					INNER JOIN dm_channel_info_pri dp ON d.CHANNEL_ID = dp.CHANNEL_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 5">
+					SELECT
+						d.LEARNCENTER_ID id 
+					FROM
+						dm_learncenter_info d
+					INNER JOIN dm_learncenter_info_pri dp ON d.LEARNCENTER_ID = dp.LEARNCENTER_ID
+					<choose>
+						<when test="pid == 'ISNULL'">
+							AND d.PARENT_ID IS NULL
+						</when>
+						<otherwise>
+							AND d.PARENT_ID = #{pid}
+						</otherwise>
+					</choose>
+				</when>
+			</choose>
+			
+			AND dp.USER_ID = #{uid}
+	</select>
+	
+	
+	
+	<select id="getMyWholePri" resultType="string" parameterType="com.eenet.base.dao.SQLCondition">
+			
+			<choose>
+				<when test="type == 1">
+					SELECT
+						d.AREA_CODE id 
+					FROM
+						dm_area d
+					INNER JOIN dm_area_pri dp ON d.AREA_CODE = dp.AREA_CODE
+					WHERE 
+						1 = 1
+				</when>
+				<when test="type == 2">
+					SELECT
+						d.NETWORK_SCHOOL_ID id 
+					FROM
+						dm_network_school_info d
+					INNER JOIN dm_network_school_info_pri dp ON d.NETWORK_SCHOOL_ID = dp.NETWORK_SCHOOL_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 3">
+					SELECT
+						d.STAFF_ID id 
+					FROM
+						dm_staff_info  d
+					INNER JOIN dm_staff_info_pri dp ON d.STAFF_ID = dp.STAFF_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 4">
+					SELECT
+						d.CHANNEL_ID id 
+					FROM
+						dm_channel_info d
+					INNER JOIN dm_channel_info_pri dp ON d.CHANNEL_ID = dp.CHANNEL_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 5">
+					SELECT
+						d.LEARNCENTER_ID id 
+					FROM
+						dm_learncenter_info d
+					INNER JOIN dm_learncenter_info_pri dp ON d.LEARNCENTER_ID = dp.LEARNCENTER_ID
+					
+				</when>
+			</choose>
+			
+			AND dp.USER_ID = #{uid}
+	</select>
+	
+	
+	<select id="getMyPriTreeStr" resultType="string" parameterType="java.util.Map">
+			
+			<choose>
+				<when test="type == 1">
+					SELECT
+						d.AREA_CODE id 
+					FROM
+						dm_area d
+					INNER JOIN dm_area_pri dp ON d.AREA_CODE = dp.AREA_CODE
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 2">
+					SELECT
+						d.NETWORK_SCHOOL_ID id 
+					FROM
+						dm_network_school_info d
+					INNER JOIN dm_network_school_info_pri dp ON d.NETWORK_SCHOOL_ID = dp.NETWORK_SCHOOL_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 3">
+					SELECT
+						d.STAFF_ID id 
+					FROM
+						dm_staff_info  d
+					INNER JOIN dm_staff_info_pri dp ON d.STAFF_ID = dp.STAFF_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 4">
+					SELECT
+						d.CHANNEL_ID id 
+					FROM
+						dm_channel_info d
+					INNER JOIN dm_channel_info_pri dp ON d.CHANNEL_ID = dp.CHANNEL_ID
+					WHERE 
+						1 = 1
+				</when>
+				
+				<when test="type == 5">
+					SELECT
+						d.LEARNCENTER_ID id 
+					FROM
+						dm_learncenter_info d
+					INNER JOIN dm_learncenter_info_pri dp ON d.LEARNCENTER_ID = dp.LEARNCENTER_ID 
+				</when>
+			</choose>
+			
+			AND dp.USER_ID = #{uid}
+	</select>
+	
+	
+	
+</mapper>

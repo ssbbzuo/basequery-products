@@ -1,6 +1,8 @@
 package com.eenet.basequery.login;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,8 @@ import com.eenet.basequery.authen.AuthenUtils;
 import com.eenet.basequery.authen.Constant;
 import com.eenet.basequery.increment.Increment;
 import com.eenet.basequery.increment.IncrementService;
+import com.eenet.basequery.pri.PriTreeService;
+import com.eenet.basequery.pri.Privilege;
 import com.eenet.util.EEBeanUtils;
 
 @Controller
@@ -25,7 +29,7 @@ public class LoginController {
 	
 	@Autowired
 	private IncrementService incrementService;
-
+	
 	@RequestMapping(value="/login")
 	public String login(HttpSession session,String loginAccount,String password,RedirectAttributes redirectAttributes){
 		SimpleResponse errResponse = new SimpleResponse();
@@ -73,6 +77,7 @@ public class LoginController {
 	@RequestMapping(value="/main")
 	public String main(){
 		//显示后台整体框架
+		
 		return "main";
 	}
 	

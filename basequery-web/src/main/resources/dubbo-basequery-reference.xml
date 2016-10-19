@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -71,4 +72,9 @@
  <dubbo:reference id="ThemeFunnelSellLearnCenterUserService" interface="com.eenet.basequery.chart.ThemeFunnelSellLearnCenterUserService"/> 
  <!-- 学员漏斗主表 -->
  <dubbo:reference id="ThemeFunnelStudentService" interface="com.eenet.basequery.chart.ThemeFunnelStudentService"/>   
+ 
+ <!-- 用户信息 -->
+	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
+	<!-- 权限树信息 -->
+	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService"></dubbo:reference>	
 </beans>										  
