@@ -3,30 +3,29 @@
 <mapper namespace="com.eenet.basequery.sales.SaleCustomer" >
 	<resultMap type="com.eenet.basequery.sales.SaleCustomer" id="default">
 		<result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_CODE" property="customerCode" jdbcType="VARCHAR" />
 		<result column="PERSONS_SCALE" property="personsScale" jdbcType="VARCHAR" />
-		<result column="REG_FUND" property="regFund" jdbcType="VARCHAR" />
+		<result column="PERSONS_SCALE_NAME" property="personsScaleName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_PROP" property="customerProp" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_PROP_NAME" property="customerPropName" jdbcType="VARCHAR" />
 		<result column="COOPERATE_STATUS" property="cooperateStatus" jdbcType="VARCHAR" />
 		<result column="COOPERATE_STATUS_NAME" property="cooperateStatusName" jdbcType="VARCHAR" />
-		<result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
-		<result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
-		<result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
-		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
-		<result column="DISTRICT_CODE" property="districtCode" jdbcType="VARCHAR" />
-		<result column="DISTINCT_NAME" property="distinctName" jdbcType="VARCHAR" />
 		<result column="ACTIVATE_DT" property="activateDt" jdbcType="DATE" />
-		<result column="CHANNEL_NAME" property="channelName" jdbcType="VARCHAR" />
-		<result column="CHANNEL_CODE" property="channelCode" jdbcType="VARCHAR" />
-		<result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
-
+		<result column="CREATED_DT" property="createdDt" jdbcType="DATE" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
 	</resultMap>
 
-	
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
 		<![CDATA[
 			SELECT
 				COUNT(1)
 			FROM 
-				TMP_SALE_CUSTOMER
+				DM_SALE_CUSTOMER
 		  WHERE 1=1 
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />
@@ -36,23 +35,23 @@
 		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
 		<![CDATA[
 			SELECT
-				CUSTOMER_NAME,				
-				PERSONS_SCALE,				
-				REG_FUND,				 
-				COOPERATE_STATUS,			
+				CUSTOMER_NAME,
+				CUSTOMER_CODE,
+				PERSONS_SCALE,
+				CUSTOMER_PROP,
+				CUSTOMER_PROP_NAME,
+				COOPERATE_STATUS,
 				COOPERATE_STATUS_NAME,
-				PROVINCE_CODE,				
-				PROVINCE_NAME,				
-				CITY_CODE,				
-				CITY_NAME,				
-				DISTRICT_CODE,				
-				DISTINCT_NAME,				
-				ACTIVATE_DT,				
-				CHANNEL_NAME,				
-				CHANNEL_CODE,				
-				STAFF_NAME  
+				ACTIVATE_DT,
+				CREATED_DT,
+				PROVINCE,
+				PROVINCE_NAME,
+				CITY,
+				CITY_NAME,
+				DISTRICT,
+				DISTRICT_NAME  
 			FROM 
-				TMP_SALE_CUSTOMER
+				DM_SALE_CUSTOMER
 		  WHERE 1=1 
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />

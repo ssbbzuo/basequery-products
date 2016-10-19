@@ -10,73 +10,104 @@
 <jsp:include page="/WEB-INF/jsp/common/jslibs_report.jsp" />
 </head>
 <body>	
-	<section class="content">
-		<div id="charts" class="box">
-			<div class="box-body"">
-				<div id="main1" style="width: 33%; min-height: 300px; float: left;"></div>
-				<div id="main2" style="width: 33%; min-height: 300px; float: right;"></div>	
-				<div id="main3" style="width: 34%; min-height: 300px; float: right;"></div>			
-			</div>
-		</div>
-
-		<div class="box" style="height: 100px;">
-			<div class="box-body">
-				<div class="box-footer fr left120" style="border-top: 0;">
-					<div>
-						<button id="search" type="button" class="btn btn-primary">搜索</button>
+	<div class="col-lg-12 main">			
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">图表1</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="main-chart" id="main1" ></div>
+						</div>
 					</div>
 				</div>
-				<div class="form-horizontal oh slide_box">
-					<div class="row reset-form-horizontal pad-t15">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="control-label col-sm-3">年度</label>
-								<div class="col-sm-3">
-									<input id="yearmemo" type="text" class="form-control">
-								</div>
-						
-								<label class="control-label col-sm-3">国家</label>
-								<div class="col-sm-3">
-									<input id="countrymemo" type="text" class="form-control">
-								</div>
-							</div>
+			</div>
+		</div><!--/.row-->			
+
+		<div class="row">
+			<div class="col-md-6">
+				<div  id = "piechart" class="panel panel-default" >
+					<div class="panel-heading">图表2</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main2" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">图表3</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->			
+
+		<div class="box" >
+			<div class="box-body">
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="col-md-4 grid_box1">		
+							<input id="yearmemo" type="text" class="form-control"  placeholder="年度">	
+						</div>				
+						<div class="col-md-4 grid_box1">				
+								<input id="countrymemo" type="text" class="form-control"  placeholder="国家">						
+						</div>
+						<div class="col-md-3">
+							<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
+							<button id="reset" type="button" class="btn btn-default"><i class="fa fa-refresh"></i>  清空</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		
 		<div class="box">
-			<div id="contactTable" class="box-body"">
-				<table class="table table-bordered table-striped table-container">
-					<thead id="t_head">
-						<tr>
-							<th>人数01</th>
-							<th>平均年龄</th>
-							<th>人数02</th>
-							<th>国家</th>
-							<th>年份</th>
-						</tr>
-					</thead>
-					<tbody id="t_body">
-						<!-- ajax填充列表 -->
-					</tbody>
-				</table>
+			<div id="jsontotable" class="box-body">
+				<!-- 加载表格 -->
 			</div>
-			<div id="pageToolbar"></div>
-		</div>
-	</section>
-	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
+			<div id="pageTool"> <!-- 加载分页控件 --> </div>			
+		</div>		
+		
+		<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 	
+	</div>
 
 </body>
 <script>
 
+	//清空按钮
+	$("#reset").click(function(){
+		$("#yearmemo").val("");
+		$("#countrymemo").val("");
+	});
+
+	var worldMapContainer1 = document.getElementById('main1');
+	var worldMapContainer2 = document.getElementById('main2');
+	var worldMapContainer3 = document.getElementById('main3');
+	
+	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+	var resizeWorldMapContainer = function () {		    
+	    worldMapContainer1.style.height = $(window).height()*0.3+'px';
+	    worldMapContainer2.style.height = $(window).height()*0.3+'px';
+	    worldMapContainer3.style.height = $(window).height()*0.3+'px';
+	};
+	//设置容器高宽
+	resizeWorldMapContainer();	
+	
+	
+	var myChart01 = echarts.init(worldMapContainer1);
+	var myChart02 = echarts.init(worldMapContainer2);
+	var myChart03 = echarts.init(worldMapContainer3);
+
 	var pageSize = 10;//每页行数 
 	var currentCount = 0;//当前条数 
 	var totalCount = 0;//总条数 
-	var myChart01 = echarts.init(document.getElementById('main1'),'macarons');
-	var myChart02 = echarts.init(document.getElementById('main2'),'macarons');
-	var myChart03 = echarts.init(document.getElementById('main3'),'macarons');
 
 	
 	$("#search").click(function(){
@@ -262,10 +293,11 @@
 				myChart01.resize();
 				myChart02.resize();
 				myChart03.resize();
+				
 			}
 		}, 200)/setTimeout
 		//=============================================================	
-		queryForPages();
+		queryForPages()			
 		});//#search	
 	
 	//加载表格	
@@ -288,8 +320,9 @@
 				fillTable(msg);
 			}//ajax
 		});			
-		$('ul').remove();
-		$('ul li').remove();
+		$("div#pageToolbar").remove();
+		//添加表格div
+		$("div#pageTool").append('<div id="pageToolbar"></div>');
 		//加载分页工具
 		$('#pageToolbar').Paging({pagesize:pageSize,current:((currentCount/pageSize)+1),count:totalCount,toolbar:true,
 			callback:function(page,size,count){
@@ -303,18 +336,30 @@
 	
 	//填充数据
 	function fillTable(msg) {			
-		var htmlstr = "";
+		var str = '[{"Title1": "人数01", "Title2": "平均年龄", "Title3": "人数02","Title4":"国家","Title5":"年份"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
-			for ( var o in msg[key].test.resultSet) {
-				htmlstr += "<tr><td>" + msg[key].test.resultSet[o].number + "</td>" + "<td>"
-						+ msg[key].test.resultSet[o].age + "</td>" + "<td>" + msg[key].test.resultSet[o].peoples
-						+ "</td>" + "<td>" + msg[key].test.resultSet[o].country + "</td>"
-						+ "<td>" + msg[key].test.resultSet[o].year + "</td></tr>";
+			for ( var o in msg[key].test.resultSet) {		
+				str +='{"Column1":"'+msg[key].test.resultSet[o].number+'",'+
+					'"Column2":"'+msg[key].test.resultSet[o].age+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].peoples+'",'+
+					'"Column4":"'+msg[key].test.resultSet[o].country+'",'+
+					'"Column5":"'+msg[key].test.resultSet[o].year+'"},';	
 			}	
 		}
-		document.getElementById("t_body").innerHTML = htmlstr;	
-	}//fillTable
+		//删除表格数据
+		$("div#jsontotable-str").remove();
+		//添加表格div
+		$("div#jsontotable").append('<div id="jsontotable-str"></div>');
+		//生成表格数据
+		
+		str = (str.substring(0,str.length-1))+']'
+		$.jsontotable(str, {
+			id: "#jsontotable-str",
+			className: "table table-bordered table-striped table-container"
+		});
+		
+	};//fillTable
 				
 	$(function() {
 		//加载表格数据
@@ -322,8 +367,12 @@
 
 		//加载图表和表格数据
 		$('#search').trigger('click');	
+		
 			
 	});//$
+	
+	
+
 	
 </script>
 </html>

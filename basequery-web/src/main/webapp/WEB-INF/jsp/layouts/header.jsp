@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Left side column. contains the logo and sidebar -->
-<!-- retrunTop css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/returnTop/css/returnTop.css">
-<script	src="<%=request.getContextPath()%>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <header class="main-header"> <a href="#" class="logo">
   <script>
 	$(document).ready(function(){			
@@ -40,36 +37,34 @@
           <!-- Messages: style can be found in dropdown.less-->
           <li class="first-level-wrap">
             <ul class="first-level-menu">
-              <c:if test="${adminUserLoginInfo.loginAccount eq 'account01' || adminUserLoginInfo.loginAccount eq 'admin' }">
-		              <li data-id="1">学习中心查询</li>
-              </c:if>
-               <c:if test="${adminUserLoginInfo.loginAccount eq 'account02' || adminUserLoginInfo.loginAccount eq 'admin' }">
+		              <li data-id="1">学习中心</li>
+		              <!-- 
 		              <li data-id="2">教学资源查询</li>
-              </c:if>
-               <c:if test="${adminUserLoginInfo.loginAccount eq 'account03' || adminUserLoginInfo.loginAccount eq 'admin' }">
-		               <li data-id="3">产品平台查询</li>
-              </c:if>
-                <c:if test="${adminUserLoginInfo.loginAccount eq 'account04' || adminUserLoginInfo.loginAccount eq 'admin' }">
-		              <li data-id="4">市场与营销查询</li>
-              </c:if>
-                <li data-id="5">报表查询</li>
+		              <li data-id="3">产品平台查询</li>
+		               -->
+		              <li data-id="4">市场销售</li>
             </ul>
             <div class="dropdown operion-more-menu">
             <!-- 
             	<a class="dropdown-toggle" data-toggle="dropdown" href="#"> 更多 <i class="fa fa-fw fa-caret-down"></i> </a>
                --> 
               <ul class="dropdown-menu">
-               <c:if test="${adminUserLoginInfo.loginAccount eq 'account01' || adminUserLoginInfo.loginAccount eq 'admin' }">
-                <li data-id="1"> <a role="menuitem" href="#">学习中心查询</a>
+                <li data-id="1"> <a role="menuitem" href="#">学习中心</a>
                   <ul class="menu-temp hide">
-                    <li class="header">学习中心查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/productQuery"> <i class="fa fa-search"></i> <span>产品数据查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    <li class="header">学习中心</li>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>数据详情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				            <li><a href="<%=request.getContextPath() %>/lcreserveorder/query"><i class="fa fa-dashboard"></i>预报读信息</a></li>
+				            <li><a href="<%=request.getContextPath() %>/lcreservefollow/query"><i class="fa fa-mortar-board"></i>预报读跟踪</a></li>
+				            <li><a href="<%=request.getContextPath() %>/lcorderinfo/query"><i class="fa fa-cubes"></i>订单报读信息</a></li>
+				            <li><a href="<%=request.getContextPath() %>/lcstudent/query"><i class="fa fa-male"></i>学员信息</a></li>
+				          </ul>
                     </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getLCStudentStatus"> <i class="fa fa-mortar-board"></i> <span>招生学籍查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getLCStudentDyna"> <i class="fa fa-cubes"></i> <span>招生学情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                     <li class="treeview"> <a href="<%=request.getContextPath() %>/getLCReserveOrder"> <i class="fa fa-dashboard"></i> <span>预报读查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>主题分析数据</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				            <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>学员漏斗分析</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    		</li>
+				          </ul>
                     </li>
                      <li class="treeview">
 			          <a href="#">
@@ -101,55 +96,26 @@
 			        </li>
                   </ul>
                 </li>
-                </c:if>
-                <c:if test="${adminUserLoginInfo.loginAccount eq 'account02' || adminUserLoginInfo.loginAccount eq 'admin' }">
+                <%--
                 <li data-id="2"> <a role="menuitem" href="#">教学资源查询</a>
                   <ul class="menu-temp hide">
                     <li class="header">教学资源查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getRECourse"> <i class="fa fa-book"></i> <span>课程资源查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-					<li class="treeview"> <a href="<%=request.getContextPath() %>/getREStudentAssess"> <i class="fa fa-line-chart"></i> <span>课程考核查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getREStudentStatus"> <i class="fa fa-user"></i> <span>报读学员查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
                   </ul>
                 </li>
-                </c:if>
-                <c:if test="${adminUserLoginInfo.loginAccount eq 'account03' || adminUserLoginInfo.loginAccount eq 'admin' }">
                 <li data-id="3"> <a role="menuitem" href="#">产品平台查询</a>
                   <ul class="menu-temp hide">
                     <li class="header">产品平台查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getPFStudent"> <i class="fa fa-user"></i> <span>学员信息查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                     <li class="treeview"> <a href="<%=request.getContextPath() %>/getPFStudentStatus"> <i class="fa  fa-mortar-board"></i> <span>平台学籍查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                     <li class="treeview"> <a href="<%=request.getContextPath() %>/getPFStudentDyna"> <i class="fa fa-cubes"></i> <span>平台学情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
                   </ul>
                 </li>
-                </c:if>
-                <c:if test="${adminUserLoginInfo.loginAccount eq 'account04' || adminUserLoginInfo.loginAccount eq 'admin' }">
-                <li data-id="4"> <a role="menuitem" href="#">市场与营销查询</a>
+                 --%>
+                <li data-id="4"> <a role="menuitem" href="#">市场销售</a>
                   <ul class="menu-temp hide">
-                    <li class="header">市场与营销查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getSaleOrder"> <i class="fa  fa-sellsy"></i> <span>销售信息查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getSaleCustomer"> <i class="fa  fa-user-times"></i> <span>推广客户查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getSaleStudent"> <i class="fa fa-user"></i> <span>推广学员查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getSaleStudentDyna"> <i class="fa fa-cubes"></i> <span>推广学情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                  </ul>
-                </li>
-                </c:if>
-                
-                  <li data-id="5"> <a role="menuitem" href="#">报表查询</a>
-                  <ul class="menu-temp hide">
-                    <li class="header">报表查询</li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getTest"> <i class="fa  fa-sellsy"></i> <span>报表1</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    </li>
-                    <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>报表2</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    <li class="header">市场销售</li>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>数据详情查询</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				            <li><a href="<%=request.getContextPath() %>/salecustomer/query"><i class="fa fa-sellsy"></i>客户详细信息</a></li>
+				            <li><a href="<%=request.getContextPath() %>/salecustomerfollow/query"><i class="fa fa-user"></i>客户跟进信息</a></li>
+				          </ul>
                     </li>
                   </ul>
                 </li>
@@ -292,15 +258,6 @@
 					</a></li> -->
         </ul>
       </div>
-      	<div id="leftsead">
-		<ul>	
-			<li>
-				<a id="top_btn">
-					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/ll06.png" width="131" height="49" class="hides"/>
-					<img src="<%=request.getContextPath()%>/static/plugins//returnTop/images/l06.png" width="47" height="49" class="shows" />
-				</a>
-			</li>
-		</ul>
-	</div>
+
     </nav>
   </header>

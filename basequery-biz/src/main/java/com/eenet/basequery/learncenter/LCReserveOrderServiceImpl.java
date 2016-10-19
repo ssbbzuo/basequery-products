@@ -11,7 +11,7 @@ import com.eenet.base.query.QueryCondition;
 public class LCReserveOrderServiceImpl extends SimpleBizImpl implements LCReserveOrderService {
 
 	@Override
-	public SimpleResultSet<LCReserveOrder> getLCReserveOrder(QueryCondition condition) {
+	public SimpleResultSet<LCReserveOrder> query(QueryCondition condition) {
 		if(condition.getOrderBySet()== null ||condition.getOrderBySet().isEmpty()){
 			ArrayList<OrderBy> orderList = new ArrayList<OrderBy>();
 			OrderBy order = new OrderBy();

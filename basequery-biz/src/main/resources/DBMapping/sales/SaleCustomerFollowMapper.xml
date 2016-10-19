@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.sales.SaleCustomerFollow" >
+	<resultMap type="com.eenet.basequery.sales.SaleCustomerFollow" id="default">
+		<result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_CODE" property="customerCode" jdbcType="VARCHAR" />
+		<result column="OPERATOR_DT" property="operatorDt" jdbcType="DATE" />
+		<result column="OPERATOR_NAME" property="operatorName" jdbcType="VARCHAR" />
+		<result column="INTEND_STATUS" property="intendStatus" jdbcType="VARCHAR" />
+		<result column="INTEND_STATUS_NAME" property="intendStatusName" jdbcType="VARCHAR" />
+		<result column="FOLLOW_CONTENT" property="followContent" jdbcType="VARCHAR" />
+		<result column="FOLLOW_TYPE" property="followType" jdbcType="VARCHAR" />
+		<result column="FOLLOW_TYPE_NAME" property="followTypeName" jdbcType="VARCHAR" />
+		<result column="EMAIL_STATUS" property="emailStatus" jdbcType="VARCHAR" />
+		<result column="EMAIL_STATUS_NAME" property="emailStatusName" jdbcType="VARCHAR" />
+		<result column="CREATED_DT" property="createdDt" jdbcType="DATE" />
+	</resultMap>
+
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM 
+				DM_SALE_CUSTOMERFOLLOW
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT
+				CUSTOMER_NAME,
+				CUSTOMER_CODE,
+				OPERATOR_DT,
+				OPERATOR_NAME,
+				INTEND_STATUS,
+				INTEND_STATUS_NAME
+				FOLLOW_CONTENT,
+				FOLLOW_TYPE,
+				FOLLOW_TYPE_NAME,
+				EMAIL_STATUS,
+				EMAIL_STATUS_NAME,
+				CREATED_DT
+			FROM 
+				DM_SALE_CUSTOMERFOLLOW
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
+	</select>
+
+</mapper>

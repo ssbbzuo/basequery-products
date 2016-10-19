@@ -40,6 +40,12 @@
 <!-- jqueryPage -->	
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.css">	
+	
+<!-- jqueryBuildTable -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/datepicker3.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/styles.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/font-awesome.css">	
 <style type="text/css">
 .slide_box{height: 150px;}
 </style>
@@ -116,4 +122,7 @@
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/query.js"></script>			
 <script
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.js"></script>		
-		
+<!-- jqueryBuildTable -->
+<script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/jquery.jsontotable.min.js"></script>
+<script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/easypiechart-data.js"></script>
+<script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/easypiechart.js"></script>
