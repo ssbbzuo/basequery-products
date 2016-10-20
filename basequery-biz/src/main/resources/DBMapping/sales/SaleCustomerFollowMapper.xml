@@ -6,6 +6,7 @@
 		<result column="CUSTOMER_CODE" property="customerCode" jdbcType="VARCHAR" />
 		<result column="OPERATOR_DT" property="operatorDt" jdbcType="DATE" />
 		<result column="OPERATOR_NAME" property="operatorName" jdbcType="VARCHAR" />
+		<result column="OPERATOR_ID" property="operatorId" jdbcType="VARCHAR" />
 		<result column="INTEND_STATUS" property="intendStatus" jdbcType="VARCHAR" />
 		<result column="INTEND_STATUS_NAME" property="intendStatusName" jdbcType="VARCHAR" />
 		<result column="FOLLOW_CONTENT" property="followContent" jdbcType="VARCHAR" />
@@ -35,6 +36,7 @@
 				CUSTOMER_CODE,
 				OPERATOR_DT,
 				OPERATOR_NAME,
+				OPERATOR_ID,
 				INTEND_STATUS,
 				INTEND_STATUS_NAME
 				FOLLOW_CONTENT,
@@ -51,5 +53,83 @@
 		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
+	
+	<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM 
+				DM_SALE_CUSTOMERFOLLOW
+		  WHERE 1=1 
+		     	   AND (
+		     	   ( OPERATOR_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR OPERATOR_ID IS NULL )		
+		    	)
+		    ]]>
+		    
+		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+	</select>
+	
+	
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+			SELECT
+				CUSTOMER_NAME,
+				CUSTOMER_CODE,
+				OPERATOR_DT,
+				OPERATOR_NAME,
+				OPERATOR_ID,
+				INTEND_STATUS,
+				INTEND_STATUS_NAME
+				FOLLOW_CONTENT,
+				FOLLOW_TYPE,
+				FOLLOW_TYPE_NAME,
+				EMAIL_STATUS,
+				EMAIL_STATUS_NAME,
+				CREATED_DT
+			FROM 
+				DM_SALE_CUSTOMERFOLLOW
+		  WHERE 1=1 
+		   		 AND (
+		     	   ( OPERATOR_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR OPERATOR_ID IS NULL )		
+		    	)
+		    ]]>
+		    
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<![CDATA[  ORDER BY OPERATOR_DT  DESC   ]]>
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+	</select>
+	
+	<sql id="queryList_quto">
+		<if test="province != null and province != '' "  >
+			 AND PROVINCE = #{province,jdbcType=VARCHAR}
+		</if>
+		<if test="city != null and city != '' " >
+			AND CITY like CONCAT('%',#{city,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="district != null and district != '' " >
+			AND DISTRICT like CONCAT('%',#{district,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="operatorName != null and operatorName != '' " >
+			AND OPERATOR_NAME like CONCAT('%',#{operatorName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="customerName != null and customerName != '' " >
+			AND CUSTOMER_NAME like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%') 
+		</if>
+		<if test="operatorDt != null and operatorDt != '' " >
+			<![CDATA[
+			AND OPERATOR_DT >= #{operatorDt,jdbcType=DATE}	and  OPERATOR_DT <= #{operatorDtTo,jdbcType=DATE}
+			]]>
+		</if>
+	</sql>
+	
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
 
 </mapper>

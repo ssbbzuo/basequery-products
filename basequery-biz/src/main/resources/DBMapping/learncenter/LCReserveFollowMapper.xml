@@ -5,7 +5,9 @@
 		<result column="STUDNET_ID" property="studnetId" jdbcType="VARCHAR" />
 		<result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
 		<result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+		<result column="SALEMAN_ID" property="salemanId" jdbcType="VARCHAR" />
 		<result column="SALEMAN_NAME" property="salemanName" jdbcType="VARCHAR" />
+		<result column="HEAD_TEACHER_ID" property="headTeacherId" jdbcType="VARCHAR" />
 		<result column="HEAD_TEACHER_NAME" property="headTeacherName" jdbcType="VARCHAR" />
 		<result column="FOLLOW_RESULT" property="followResult" jdbcType="VARCHAR" />
 		<result column="FOLLOW_RESULT_NAME" property="followResultName" jdbcType="VARCHAR" />
@@ -35,7 +37,9 @@
 				STUDENT_ID,
 				USER_NAME,
 				MOBILE,
+				SALEMAN_ID
 				SALEMAN_NAME,
+				HEAD_TEACHER_ID
 				HEAD_TEACHER_NAME,
 				FOLLOW_RESULT,
 				FOLLOW_RESULT_NAME,
@@ -54,4 +58,94 @@
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
 
+<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				DM_LC_RESERVEFOLLOW
+		 WHERE 1=1 
+		     	   AND (
+		     	 (  SALEMAN_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
+		     	  	OR (  HEAD_TEACHER_ID  IN  
+		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+	</select>
+	
+	
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+			SELECT
+				STUDENT_ID,
+				USER_NAME,
+				MOBILE,
+				SALEMAN_ID
+				SALEMAN_NAME,
+				HEAD_TEACHER_ID
+				HEAD_TEACHER_NAME,
+				FOLLOW_RESULT,
+				FOLLOW_RESULT_NAME,
+				FOLLOW_CONTENT,
+				ENROL_NO,
+				CONSULT_ID,
+				CONSULT_NO,
+				FOLLOW_DATE,
+				CREATED_DT
+			FROM
+				DM_LC_RESERVEFOLLOW
+		  WHERE 1=1  
+		   		 AND  (
+		   		 (  SALEMAN_ID  IN  ]]>
+		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
+		     	  	OR (  HEAD_TEACHER_ID  IN  
+		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<![CDATA[  ORDER BY CREATED_DT  DESC   ]]>
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+	</select>
+	
+	<sql id="queryList_quto">
+		<if test="followResult != null and followResult != '' "  >
+			 AND FOLLOW_RESULT = #{followResult,jdbcType=VARCHAR}
+		</if>
+		<if test="salemanName != null and salemanName != '' " >
+			AND SALEMAN_NAME like CONCAT('%',#{salemanName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="headTeacherName != null and headTeacherName != '' " >
+			AND HEAD_TEACHER_NAME  like CONCAT('%',#{headTeacherName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="learncenterName != null and learncenterName != '' " >
+			AND LEARNCENTER_NAME like CONCAT('%',#{learncenterName,jdbcType=VARCHAR},'%') 
+		</if>
+		<if test="createdDt != null and createdDt != '' " >
+			<![CDATA[
+			AND CREATED_DT >= #{createdDt,jdbcType=DATE}	and  CREATED_DT <= #{createdDtTo,jdbcType=DATE}
+			]]>
+		</if>
+		<if test="followDate != null and followDate != '' " >
+			<![CDATA[
+			AND FOLLOW_DATE >= #{followDate,jdbcType=DATE}	and  FOLLOW_DATE <= #{followDateTo,jdbcType=DATE}
+			]]>
+		</if>
+	</sql>
+	
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
+	
 </mapper>

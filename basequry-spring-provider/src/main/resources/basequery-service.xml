@@ -11,22 +11,42 @@
 	
 	<bean id="querySqlDaoService" class="com.eenet.basequery.sqlquery.dao.impl.QuerySqlDaoServiceImpl">
 		<property name="batisSession" ref="batisSession" />
+	</bean>	
+	<bean id="lcReserveOrderDaoService" class="com.eenet.basequery.learncenter.dao.impl.LCReserveOrderDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>		
+	<bean id="lcReserveFollowDaoService" class="com.eenet.basequery.learncenter.dao.impl.LCReserveFollowDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>		
+	<bean id="lcOrderInfoDaoService" class="com.eenet.basequery.learncenter.dao.impl.LCOrderInfoDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
 	</bean>
-	
+	<bean id="saleCustomerFollowDaoService" class="com.eenet.basequery.sales.dao.impl.SaleCustomerFollowDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>
+	<bean id="saleCustomerDaoService" class="com.eenet.basequery.sales.dao.impl.SaleCustomerDaoServiceImpl">
+		<property name="batisSession" ref="batisSession" />
+	</bean>
 	
 		<!-- 学习中心 预报读订单情况 -->
 	<bean id="LCReserveOrderService" class="com.eenet.basequery.learncenter.LCReserveOrderServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="priTreeService" ref="priTreeService" />
+			<property name="lcReserveOrderDaoService" ref="lcReserveOrderDaoService" />
 	</bean>
 		
 		<!--学习中心  预报读订单跟踪情况 -->
 	<bean id="LCReserveFollowService" class="com.eenet.basequery.learncenter.LCReserveFollowServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="priTreeService" ref="priTreeService" />
+			<property name="lcReserveFollowDaoService" ref="lcReserveFollowDaoService" />
 	</bean>
 	
 		<!--学习中心  订单情况 -->
 	<bean id="LCOrderInfoService" class="com.eenet.basequery.learncenter.LCOrderInfoServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="priTreeService" ref="priTreeService" />
+			<property name="lcOrderInfoDaoService" ref="lcOrderInfoDaoService" />
 	</bean>
 	
 		<!--学习中心  学员情况 -->
@@ -35,13 +55,17 @@
 	</bean>
 	
 		<!--市场营销  客户详情 -->
-	<bean id="SaleCustomer" class="com.eenet.basequery.sales.SaleCustomerServiceImpl">
+	<bean id="SaleCustomerService" class="com.eenet.basequery.sales.SaleCustomerServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="priTreeService" ref="priTreeService" />
+			<property name="saleCustomerDaoService" ref="saleCustomerDaoService" />
 	</bean>
 	
 		<!--市场营销  客户跟进详情 -->
-	<bean id="SaleCustomerFollow" class="com.eenet.basequery.sales.SaleCustomerFollowServiceImpl">
+	<bean id="SaleCustomerFollowService" class="com.eenet.basequery.sales.SaleCustomerFollowServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="priTreeService" ref="priTreeService" />
+			<property name="saleCustomerFollowDaoService" ref="saleCustomerFollowDaoService" />
 	</bean>
 	
 		<!-- 区域信息-->

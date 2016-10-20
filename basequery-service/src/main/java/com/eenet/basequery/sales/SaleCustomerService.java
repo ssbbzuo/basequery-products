@@ -10,6 +10,6 @@ public interface SaleCustomerService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<SaleCustomer> query(QueryCondition condition);
+	public SimpleResultSet<SaleCustomer> query(String curUserId,QueryCondition condition);
 
 }

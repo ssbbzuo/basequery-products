@@ -10,5 +10,5 @@ public interface LCOrderInfoService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<LCOrderInfo> query(QueryCondition condition);
+	public SimpleResultSet<LCOrderInfo> query(String curUserId,QueryCondition condition);
 }

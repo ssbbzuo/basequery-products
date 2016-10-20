@@ -10,7 +10,9 @@ public class LCReserveFollow extends BaseEntity{
 	private String studnetId;//学员ID
 	private String userName;//学员名称
 	private String mobile;//手机
+	private String salemanId;//招生顾问ID
 	private String salemanName;//招生顾问
+	private String headTeacherId;//班主任ID
 	private String headTeacherName;//班主任
 	private String followResult;//跟踪结果编码
 	private String followResultName;//跟踪结果
@@ -20,6 +22,18 @@ public class LCReserveFollow extends BaseEntity{
 	private String consultNo;//预报读单号
 	private Date followDate;//跟进时间
 	private Date createdDt;//预报读创建时间
+	public String getSalemanId() {
+		return salemanId;
+	}
+	public void setSalemanId(String salemanId) {
+		this.salemanId = salemanId;
+	}
+	public String getHeadTeacherId() {
+		return headTeacherId;
+	}
+	public void setHeadTeacherId(String headTeacherId) {
+		this.headTeacherId = headTeacherId;
+	}
 	public String getStudnetId() {
 		return studnetId;
 	}

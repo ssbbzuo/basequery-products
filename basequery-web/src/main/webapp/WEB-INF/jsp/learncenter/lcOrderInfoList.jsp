@@ -107,7 +107,7 @@
             <div class="form-group">
               <label class="control-label col-sm-3">院校</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="schoolchinesename"  name="conditions[6].fieldName"/> 
+              	<input type="hidden"  value="schoolChineseName"  name="conditions[6].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[6].rangeType"/> 
                 <input type="text" class="form-control "  value="${queryCondition.conditions[6].rangeFrom}"   name="conditions[6].rangeFrom">
               </div>

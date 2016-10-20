@@ -21,7 +21,7 @@
   
    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<dev-framework.version>1.10</dev-framework.version>
+	<dev-framework.version>1.11</dev-framework.version>
 	<spring.version>4.2.2.RELEASE</spring.version>
 	<dubbo.version>2.5.3</dubbo.version>
 	<servlet.version>3.1.0</servlet.version>
@@ -52,7 +52,7 @@
 				<!-- 打war包名称 -->
 			</properties>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
 		
@@ -74,7 +74,7 @@
 				<!-- 打war包名称 -->
 			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 		

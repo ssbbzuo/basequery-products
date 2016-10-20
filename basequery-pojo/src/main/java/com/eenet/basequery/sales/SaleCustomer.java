@@ -23,6 +23,13 @@ public class SaleCustomer extends BaseEntity{
 	private String cityName;//市
 	private String district;//区编码
 	private String districtName;//区名称
+	private String staffId;//该客户的服务人员ID
+	public String getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
+	}
 	public String getPersonsScaleName() {
 		return personsScaleName;
 	}

@@ -10,5 +10,5 @@ public interface LCStudentService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<LCStudent> query(QueryCondition condition);
+	public SimpleResultSet<LCStudent> query(String curUserId,QueryCondition condition);
 }

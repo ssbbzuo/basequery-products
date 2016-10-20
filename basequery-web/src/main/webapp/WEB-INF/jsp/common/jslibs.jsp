@@ -118,9 +118,9 @@
 <script
 		src="<%=request.getContextPath()%>/static/plugins/jqueryPage/src/paging.js"></script>		
 <!--select2 -->
-<script
-		src="<%=request.getContextPath()%>/static/plugins/select2/select2.min.js"></script>	
-		
+<script src="<%=request.getContextPath()%>/static/plugins/select2/select2.min.js"></script>	
+<script src="<%=request.getContextPath()%>/static/plugins/select2/i18n/az.js"></script>
+	
 <script type="text/javascript">
    $(document).ready(function(){
 	    var slide_box_height = 0;

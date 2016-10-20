@@ -10,5 +10,5 @@ public interface LCReserveFollowService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<LCReserveFollow> query(QueryCondition condition);
+	public SimpleResultSet<LCReserveFollow> query(String curUserId,QueryCondition condition);
 }

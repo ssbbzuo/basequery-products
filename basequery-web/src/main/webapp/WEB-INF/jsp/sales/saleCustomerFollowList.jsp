@@ -56,7 +56,7 @@
               <div class="col-sm-9">
               	<input type="hidden"  value="operatorName"  name="conditions[1].fieldName"/> 
               	<input type="hidden"  value="INCLUDE"  name="conditions[1].rangeType"/> 
-                <input type="text" class="form-control "   value="${queryCondition.conditions[1].rangeFrom}"   name="conditions[2].rangeFrom">
+                <input type="text" class="form-control "   value="${queryCondition.conditions[1].rangeFrom}"   name="conditions[1].rangeFrom">
               </div>
             </div>
           </div>

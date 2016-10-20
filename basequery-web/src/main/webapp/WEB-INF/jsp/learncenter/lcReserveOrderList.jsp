@@ -205,17 +205,7 @@
 <jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 </body>
 <script>
-    $("#createdDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
-    $("#createdDtId02").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
-        onSelect: function(dateText,inst){  
-            var time=dateText.split("-");  
-            var year = time[0];  
-            var month = time[1];  
-            var day = time[2];  
-            $("#createdDtId02").datepicker(  
-                'option', 'minDate', new Date(year, month - 1, day)  
-            );  
-        }  
-    });  
+	$("#createdDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'})
+	$("#createdDtId02").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd' })
 </script>
 </html>

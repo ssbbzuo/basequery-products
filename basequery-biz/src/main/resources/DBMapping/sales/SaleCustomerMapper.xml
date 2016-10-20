@@ -18,6 +18,7 @@
 		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
 		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
 		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
+		<result column="ADMIN_LOGIN_ACCOUNT_ID" property="staffId" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
@@ -49,7 +50,8 @@
 				CITY,
 				CITY_NAME,
 				DISTRICT,
-				DISTRICT_NAME  
+				DISTRICT_NAME ,
+				ADMIN_LOGIN_ACCOUNT_ID
 			FROM 
 				DM_SALE_CUSTOMER
 		  WHERE 1=1 
@@ -59,4 +61,93 @@
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
 
+
+<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM 
+				DM_SALE_CUSTOMER
+		  WHERE 1=1
+		     	   AND (
+		     	   ( ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR ADMIN_LOGIN_ACCOUNT_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+	</select>
+	
+	
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+			SELECT
+				CUSTOMER_NAME,
+				CUSTOMER_CODE,
+				PERSONS_SCALE,
+				CUSTOMER_PROP,
+				CUSTOMER_PROP_NAME,
+				COOPERATE_STATUS,
+				COOPERATE_STATUS_NAME,
+				ACTIVATE_DT,
+				CREATED_DT,
+				PROVINCE,
+				PROVINCE_NAME,
+				CITY,
+				CITY_NAME,
+				DISTRICT,
+				DISTRICT_NAME ,
+				ADMIN_LOGIN_ACCOUNT_ID
+			FROM 
+				DM_SALE_CUSTOMER
+		  WHERE 1=1  
+		   		   AND (
+		     	   ( ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR ADMIN_LOGIN_ACCOUNT_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<![CDATA[  ORDER BY CREATED_DT  DESC   ]]>
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+	</select>
+	
+	<sql id="queryList_quto">
+		<if test="province != null and province != '' "  >
+			 AND PROVINCE = #{province,jdbcType=VARCHAR}
+		</if>
+		<if test="city != null and city != '' " >
+			AND CITY like CONCAT('%',#{city,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="district != null and district != '' " >
+			AND DISTRICT like CONCAT('%',#{district,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="personsScale != null and personsScale != '' " >
+			AND PERSONS_SCALE like CONCAT('%',#{personsScale,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="customerProp != null and customerProp != '' " >
+			AND CUSTOMER_PROP like CONCAT('%',#{customerProp,jdbcType=VARCHAR},'%') 
+		</if>
+		<if test="customerName != null and customerName != '' " >
+			AND CUSTOMER_NAME like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="createdDt != null and createdDt != '' " >
+			<![CDATA[
+			AND CREATED_DT >= #{createdDt,jdbcType=DATE}	and  CREATED_DT <= #{createdDtTo,jdbcType=DATE}
+			]]>
+		</if>
+		<if test="activateDt != null and activateDt != '' " >
+			<![CDATA[
+			AND ACTIVATE_DT >= #{activateDt,jdbcType=DATE}	and  CREATED_DT <= #{activateDtTo,jdbcType=DATE}
+			]]>
+		</if>
+	</sql>
+	
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
 </mapper>

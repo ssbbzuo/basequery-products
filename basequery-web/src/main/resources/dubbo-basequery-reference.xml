@@ -25,10 +25,10 @@
 	<dubbo:reference interface="com.eenet.basequery.learncenter.LCStudentService" id="LCStudentService" />
 	
 	<!-- 市场营销  客户详情-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService"  id="SaleCustomer" />
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerService"  id="SaleCustomerService" />
 	
 	<!-- 市场营销  客户跟进详情-->
-	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerFollowService" id="SaleCustomerFollow" />
+	<dubbo:reference interface="com.eenet.basequery.sales.SaleCustomerFollowService" id="SaleCustomerFollowService" />
 	
 	<!-- 区域信息 -->
 	<dubbo:reference interface="com.eenet.basequery.sys.AreaService" id="areaService" />

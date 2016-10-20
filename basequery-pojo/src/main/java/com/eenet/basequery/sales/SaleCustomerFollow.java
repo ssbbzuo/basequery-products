@@ -7,18 +7,25 @@ import com.eenet.base.BaseEntity;
 public class SaleCustomerFollow extends BaseEntity{
 
 	private static final long serialVersionUID = 1293028116411820946L;
-	  private String customerName;//客户名称
-	  private String customerCode;//客户编码
-	  private Date operatorDt;//跟进时间
-	  private String operatorName;//跟进人
-	  private String intendStatus;//跟进意向编码
-	  private String intendStatusName;//跟进意向
-	  private String followContent;//跟进内容
-	  private String followType;//跟进类型编码
-	  private String followTypeName;//跟进类型
-	  private String emailStatus;//邮件跟进状态编码
-	  private String emailStatusName;//邮件跟进状态
-	  private Date createdDt;//创建时间
+	private String customerName;//客户名称
+	private String customerCode;//客户编码
+	private Date operatorDt;//跟进时间
+	private String operatorName;//跟进人
+	private String operatorId;//跟进人ID
+	private String intendStatus;//跟进意向编码
+	private String intendStatusName;//跟进意向
+	private String followContent;//跟进内容
+	private String followType;//跟进类型编码
+	private String followTypeName;//跟进类型
+	private String emailStatus;//邮件跟进状态编码
+	private String emailStatusName;//邮件跟进状态
+	private Date createdDt;//创建时间
+	public String getOperatorId() {
+		return operatorId;
+	}
+	public void setOperatorId(String operatorId) {
+		this.operatorId = operatorId;
+	}
 	public String getCustomerName() {
 		return customerName;
 	}

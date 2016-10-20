@@ -82,4 +82,120 @@
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
 
+
+
+	<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				DM_LC_RESERVEORDER
+		 WHERE 1=1
+		     	   AND (
+		     	   ( MARKETER_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR MARKETER_ID IS NULL )	]]>
+		      		OR (  SALEMAN_ID  IN  
+		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
+		     	  	OR (  HEAD_TEACHER_ID  IN  
+		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+	</select>
+	
+	
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+			SELECT
+				STUDENT_ID,
+				USER_NAME,
+				MOBILE,
+				MARKETER_ID,
+				MARKETER_ACCOUNT,
+				MARKETER_NAME,
+				SALEMAN_ID,
+				SALEMAN_ACCOUNT,
+				SALEMAN_NAME,
+				HEAD_TEACHER_ID,
+				HEAD_TEACHER_ACCOUNT,
+				HEAD_TEACHER_NAME,
+				ENROL_NO,
+				LEARNCENTER_CODE,
+				LEARNCENTER_NAME,
+			  	CREATED_DT,
+				ORDER_STATUS,
+			  	ORDER_STATUS_NAME,
+				CHANNEL_CODE,
+				CHANNEL_NAME,
+				COLLEGES,
+				SCHOOL_CHINESE_NAME,
+				COMPANY_NAME,
+				EPRODUCT_ID,
+				PRODUCT_NAME,
+			    EDUCATION_LEVEL,
+				EDUCATION_LEVEL_NAME
+			FROM
+				DM_LC_RESERVEORDER
+		  WHERE 1=1 
+		   		 AND  (
+		   		  ( MARKETER_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR MARKETER_ID IS NULL )	]]>
+		      		OR (  SALEMAN_ID  IN  
+		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
+		     	  	OR (  HEAD_TEACHER_ID  IN  
+		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		    	)
+		    ]]>
+		    
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			 <![CDATA[  ORDER BY CREATED_DT  DESC   ]]>
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+	</select>
+	
+	<sql id="queryList_quto">
+		<if test="status != null and status != '' "  >
+			 AND ORDER_STATUS = #{status,jdbcType=VARCHAR}
+		</if>
+		<if test="salemanName != null and salemanName != '' " >
+			AND SALEMAN_NAME like CONCAT('%',#{salemanName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="companyName != null and companyName != '' " >
+			AND COMPANY_NAME like CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="schoolChineseName != null and schoolChineseName != '' " >
+			AND SCHOOL_CHINESE_NAME like CONCAT('%',#{schoolChineseName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="learncenterName != null and learncenterName != '' " >
+			AND LEARNCENTER_NAME like CONCAT('%',#{learncenterName,jdbcType=VARCHAR},'%') 
+		</if>
+		<if test="productName != null and productName != '' " >
+			AND PRODUCT_NAME like CONCAT('%',#{productName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="channelName != null and channelName != '' " >
+			AND CHANNEL_NAME like CONCAT('%',#{channelName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="createdDt != null and createdDt != '' " >
+			<![CDATA[
+			AND CREATED_DT >= #{createdDt,jdbcType=DATE}	and  CREATED_DT <= #{createdDtTo,jdbcType=DATE}
+			]]>
+		</if>
+	</sql>
+	
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
+	
 </mapper>

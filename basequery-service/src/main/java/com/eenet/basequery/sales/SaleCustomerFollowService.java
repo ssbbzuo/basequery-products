@@ -10,6 +10,6 @@ public interface SaleCustomerFollowService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<SaleCustomerFollow> query(QueryCondition condition);
+	public SimpleResultSet<SaleCustomerFollow> query(String curUserId,QueryCondition condition);
 
 }

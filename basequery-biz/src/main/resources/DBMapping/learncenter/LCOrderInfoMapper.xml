@@ -9,6 +9,7 @@
 		<result column="SCHOOL_CHINESE_NAME" property="schoolChineseName" jdbcType="VARCHAR" />
 		<result column="LEARNCENTER_CODE" property="learncenterCode" jdbcType="VARCHAR" />
 		<result column="LEARNCENTER_NAME" property="learncenterName" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_ID" property="learncenterId" jdbcType="VARCHAR" />
 		<result column="LEARNCENTER_USER_ID" property="learncenterUserId" jdbcType="VARCHAR" />
 		<result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
 		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
@@ -68,5 +69,103 @@
 		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
+	
+	<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(1)
+			FROM
+				DM_LC_ORDERINFO
+		 WHERE 1=1 
+		     	   AND (
+		     	   ( LEARNCENTER_USER_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR LEARNCENTER_USER_ID IS NULL )	]]>
+		      		OR (  LEARNCENTER_ID  IN  
+		    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR LEARNCENTER_ID IS NULL )
+		    	)
+		    ]]>
+		    
+		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+	</select>
+	
+	
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+			SELECT
+				STUDENT_ID,
+				STUDENT_NAME,
+				MOBILE,
+				NETWORK_SCHOOL_CODE,
+				SCHOOL_CHINESE_NAME,
+				LEARNCENTER_CODE,
+				LEARNCENTER_NAME,
+				LEARNCENTER_USER_ID,
+				STAFF_NAME,
+				PRODUCT_ID,
+				PRODUCT_NAME,
+				RECEIVABLE_TOTAL_AMT,
+				FAV_AMT,
+				ORDER_PAID_AMT,
+				PAY_TYPE,
+				ORDER_STATUS,
+				CUSTOMER_ID,
+				CUSTOMER_NAME,
+				CREATED_DT
+			FROM
+				DM_LC_ORDERINFO
+		  WHERE 1=1
+		   		   AND (
+		     	   ( LEARNCENTER_USER_ID  IN  	]]>
+		    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR LEARNCENTER_USER_ID IS NULL )	]]>
+		      		OR (  LEARNCENTER_ID  IN  
+		    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+				<![CDATA[#{id,jdbcType=VARCHAR}]]>
+		    </foreach> <![CDATA[  OR LEARNCENTER_ID IS NULL )
+		    	)
+		    ]]>
+		    
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<![CDATA[  ORDER BY CREATED_DT  DESC   ]]>
+			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+	</select>
+	
+	<sql id="queryList_quto">
+		<if test="orderStatus != null and orderStatus != '' "  >
+			 AND ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="staffName != null and staffName != '' " >
+			AND STAFF_NAME like CONCAT('%',#{staffName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="customerName != null and customerName != '' " >
+			AND CUSTOMER_NAME like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="learncenterName != null and learncenterName != '' " >
+			AND LEARNCENTER_NAME like CONCAT('%',#{learncenterName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="productName != null and productName != '' " >
+			AND PRODUCT_NAME like CONCAT('%',#{productName,jdbcType=VARCHAR},'%') 
+		</if>
+		<if test="schoolChineseName != null and schoolChineseName != '' " >
+			AND SCHOOL_CHINESE_NAME like CONCAT('%',#{schoolChineseName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="studentName != null and studentName != '' " >
+			AND STUDENT_NAME like CONCAT('%',#{studentName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="createdDt != null and createdDt != '' " >
+			<![CDATA[
+			AND CREATED_DT >= #{createdDt,jdbcType=DATE}	and  CREATED_DT <= #{createdDtTo,jdbcType=DATE}
+			]]>
+		</if>
+	</sql>
+	
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
 
 </mapper>

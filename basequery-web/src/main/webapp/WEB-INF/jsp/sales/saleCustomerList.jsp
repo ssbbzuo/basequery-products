@@ -193,18 +193,10 @@
 </section>
 </body>
 <script>
-    $("#activateDtId01").datepicker({language: 'zh-CN', autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
-    $("#activateDtId02").datepicker({language: 'zh-CN',autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
-        onSelect: function(dateText,inst){  
-            var time=dateText.split("-");  
-            var year = time[0];  
-            var month = time[1];  
-            var day = time[2];  
-            $("#activateDtId02").datepicker(  
-                'option', 'minDate', new Date(year, month - 1, day)  
-            );  
-        }  
-    });  
-    $(".selectcssquery").select2();
+	$("#createdDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'})
+	$("#createdDtId02").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd' })
+	
+	$("#activateDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'})
+	$("#activateDtId02").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd' })
 </script>
 </html>

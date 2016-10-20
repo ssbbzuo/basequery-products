@@ -14,6 +14,7 @@ public class LCOrderInfo extends BaseEntity{
 	private String schoolChineseName;//网院名称
 	private String learncenterCode;//学习中心编码
 	private String learncenterName;//学习中心名称
+	private String learncenterId;//学习中心ID
 	private String learncenterUserId;//班主任ID
 	private String staffName;//班主任名称
 	private String productId;//报读产品ID
@@ -29,6 +30,12 @@ public class LCOrderInfo extends BaseEntity{
 	private String customerName;//客户名称
 	private Date createdDt;//下单时间
 	private Date payDate;//支付时间
+	public String getLearncenterId() {
+		return learncenterId;
+	}
+	public void setLearncenterId(String learncenterId) {
+		this.learncenterId = learncenterId;
+	}
 	public Date getPayDate() {
 		return payDate;
 	}
