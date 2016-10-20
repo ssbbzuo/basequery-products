@@ -207,11 +207,17 @@
 </div>
 	
 
-<script type="text/javascript">					
+<script type="text/javascript">	
+
+	var initFunnelData = ['FReadLearnCenter','FReadColleges','FReadCompany','FReadSaleman',
+	           'FllowLearnCenter','FllowColleges','FllowCompany','FllowLearnCenterUser',
+	           'ReadLearnCenter','ReadColleges','ReadCompany','ReadLearnCenterUser',
+	           'SellLearnCenter','SellColleges','SellCompany','SellLearnCenterUser'];
+
 	//清空按钮
 	$("#reset").click(function(){
-		$("#create_dt_from").val("");
-		$("#create_dt_to").val("");
+		document.getElementById("create_dt_to").value="";
+		document.getElementById("create_dt_from").value="";
 	});
 	
 	//时间控件
@@ -247,66 +253,28 @@
 	var myChart01 = echarts.init(worldMapContainer01);
 	var myChart02 = echarts.init(worldMapContainer02,'macarons');
 	var myChart03 = echarts.init(worldMapContainer03);
-
 	
+	
+	//加载数据
+	function pageData(){
+		for(var i = 0 ; i < initFunnelData.length ; i ++){
+			eval('setPara_'+initFunnelData[i]+' ="'+initFunnelData[i]+'";'+
+				'buildFunc(setPara_'+initFunnelData[i]+');');
+		}			
+	};
+	//重新初始化
+	function initPage(){
+		for(var i = 0 ; i < initFunnelData.length ; i ++){
+
+			eval('pageSize_'+initFunnelData[i]+' = 10;');
+			eval('currentCount_'+initFunnelData[i]+' = 0;');
+		}	
+	}	
+	
+
 	$("#search").click(function(){			
-
-		/*===========================预报读阶段===========================*/
-		//学习中心	
-		setPara_FReadLearnCenter = "FReadLearnCenter";
-		buildFunc(setPara_FReadLearnCenter);	
-		//网院	
-		setPara_FReadColleges = "FReadColleges";
-		buildFunc(setPara_FReadColleges);
-		//客户
-		setPara_FReadCompany = "FReadCompany";
-		buildFunc(setPara_FReadCompany);	
-		//招生顾问
-		setPara_FReadSaleman = "FReadSaleman";
-		buildFunc(setPara_FReadSaleman);			
-		
-		/*===========================预报读阶段===========================*/
-		//学习中心	
-		setPara_FllowLearnCenter = "FllowLearnCenter";
-		buildFunc(setPara_FllowLearnCenter);	
-		//网院	
-		setPara_FllowColleges = "FllowColleges";
-		buildFunc(setPara_FllowColleges);
-		//客户
-		setPara_FllowCompany = "FllowCompany";
-		buildFunc(setPara_FllowCompany);	
-		//班主任
-		setPara_FllowLearnCenterUser = "FllowLearnCenterUser";
-		buildFunc(setPara_FllowLearnCenterUser);			
-		
-		/*===========================报读阶段===========================*/
-		//学习中心	
-		setPara_ReadLearnCenter = "ReadLearnCenter";
-		buildFunc(setPara_ReadLearnCenter);	
-		//网院	
-		setPara_ReadColleges = "ReadColleges";
-		buildFunc(setPara_ReadColleges);
-		//客户
-		setPara_ReadCompany = "ReadCompany";
-		buildFunc(setPara_ReadCompany);	
-		//班主任
-		setPara_ReadLearnCenterUser = "ReadLearnCenterUser";
-		buildFunc(setPara_ReadLearnCenterUser);	
-		
-		/*===========================缴费阶段===========================*/
-		//学习中心	
-		setPara_SellLearnCenter = "SellLearnCenter";
-		buildFunc(setPara_SellLearnCenter);	
-		//网院	
-		setPara_SellColleges = "SellColleges";
-		buildFunc(setPara_SellColleges);
-		//客户
-		setPara_SellCompany = "SellCompany";
-		buildFunc(setPara_SellCompany);	
-		//班主任
-		setPara_SellLearnCenterUser = "SellLearnCenterUser";
-		buildFunc(setPara_SellLearnCenterUser);		
-
+		pageData();	
+		initPage();
 		/*===========================学员漏斗主表===========================*/	
 		setPara_Student = "Student";
 		buildFunc(setPara_Student);
@@ -457,7 +425,7 @@
 					console.log(arguments);		
 					eval("currentCount_" + setStr + "=" +  ((page-1)*size)); 
 					eval("pageSize_" + setStr + "=" +  size);
-					$('#search').trigger('click');	
+					pageData();	
 				}	
 		});			
 	};	
