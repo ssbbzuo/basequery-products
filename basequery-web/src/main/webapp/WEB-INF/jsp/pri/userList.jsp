@@ -111,7 +111,14 @@
 						<td>${resultSet.companyTele }</td>
 						<td>${resultSet.idCard }</td>
 						<td><fmt:formatDate  value="${resultSet.birthday }"  type="both" pattern="yyyy-MM-dd " /></td>
-						<td>${resultSet.sex }</td>
+						<td>
+							<c:choose>
+								<c:when test="${resultSet.sex=='M' }">男</c:when>
+								<c:when test="${resultSet.sex=='F' }">女</c:when>
+								<c:when test="${resultSet.sex=='S' }">保密</c:when>
+								<c:otherwise>未知</c:otherwise>
+							</c:choose>
+						 </td>
 						<td>${resultSet.unitCode }</td>
 						<td>${resultSet.address }</td>
 						<td><a onclick="setPass('${resultSet.atid }')">设置密码</a> <a onclick="createAccount('${resultSet.atid }')">创建账号</a>  <a onclick="setRole('${resultSet.atid }')">选择角色</a> <a onclick="setDataPri('${resultSet.atid }')">数据授权</a></td>
@@ -194,9 +201,9 @@
                                 <label class="control-label col-md-4">性别：</label>
                                 <div class="col-md-8">
                                   	<select id="sex" name="sex" type="text" class="form-control select2" placeholder="父ID..." >
-                                  		 <option value ="1">男</option>
-                                  		  <option value ="2">女</option>
-                                  		 
+                                  		 <option value ="M">男</option>
+                                  		  <option value ="F">女</option>
+                                  		   <option value ="S">保密</option>
                                   	</select>
                                 </div>
                             </div>
