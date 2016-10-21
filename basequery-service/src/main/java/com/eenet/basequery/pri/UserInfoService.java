@@ -2,7 +2,7 @@ package com.eenet.basequery.pri;
 
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.QueryCondition;
-import com.eenet.basequery.pri.UserInfo;
+import com.eenet.baseinfo.user.AdminUserInfo;
 
 public interface UserInfoService {
 	/**
@@ -10,20 +10,18 @@ public interface UserInfoService {
 	 * @param condition
 	 * @return
 	 */
-	public SimpleResultSet<UserInfo> getUserInfo(QueryCondition condition);
+	public SimpleResultSet<AdminUserInfo> getUserInfo(QueryCondition condition);
 	/**
 	 * 获取用户
 	 * @param condition
 	 * @return
 	 */
-	public  UserInfo getUserInfoByPK(String pk);
+	public  AdminUserInfo getUserInfoByPK(String pk);
 	
 	/**
 	 * 增加用户
 	 * @param condition
 	 * @return
 	 */
-	public UserInfo save(UserInfo m);
-	
-	
+	public AdminUserInfo save(AdminUserInfo m ,boolean isAdd);
 }

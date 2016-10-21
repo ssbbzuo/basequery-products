@@ -76,4 +76,7 @@
 	<dubbo:service interface="com.eenet.basequery.pri.UserInfoService" ref="userInfoService" />
 	<!-- 树形权限-->
 	<dubbo:service interface="com.eenet.basequery.pri.PriTreeService" ref="priTreeService" />
+	
+	<!-- 账户信息-->
+	<dubbo:service interface="com.eenet.basequery.pri.AccountInfoService" ref="accountInfoService" />
 </beans>

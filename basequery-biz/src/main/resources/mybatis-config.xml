@@ -48,5 +48,6 @@
         
         <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
         <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  
+        <mapper resource="DBMapping/pri/AccountInfoMapper.xml"/>  
 	</mappers>
 </configuration>

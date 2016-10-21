@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eenet.basequery.pri.UserInfo" >
-	<resultMap type="com.eenet.basequery.pri.UserInfo" id="default">
+<mapper namespace="com.eenet.baseinfo.user.AdminUserInfo" >
+	<resultMap type="com.eenet.baseinfo.user.AdminUserInfo" id="default">
 		<id column="ADMIN_ID" property="atid" jdbcType="VARCHAR" />
 		<result column="CREATED_DT" property="crdt" jdbcType="TIMESTAMP" />
 	    <result column="CREATED_BY" property="crps" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
 	
-	<insert id="insert" parameterType="com.eenet.basequery.pri.UserInfo">
+	<insert id="insert" parameterType="com.eenet.baseinfo.user.AdminUserInfo">
 		<![CDATA[
 		INSERT INTO DM_ADMIN_INFO(
 			ADMIN_ID, CREATED_BY, CREATED_SID, REMARK,
@@ -92,7 +92,7 @@
 		)
 		]]>
 	</insert>
-	<update id="update" parameterType="com.eenet.basequery.pri.UserInfo" >
+	<update id="update" parameterType="com.eenet.baseinfo.user.AdminUserInfo" >
 		<![CDATA[
 		UPDATE DM_ADMIN_INFO SET
 			UPDATED_DT = ]]><include refid="com.eenet.base.${db.type}.current_function" /><![CDATA[,
