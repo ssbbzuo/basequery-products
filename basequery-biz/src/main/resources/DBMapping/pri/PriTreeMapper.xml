@@ -103,7 +103,7 @@
 				'false' isParent
 			FROM
 				dm_staff_info 
-			WHERE 1=1 
+			WHERE 1=1  and IS_DELETED='N' and STAFF_NAME is not null  order by STAFF_NAME DESC
 		]]>
 <!-- 		<include refid="com.eenet.base.${db.type}.query_quote" /> -->
 	</select>

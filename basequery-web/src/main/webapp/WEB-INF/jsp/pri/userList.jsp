@@ -33,31 +33,30 @@
 	    </div>
     
       <div class="form-horizontal oh slide_box">
-        <div class="row reset-form-horizontal pad-t15">
-          
-       <div class="col-md-12	">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label col-sm-3">用户姓名</label>
-              <div class="col-sm-9">
-              	<input type="hidden"  value="name"  name="conditions[0].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[0].rangeType"/> 
-                 <input type="text" class="form-control "  value="${queryCondition.conditions[0].rangeFrom}"   name="conditions[0].rangeFrom">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label col-sm-3">用户编码</label>
-              <div class="col-sm-9">
-              	<input type="hidden"  value="adminCode"  name="conditions[1].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[1].rangeType"/> 
-                 <input type="text" class="form-control "  value="${queryCondition.conditions[1].rangeFrom}"   name="conditions[1].rangeFrom">
-              </div>
-            </div>
-          </div>
-         
-        </div>
+     	 	<div class="row reset-form-horizontal pad-t15">
+	       <div class="col-md-12">
+	          <div class="col-md-12">
+	            <div class="form-group">
+	              <label class="control-label col-sm-3">用户姓名</label>
+	              <div class="col-sm-9">
+	              	<input type="hidden"  value="name"  name="conditions[0].fieldName"/> 
+	              	<input type="hidden"  value="INCLUDE"  name="conditions[0].rangeType"/> 
+	                 <input type="text" class="form-control "  value="${queryCondition.conditions[0].rangeFrom}"   name="conditions[0].rangeFrom">
+	              </div>
+	            </div>
+	          </div>
+	          
+	          <div class="col-md-12">
+	            <div class="form-group">
+	              <label class="control-label col-sm-3">用户编码</label>
+	              <div class="col-sm-9">
+	              	<input type="hidden"  value="adminCode"  name="conditions[1].fieldName"/> 
+	              	<input type="hidden"  value="INCLUDE"  name="conditions[1].rangeType"/> 
+	                 <input type="text" class="form-control "  value="${queryCondition.conditions[1].rangeFrom}"   name="conditions[1].rangeFrom">
+	              </div>
+	            </div>
+	          </div>
+	        </div>
       </div>
     </div> 
     </div> 
@@ -80,56 +79,56 @@
     
     <div class="box-body">
       <table id="dtable" class="table table-bordered table-striped table-container">
-      <thead>
-        <tr>
-        <th><input type="checkbox" class="select-all"></th>
-        <th>用户</th>     
-        <th>用户编码</th>
-        <th>手机号</th>
-        <th>邮箱</th>
-        <th>EE</th>
-        <th>办公室电话</th>
-        <th>身份证</th>
-        <th>出生日期</th>
-        <th>性别</th>
-        <th>单位</th>
-        <th>住址</th>
-        <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <c:choose>
-        	<c:when test="${not empty resultMap.resultSet }">
-	        	<c:forEach items="${resultMap.resultSet }"  var="resultSet">
-			        <tr>
-						<td><input type="checkbox"></td>
-						<td>${resultSet.name }</td>
-						<td>${resultSet.adminCode }</td>
-						<td>${resultSet.mobile }</td>
-						<td>${resultSet.email }</td>
-						<td>${resultSet.ee }</td>
-						<td>${resultSet.companyTele }</td>
-						<td>${resultSet.idCard }</td>
-						<td><fmt:formatDate  value="${resultSet.birthday }"  type="both" pattern="yyyy-MM-dd " /></td>
-						<td>
-							<c:choose>
-								<c:when test="${resultSet.sex=='M' }">男</c:when>
-								<c:when test="${resultSet.sex=='F' }">女</c:when>
-								<c:when test="${resultSet.sex=='S' }">保密</c:when>
-								<c:otherwise>未知</c:otherwise>
-							</c:choose>
-						 </td>
-						<td>${resultSet.unitCode }</td>
-						<td>${resultSet.address }</td>
-						<td><a onclick="setPass('${resultSet.atid }')">设置密码</a> <a onclick="createAccount('${resultSet.atid }')">创建账号</a>  <a onclick="setRole('${resultSet.atid }')">选择角色</a> <a onclick="setDataPri('${resultSet.atid }')">数据授权</a></td>
-			        </tr>
-	          	</c:forEach>
-          	</c:when>
-          	<c:otherwise>
-          			<td colspan="15"  align="center">暂无数据</td>
-          	</c:otherwise>
-           </c:choose>
-      </tbody>
+	      <thead>
+	        <tr>
+	        <th><input type="checkbox" class="select-all"></th>
+	        <th>用户</th>     
+	        <th>用户编码</th>
+	        <th>手机号</th>
+	        <th>邮箱</th>
+	        <th>EE</th>
+	        <th>办公室电话</th>
+	        <th>身份证</th>
+	        <th>出生日期</th>
+	        <th>性别</th>
+	        <th>单位</th>
+	        <th>住址</th>
+	        <th>操作</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <c:choose>
+	        	<c:when test="${not empty resultMap.resultSet }">
+		        	<c:forEach items="${resultMap.resultSet }"  var="resultSet">
+				        <tr>
+							<td><input type="checkbox"></td>
+							<td>${resultSet.name }</td>
+							<td>${resultSet.adminCode }</td>
+							<td>${resultSet.mobile }</td>
+							<td>${resultSet.email }</td>
+							<td>${resultSet.ee }</td>
+							<td>${resultSet.companyTele }</td>
+							<td>${resultSet.idCard }</td>
+							<td><fmt:formatDate  value="${resultSet.birthday }"  type="both" pattern="yyyy-MM-dd " /></td>
+							<td>
+								<c:choose>
+									<c:when test="${resultSet.sex=='M' }">男</c:when>
+									<c:when test="${resultSet.sex=='F' }">女</c:when>
+									<c:when test="${resultSet.sex=='S' }">保密</c:when>
+									<c:otherwise>未知</c:otherwise>
+								</c:choose>
+							 </td>
+							<td>${resultSet.unitCode }</td>
+							<td>${resultSet.address }</td>
+							<td><a onclick="setPass('${resultSet.atid }')">设置密码</a> <a onclick="createAccount('${resultSet.atid }')">创建账号</a>  <a onclick="setRole('${resultSet.atid }')">选择角色</a> <a onclick="setDataPri('${resultSet.atid }')">数据授权</a></td>
+				        </tr>
+		          	</c:forEach>
+	          	</c:when>
+	          	<c:otherwise>
+	          			<td colspan="15"  align="center">暂无数据</td>
+	          	</c:otherwise>
+	           </c:choose>
+	      </tbody>
       </table>
     
       <jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
