@@ -1,7 +1,6 @@
 package com.eenet.basequery.pri;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.dubbo.rpc.Result;
+import com.eenet.authen.AdminUserCredential;
+import com.eenet.authen.AdminUserCredentialBizService;
+import com.eenet.base.SimpleResponse;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.ConditionItem;
 import com.eenet.base.query.QueryCondition;
 import com.eenet.base.query.RangeType;
+import com.eenet.baseinfo.user.AdminUserInfo;
+import com.eenet.baseinfo.user.AdminUserInfoBizService;
+import com.eenet.basequery.authen.AuthenUtils;
+import com.eenet.basequery.authen.Constant;
 import com.eenet.basequery.page.Pagination;
-import com.eenet.common.OPOwner;
 import com.eenet.util.EEBeanUtils;
 
 @Controller
@@ -25,12 +31,18 @@ public class PriDataController {
 	@Autowired
 	private PriTreeService priTreeService;
 	
+	@Autowired
+	private AdminUserCredentialBizService adminUserCredentialBizService;
+	
+	@Autowired
+	private AdminUserInfoBizService adminUserInfoBizService;
+	
 	
 	@RequestMapping(value="/userList")
 	public String userList(QueryCondition queryCondition,Pagination pagination ,Model model){
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
-		SimpleResultSet<UserInfo>  result =  userInfoService.getUserInfo(queryCondition);
+		SimpleResultSet<AdminUserInfo>  result =  userInfoService.getUserInfo(queryCondition);
 		model.addAttribute("resultMap", result);
 		pagination.setTotal(result.getCount());
 		model.addAttribute("pagination", pagination);
@@ -40,8 +52,13 @@ public class PriDataController {
 	
 	@RequestMapping(value="/saveUser")
 	@ResponseBody
-	public UserInfo saveUser(UserInfo userInfo,Model model){
-		return userInfoService.save(userInfo);
+	public AdminUserInfo saveUser(AdminUserInfo userInfo,Model model){
+		
+		AdminUserInfo result = adminUserInfoBizService.save(userInfo);
+		if (result.isSuccessful()) {
+			userInfoService.save(result,true);
+		}
+		return result;
 	}
 	
 	
@@ -52,7 +69,7 @@ public class PriDataController {
 	
 	@RequestMapping(value="/setPri")
 	public String setPri(String id,Model model){
-		UserInfo userInfo = userInfoService.getUserInfoByPK(id);
+		AdminUserInfo userInfo = userInfoService.getUserInfoByPK(id);
 		model.addAttribute("resultMap", userInfo);
 		return "pri/setPri";
 	}
@@ -176,4 +193,25 @@ public class PriDataController {
 		
 		return priTreeService.getPriTreeByType(uid, privilegeType);
 	}
+	
+	
+	
+	@RequestMapping(value="/initAdminUserLoginPassword")
+	@ResponseBody
+	public SimpleResponse initAdminUserLoginPassword(AdminUserCredential credential){
+		
+		try {
+			String encryptedPass = AuthenUtils.encrypt(credential.getPassword() + "##" + System.currentTimeMillis());
+			credential.setPassword(encryptedPass);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return adminUserCredentialBizService.initAdminUserLoginPassword(credential);
+	}
+	
+	
+	
+	
 }

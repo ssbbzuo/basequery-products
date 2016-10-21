@@ -8,15 +8,20 @@ public class Constant {
 	public static final String adminAccount = "datacenter.manager";//平台超级管理员账号
 	public static final String adminPassword = "datacenter79";//平台超级管理员密码
 	
-//	public static String secutiryURL = "http://172.16.146.152:8080/security-api";//测试环境
-//	public static String baseInfoURL = "http://172.16.146.152:8080/baseinfo-openapi";//测试环境
-
-	private static String secutiryURL = "http://security-api.open.gzedu.com";//生成环境
-	private static String baseInfoURL = "http://baseinfo-api.open.gzedu.com";//生成环境
+	public static String secutiryURL = "http://172.16.146.152:8080/security-api";//测试环境
+	public static String baseInfoURL = "http://172.16.146.152:8080/baseinfo-openapi";//测试环境
+//
+//	private static String secutiryURL = "http://security-api.open.gzedu.com";//生成环境
+//	private static String baseInfoURL = "http://baseinfo-api.open.gzedu.com";//生成环境
 
 	public static String getAdminSignOnGrantURL = secutiryURL+"/getAdminSignOnGrant";
 	public static String getAdminAccessTokenURL = secutiryURL+"/getAdminAccessToken";
 	public static String getAdminUserURL = baseInfoURL+"/getAdminUser";
+	public static String saveAdminUserUrl = baseInfoURL+"/saveAdminUser";
+	public static String registeAdminUserLoginAccount = baseInfoURL+"/registeAdminUserLoginAccount";
+	public static String initAdminUserLoginPassword = baseInfoURL+"/initAdminUserLoginPassword";
+	public static String changeAdminUserLoginPassword = baseInfoURL+"/changeAdminUserLoginPassword";
+	
 	
 	
 	public static String adminUserLoginInfoSession = "adminUserLoginInfo";

@@ -21,5 +21,11 @@
 		<artifactId>base-pojo</artifactId>
 		<version>${dev-framework.version}</version>
 	</dependency>
+	
+		<dependency>
+			<groupId>eenet.security.oauth2</groupId>
+			<artifactId>pojo</artifactId>
+			<version>${authen-framework.version}</version>
+		</dependency>
   </dependencies>
 </project>

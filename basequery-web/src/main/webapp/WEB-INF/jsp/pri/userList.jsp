@@ -21,10 +21,13 @@
   </ol>
 </section>
    -->
+   
+   
+   
 <section class="content">
   <div class="box">
      <div class="box-body">
-     <form method="post">
+     <form method="post" id="form">
 	    <div class="box-footer fr left120" style="border-top:0;">
 	      <div><button type="button" class="btn btn-primary">搜索</button></div>
 	    </div>
@@ -63,7 +66,7 @@
   <div class="box margin-bottom-none">
     <div class="box-header ">
       <div class="fr">
-        <button class="btn   btn-success btn-outport" onclick="createUser()"><i class="fa fa-fw fa-sign-out"></i>新增用户</button>
+        <button type="button" class="btn   btn-success btn-outport" onclick="createUser()"><i class="fa fa-fw fa-sign-out"></i>新增用户</button>
       </div>
     </div>
     
@@ -113,13 +116,18 @@
            </c:choose>
       </tbody>
       </table>
+    
       <jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
+     
     </form>
-    
-    
-    
-          
-      
+    </div>
+</div>
+  </div>
+<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
+
+</section>
+
+
    <div id="add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -231,7 +239,6 @@
                     </div>
                 </div>
                 <div class="modal-footer bg-info">
-                    <input type="hidden" id="ID" name="ID" />
                     <button type="button" class="btn blue" onclick="addUser()">确定</button>
                     <button type="button" class="btn green" data-dismiss="modal">取消</button>
                 </div>
@@ -239,13 +246,44 @@
         </div>
     </div>
 </div>
-    
-    
+
+
+
+
+ <div id="init" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <i class="icon-pencil"></i>
+                    <span id="lblAddTitle" style="font-weight:bold">初始化密码</span>
+                </h4>
+            </div>
+            <form class="form-horizontal form-bordered form-row-strippe" id="initForm" action="initAdminUserLoginPassword" data-toggle="validator" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                    <input id="atid" name="adminUser.atid" type="hidden" class="form-control"  />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">密码：</label>
+                                <div class="col-md-8">
+                                    <input id="name" name="password" type="password" class="form-control"  />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-info">
+                    <button type="button" class="btn blue" onclick="initAdminUserLoginPassword()">确定</button>
+                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-  </div>
-<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
-</section>
+
+         
 </body>
 <script>
     $("#createdDtId01").datepicker({language: 'zh-CN', autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
@@ -262,9 +300,26 @@
     });
     
     
-    function setPass(id){
+ 	function setPass (id){
+ 		$("#initForm")[0].reset();
+ 		$("#atid").val(id);
+ 		 $("#init").modal("show");
+    }
+    
+    
+    function initAdminUserLoginPassword(){
+    	 $.post("<%=request.getContextPath() %>/initAdminUserLoginPassword",  $("#initForm").serialize(),
+  			   function(data){
+		  		   $("#init").modal("hide");
+		  	}, "json");
+		    	
     }
     function createAccount(id){
+    	//window.location.href="<%=request.getContextPath() %>/setPri?id="+id; 
+    	
+    	
+    	//
+    	window.location.href="<%=request.getContextPath() %>/accountList?conditions[0].fieldName=userInfo.atid&conditions[0].rangeType=EQUAL&conditions[0].rangeFrom="+id; 
     }
     function setRole(id){
     }
@@ -274,17 +329,17 @@
     
     
    function createUser(){
+	   $("#ffAdd")[0].reset();
 	   $("#add").modal("show");
    }
    
    function addUser(){
-	  alert("begin");
-	   
 	   $.post("<%=request.getContextPath() %>/saveUser",  $("#ffAdd").serialize(),
 			   function(data){
 		   $("#add").modal("hide");
+		   $("#form").submit();
 	}, "json");
-   }
+  }
     
     
 
