@@ -171,4 +171,9 @@
 			<property name="RedisClient" ref="RedisClient"/>
 			<property name="priTreeDaoService" ref="priTreeDaoService" />
 	</bean>
+	
+	<!-- 账户信息 -->
+	<bean id="accountInfoService" class="com.eenet.basequery.pri.AccountInfoServiceImpl">
+			<property name="baseDAOService" ref="GenericDAO" />
+	</bean>
 </beans>

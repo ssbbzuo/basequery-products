@@ -8,7 +8,6 @@ import com.eenet.base.SimpleResultSet;
 import com.eenet.base.dao.BaseDAOImpl;
 import com.eenet.base.query.QueryCondition;
 import com.eenet.basequery.pri.PriTree;
-import com.eenet.basequery.pri.Privilege;
 import com.eenet.basequery.pri.PrivilegeType;
 import com.eenet.basequery.pri.dao.PriTreeDaoService;
 import com.eenet.common.exception.DBOPException;

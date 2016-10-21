@@ -22,6 +22,7 @@
    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<dev-framework.version>1.11</dev-framework.version>
+	<base-info.version>1.06</base-info.version>
 	<spring.version>4.2.2.RELEASE</spring.version>
 	<dubbo.version>2.5.3</dubbo.version>
 	<servlet.version>3.1.0</servlet.version>

@@ -2,22 +2,26 @@ package com.eenet.basequery.pri;
 
 import java.util.ArrayList;
 
+import com.eenet.authen.AdminUserLoginAccount;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.biz.BackupData;
 import com.eenet.base.biz.BizShadowForBackup;
+import com.eenet.base.biz.BizShadowForSave;
 import com.eenet.base.biz.SimpleBizImpl;
 import com.eenet.base.query.OrderBy;
 import com.eenet.base.query.QueryCondition;
 import com.eenet.base.query.Rank;
-import com.eenet.baseinfo.user.AdminUserInfo;
 import com.eenet.common.BackupUpdatedData;
 import com.eenet.common.OPOwner;
+import com.eenet.common.exception.DBOPException;
+import com.eenet.common.exception.MyRuntimeException;
+import com.eenet.util.EEBeanUtils;
 
-public class UserInfoServiceImpl  extends SimpleBizImpl implements UserInfoService  {
+public class AccountInfoServiceImpl extends SimpleBizImpl implements AccountInfoService {
 
 	@Override
-	public SimpleResultSet<AdminUserInfo> getUserInfo(QueryCondition condition) {
-		if(condition.getOrderBySet()== null ||condition.getOrderBySet().isEmpty()){
+	public SimpleResultSet<AdminUserLoginAccount> getAccountInfo(QueryCondition condition) {
+		if (condition.getOrderBySet() == null || condition.getOrderBySet().isEmpty()) {
 			ArrayList<OrderBy> orderList = new ArrayList<OrderBy>();
 			OrderBy order = new OrderBy();
 			order.setAttName("crdt");
@@ -27,14 +31,15 @@ public class UserInfoServiceImpl  extends SimpleBizImpl implements UserInfoServi
 		}
 		return super.query(condition);
 	}
-	
+
 	@Override
-	public AdminUserInfo getUserInfoByPK(String pk) {
+	public AdminUserLoginAccount getAccountInfoByPK(String pk) {
 		return super.get(pk);
 	}
-	
+
 	@Override
-	public AdminUserInfo  save(AdminUserInfo m ,boolean isAdd){
+	public AdminUserLoginAccount save(AdminUserLoginAccount m, boolean isAdd) {
+
 		if (m == null)
 			return null;
 
@@ -59,13 +64,9 @@ public class UserInfoServiceImpl  extends SimpleBizImpl implements UserInfoServi
 			m.addMessage(e.toString());
 		}
 		return m;
-		//return super.save(m);
+		// return super.save(m);
 	}
-	@Override
-	public Class<AdminUserInfo> getPojoCLS() {
-		return AdminUserInfo.class;
-	}
-	
+
 	private <M> void backup(String atid, M m) {
 		if (!(m instanceof BackupUpdatedData))// 这是数据不需要备份
 			return;
@@ -74,5 +75,10 @@ public class UserInfoServiceImpl  extends SimpleBizImpl implements UserInfoServi
 		backup.setBackup4("update");
 		backup.addAtids(atid);
 		new BizShadowForBackup(getNotLimitedDAOService()).executeBackup(backup, m.getClass().getName() + ".backup");
+	}
+
+	@Override
+	public Class<AdminUserLoginAccount> getPojoCLS() {
+		return AdminUserLoginAccount.class;
 	}
 }
