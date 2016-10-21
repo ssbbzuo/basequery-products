@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd   
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 定义数据传输加密公钥 --><!-- openapi仅被其他应用调用，加密信息由调用者传入，所以无需定义 -->
+	<bean id="TransferRSAEncrypt" class="com.eenet.util.cryptography.RSAEncrypt">
+		<property name="modulus" value="128951193183221034225822737570948469888666421590885614987162582380797352756426542467671046441297008343889791818897096336951333883547706106993937530910572634357960447078042872959529127054187264213720849616059022547779162032875109639419560326484813446402232709792095857078282196324645931652527727698345505904311" />
+		<property name="publicExponent" value="65537" />
+	</bean>
+	
+	<!-- 定义当前服务消费者身份 --><!-- openapi仅被其他应用调用，身份信息由调用者传入，所以无需定义 -->
+	<bean id="AppAuthenIdentifier" class="com.eenet.authen.request.AppAuthenRequest">
+		<property name="appId" value="ED11244595E14383A995E6AB819B77F8" />
+		<property name="appSecretKey" value="pASS77#"/>
+		<property name="redirectURI" value="http://overall-query.gzedu.com"/>
+	</bean>
+	<bean id="IdentityInjectFilter" class="com.eenet.authen.extension.dubbo.IdentityInjectFilter">
+		<property name="appIdentityBeanId" value="AppAuthenIdentifier" /> <!-- openapi仅被其他应用调用，身份信息由调用者传入，所以无需定义 -->
+		<property name="encrypt" ref="TransferRSAEncrypt"/><!-- openapi仅被其他应用调用，加密信息由调用者传入，所以无需定义 -->
+	</bean>
+</beans>

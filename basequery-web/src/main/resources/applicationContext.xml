@@ -10,6 +10,7 @@
 						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<import resource="dubbo.xml"/>
+	<import resource="securityContext.xml"/>
 
 	<import resource="dubbo-basequery-reference.xml"/>
 </beans>

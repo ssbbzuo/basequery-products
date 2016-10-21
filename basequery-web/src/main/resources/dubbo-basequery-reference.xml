@@ -76,4 +76,20 @@
 	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
 	<!-- 权限树信息 -->
 	<dubbo:reference interface="com.eenet.basequery.pri.PriTreeService" id="priTreeService"></dubbo:reference>	
+	
+	<dubbo:reference interface="com.eenet.basequery.pri.AccountInfoService" id="accountInfoService" />
+	
+	<!-- 服务人员登录秘钥服务 -->
+	<dubbo:reference id="AdminUserCredentialBizService" interface="com.eenet.authen.AdminUserCredentialBizService"/>
+	<!-- 服务人员登录账号服务 -->
+	<dubbo:reference id="AdminUserLoginAccountBizService" interface="com.eenet.authen.AdminUserLoginAccountBizService"/>
+	<!-- 服务人员登录服务 -->
+	<dubbo:reference id="AdminUserSignOnBizService" interface="com.eenet.authen.AdminUserSignOnBizService"/>
+	<!-- 身份认证服务 -->
+	<dubbo:reference id="IdentityAuthenticationBizService" interface="com.eenet.authen.IdentityAuthenticationBizService"/>
+	<dubbo:reference id="AdminUserInfoBizService" interface="com.eenet.baseinfo.user.AdminUserInfoBizService"/>
+	
+	
+	
+	
 </beans>										  

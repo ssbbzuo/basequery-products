@@ -21,6 +21,31 @@
     	<artifactId>basequery-service</artifactId>
     	<version>${project.version}</version>
   	</dependency>
+  	
+  	
+  	<dependency>
+			<groupId>eenet.security.oauth2</groupId>
+			<artifactId>service</artifactId>
+			<version>${authen-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eenet.security.oauth2.plugins</groupId>
+			<artifactId>web-plugin</artifactId>
+			<version>${authen-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eenet.security.oauth2.plugins</groupId>
+			<artifactId>dubbo-authen-plugin</artifactId>
+			<version>${authen-framework.version}</version>
+		</dependency>
+		
+		<dependency>
+			  <groupId>eenet.public.baseinfo</groupId>
+  			  <artifactId>baseinfo-service</artifactId>
+   			  <version>${base-info.version}</version>
+		</dependency>
+				
+		
   	<dependency>
   			<groupId>com.eenet.framework</groupId>
   			<artifactId>util</artifactId>
