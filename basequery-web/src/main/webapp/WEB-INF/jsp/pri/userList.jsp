@@ -70,6 +70,14 @@
       </div>
     </div>
     
+	<div id="success" class="alert alert-success" style="display: none">
+		<strong>新增成功！</strong>
+	</div>
+	
+	<div id="error" class="alert alert-danger"   style="display: none">
+		<strong>新增失败！</strong>
+	</div>
+    
     <div class="box-body">
       <table id="dtable" class="table table-bordered table-striped table-container">
       <thead>
@@ -336,8 +344,15 @@
    function addUser(){
 	   $.post("<%=request.getContextPath() %>/saveUser",  $("#ffAdd").serialize(),
 			   function(data){
-		   $("#add").modal("hide");
-		   $("#form").submit();
+		   		if(data.successful){
+		   			$("#success").show();
+		   			$("#error").hide();
+			   		$("#add").modal("hide");
+			   		$("#form").submit();
+		   		}else{
+		   			$("#error").show();
+		   			$("#success").hide();
+		   		}
 	}, "json");
   }
     
