@@ -72,6 +72,37 @@
  <!-- 学员漏斗主表 -->
  <dubbo:reference id="ThemeFunnelStudentService" interface="com.eenet.basequery.chart.ThemeFunnelStudentService"/>   
  
+ <!-- 客户漏斗 待合作客户(WILL) -->
+ <dubbo:reference id="ThemeFunnelCompanyWillCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillCityService"/> 
+ <dubbo:reference id="ThemeFunnelCompanyWillCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillCPService"/>
+ <dubbo:reference id="ThemeFunnelCompanyWillPSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillPSService"/>  
+ <!-- 客户漏斗 同意合作客户(AGREE) -->
+ <dubbo:reference id="ThemeFunnelCompanyAgreeAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeAccountService"/> 
+ <dubbo:reference id="ThemeFunnelCompanyAgreeCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCityService"/>
+ <dubbo:reference id="ThemeFunnelCompanyAgreeCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCPService"/>  
+ <dubbo:reference id="ThemeFunnelCompanyAgreePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreePSService"/>
+ <dubbo:reference id="ThemeFunnelCompanyAgreeStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeStructuresService"/>  
+ <!-- 客户漏斗 确认合作客户(AFFIRM) -->
+ <dubbo:reference id="ThemeFunnelCompanyAffirmAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccountService"/> 
+ <dubbo:reference id="ThemeFunnelCompanyAffirmCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmCityService"/>
+ <dubbo:reference id="ThemeFunnelCompanyAffirmCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmCPService"/>  
+ <dubbo:reference id="ThemeFunnelCompanyAffirmPSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmPSService"/>
+ <dubbo:reference id="ThemeFunnelCompanyAffirmStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmStructuresService"/>  
+ <!-- 客户漏斗 执行计划客户(EXECUTE) -->
+ <dubbo:reference id="ThemeFunnelCompanyExecuteAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteAccountService"/> 
+ <dubbo:reference id="ThemeFunnelCompanyExecuteCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteCityService"/>
+ <dubbo:reference id="ThemeFunnelCompanyExecuteCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteCPService"/>  
+ <dubbo:reference id="ThemeFunnelCompanyExecutePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecutePSService"/>
+ <dubbo:reference id="ThemeFunnelCompanyExecuteStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteStructuresService"/>
+ <!-- 客户漏斗 产单客户(PRODUCE) -->
+ <dubbo:reference id="ThemeFunnelCompanyProduceAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceAccountService"/> 
+ <dubbo:reference id="ThemeFunnelCompanyProduceCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceCityService"/>
+ <dubbo:reference id="ThemeFunnelCompanyProduceCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceCPService"/>  
+ <dubbo:reference id="ThemeFunnelCompanyProducePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProducePSService"/>
+ <dubbo:reference id="ThemeFunnelCompanyProduceStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceStructuresService"/>    
+ <!-- 客户漏斗主表 -->
+ <dubbo:reference id="ThemeFunnelCompanyService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyService"/>  
+ 
  <!-- 用户信息 -->
 	<dubbo:reference interface="com.eenet.basequery.pri.UserInfoService" id="userInfoService" />
 	<!-- 权限树信息 -->

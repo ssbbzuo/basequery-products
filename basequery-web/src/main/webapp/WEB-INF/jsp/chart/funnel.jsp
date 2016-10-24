@@ -250,8 +250,8 @@
 	//设置容器高宽
 	resizeWorldMapContainer();	
 	
-	var myChart01 = echarts.init(worldMapContainer01);
-	var myChart02 = echarts.init(worldMapContainer02,'macarons');
+	var myChart01 = echarts.init(worldMapContainer01,'infographic');
+	var myChart02 = echarts.init(worldMapContainer02);
 	var myChart03 = echarts.init(worldMapContainer03);
 	
 	
@@ -864,8 +864,10 @@
 	//生成漏斗图
 	myChart01.setOption(option = {			
 		    tooltip: {
-		        trigger: 'item',
-		        formatter: "{b} : {c}"
+		        formatter: "{b} : {c}",
+                textStyle:{
+                	color:'#fff'
+                }
 		    },
 		    toolbox: {		    			    
 		        orient:'vertical',
@@ -887,17 +889,21 @@
 		            top: 60,				     
 		            bottom: 60,
 		            width: '80%',
-		            sort: 'descending',
+		            sort: 'funnel',
 		            gap: 10,
 		            label: {
 		                normal: {
 		                    show: true,
 		                    position: 'inside',
-		                    formatter: "{b} : {c}"
+		                    formatter: "{b} : {c}",
+		                    textStyle:{
+		                    	color:'#000'
+		                    }
 		                },
 		                emphasis: {
 		                    textStyle: {
-		                        fontSize: 20
+		                        fontSize: 20,
+		                        color:'#000'
 		                    }
 		                }
 		            },
@@ -936,7 +942,10 @@
 		        {
 		            name: '业务指标',
 		            type: 'gauge',
-		            detail: {formatter:'{value}%'},
+		            detail: {
+		            	formatter:'{value}%',
+		            	offsetCenter: [0, '60%'] 
+		            	},
 		            data: eval("("+strGauge+ ")")
 		        }
 		    ]
@@ -985,7 +994,10 @@
 		            label: {
 		                normal: {
 		                    show: true,
-		                    position: 'inside'
+		                    position: 'inside',
+		                    textStyle:{
+		                    	color:'#000'
+		                    }
 		                }
 		            },
 		            data:eval("("+strSuccess+ ")")

@@ -40343,9 +40343,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (var i = 0, len = data.count(); i < len; i++) {
 	            indices[i] = i;
 	        }
-	        indices.sort(function (a, b) {
-	            return isAscending ? valueArr[a] - valueArr[b] : valueArr[b] - valueArr[a];
-	        });
+			if(sort != 'funnel'){
+					indices.sort(function (a, b) {
+						return isAscending ? valueArr[a] - valueArr[b] : valueArr[b] - valueArr[a];
+					});
+				}
 	        return indices;
 	    }
 
@@ -40420,7 +40422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var sort = seriesModel.get('sort');
 	            var viewRect = getViewRect(seriesModel, api);
 	            var indices = getSortedIndices(data, sort);
-
+				
 	            var sizeExtent = [
 	                parsePercent(seriesModel.get('minSize'), viewRect.width),
 	                parsePercent(seriesModel.get('maxSize'), viewRect.width)
@@ -40462,7 +40464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    [x0 + itemWidth, offY]
 	                ];
 	            };
-
+				
 	            if (sort === 'ascending') {
 	                // From bottom to top
 	                itemHeight = -itemHeight;
@@ -40470,7 +40472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                y += viewRect.height;
 	                indices = indices.reverse();
 	            }
-
+				
 	            for (var i = 0; i < indices.length; i++) {
 	                var idx = indices[i];
 	                var nextIdx = indices[i + 1];
@@ -40478,11 +40480,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var end = getLinePoints(nextIdx, y + itemHeight);
 
 	                y += itemHeight + gap;
-
 	                data.setItemLayout(idx, {
 	                    points: start.concat(end.slice().reverse())
 	                });
 	            }
+				
 
 	            labelLayout(data);
 	        });

@@ -43,8 +43,38 @@
         <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterMapper.xml"/>            
         <mapper resource="DBMapping/chart/ThemeFunnelSellCompanyMapper.xml"/>  
         <mapper resource="DBMapping/chart/ThemeFunnelSellLearnCenterUserMapper.xml"/>    
-        <!-- 漏斗主图 -->
+        <!-- 学员漏斗主图 -->
         <mapper resource="DBMapping/chart/ThemeFunnelStudentMapper.xml"/>   
+        <!-- 客户漏斗 待合作客户(WILL) -->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillCityMapper.xml"/>     
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillCPMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillPSMapper.xml"/>  
+        <!-- 客户漏斗 同意合作客户(AGREE)-->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeAccountMapper.xml"/>     
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeCityMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeCPMapper.xml"/>       
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreePSMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeStructuresMapper.xml"/>    
+        <!-- 客户漏斗 确认合作客户(AFFIRM)-->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmAccountMapper.xml"/>     
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmCityMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmCPMapper.xml"/>       
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmPSMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmStructuresMapper.xml"/>                   
+        <!-- 客户漏斗 执行计划客户(EXECUTE)-->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyExecuteAccountMapper.xml"/>     
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyExecuteCityMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyExecuteCPMapper.xml"/>       
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyExecutePSMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyExecuteStructuresMapper.xml"/>       
+        <!-- 客户漏斗 产单客户(PRODUCE)-->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProduceAccountMapper.xml"/>     
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProduceCityMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProduceCPMapper.xml"/>       
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProducePSMapper.xml"/>            
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProduceStructuresMapper.xml"/>    
+        <!-- 客户漏斗主图 -->
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyMapper.xml"/>                 
         
         <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
         <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  

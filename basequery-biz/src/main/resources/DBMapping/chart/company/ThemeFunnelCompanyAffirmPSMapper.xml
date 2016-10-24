@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmPS" >
+	<resultMap type="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmPS" id="default">
+		<result column="DIM_PERSONS_SCALE" property="DIM_PERSONS_SCALE" jdbcType="VARCHAR" />
+		<result column="AGREE_COUNT" property="AGREE_COUNT" jdbcType="VARCHAR" />
+		<result column="AFFIRM_COUNT" property="AFFIRM_COUNT" jdbcType="VARCHAR" />
+		<result column="AFFIRM_PER" property="AFFIRM_PER" jdbcType="VARCHAR" />				
+		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM (
+			SELECT 	SUM(AGREE_COUNT) AS AGREE_COUNT,
+							SUM(AFFIRM_COUNT) AS AFFIRM_COUNT,
+							CONCAT(FORMAT(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_COUNT)*100,0),2),'%') AS AFFIRM_PER,
+							DIM_PERSONS_SCALE
+			FROM DM_FACT_FUNNEL_COMPANY_AFFIRM_PERSONS_SCALE
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_PERSONS_SCALE)S
+		]]>		
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT 	SUM(AGREE_COUNT) AS AGREE_COUNT,
+							SUM(AFFIRM_COUNT) AS AFFIRM_COUNT,
+							CONCAT(FORMAT(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_COUNT)*100,0),2),'%') AS AFFIRM_PER,
+							DIM_PERSONS_SCALE
+			FROM DM_FACT_FUNNEL_COMPANY_AFFIRM_PERSONS_SCALE
+			WHERE 1=1 		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			GROUP BY DIM_PERSONS_SCALE
+		]]>
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>

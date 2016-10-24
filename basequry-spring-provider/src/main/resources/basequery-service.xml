@@ -156,6 +156,88 @@
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean>
  
+ 
+  <!-- 待合作客户(WILL) -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillCityServiceImpl" id="ThemeFunnelCompanyWillCityService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillCPServiceImpl" id="ThemeFunnelCompanyWillCPService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillPSServiceImpl" id="ThemeFunnelCompanyWillPSService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+  <!-- 同意合作客户(AGREE) -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeAccountServiceImpl" id="ThemeFunnelCompanyAgreeAccountService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCityServiceImpl" id="ThemeFunnelCompanyAgreeCityService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCPServiceImpl" id="ThemeFunnelCompanyAgreeCPService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreePSServiceImpl" id="ThemeFunnelCompanyAgreePSService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeStructuresServiceImpl" id="ThemeFunnelCompanyAgreeStructuresService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>  
+  <!-- 确认合作客户(AFFIRM) -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccountServiceImpl" id="ThemeFunnelCompanyAffirmAccountService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmCityServiceImpl" id="ThemeFunnelCompanyAffirmCityService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmCPServiceImpl" id="ThemeFunnelCompanyAffirmCPService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmPSServiceImpl" id="ThemeFunnelCompanyAffirmPSService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmStructuresServiceImpl" id="ThemeFunnelCompanyAffirmStructuresService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>   
+  <!-- 执行计划客户(EXECUTE) -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteAccountServiceImpl" id="ThemeFunnelCompanyExecuteAccountService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteCityServiceImpl" id="ThemeFunnelCompanyExecuteCityService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteCPServiceImpl" id="ThemeFunnelCompanyExecuteCPService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecutePSServiceImpl" id="ThemeFunnelCompanyExecutePSService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyExecuteStructuresServiceImpl" id="ThemeFunnelCompanyExecuteStructuresService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>   
+  <!-- 产单客户(PRODUCE) -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceAccountServiceImpl" id="ThemeFunnelCompanyProduceAccountService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceCityServiceImpl" id="ThemeFunnelCompanyProduceCityService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceCPServiceImpl" id="ThemeFunnelCompanyProduceCPService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyProducePSServiceImpl" id="ThemeFunnelCompanyProducePSService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceStructuresServiceImpl" id="ThemeFunnelCompanyProduceStructuresService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+  <!--  客户漏斗主表 -->
+ <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyServiceImpl" id="ThemeFunnelCompanyService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+
+ 
+ 
  	<bean id="priTreeDaoService" class="com.eenet.basequery.pri.dao.impl.PriTreeDaoServiceImpl">
  		<property name="batisSession" ref="batisSession" />
  	</bean>
