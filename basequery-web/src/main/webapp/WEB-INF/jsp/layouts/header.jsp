@@ -63,7 +63,7 @@
                     <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>主题分析数据</span> <i class="fa fa-angle-left pull-right"></i> </a>
 		                   <ul class="treeview-menu menu-open" style="display: none;">
 				            <li class="treeview"> <a href="<%=request.getContextPath() %>/getFunnel"> <i class="fa fa-cubes"></i> <span>学员漏斗分析</span> <i class="fa fa-angle-left pull-right"></i> </a>
-                    		</li>
+                    		</li>                   		
 				          </ul>
                     </li>
                      <li class="treeview">
@@ -117,6 +117,12 @@
 				            <li><a href="<%=request.getContextPath() %>/salecustomerfollow/query"><i class="fa fa-user"></i>客户跟进信息</a></li>
 				          </ul>
                     </li>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>主题分析数据</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				            <li class="treeview"> <a href="<%=request.getContextPath() %>/getCompanyFunnel"> <i class="fa fa-cubes"></i> <span>客户漏斗分析</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                    		</li>                    		
+				          </ul>
+                    </li>                    
                   </ul>
                 </li>
                 

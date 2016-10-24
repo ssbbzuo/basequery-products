@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.company.ThemeFunnelCompany" >
+	<resultMap type="com.eenet.basequery.chart.company.ThemeFunnelCompany" id="default">		
+		<result column="FUNNEL_WILL_COUNT" property="FUNNEL_WILL_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AGREE_COUNT" property="FUNNEL_AGREE_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AFFIRM_COUNT" property="FUNNEL_AFFIRM_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_EXECUTE_COUNT" property="FUNNEL_EXECUTE_COUNT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_PRODUCE_COUNT" property="FUNNEL_PRODUCE_COUNT" jdbcType="VARCHAR" />		
+			
+		<result column="FUNNEL_WILL_PER" property="FUNNEL_WILL_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AGREE_PER" property="FUNNEL_AGREE_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AFFIRM_PER" property="FUNNEL_AFFIRM_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_EXECUTE_PER" property="FUNNEL_EXECUTE_PER" jdbcType="VARCHAR" />
+		<result column="FUNNEL_PRODUCE_PER" property="FUNNEL_PRODUCE_PER" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_WILL_WANT" property="FUNNEL_WILL_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_WILL_SUCCESS" property="FUNNEL_WILL_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_WILL_LOST" property="FUNNEL_WILL_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_AGREE_WANT" property="FUNNEL_AGREE_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AGREE_SUCCESS" property="FUNNEL_AGREE_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AGREE_LOST" property="FUNNEL_AGREE_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_AFFIRM_WANT" property="FUNNEL_AFFIRM_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AFFIRM_SUCCESS" property="FUNNEL_AFFIRM_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_AFFIRM_LOST" property="FUNNEL_AFFIRM_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_EXECUTE_WANT" property="FUNNEL_EXECUTE_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_EXECUTE_SUCCESS" property="FUNNEL_EXECUTE_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_EXECUTE_LOST" property="FUNNEL_EXECUTE_LOST" jdbcType="VARCHAR" />
+		
+		<result column="FUNNEL_PRODUCE_WANT" property="FUNNEL_PRODUCE_WANT" jdbcType="VARCHAR" />
+		<result column="FUNNEL_PRODUCE_SUCCESS" property="FUNNEL_PRODUCE_SUCCESS" jdbcType="VARCHAR" />
+		<result column="FUNNEL_PRODUCE_LOST" property="FUNNEL_PRODUCE_LOST" jdbcType="VARCHAR" />
+		
+		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM (
+			SELECT	SUM(FUNNEL_WILL_COUNT) AS FUNNEL_WILL_COUNT,											-- 已分配客户数
+							SUM(FUNNEL_AGREE_COUNT) AS FUNNEL_AGREE_COUNT,										-- 同意合作客户数
+							SUM(FUNNEL_AFFIRM_COUNT) AS FUNNEL_AFFIRM_COUNT,									-- 确认合作客户数
+							SUM(FUNNEL_EXECUTE_COUNT) AS FUNNEL_EXECUTE_COUNT,								-- 执行合作客户数
+							SUM(FUNNEL_PRODUCE_COUNT) AS FUNNEL_PRODUCE_COUNT									-- 产单客户数
+			FROM DM_FACT_FUNNEL_COMPANY
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			)S
+		]]>
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT 	FUNNEL_WILL_COUNT,
+							FUNNEL_AGREE_COUNT,
+							FUNNEL_AFFIRM_COUNT,
+							FUNNEL_EXECUTE_COUNT,
+							FUNNEL_PRODUCE_COUNT,
+							-- 
+							convert(FUNNEL_WILL_COUNT/FUNNEL_WILL_COUNT*100,decimal(18,2)) AS FUNNEL_WILL_PER,
+							convert(FUNNEL_AGREE_COUNT/FUNNEL_WILL_COUNT*100,decimal(18,2)) AS FUNNEL_AGREE_PER,
+							convert(FUNNEL_AFFIRM_COUNT/FUNNEL_AGREE_COUNT*100,decimal(18,2)) AS FUNNEL_AFFIRM_PER,
+							convert(FUNNEL_EXECUTE_COUNT/FUNNEL_AFFIRM_COUNT*100,decimal(18,2)) AS FUNNEL_EXECUTE_PER,
+							convert(FUNNEL_PRODUCE_COUNT/FUNNEL_EXECUTE_COUNT*100,decimal(18,2)) AS FUNNEL_PRODUCE_PER,
+							-- 
+							FUNNEL_WILL_COUNT AS FUNNEL_WILL_WANT,
+							FUNNEL_WILL_COUNT AS FUNNEL_WILL_SUCCESS,
+							FUNNEL_WILL_COUNT-FUNNEL_WILL_COUNT AS FUNNEL_WILL_LOST,
+							-- 
+							FUNNEL_WILL_COUNT AS FUNNEL_AGREE_WANT,
+							FUNNEL_AGREE_COUNT AS FUNNEL_AGREE_SUCCESS,
+							FUNNEL_AGREE_COUNT-FUNNEL_WILL_COUNT AS FUNNEL_AGREE_LOST,
+							-- 				
+							FUNNEL_AGREE_COUNT AS FUNNEL_AFFIRM_WANT,
+							FUNNEL_AFFIRM_COUNT AS FUNNEL_AFFIRM_SUCCESS,
+							FUNNEL_AFFIRM_COUNT-FUNNEL_AGREE_COUNT AS FUNNEL_AFFIRM_LOST,
+							-- 
+							FUNNEL_AFFIRM_COUNT AS FUNNEL_EXECUTE_WANT,
+							FUNNEL_EXECUTE_COUNT AS FUNNEL_EXECUTE_SUCCESS,
+							FUNNEL_EXECUTE_COUNT-FUNNEL_AFFIRM_COUNT AS FUNNEL_EXECUTE_LOST,
+							-- 
+							FUNNEL_EXECUTE_COUNT AS FUNNEL_PRODUCE_WANT,
+							FUNNEL_PRODUCE_COUNT AS FUNNEL_PRODUCE_SUCCESS,
+							FUNNEL_PRODUCE_COUNT-FUNNEL_EXECUTE_COUNT AS FUNNEL_PRODUCE_LOST
+			FROM(
+			SELECT	SUM(FUNNEL_WILL_COUNT) AS FUNNEL_WILL_COUNT,											-- 已分配客户数
+							SUM(FUNNEL_AGREE_COUNT) AS FUNNEL_AGREE_COUNT,										-- 同意合作客户数
+							SUM(FUNNEL_AFFIRM_COUNT) AS FUNNEL_AFFIRM_COUNT,									-- 确认合作客户数
+							SUM(FUNNEL_EXECUTE_COUNT) AS FUNNEL_EXECUTE_COUNT,								-- 执行合作客户数
+							SUM(FUNNEL_PRODUCE_COUNT) AS FUNNEL_PRODUCE_COUNT									-- 产单客户数
+			FROM DM_FACT_FUNNEL_COMPANY
+			WHERE 1=1		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<![CDATA[
+			)S
+		]]>		
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>
