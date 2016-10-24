@@ -48,7 +48,7 @@
 				<!-- Redis配置 --><!-- redis://:[PASSWORD]@[IP]:[PORT]/[DB] -->
 				<redis.server.1><![CDATA[redis://:eecn.cn@172.16.146.152:6379]]></redis.server.1>
 				<!-- zookeeper配置 -->
-				<zookeeper.address>172.16.165.76:2181</zookeeper.address>
+				<zookeeper.address>172.16.165.176:2181</zookeeper.address>
 				<dubbo.port>20880</dubbo.port>
 				<!-- 打war包名称 -->
 			</properties>
