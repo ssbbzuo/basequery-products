@@ -69,11 +69,15 @@
 			FROM 
 				DM_SALE_CUSTOMER
 		  WHERE 1=1
-		     	   AND (
-		     	   ( ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR ADMIN_LOGIN_ACCOUNT_ID IS NULL )	
+		     	   AND  (
+		    	(  ADMIN_LOGIN_ACCOUNT_ID  IS NULL   ]]>
+		    <if test="staffId != null "  >
+				        <![CDATA[   OR  ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    
@@ -103,11 +107,15 @@
 			FROM 
 				DM_SALE_CUSTOMER
 		  WHERE 1=1  
-		   		   AND (
-		     	   ( ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR ADMIN_LOGIN_ACCOUNT_ID IS NULL )	
+		   		   AND  (
+		    	(  ADMIN_LOGIN_ACCOUNT_ID  IS NULL   ]]>
+		    <if test="staffId != null "  >
+				        <![CDATA[   OR  ADMIN_LOGIN_ACCOUNT_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="staffId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    

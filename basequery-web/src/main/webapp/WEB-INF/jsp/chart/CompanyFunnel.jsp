@@ -16,10 +16,10 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<div class="col-md-4 grid_box1">		
-						<input id="create_dt_from" type="text" class="form-control"  placeholder="预报读时间从">	
+						<input id="create_dt_from" type="text" class="form-control"  placeholder="创建时间从">	
 					</div>				
 					<div class="col-md-4 grid_box1">				
-							<input id="create_dt_to" type="text" class="form-control"  placeholder="预报读时间至">						
+							<input id="create_dt_to" type="text" class="form-control"  placeholder="创建时间至">						
 					</div>
 					<div class="col-md-3">
 						<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>

@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="page" data-id="0">
-        <iframe src="<%=request.getContextPath() %>/index" frameborder="0" scrolling="auto"  
+        <iframe src="<%=request.getContextPath() %>/getFunnel" frameborder="0" scrolling="auto"  
        					 style="min-height: 1000px;"  allowtransparency="true"></iframe>
     </div> 
   </div>
