@@ -77,15 +77,31 @@
 			FROM
 				DM_LC_ORDERINFO
 		 WHERE 1=1 
-		     	   AND (
-		     	   ( LEARNCENTER_USER_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR LEARNCENTER_USER_ID IS NULL )	]]>
-		      		OR (  LEARNCENTER_ID  IN  
-		    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR LEARNCENTER_ID IS NULL )
+		     	    AND  (
+		    	(  LEARNCENTER_USER_ID IS NULL AND  LEARNCENTER_ID IS NULL  ) ]]>
+		     <if test="learncenterUserId != null  and learncenterId == null "  >
+		        <![CDATA[   OR  (  LEARNCENTER_USER_ID  IN  	]]>
+				    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+						<![CDATA[#{id,jdbcType=VARCHAR}]]>
+				    </foreach>  <![CDATA[   AND LEARNCENTER_ID   IS NULL )  	]]>
+			</if>
+		    <if test="learncenterId != null  and learncenterUserId == null "  >
+				        <![CDATA[   OR  (  LEARNCENTER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach>   <![CDATA[   AND LEARNCENTER_USER_ID   IS NULL )  	]]>
+			   </if>
+		    <if test="learncenterId != null  and learncenterUserId != null "  >
+				        <![CDATA[   OR  (  LEARNCENTER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach>   <![CDATA[   AND 	]]>
+					     <![CDATA[     LEARNCENTER_USER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> <![CDATA[   )	]]>
+			   </if>
+		    <![CDATA[  
 		    	)
 		    ]]>
 		    
@@ -118,15 +134,31 @@
 			FROM
 				DM_LC_ORDERINFO
 		  WHERE 1=1
-		   		   AND (
-		     	   ( LEARNCENTER_USER_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR LEARNCENTER_USER_ID IS NULL )	]]>
-		      		OR (  LEARNCENTER_ID  IN  
-		    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR LEARNCENTER_ID IS NULL )
+		   		     AND  (
+		    	(  LEARNCENTER_USER_ID IS NULL AND  LEARNCENTER_ID IS NULL  ) ]]>
+		     <if test="learncenterUserId != null  and learncenterId == null "  >
+		        <![CDATA[   OR  (  LEARNCENTER_USER_ID  IN  	]]>
+				    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+						<![CDATA[#{id,jdbcType=VARCHAR}]]>
+				    </foreach>  <![CDATA[   AND LEARNCENTER_ID   IS NULL )  	]]>
+			</if>
+		    <if test="learncenterId != null  and learncenterUserId == null "  >
+				        <![CDATA[   OR  (  LEARNCENTER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach>   <![CDATA[   AND LEARNCENTER_USER_ID   IS NULL )  	]]>
+			   </if>
+		    <if test="learncenterId != null  and learncenterUserId != null "  >
+				        <![CDATA[   OR  (  LEARNCENTER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach>   <![CDATA[   AND 	]]>
+					     <![CDATA[    LEARNCENTER_USER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="learncenterUserId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> <![CDATA[   )	]]>
+			   </if>
+		    <![CDATA[  
 		    	)
 		    ]]>
 		    

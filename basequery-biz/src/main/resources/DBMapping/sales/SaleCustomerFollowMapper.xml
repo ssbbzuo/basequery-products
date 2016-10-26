@@ -61,11 +61,15 @@
 			FROM 
 				DM_SALE_CUSTOMERFOLLOW
 		  WHERE 1=1 
-		     	   AND (
-		     	   ( OPERATOR_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR OPERATOR_ID IS NULL )		
+		     	     AND  (
+		    	(  OPERATOR_ID  IS NULL   ]]>
+		    <if test="operatorId != null "  >
+				        <![CDATA[   OR  OPERATOR_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    
@@ -92,11 +96,15 @@
 			FROM 
 				DM_SALE_CUSTOMERFOLLOW
 		  WHERE 1=1 
-		   		 AND (
-		     	   ( OPERATOR_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR OPERATOR_ID IS NULL )		
+		   			     AND  (
+		    	(  OPERATOR_ID  IS NULL   ]]>
+		    <if test="operatorId != null "  >
+				        <![CDATA[   OR  OPERATOR_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="operatorId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    

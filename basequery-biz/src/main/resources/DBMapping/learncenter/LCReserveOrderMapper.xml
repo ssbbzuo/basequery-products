@@ -91,25 +91,35 @@
 			FROM
 				DM_LC_RESERVEORDER
 		 WHERE 1=1
-		     	   AND (
-		     	   ( MARKETER_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR MARKETER_ID IS NULL )	]]>
-		      		OR (  SALEMAN_ID  IN  
-		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
-		     	  	OR (  HEAD_TEACHER_ID  IN  
-		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		     	 AND  (
+		     	 	(MARKETER_ID IS NULL  AND SALEMAN_ID IS NULL AND HEAD_TEACHER_ID IS NULL)
+		   		  OR ( MARKETER_ID IS NULL  AND SALEMAN_ID IS NULL  ]]>
+		   <if test="headTeacherId != null "  >
+		   		<![CDATA[   AND  HEAD_TEACHER_ID  IN  	]]>
+			    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+					<![CDATA[#{id,jdbcType=VARCHAR}]]>
+			    </foreach> 
+		    </if>
+		      <![CDATA[	)	OR (  SALEMAN_ID IS NULL  ]]>
+		     <if test="salemanId != null "  >
+		        <![CDATA[   OR  SALEMAN_ID  IN  	]]>
+				    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+						<![CDATA[#{id,jdbcType=VARCHAR}]]>
+				    </foreach> 
+			</if>
+		     	 <![CDATA[	)OR (  HEAD_TEACHER_ID  IS NULL   ]]>
+		    <if test="headTeacherId != null "  >
+				        <![CDATA[   OR  HEAD_TEACHER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    
 		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
 	</select>
-	
 	
 	<select id="queryList" resultMap="default" parameterType="map">
 		<![CDATA[
@@ -145,18 +155,28 @@
 				DM_LC_RESERVEORDER
 		  WHERE 1=1 
 		   		 AND  (
-		   		  ( MARKETER_ID  IN  	]]>
-		    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR MARKETER_ID IS NULL )	]]>
-		      		OR (  SALEMAN_ID  IN  
-		    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR SALEMAN_ID IS NULL )	]]>
-		     	  	OR (  HEAD_TEACHER_ID  IN  
-		    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
-				<![CDATA[#{id,jdbcType=VARCHAR}]]>
-		    </foreach> <![CDATA[  OR HEAD_TEACHER_ID IS NULL )	
+		   		  ( MARKETER_ID IS NULL ]]>
+		   <if test="marketerId != null "  >
+		   		<![CDATA[   OR  MARKETER_ID  IN  	]]>
+			    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
+					<![CDATA[#{id,jdbcType=VARCHAR}]]>
+			    </foreach> 
+		    </if>
+		      <![CDATA[	)	OR (  SALEMAN_ID IS NULL  ]]>
+		     <if test="salemanId != null "  >
+		        <![CDATA[   OR  SALEMAN_ID  IN  	]]>
+				    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
+						<![CDATA[#{id,jdbcType=VARCHAR}]]>
+				    </foreach> 
+			</if>
+		     	 <![CDATA[	)OR (  HEAD_TEACHER_ID  IS NULL   ]]>
+		    <if test="headTeacherId != null "  >
+				        <![CDATA[   OR  HEAD_TEACHER_ID  IN  	]]>
+					    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
+							<![CDATA[#{id,jdbcType=VARCHAR}]]>
+					    </foreach> 
+			   </if>
+		    <![CDATA[   )	
 		    	)
 		    ]]>
 		    
