@@ -77,11 +77,9 @@
  	<dubbo:service ref="ThemeFunnelCompanyWillCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillCPService"/>
  	<dubbo:service ref="ThemeFunnelCompanyWillPSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyWillPSService"/> 	
  	<!-- 客户漏斗 同意合作客户(AGREE) -->
- 	<dubbo:service ref="ThemeFunnelCompanyAgreeAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeAccountService"/>
  	<dubbo:service ref="ThemeFunnelCompanyAgreeCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCityService"/>
  	<dubbo:service ref="ThemeFunnelCompanyAgreeCPService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCPService"/> 	 
- 	<dubbo:service ref="ThemeFunnelCompanyAgreePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreePSService"/>
- 	<dubbo:service ref="ThemeFunnelCompanyAgreeStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeStructuresService"/> 		
+ 	<dubbo:service ref="ThemeFunnelCompanyAgreePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreePSService"/>	
  	<!-- 客户漏斗 确认合作客户(AFFIRM) -->
  	<dubbo:service ref="ThemeFunnelCompanyAffirmAccountService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccountService"/>
  	<dubbo:service ref="ThemeFunnelCompanyAffirmCityService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmCityService"/>

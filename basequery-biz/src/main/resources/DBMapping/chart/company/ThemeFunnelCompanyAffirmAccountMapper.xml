@@ -3,9 +3,11 @@
 <mapper namespace="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccount" >
 	<resultMap type="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccount" id="default">
 		<result column="DIM_ADMIN_LOGIN_ACCOUNT" property="DIM_ADMIN_LOGIN_ACCOUNT" jdbcType="VARCHAR" />
-		<result column="AGREE_COUNT" property="AGREE_COUNT" jdbcType="VARCHAR" />
+		<result column="AGREE_CUSTOMER_COUNT" property="AGREE_CUSTOMER_COUNT" jdbcType="VARCHAR" />
 		<result column="AFFIRM_COUNT" property="AFFIRM_COUNT" jdbcType="VARCHAR" />
-		<result column="AFFIRM_PER" property="AFFIRM_PER" jdbcType="VARCHAR" />				
+		<result column="AGREE_FLLOW_COUNT" property="AGREE_FLLOW_COUNT" jdbcType="VARCHAR" />		
+		<result column="FLLOW_FREQUENCY" property="FLLOW_FREQUENCY" jdbcType="VARCHAR" />
+		<result column="AFFIRM_PER" property="AFFIRM_PER" jdbcType="VARCHAR" />		
 		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
 	</resultMap>
 	
@@ -13,9 +15,11 @@
 		<![CDATA[
 			SELECT COUNT(1)
 			FROM (
-			SELECT 	SUM(AGREE_COUNT) AS AGREE_COUNT,
+			SELECT 	SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
 							SUM(AFFIRM_COUNT) AS AFFIRM_COUNT,
-							CONCAT(FORMAT(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_COUNT)*100,0),2),'%') AS AFFIRM_PER,
+							SUM(AGREE_FLLOW_COUNT) AS AGREE_FLLOW_COUNT,
+							convert(IFNULL(SUM(AGREE_FLLOW_COUNT)/SUM(AFFIRM_COUNT),0),decimal(18,2)) AS FLLOW_FREQUENCY,
+							CONCAT(convert(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_CUSTOMER_COUNT)*100,0),decimal(18,2)),'%') AS AFFIRM_PER,
 							DIM_ADMIN_LOGIN_ACCOUNT
 			FROM DM_FACT_FUNNEL_COMPANY_AFFIRM_ACCOUNT
 			WHERE 1=1 
@@ -29,9 +33,11 @@
 	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
 		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
 		<![CDATA[
-			SELECT 	SUM(AGREE_COUNT) AS AGREE_COUNT,
+			SELECT 	SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
 							SUM(AFFIRM_COUNT) AS AFFIRM_COUNT,
-							CONCAT(FORMAT(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_COUNT)*100,0),2),'%') AS AFFIRM_PER,
+							SUM(AGREE_FLLOW_COUNT) AS AGREE_FLLOW_COUNT,
+							convert(IFNULL(SUM(AGREE_FLLOW_COUNT)/SUM(AFFIRM_COUNT),0),decimal(18,2)) AS FLLOW_FREQUENCY,
+							CONCAT(convert(IFNULL(SUM(AFFIRM_COUNT)/SUM(AGREE_CUSTOMER_COUNT)*100,0),decimal(18,2)),'%') AS AFFIRM_PER,
 							DIM_ADMIN_LOGIN_ACCOUNT
 			FROM DM_FACT_FUNNEL_COMPANY_AFFIRM_ACCOUNT
 			WHERE 1=1 		  		

@@ -10,9 +10,9 @@ public class ThemeFunnelCompanyExecuteStructures extends BaseEntity{
 	private static final long serialVersionUID = 5866891569541028742L;
 	private String DIM_STRUCTURE_NAME;//团队
 	private Date DIM_CREATED_DT;//时间
-	private String AFFIRM_COUNT;//确认合作客户数
-	private String EXECUTE_COUNT;//执行合作客户数
-	private String AFFIRM_PER;//合作转化率
+	private String AFFIRM_COUNT;//覆盖客户数
+	private String EXECUTE_COUNT;//激活客户数
+	private String EXECUTE_PER;//激活转化率
 	private String CREATE_DT_FROM;//统计开始时间
 	private String CREATE_DT_TO;//统计结束时间
 	
@@ -70,11 +70,11 @@ public class ThemeFunnelCompanyExecuteStructures extends BaseEntity{
 	public void setAFFIRM_COUNT(String aFFIRM_COUNT) {
 		AFFIRM_COUNT = aFFIRM_COUNT;
 	}
-	public String getAFFIRM_PER() {
-		return AFFIRM_PER;
+	public String getEXECUTE_PER() {
+		return EXECUTE_PER;
 	}
-	public void setAFFIRM_PER(String aFFIRM_PER) {
-		AFFIRM_PER = aFFIRM_PER;
+	public void setEXECUTE_PER(String eXECUTE_PER) {
+		EXECUTE_PER = eXECUTE_PER;
 	}
 
 	

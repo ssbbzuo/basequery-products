@@ -168,9 +168,6 @@
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean>
   <!-- 同意合作客户(AGREE) -->
- <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeAccountServiceImpl" id="ThemeFunnelCompanyAgreeAccountService"> 
- 		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean>
  <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCityServiceImpl" id="ThemeFunnelCompanyAgreeCityService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean>
@@ -179,10 +176,7 @@
  </bean> 
  <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreePSServiceImpl" id="ThemeFunnelCompanyAgreePSService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean>
- <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeStructuresServiceImpl" id="ThemeFunnelCompanyAgreeStructuresService"> 
- 		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean>  
+ </bean> 
   <!-- 确认合作客户(AFFIRM) -->
  <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyAffirmAccountServiceImpl" id="ThemeFunnelCompanyAffirmAccountService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 

@@ -3,12 +3,8 @@
 <mapper namespace="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCP" >
 	<resultMap type="com.eenet.basequery.chart.company.ThemeFunnelCompanyAgreeCP" id="default">
 		<result column="DIM_CUSTOMER_PROP" property="DIM_CUSTOMER_PROP" jdbcType="VARCHAR" />
-		<result column="AGREE_CUSTOMER_COUNT" property="AGREE_CUSTOMER_COUNT" jdbcType="VARCHAR" />
-		<result column="AGREE_FLLOW_CUSTOMER_COUNT" property="AGREE_FLLOW_CUSTOMER_COUNT" jdbcType="VARCHAR" />
-		<result column="AGREE_FLLOW_COUNT" property="AGREE_FLLOW_COUNT" jdbcType="VARCHAR" />
-		<result column="FLLOW_FREQUENCY" property="FLLOW_FREQUENCY" jdbcType="VARCHAR" />			
-		<result column="AGREE_COUNT" property="AGREE_COUNT" jdbcType="VARCHAR" />
-		<result column="AGREE_PER" property="AGREE_PER" jdbcType="VARCHAR" />					
+		<result column="WILL_CUSTOMER_COUNT" property="WILL_CUSTOMER_COUNT" jdbcType="VARCHAR" />
+		<result column="AGREE_CUSTOMER_COUNT" property="AGREE_CUSTOMER_COUNT" jdbcType="VARCHAR" />				
 		<result column="DIM_CREATED_DT" property="DIM_CREATED_DT" jdbcType="DATE" />
 	</resultMap>
 	
@@ -16,10 +12,8 @@
 		<![CDATA[
 			SELECT COUNT(1)
 			FROM (
-				SELECT 	SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
-								SUM(AGREE_FLLOW_CUSTOMER_COUNT) AS AGREE_FLLOW_CUSTOMER_COUNT,
-								SUM(AGREE_FLLOW_COUNT) AS AGREE_FLLOW_COUNT,
-								SUM(AGREE_COUNT) AS AGREE_COUNT,
+			SELECT 	SUM(WILL_CUSTOMER_COUNT) AS WILL_CUSTOMER_COUNT,
+							SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
 								DIM_CUSTOMER_PROP
 				FROM DM_FACT_FUNNEL_COMPANY_AGREE_CUSTOMER_PROP
 			WHERE 1=1 
@@ -33,25 +27,15 @@
 	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
 		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
 		<![CDATA[
-			SELECT 	AGREE_CUSTOMER_COUNT,
-					AGREE_FLLOW_CUSTOMER_COUNT,
-					AGREE_FLLOW_COUNT,
-							CONCAT(convert(IFNULL(AGREE_FLLOW_COUNT/AGREE_FLLOW_CUSTOMER_COUNT*100,0),decimal(18,2)),'%') AS FLLOW_FREQUENCY,
-							AGREE_COUNT,
-							CONCAT(convert(IFNULL(AGREE_COUNT/AGREE_FLLOW_COUNT*100,0),decimal(18,2)),'%') AS AGREE_PER,
-							DIM_CUSTOMER_PROP
-			FROM (
-			SELECT 	SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
-							SUM(AGREE_FLLOW_CUSTOMER_COUNT) AS AGREE_FLLOW_CUSTOMER_COUNT,
-							SUM(AGREE_FLLOW_COUNT) AS AGREE_FLLOW_COUNT,
-							SUM(AGREE_COUNT) AS AGREE_COUNT,
+			SELECT 	SUM(WILL_CUSTOMER_COUNT) AS WILL_CUSTOMER_COUNT,
+							SUM(AGREE_CUSTOMER_COUNT) AS AGREE_CUSTOMER_COUNT,
 							DIM_CUSTOMER_PROP
 			FROM DM_FACT_FUNNEL_COMPANY_AGREE_CUSTOMER_PROP
 			WHERE 1=1 		  		
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />
 		<![CDATA[
-			GROUP BY DIM_CUSTOMER_PROP)S
+			GROUP BY DIM_CUSTOMER_PROP
 		]]>
 		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		

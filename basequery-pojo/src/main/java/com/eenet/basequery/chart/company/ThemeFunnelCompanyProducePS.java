@@ -10,7 +10,7 @@ public class ThemeFunnelCompanyProducePS extends BaseEntity{
 	private static final long serialVersionUID = 5866891569541028742L;
 	private String DIM_PERSONS_SCALE;//人数规模
 	private Date DIM_CREATED_DT;//时间
-	private String EXECUTE_COUNT;//执行合作客户数
+	private String EXECUTE_COUNT;//激活客户数
 	private String PRODUCE_CUSTOMER_COUNT;//产单客户数
 	private String PRODUCE_ORDER_COUNT;//产单数
 	private String PRODUCE_PER;//产单合作转化率

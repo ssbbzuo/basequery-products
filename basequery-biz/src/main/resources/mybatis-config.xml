@@ -49,12 +49,10 @@
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillCityMapper.xml"/>     
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillCPMapper.xml"/>            
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyWillPSMapper.xml"/>  
-        <!-- 客户漏斗 同意合作客户(AGREE)-->
-        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeAccountMapper.xml"/>     
+        <!-- 客户漏斗 同意合作客户(AGREE)--> 
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeCityMapper.xml"/>            
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeCPMapper.xml"/>       
-        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreePSMapper.xml"/>            
-        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreeStructuresMapper.xml"/>    
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAgreePSMapper.xml"/>             
         <!-- 客户漏斗 确认合作客户(AFFIRM)-->
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmAccountMapper.xml"/>     
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyAffirmCityMapper.xml"/>            

@@ -16,10 +16,10 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<div class="col-md-4 grid_box1">		
-						<input id="create_dt_from" type="text" class="form-control"  placeholder="预报读时间从">	
+						<input id="create_dt_from" type="text" class="form-control"  placeholder="创建时间从">	
 					</div>				
 					<div class="col-md-4 grid_box1">				
-							<input id="create_dt_to" type="text" class="form-control"  placeholder="预报读时间至">						
+							<input id="create_dt_to" type="text" class="form-control"  placeholder="创建时间至">						
 					</div>
 					<div class="col-md-3">
 						<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
@@ -98,18 +98,11 @@
 				<!--Horizontal Tab-->
 				<div id="Agree">
 					<ul class="resp-tabs-list hor_1">
-						<li><i class="fa fa-street-view"></i>市场人员</li>
 						<li><i class="fa fa-map"></i>区域</li>
 						<li><i class="fa fa-institution"></i>客户性质</li>
 						<li><i class="fa fa-users"></i>人数规模</li>	
-						<li><i class="fa fa-sitemap"></i>团队</li>	
 					</ul>
 					<div class="resp-tabs-container hor_1">
-						<div id="jsontotable-AgreeAccount">
-							<!-- 加载表格 -->
-							<div id="pageTool-AgreeAccount"> <!-- 加载分页控件 --> </div>
-						</div>	
-						
 						<div id="jsontotable-AgreeCity">
 							<!-- 加载表格 -->		
 							<div id="pageTool-AgreeCity"> <!-- 加载分页控件 --> </div>					
@@ -121,11 +114,7 @@
 						<div id="jsontotable-AgreePS">
 							<!-- 加载表格 -->
 							<div id="pageTool-AgreePS"> <!-- 加载分页控件 --> </div>						
-						</div>		
-						<div id="jsontotable-AgreeStructures">
-							<!-- 加载表格 -->
-							<div id="pageTool-AgreeStructures"> <!-- 加载分页控件 --> </div>						
-						</div>											
+						</div>												
 					</div>
 				</div>
 				<div id="nested-tabInfo-Agree">
@@ -259,7 +248,7 @@
 <script type="text/javascript">	
 
 	var initFunnelData = ['WillCity','WillCP','WillPS',
-	            'AgreeAccount','AgreeCity','AgreeCP','AgreePS','AgreeStructures',
+	           'AgreeCity','AgreeCP','AgreePS',
 	           'AffirmAccount','AffirmCity','AffirmCP','AffirmPS','AffirmStructures',
 	           'ExecuteAccount','ExecuteCity','ExecuteCP','ExecutePS','ExecuteStructures',
 	           'ProduceAccount','ProduceCity','ProduceCP','ProducePS','ProduceStructures'];
@@ -355,28 +344,28 @@
 			}
 			buildFunc("Company");
 			switch(name){
-				case '待合作':
+				case '总客户':
 					$("#container-Will").show();
 					$("#container-Agree").hide();
 					$("#container-Affirm").hide();
 					$("#container-Execute").hide();
 					$("#container-Produce").hide();
 					break;
-				case '同意合作':
+				case '已分配':
 					$("#container-Will").hide();
 					$("#container-Agree").show();
 					$("#container-Affirm").hide();
 					$("#container-Execute").hide();
 					$("#container-Produce").hide();
 					break;			
-				case '确认合作':
+				case '覆盖跟踪':
 					$("#container-Will").hide();
 					$("#container-Agree").hide();
 					$("#container-Affirm").show();
 					$("#container-Execute").hide();
 					$("#container-Produce").hide();
 					break;			
-				case '执行计划':
+				case '已激活':
 					$("#container-Will").hide();
 					$("#container-Agree").hide();
 					$("#container-Affirm").hide();
@@ -529,7 +518,7 @@
 	};
 	
 	
-	/*=========================================待合作客户(WILL)=========================================*/
+	/*=========================================1.总客户(WILL)=========================================*/
 	/*-----------------------------------------性质-----------------------------------------*/	
 	var setPara_WillCP = ""; 	
 	var pageSize_WillCP = 10;//每页行数 
@@ -537,13 +526,12 @@
 	
 	//性质 
 	function fillTable_WillCP(msg) {
-		var str = '[{"Title1": "客户性质", "Title2": "新增客户数", "Title3": "已分配客户数"},';
+		var str = '[{"Title1": "客户性质", "Title2": "新增客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CUSTOMER_PROP+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+
 					'"},';	
 			}	
 		}
@@ -557,13 +545,12 @@
 	
 	//人数规模 
 	function fillTable_WillPS(msg) {
-		var str = '[{"Title1": "人数规模", "Title2": "新增客户数", "Title3": "已分配客户数"},';
+		var str = '[{"Title1": "人数规模", "Title2": "新增客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_PERSONS_SCALE+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+
 					'"},';	
 			}	
 		}
@@ -577,13 +564,12 @@
 	
 	//区域
 	function fillTable_WillCity(msg) {
-		var str = '[{"Title1": "区域", "Title2": "新增客户数", "Title3": "已分配客户数"},';
+		var str = '[{"Title1": "区域", "Title2": "新增客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CITY+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+
 					'"},';	
 			}	
 		}
@@ -592,7 +578,7 @@
 	};			
 		
 	
-	/*=========================================同意合作客户(AGREE)=========================================*/
+	/*=========================================2.已分配客户(AGREE)=========================================*/
 	/*-----------------------------------------性质-----------------------------------------*/	
 	var setPara_AgreeCP = ""; 	
 	var pageSize_AgreeCP = 10;//每页行数 
@@ -600,17 +586,13 @@
 	
 	//性质 
 	function fillTable_AgreeCP(msg) {
-		var str = '[{"Title1": "客户性质", "Title2": "分配客户数", "Title3": "跟进客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "同意客户数", "Title7": "合作转化率"},';
+		var str = '[{"Title1": "客户性质", "Title2": "新增客户数", "Title3": "分配客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CUSTOMER_PROP+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_FLLOW_CUSTOMER_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
-					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+
-					'"Column6":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column7":"'+msg[key].test.resultSet[o].AGREE_PER+					
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+	
 					'"},';	
 			}	
 		}
@@ -624,17 +606,13 @@
 	
 	//人数规模 
 	function fillTable_AgreePS(msg) {
-		var str = '[{"Title1": "人数规模", "Title2": "分配客户数", "Title3": "跟进客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "同意客户数", "Title7": "合作转化率"},';
+		var str = '[{"Title1": "人数规模", "Title2": "新增客户数", "Title3": "分配客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_PERSONS_SCALE+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_FLLOW_CUSTOMER_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
-					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+
-					'"Column6":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column7":"'+msg[key].test.resultSet[o].AGREE_PER+					
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+				
 					'"},';	
 			}	
 		}
@@ -648,73 +626,21 @@
 	
 	//区域
 	function fillTable_AgreeCity(msg) {
-		var str = '[{"Title1": "区域", "Title2": "分配客户数", "Title3": "跟进客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "同意客户数", "Title7": "合作转化率"},';
+		var str = '[{"Title1": "区域", "Title2": "新增客户数", "Title3": "分配客户数"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CITY+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_FLLOW_CUSTOMER_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
-					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+
-					'"Column6":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column7":"'+msg[key].test.resultSet[o].AGREE_PER+					
+					'"Column2":"'+msg[key].test.resultSet[o].WILL_CUSTOMER_COUNT+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+					
 					'"},';	
 			}	
 		}
 		str = (str.substring(0,str.length-1))+']';
 		fillData(setPara_AgreeCity,str,eval("currentCount_" + setPara_AgreeCity),eval("pageSize_" + setPara_AgreeCity),totalCount);		
 	};		
-	/*-----------------------------------------市场人员-----------------------------------------*/	
-	var setPara_AgreeAccount = ""; 	
-	var pageSize_AgreeAccount = 10;//每页行数 
-	var currentCount_AgreeAccount = 0;//当前条数 	
 	
-	//市场人员
-	function fillTable_AgreeAccount(msg) {
-		var str = '[{"Title1": "市场人员", "Title2": "分配客户数", "Title3": "跟进客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "同意客户数", "Title7": "合作转化率"},';
-		for(var key in msg){	
-			totalCount = msg[key].test.count;	
-			for ( var o in msg[key].test.resultSet) {		
-				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_ADMIN_LOGIN_ACCOUNT+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_FLLOW_CUSTOMER_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
-					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+
-					'"Column6":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column7":"'+msg[key].test.resultSet[o].AGREE_PER+					
-					'"},';	
-			}	
-		}
-		str = (str.substring(0,str.length-1))+']';
-		fillData(setPara_AgreeAccount,str,eval("currentCount_" + setPara_AgreeAccount),eval("pageSize_" + setPara_AgreeAccount),totalCount);		
-	};		
-	/*-----------------------------------------团队-----------------------------------------*/	
-	var setPara_AgreeStructures = ""; 	
-	var pageSize_AgreeStructures = 10;//每页行数 
-	var currentCount_AgreeStructures = 0;//当前条数 	
-	
-	//团队
-	function fillTable_AgreeStructures(msg) {
-		var str = '[{"Title1": "团队", "Title2": "分配客户数", "Title3": "跟进客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "同意客户数", "Title7": "合作转化率"},';
-		for(var key in msg){	
-			totalCount = msg[key].test.count;	
-			for ( var o in msg[key].test.resultSet) {		
-				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_STRUCTURE_NAME+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AGREE_FLLOW_CUSTOMER_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
-					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+
-					'"Column6":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column7":"'+msg[key].test.resultSet[o].AGREE_PER+					
-					'"},';	
-			}	
-		}
-		str = (str.substring(0,str.length-1))+']';
-		fillData(setPara_AgreeStructures,str,eval("currentCount_" + setPara_AgreeStructures),eval("pageSize_" + setPara_AgreeStructures),totalCount);		
-	};		
-	
-	/*=========================================确认合作客户(AFFIRM)=========================================*/
+	/*=========================================3.覆盖客户(AFFIRM)=========================================*/
 	/*-----------------------------------------性质-----------------------------------------*/	
 	var setPara_AffirmCP = ""; 	
 	var pageSize_AffirmCP = 10;//每页行数 
@@ -722,14 +648,16 @@
 	
 	//性质 
 	function fillTable_AffirmCP(msg) {
-		var str = '[{"Title1": "客户性质", "Title2": "同意合作客户数", "Title3": "确认合作客户数", "Title4": "确认转化率"},';
+		var str = '[{"Title1": "客户性质", "Title2": "分配客户数", "Title3": "覆盖客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "跟进率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CUSTOMER_PROP+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
+				'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+					
+				'"Column6":"'+msg[key].test.resultSet[o].AFFIRM_PER+				
 					'"},';	
 			}	
 		}
@@ -743,14 +671,16 @@
 	
 	//人数规模
 	function fillTable_AffirmPS(msg) {
-		var str = '[{"Title1": "人数规模", "Title2": "同意合作客户数", "Title3": "确认合作客户数", "Title4": "确认转化率"},';
+		var str = '[{"Title1": "人数规模", "Title2": "分配客户数", "Title3": "覆盖客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "跟进率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_PERSONS_SCALE+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
+					'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
 					'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+					'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
+					'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+					
+					'"Column6":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
 					'"},';	
 			}	
 		}
@@ -764,14 +694,16 @@
 	
 	//区域
 	function fillTable_AffirmCity(msg) {
-		var str = '[{"Title1": "区域", "Title2": "同意合作客户数", "Title3": "确认合作客户数", "Title4": "确认转化率"},';
+		var str = '[{"Title1": "区域", "Title2": "分配客户数", "Title3": "覆盖客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "跟进率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CITY+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
+				'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+					
+				'"Column6":"'+msg[key].test.resultSet[o].AFFIRM_PER+				
 					'"},';	
 			}	
 		}
@@ -785,14 +717,16 @@
 	
 	//市场人员
 	function fillTable_AffirmAccount(msg) {
-		var str = '[{"Title1": "市场人员", "Title2": "同意合作客户数", "Title3": "确认合作客户数", "Title4": "确认转化率"},';
+		var str = '[{"Title1": "市场人员", "Title2": "分配客户数", "Title3": "覆盖客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "跟进率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_ADMIN_LOGIN_ACCOUNT+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
+				'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+					
+				'"Column6":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
 					'"},';	
 			}	
 		}
@@ -806,14 +740,16 @@
 	
 	//团队
 	function fillTable_AffirmStructures(msg) {
-		var str = '[{"Title1": "团队", "Title2": "同意合作客户数", "Title3": "确认合作客户数", "Title4": "确认转化率"},';
+		var str = '[{"Title1": "团队", "Title2": "分配客户数", "Title3": "覆盖客户数", "Title4": "跟踪次数", "Title5": "跟踪频次", "Title6": "跟进率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_STRUCTURE_NAME+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AGREE_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AGREE_CUSTOMER_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column4":"'+msg[key].test.resultSet[o].AGREE_FLLOW_COUNT+'",'+
+				'"Column5":"'+msg[key].test.resultSet[o].FLLOW_FREQUENCY+'",'+					
+				'"Column6":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
 					'"},';	
 			}	
 		}
@@ -821,7 +757,7 @@
 		fillData(setPara_AffirmStructures,str,eval("currentCount_" + setPara_AffirmStructures),eval("pageSize_" + setPara_AffirmStructures),totalCount);		
 	};		
 	
-	/*=========================================执行计划客户(EXECUTE)=========================================*/
+	/*=========================================4.已激活客户(EXECUTE)=========================================*/
 	/*-----------------------------------------性质-----------------------------------------*/	
 	var setPara_ExecuteCP = ""; 	
 	var pageSize_ExecuteCP = 10;//每页行数 
@@ -829,14 +765,14 @@
 	
 	//性质 
 	function fillTable_ExecuteCP(msg) {
-		var str = '[{"Title1": "客户性质", "Title2": "确认合作客户数", "Title3": "执行计划客户数", "Title4": "执行转化率"},';
+		var str = '[{"Title1": "客户性质", "Title2": "覆盖客户数", "Title3": "激活客户数", "Title4": "激活转化率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CUSTOMER_PROP+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+				
+				'"Column4":"'+msg[key].test.resultSet[o].EXECUTE_PER+				
 					'"},';	
 			}	
 		}
@@ -850,14 +786,14 @@
 	
 	//人数规模 
 	function fillTable_ExecutePS(msg) {
-		var str = '[{"Title1": "人数规模", "Title2": "确认合作客户数", "Title3": "执行计划客户数", "Title4": "执行转化率"},';
+		var str = '[{"Title1": "人数规模", "Title2": "覆盖客户数", "Title3": "激活客户数", "Title4": "激活转化率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_PERSONS_SCALE+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+				
+				'"Column4":"'+msg[key].test.resultSet[o].EXECUTE_PER+			
 					'"},';	
 			}	
 		}
@@ -871,14 +807,14 @@
 	
 	//区域 
 	function fillTable_ExecuteCity(msg) {
-		var str = '[{"Title1": "区域", "Title2": "确认合作客户数", "Title3": "执行计划客户数", "Title4": "执行转化率"},';
+		var str = '[{"Title1": "区域", "Title2": "覆盖客户数", "Title3": "激活客户数", "Title4": "激活转化率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CITY+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+				
+				'"Column4":"'+msg[key].test.resultSet[o].EXECUTE_PER+			
 					'"},';	
 			}	
 		}
@@ -892,14 +828,14 @@
 	
 	//市场人员
 	function fillTable_ExecuteAccount(msg) {
-		var str = '[{"Title1": "市场人员", "Title2": "确认合作客户数", "Title3": "执行计划客户数", "Title4": "执行转化率"},';
+		var str = '[{"Title1": "市场人员", "Title2": "覆盖客户数", "Title3": "激活客户数", "Title4": "激活转化率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_ADMIN_LOGIN_ACCOUNT+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+				
+				'"Column4":"'+msg[key].test.resultSet[o].EXECUTE_PER+			
 					'"},';	
 			}	
 		}
@@ -913,21 +849,21 @@
 	
 	//团队
 	function fillTable_ExecuteStructures(msg) {
-		var str = '[{"Title1": "团队", "Title2": "确认合作客户数", "Title3": "执行计划客户数", "Title4": "执行转化率"},';
+		var str = '[{"Title1": "团队", "Title2": "覆盖客户数", "Title3": "激活客户数", "Title4": "激活转化率"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
 				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_STRUCTURE_NAME+'",'+
-					'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
-					'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+
-					'"Column4":"'+msg[key].test.resultSet[o].AFFIRM_PER+			
+				'"Column2":"'+msg[key].test.resultSet[o].AFFIRM_COUNT+'",'+
+				'"Column3":"'+msg[key].test.resultSet[o].EXECUTE_COUNT+'",'+				
+				'"Column4":"'+msg[key].test.resultSet[o].EXECUTE_PER+			
 					'"},';	
 			}	
 		}
 		str = (str.substring(0,str.length-1))+']';
 		fillData(setPara_ExecuteStructures,str,eval("currentCount_" + setPara_ExecuteStructures),eval("pageSize_" + setPara_ExecuteStructures),totalCount);		
 	};	
-	/*=========================================产单客户(PRODUCE)=========================================*/
+	/*=========================================5.产单客户(PRODUCE)=========================================*/
 	/*-----------------------------------------性质-----------------------------------------*/	
 	var setPara_ProduceCP = ""; 	
 	var pageSize_ProduceCP = 10;//每页行数 
@@ -935,7 +871,7 @@
 	
 	//性质 
 	function fillTable_ProduceCP(msg) {
-		var str = '[{"Title1": "客户性质", "Title2": "执行计划客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
+		var str = '[{"Title1": "客户性质", "Title2": "激活客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
@@ -958,7 +894,7 @@
 	
 	//人数规模 
 	function fillTable_ProducePS(msg) {
-		var str = '[{"Title1": "人数规模", "Title2": "执行计划客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
+		var str = '[{"Title1": "人数规模", "Title2": "激活客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
@@ -981,7 +917,7 @@
 	
 	//区域 
 	function fillTable_ProduceCity(msg) {
-		var str = '[{"Title1": "区域", "Title2": "执行计划客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
+		var str = '[{"Title1": "区域", "Title2": "激活客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
@@ -1004,7 +940,7 @@
 	
 	//市场人员 
 	function fillTable_ProduceAccount(msg) {
-		var str = '[{"Title1": "市场人员", "Title2": "执行计划客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
+		var str = '[{"Title1": "市场人员", "Title2": "激活客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
@@ -1027,7 +963,7 @@
 	
 	//团队 
 	function fillTable_ProduceStructures(msg) {
-		var str = '[{"Title1": "团队", "Title2": "执行计划客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
+		var str = '[{"Title1": "团队", "Title2": "激活客户数", "Title3": "产单客户数", "Title4": "产单数", "Title5": "产单率", "Title6": "产单总金额"},';
 		for(var key in msg){	
 			totalCount = msg[key].test.count;	
 			for ( var o in msg[key].test.resultSet) {		
@@ -1061,30 +997,30 @@
 		var strLost = '[';
 		for(var key in msg){	
 			for ( var o in msg[key].test.resultSet) {	
-				strFunnel +='{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_COUNT+'","name":"待合作"},'+
-					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_AGREE_COUNT+'","name":"同意合作"},'+
-					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_AFFIRM_COUNT+'","name":"确认合作"},'+
-					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_EXECUTE_COUNT+'","name":"执行计划"},'+					
+				strFunnel +='{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_COUNT+'","name":"总客户"},'+
+					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_AGREE_COUNT+'","name":"已分配"},'+
+					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_AFFIRM_COUNT+'","name":"覆盖跟踪"},'+
+					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_EXECUTE_COUNT+'","name":"已激活"},'+					
 					'{"value":"'+msg[key].test.resultSet[o].FUNNEL_PRODUCE_COUNT+'","name":"产单"}]';	
 		
 				switch(name){
-					case '待合作':
-						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"待合作转化率"}]';
+					case '总客户':
+						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"总转化率"}]';
 						break;
-					case '同意合作':
-						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_AGREE_PER + '","name":"同意转化率"}]';
+					case '已分配':
+						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_AGREE_PER + '","name":"已分配转化率"}]';
 						break;
-					case '确认合作':
-						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_AFFIRM_PER + '","name":"确认转化率"}]';
+					case '覆盖跟踪':
+						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_AFFIRM_PER + '","name":"覆盖转化率"}]';
 						break;
-					case '执行计划':
-						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_EXECUTE_PER + '","name":"执行转化率"}]';
+					case '已激活':
+						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_EXECUTE_PER + '","name":"激活转化率"}]';
 						break;			
 					case '产单':
 						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_PRODUCE_PER + '","name":"产单转化率"}]';
 						break;						
 					default:	
-						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"待合作转化率"}]';
+						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"总转化率"}]';
 				};
 				
 				strWant += msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT + 
@@ -1123,7 +1059,7 @@
 		        }
 		    },
 		    legend: {
-		        data: ['待合作','同意合作','确认合作','执行计划','产单']
+		        data: ['总客户','已分配','覆盖跟踪','已激活','产单']
 		    },
 		    calculable: true,
 		    series: [
@@ -1229,7 +1165,7 @@
 		        {
 		            type : 'category',
 		            axisTick : {show: false},
-		            data : ['产单','执行计划','确认合作','同意合作','待合作']
+		            data : ['产单','已激活','覆盖跟踪','已分配','总客户']
 		        }
 		    ],
 		    series : [

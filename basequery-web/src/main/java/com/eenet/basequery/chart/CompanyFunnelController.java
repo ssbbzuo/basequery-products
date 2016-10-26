@@ -31,15 +31,11 @@ public class CompanyFunnelController {
 	
 	// 同意合作客户(AGREE)
 	@Autowired
-	private ThemeFunnelCompanyAgreeAccountService ThemeFunnelCompanyAgreeAccount;
-	@Autowired
 	private ThemeFunnelCompanyAgreeCityService ThemeFunnelCompanyAgreeCity;
 	@Autowired
 	private ThemeFunnelCompanyAgreeCPService ThemeFunnelCompanyAgreeCP;		
 	@Autowired
-	private ThemeFunnelCompanyAgreePSService ThemeFunnelCompanyAgreePS;
-	@Autowired
-	private ThemeFunnelCompanyAgreeStructuresService ThemeFunnelCompanyAgreeStructures;		
+	private ThemeFunnelCompanyAgreePSService ThemeFunnelCompanyAgreePS;	
 	
 	// 确认合作客户(AFFIRM)
 	@Autowired
@@ -169,31 +165,6 @@ public class CompanyFunnelController {
 
 	/*=================================================同意合作客户(AGREE)=================================================*/
 	/*
-	 *  市场人员
-	 */
-	@RequestMapping(value = "/ThemeFunnelCompanyAgreeAccount")
-	public @ResponseBody Object getThemeFunnelCompanyAgreeAccount(@RequestBody ThemeFunnelCompanyAgreeAccount value, QueryCondition queryCondition)
-			throws Exception {
-		
-		JSONObject jsonObject = new JSONObject();	
-		// 添加查询条件
-		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
-		// 添加排序条件
-		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
-		queryCondition.setOrderBySet(listOrder);	
-		
-		queryCondition.setMaxQuantity(value.getPageSize());
-		queryCondition.setStartIndex(value.getCurrentCount());
-
-		SimpleResultSet<ThemeFunnelCompanyAgreeAccount> result = ThemeFunnelCompanyAgreeAccount.getTest(queryCondition);
-		
-		jsonObject.put("test", result);
-
-		return jsonObject;
-
-	}	
-	/*
 	 *  区域
 	 */
 	@RequestMapping(value = "/ThemeFunnelCompanyAgreeCity")
@@ -205,7 +176,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("WILL_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -230,7 +201,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("WILL_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -255,7 +226,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("WILL_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -268,31 +239,7 @@ public class CompanyFunnelController {
 		return jsonObject;
 
 	}	
-	/*
-	 *  团队
-	 */
-	@RequestMapping(value = "/ThemeFunnelCompanyAgreeStructures")
-	public @ResponseBody Object getThemeFunnelCompanyAgreeStructures(@RequestBody ThemeFunnelCompanyAgreeStructures value, QueryCondition queryCondition)
-			throws Exception {
-		
-		JSONObject jsonObject = new JSONObject();	
-		// 添加查询条件
-		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
-		// 添加排序条件
-		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
-		queryCondition.setOrderBySet(listOrder);	
-		
-		queryCondition.setMaxQuantity(value.getPageSize());
-		queryCondition.setStartIndex(value.getCurrentCount());
 
-		SimpleResultSet<ThemeFunnelCompanyAgreeStructures> result = ThemeFunnelCompanyAgreeStructures.getTest(queryCondition);
-		
-		jsonObject.put("test", result);
-
-		return jsonObject;
-
-	}		
 	
 	/*=================================================确认合作客户(AFFIRM)=================================================*/
 	/*
@@ -307,7 +254,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -332,7 +279,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -357,7 +304,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -382,7 +329,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
@@ -407,7 +354,7 @@ public class CompanyFunnelController {
 		queryCondition.addCondition(new ConditionItem("DIM_CREATED_DT", RangeType.LESS2GREAT, value.getCREATE_DT_FROM(), value.getCREATE_DT_TO()));
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("AGREE_COUNT", Rank.DESC));
+		listOrder.add(new OrderBy("AGREE_CUSTOMER_COUNT", Rank.DESC));
 		queryCondition.setOrderBySet(listOrder);	
 		
 		queryCondition.setMaxQuantity(value.getPageSize());
