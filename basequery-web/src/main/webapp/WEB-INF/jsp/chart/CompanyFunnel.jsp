@@ -50,10 +50,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>		
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-bar-chart"></i></div>
+				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
 				<div class="panel-body">
 					<div class="canvas-wrapper">
 						<div class="chart" id="main03"></div>
@@ -61,7 +61,9 @@
 				</div>
 			</div>
 		</div>			
-	</div><!--/.row-->			
+	</div><!--/.row-->	
+
+	
 
 	<div class="box">
 		<div class="box-body">
@@ -281,16 +283,22 @@
 	
 	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 	var resizeWorldMapContainer = function () {		    
-	    worldMapContainer01.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer02.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer03.style.height = document.body.clientWidth*0.2+'px';
+	    if(document.body.clientWidth*0.2 >= 250){
+		    worldMapContainer01.style.height = document.body.clientWidth*0.2+'px';
+		    worldMapContainer02.style.height = document.body.clientWidth*0.2+'px';
+		    worldMapContainer03.style.height = document.body.clientWidth*0.2+'px';
+	    }else{
+		    worldMapContainer01.style.height ='250px';
+		    worldMapContainer02.style.height ='250px';
+		    worldMapContainer03.style.height ='250px';
+	    }
 	};
 	
 	//设置容器高宽
 	resizeWorldMapContainer();	
 	
 	var myChart01 = echarts.init(worldMapContainer01,'infographic');
-	var myChart02 = echarts.init(worldMapContainer02);
+	var myChart02 = echarts.init(worldMapContainer02,'infographic');
 	var myChart03 = echarts.init(worldMapContainer03);
 	
 	
@@ -1023,23 +1031,23 @@
 						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"总转化率"}]';
 				};
 				
-				strWant += msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_WANT + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_WANT +']';
+				strWant += msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_WANT/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_WILL_WANT/1000 +']';
 				
-				strSuccess += msg[key].test.resultSet[o].FUNNEL_PRODUCE_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_SUCCESS + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_SUCCESS +']';	
+				strSuccess += msg[key].test.resultSet[o].FUNNEL_PRODUCE_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_SUCCESS/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_WILL_SUCCESS/1000 +']';	
 						
-				strLost += msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_LOST + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_LOST +']';							
+				strLost += msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 +']';							
 			}	
 		}		
 	//生成漏斗图
@@ -1164,6 +1172,7 @@
 		    yAxis : [
 		        {
 		            type : 'category',
+		            name: '单位:千',
 		            axisTick : {show: false},
 		            data : ['产单','已激活','覆盖跟踪','已分配','总客户']
 		        }
