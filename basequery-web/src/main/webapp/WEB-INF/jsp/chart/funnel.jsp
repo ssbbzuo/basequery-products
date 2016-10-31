@@ -50,18 +50,22 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-bar-chart"></i></div>
+				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
 				<div class="panel-body">
 					<div class="canvas-wrapper">
 						<div class="chart" id="main03"></div>
 					</div>
 				</div>
 			</div>
-		</div>			
-	</div><!--/.row-->			
+		</div>	
+	</div><!--/.row-->	
+
+		
+	
+		
 
 	<div class="box">
 		<div class="box-body">
@@ -242,16 +246,23 @@
 	
 	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 	var resizeWorldMapContainer = function () {		    
-	    worldMapContainer01.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer02.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer03.style.height = document.body.clientWidth*0.2+'px';
+		
+	    if(document.body.clientWidth*0.2 >= 250){
+		    worldMapContainer01.style.height = document.body.clientWidth*0.2+'px';
+		    worldMapContainer02.style.height = document.body.clientWidth*0.2+'px';
+		    worldMapContainer03.style.height = document.body.clientWidth*0.2+'px';
+	    }else{
+		    worldMapContainer01.style.height ='250px';
+		    worldMapContainer02.style.height ='250px';
+		    worldMapContainer03.style.height ='250px';
+	    }
 	};
 	
 	//设置容器高宽
 	resizeWorldMapContainer();	
 	
 	var myChart01 = echarts.init(worldMapContainer01,'infographic');
-	var myChart02 = echarts.init(worldMapContainer02);
+	var myChart02 = echarts.init(worldMapContainer02,'infographic');
 	var myChart03 = echarts.init(worldMapContainer03);
 	
 	
@@ -845,20 +856,20 @@
 						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_PER + '","name":"预报读转化率"}]';
 				};
 				
-				strWant += msg[key].test.resultSet[o].FUNNEL_SELL_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT +']';
+				strWant += msg[key].test.resultSet[o].FUNNEL_SELL_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT/1000 +']';
 				
-				strSuccess += msg[key].test.resultSet[o].FUNNEL_SELL_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_SUCCESS + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_SUCCESS +']';	
+				strSuccess += msg[key].test.resultSet[o].FUNNEL_SELL_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_SUCCESS/1000 +']';	
 						
-				strLost += msg[key].test.resultSet[o].FUNNEL_SELL_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_LOST + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST +']';							
+				strLost += msg[key].test.resultSet[o].FUNNEL_SELL_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST/1000 +']';							
 			}	
 		}		
 	//生成漏斗图
@@ -869,6 +880,7 @@
                 	color:'#fff'
                 }
 		    },
+		    animationEasing:'quinticIn',
 		    toolbox: {		    			    
 		        orient:'vertical',
 		        feature: {
@@ -931,6 +943,7 @@
 			tooltip : {
 		        formatter: "{a} <br/>{b} : {c}%"
 		    },
+		    animationDurationUpdate:1500,
 		    toolbox: {		    			    
 		        feature: {
 		            dataView: {readOnly: false},
@@ -942,6 +955,18 @@
 		        {
 		            name: '业务指标',
 		            type: 'gauge',
+		            splitNumber: 10,       // 分割段数，默认为5
+		            axisLine: {            // 坐标轴线
+		                lineStyle: {       // 属性lineStyle控制线条样式
+		                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+		                    width: 8
+		                }		                
+		            },
+				    axisLabel:{
+				    	textStyle:{
+				    		color:'#000'
+				    	}
+				    },
 		            detail: {
 		            	formatter:'{value}%',
 		            	offsetCenter: [0, '60%'] 
@@ -958,6 +983,7 @@
 		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 		        }
 		    },
+		    animationEasing:'bounceOut',
 		    toolbox: {		    			    
 		        left:'left',
 		        feature: {
@@ -983,6 +1009,7 @@
 		    yAxis : [
 		        {
 		            type : 'category',
+		            name: '单位:千',
 		            axisTick : {show: false},
 		            data : ['缴费','报读','预报读跟踪','预报读']
 		        }
