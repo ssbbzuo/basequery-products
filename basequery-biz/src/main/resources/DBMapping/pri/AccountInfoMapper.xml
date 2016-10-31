@@ -23,8 +23,8 @@
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
 		<![CDATA[
 		SELECT count(*) FROM (
-			SELECT T.*  FROM dm_admin_login_account T LEFT JOIN dm_admin_info V ON T.ADMIN_ID=V.ADMIN_ID
-		) TB WHERE 1=1  and is_deleted =  'N' and staff_name is not null 
+			SELECT T.*  FROM dm_admin_login_account T LEFT JOIN dm_admin_info V ON T.ADMIN_ID=V.ADMIN_ID and V.is_deleted =  'N' and V.ADMIN_NAME is not null 
+		) TB WHERE 1=1   
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />
 	</select>
@@ -35,8 +35,8 @@
 		SELECT * FROM (
 			SELECT T.*,
 		]]><include refid="com.eenet.baseinfo.user.AdminUserInfo.biz_columns" /><![CDATA[
-			FROM dm_admin_login_account T LEFT JOIN dm_admin_info V ON T.ADMIN_ID=V.ADMIN_ID
-		) TB WHERE 1=1  and is_deleted =  'N' and staff_name is not null 
+			FROM dm_admin_login_account T LEFT JOIN dm_admin_info V ON T.ADMIN_ID=V.ADMIN_ID  and V.is_deleted =  'N' and V.ADMIN_NAME is not null 
+		) TB WHERE 1=1  
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />
 		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
@@ -73,7 +73,7 @@
 		    ADMIN_LOGIN_ACCOUNT_ID, CREATED_DT, CREATED_BY, CREATED_SID, UPDATED_DT, UPDATED_BY, UPDATED_SID, REMARK,
 		    ]]><include refid="biz_columns" /><![CDATA[ 
 		    from dm_admin_login_account  
-	    where 1=1  and is_deleted =  'N' and staff_name is not null  and ADMIN_LOGIN_ACCOUNT_ID = #{atid,jdbcType=VARCHAR}
+	    where 1=1  and   and ADMIN_LOGIN_ACCOUNT_ID = #{atid,jdbcType=VARCHAR}
 	  	]]>
 	</select>
 	<delete id="delete">
