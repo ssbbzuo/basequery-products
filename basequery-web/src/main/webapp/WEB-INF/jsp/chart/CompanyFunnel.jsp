@@ -1053,7 +1053,31 @@
 	//生成漏斗图
 	myChart01.setOption(option = {			
 		    tooltip: {
-		        formatter: "{b} : {c}",
+		        formatter: function(StudentMsg){
+		        	console.log(StudentMsg);
+		        	var a = "";
+		        	var b = StudentMsg["name"] + " : " + StudentMsg["value"] + "<br/>说明：<br/>"
+					switch(StudentMsg["name"]){
+						case '总客户':
+							a += b + "大型CRM客户和中小型CRM客户";
+							break;
+						case '已分配':
+							a += b + "已有跟踪负责人客户";
+							break;
+						case '覆盖跟踪':
+							a += b + "已有人联系跟踪客户";
+							break;
+						case '已激活':
+							a += b + "已经建立合作关系客户";
+							break;	
+						case '产单':
+							a += b + "已有职工报读产品的客户";
+							break;								
+						default:	
+							a += b + "包含有预报读订单和直接下订单的学员数";
+					};		    			
+		        	return a
+		        },
                 textStyle:{
                 	color:'#fff'
                 }
@@ -1119,7 +1143,32 @@
 		//生成仪表盘
 		myChart02.setOption(option = {
 			tooltip : {
-		        formatter: "{a} <br/>{b} : {c}%"
+		        formatter:function(StudentMsg){
+		        	console.log(StudentMsg);
+		        	var a = "";
+		        	var b = StudentMsg["name"] + " : " + StudentMsg["value"] + "<br/>说明：<br/>"
+					switch(StudentMsg["name"]){
+						case '总客户转化率':
+							a += b + "总客户数 / 总客户数";
+							break;
+						case '已分配转化率':
+							a += b + "已分配客户数 / 总客户数";
+							break;
+						case '覆盖转化率':
+							a += b + "覆盖跟踪客户数 / 已分配客户数";
+							break;
+						case '激活转化率':
+							a += b + "已激活客户数 / 覆盖客户数";
+							break;					
+						case '产单转化率':
+							a += b + "产单客户数 / 已激活客户数";
+							break;											
+						default:	
+							a += b + "总客户数 / 总客户数";
+					};		    			
+		        	return a
+		        },
+		        position:['25%', '25%']
 		    },
 		    animationDurationUpdate:1500,
 		    toolbox: {		    			    

@@ -875,7 +875,28 @@
 	//生成漏斗图
 	myChart01.setOption(option = {			
 		    tooltip: {
-		        formatter: "{b} : {c}",
+		        formatter: function(StudentMsg){
+		        	console.log(StudentMsg);
+		        	var a = "";
+		        	var b = StudentMsg["name"] + " : " + StudentMsg["value"] + "<br/>说明：<br/>"
+					switch(StudentMsg["name"]){
+						case '预报读':
+							a += b + "包含有预报读订单和直接下订单的学员数";
+							break;
+						case '预报读跟踪':
+							a += b + "包括直接下单和预报读有跟踪学员数";
+							break;
+						case '报读':
+							a += b + "已下报读订单的学员数";
+							break;
+						case '缴费':
+							a += b + "订单状态为已支付学员数";
+							break;					
+						default:	
+							a += b + "包含有预报读订单和直接下订单的学员数";
+					};		    			
+		        	return a
+		        },
                 textStyle:{
                 	color:'#fff'
                 }
@@ -941,7 +962,29 @@
 		//生成仪表盘
 		myChart02.setOption(option = {
 			tooltip : {
-		        formatter: "{a} <br/>{b} : {c}%"
+		        formatter:function(StudentMsg){
+		        	console.log(StudentMsg);
+		        	var a = "";
+		        	var b = StudentMsg["name"] + " : " + StudentMsg["value"] + "<br/>说明：<br/>"
+					switch(StudentMsg["name"]){
+						case '预报读转化率':
+							a += b + "预报读客户数 / 预报读客户数";
+							break;
+						case '预报读跟踪转化率':
+							a += b + "预报读跟踪客户数 / 预报读客户数";
+							break;
+						case '报读转化率':
+							a += b + "报读客户数 / 预报读跟踪客户数";
+							break;
+						case '缴费转化率':
+							a += b + "缴费客户数 / 报读客户数";
+							break;					
+						default:	
+							a += b + "预报读客户数 / 预报读客户数";
+					};		    			
+		        	return a
+		        },
+		        position:['25%', '25%']
 		    },
 		    animationDurationUpdate:1500,
 		    toolbox: {		    			    
