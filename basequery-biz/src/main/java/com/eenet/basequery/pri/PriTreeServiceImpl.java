@@ -110,7 +110,7 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 		List<String> list = null;
 		Object cache;
 		try {
-			cache = RedisClient.getMapValue("WHOLE_PRI_TREE" + uid, type.name());
+			cache = RedisClient.getObject("WHOLE_PRI_TREE" + uid+type.name(), List.class);
 			if (cache != null && cache instanceof List<?>) {
 				return (List<String>) cache;
 			}
@@ -118,7 +118,7 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 			if (cache == null) {
 				list = priTreeDaoService.getMyPriTree(uid, type.ordinal() + 1);
 				if (list != null && list.size() > 0) {
-					RedisClient.addMapItem("WHOLE_PRI_TREE" + uid, type.name(), list, -1);
+					RedisClient.setObject("WHOLE_PRI_TREE" + uid+type.name(), cache, -1);
 				}
 			}
 		} catch (RedisOPException e) {
@@ -135,44 +135,59 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 	@Override
 	public int savePri(String uid, String pId, String addIds, int type) {
 		int result = 0;
+		PrivilegeType privilegeType = null;
 		switch (type) {
 		case 1:
 			result = priTreeDaoService.saveAreaPriTree(uid, addIds.split(","));
+			privilegeType = PrivilegeType.AREAPRI;
 			break;
 		case 2:
 			result = priTreeDaoService.saveNetWorkPriTree(uid, addIds.split(","));
+			privilegeType = PrivilegeType.NETWORKPRI;
 			break;
 		case 3:
 			result = priTreeDaoService.saveStaffPriTree(uid, addIds.split(","));
+			privilegeType = PrivilegeType.STAFFPRI;
 			break;
 		case 4:
 			result = priTreeDaoService.saveChanelPriTree(uid, addIds.split(","));
+			privilegeType = PrivilegeType.CHANELPRI;
 			break;
 		case 5:
 			result = priTreeDaoService.saveLearnCenterPriTree(uid, addIds.split(","));
+			privilegeType = PrivilegeType.LEARNCENTERPRI;
 			break;
 		}
 		if (result > 0)
-			addCachedPriTree(uid, pId, addIds, type);
+			addCachedPriTree(uid, pId, addIds, privilegeType);
 		return result;
 	}
 
-	private void addCachedPriTree(String uid, String pId, String addIds, int type) {
+	private void addCachedPriTree(String uid, String pId, String addIds, PrivilegeType type) {
 		try {
-			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type, List.class);
+			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type.name(), List.class);
+			List<String>  wholePriCache = RedisClient.getObject("WHOLE_PRI_TREE" + uid+type.name(), List.class);
 
 			if (cache == null) {
 				cache = new ArrayList<String>();
+			}
+			if (wholePriCache == null) {
+				wholePriCache = new ArrayList<String>();
 			}
 			String[] arr = addIds.split(",");
 			if (arr.length > 0) {
 				for (int i = 0; i < arr.length; i++) {
 					cache.add(arr[i]);
+					wholePriCache.add(arr[i]);
 				}
 			}
 
 			if (cache.size() > 0) {
-				RedisClient.setObject("PRI_TREE" + uid + pId + type, cache, -1);
+				RedisClient.setObject("PRI_TREE" + uid + pId + type.name(), cache, -1);
+			}
+			
+			if (wholePriCache.size() > 0) {
+				RedisClient.setObject("WHOLE_PRI_TREE" + uid+type.name(), wholePriCache, -1);
 			}
 
 		} catch (RedisOPException e) {
@@ -183,32 +198,40 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 	@Override
 	public int removePri(String uid, String pId, String removeIds, int type) {
 		int result = 0;
+		PrivilegeType privilegeType = null;
 		switch (type) {
 		case 1:
 			result = priTreeDaoService.removeAreaPriTree(uid, removeIds.split(","));
+			privilegeType = PrivilegeType.AREAPRI;
 			break;
 		case 2:
 			result = priTreeDaoService.removeNetWorkPriTree(uid, removeIds.split(","));
+			privilegeType = PrivilegeType.NETWORKPRI;
 			break;
 		case 3:
 			result = priTreeDaoService.removeStaffPriTree(uid, removeIds.split(","));
+			privilegeType = PrivilegeType.STAFFPRI;
 			break;
 		case 4:
 			result = priTreeDaoService.removeChanelPriTree(uid, removeIds.split(","));
+			privilegeType = PrivilegeType.CHANELPRI;
 			break;
 		case 5:
 			result = priTreeDaoService.removeLearnCenterPriTree(uid, removeIds.split(","));
+			privilegeType = PrivilegeType.LEARNCENTERPRI;
 			break;
 		}
 		if (result > 0) {
-			removeCachedPriTree(uid, pId, removeIds, type);
+			removeCachedPriTree(uid, pId, removeIds, privilegeType);
 		}
 		return result;
 	}
 
-	private void removeCachedPriTree(String uid, String pId, String removeIds, int type) {
+	private void removeCachedPriTree(String uid, String pId, String removeIds, PrivilegeType type) {
 		try {
-			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type, List.class);
+			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type.name(), List.class);
+			
+			List<String>  wholePriCache = RedisClient.getObject("WHOLE_PRI_TREE" + uid+type.name(), List.class);
 
 			if (cache != null) {
 				String[] arr = removeIds.split(",");
@@ -219,10 +242,27 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 				}
 
 				if (cache.size() > 0) {
-					RedisClient.setObject("PRI_TREE" + uid + pId + type, cache, -1);
+					RedisClient.setObject("PRI_TREE" + uid + pId + type.name(), cache, -1);
 				} else {
 
 					RedisClient.remove("PRI_TREE" + uid + pId + type);
+				}
+			}
+			
+			
+			if (wholePriCache != null) {
+				String[] arr = removeIds.split(",");
+				if (arr.length > 0) {
+					for (int i = 0; i < arr.length; i++) {
+						wholePriCache.remove(arr[i]);
+					}
+				}
+
+				if (wholePriCache.size() > 0) {
+					RedisClient.setObject("WHOLE_PRI_TREE" + uid+type.name(), cache, -1);
+				} else {
+
+					RedisClient.remove("WHOLE_PRI_TREE" + uid+type.name());
 				}
 			}
 

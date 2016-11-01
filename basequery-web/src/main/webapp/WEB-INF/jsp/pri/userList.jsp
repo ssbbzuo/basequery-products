@@ -325,6 +325,7 @@
     	 $.post("<%=request.getContextPath() %>/initAdminUserLoginPassword",  $("#initForm").serialize(),
   			   function(data){
 		  		   $("#init").modal("hide");
+		  		   
 		  	}, "json");
 		    	
     }
