@@ -208,13 +208,6 @@ public class PriTreeDaoServiceImpl extends BaseDAOImpl implements PriTreeDaoServ
 		return getBatisSession().selectList("com.eenet.basequery.pri.PriTree.getMyPriTreeStr", map);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 
 	private List<String> cleanData(List<String> list) {
 		if (list.size() > 0) {

@@ -182,13 +182,16 @@ public class PriDataController {
 		switch (type) {
 		case 1:
 			privilegeType =  PrivilegeType.AREAPRI;
+			break;
 		case 2:
 			privilegeType =   PrivilegeType.NETWORKPRI;  
+			break;
 		case 3:
 			privilegeType =  PrivilegeType.STAFFPRI ; 
+			break;
 		case 4:
 			privilegeType =   PrivilegeType.CHANELPRI; 
-		case 5:
+			break;
 		}
 		
 		return priTreeService.getPriTreeByType(uid, privilegeType);
