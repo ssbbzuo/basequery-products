@@ -1,5 +1,6 @@
 package com.eenet.basequery.sales.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class SaleCustomerFollowDaoServiceImpl extends BaseDAOImpl implements Sal
 		/**获取本次查询数据**/
 		List<SaleCustomerFollow> resultList =  getBatisSession().selectList(getNamespace()+".queryList", sqlMap);
 		resultSet.setResultSet(resultList);
+		getBatisSession().clearCache();
 		return resultSet;
 	}
 	
@@ -38,7 +40,7 @@ public class SaleCustomerFollowDaoServiceImpl extends BaseDAOImpl implements Sal
 		List<ConditionItem> conditionList = condition.getConditions();
 		for(ConditionItem item : conditionList){
 			if(item.getRangeType().equals(RangeType.IN)){
-				sqlMap.put(item.getFieldName(), item.getRangeFrom().split(","));
+				sqlMap.put(item.getFieldName(), genRangeINList(item.getRangeFrom()));
 			}else{
 				sqlMap.put(item.getFieldName(), item.getRangeFrom());
 				if(!EEBeanUtils.isNULL(item.getRangeTo())){
@@ -47,6 +49,17 @@ public class SaleCustomerFollowDaoServiceImpl extends BaseDAOImpl implements Sal
 			}
 		}
 		return sqlMap;
+	}
+	
+	private List<String> genRangeINList(String inStr){
+		List<String> rangeINList = new ArrayList<String>();
+		if(!EEBeanUtils.isNULL(inStr)){
+			String[] inStrs = inStr.split(",");
+			for(String str : inStrs){
+				rangeINList.add(str.trim());
+			}
+		}
+		return rangeINList;
 	}
 
 }
