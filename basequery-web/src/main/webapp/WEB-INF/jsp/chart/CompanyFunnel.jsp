@@ -1274,7 +1274,7 @@
 				        {
 				            type : 'value',
 				            name: '单位:千',
-				            min: (parseInt(LostValue[0]/100) >= 0)?(parseInt(LostValue[0]/100)+1)*100:(parseInt(LostValue[0]/100)-1)*100,
+				            min: (parseInt(LostValue[0]/100)-1)*100,
 				            max: (parseInt(WantValue[WantValue.length-1]/100)+2)*100,
 				            interval: 200,
 				            axisLabel: {
