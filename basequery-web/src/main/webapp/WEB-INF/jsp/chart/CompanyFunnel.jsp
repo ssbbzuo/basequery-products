@@ -299,7 +299,7 @@
 	
 	var myChart01 = echarts.init(worldMapContainer01,'infographic');
 	var myChart02 = echarts.init(worldMapContainer02,'infographic');
-	var myChart03 = echarts.init(worldMapContainer03);
+	var myChart03 = echarts.init(worldMapContainer03,'infographic');
 	
 	
 	//加载数据
@@ -994,6 +994,25 @@
 	var setPara_Company = "";
 	var pageSize_Company = 10;
 	var currentCount_Company = 0;	
+	
+	//冒泡
+	function bubbleSort(Value){
+		var temp = 0;
+		for (var i = 0; i < Value.length; i++)
+		{
+			for (var j = 0; j < Value.length - i; j++)
+			{
+				if (Value[j] > Value[j + 1])
+				{
+					temp = Value[j + 1];
+					Value[j + 1] = Value[j];
+					Value[j] = temp;
+				}
+			}
+		};
+		
+		return Value;
+	};
 
 	//填充表格数据 预报读咨询 学习中心 
 	function fillTable_Company(msg) {
@@ -1031,23 +1050,40 @@
 						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_WILL_PER + '","name":"总转化率"}]';
 				};
 				
-				strWant += msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_WANT/1000 + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_WANT/1000 +']';
+				//取最大值
+				var WantValue = [msg[key].test.resultSet[o].FUNNEL_WILL_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_AGREE_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_AFFIRM_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_EXECUTE_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT/1000];
 				
-				strSuccess += msg[key].test.resultSet[o].FUNNEL_PRODUCE_SUCCESS/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_SUCCESS/1000 + 
+				WantValue = bubbleSort(WantValue);
+				//取最小值
+				var LostValue = [msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 , 
+				 				msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 , 
+				 				msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST/1000 ,
+				 				msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 ,
+				 				msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 ];
+				
+				LostValue = bubbleSort(LostValue);
+				
+				strWant += msg[key].test.resultSet[o].FUNNEL_WILL_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_WANT/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT/1000 +']';
+				
+				strSuccess += msg[key].test.resultSet[o].FUNNEL_WILL_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_SUCCESS/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_SUCCESS/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_SUCCESS/1000 + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_SUCCESS/1000 +']';	
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_SUCCESS/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_PRODUCE_SUCCESS/1000 +']';	
 						
-				strLost += msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 + 
+				strLost += msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 +']';							
+						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 + 						
+						',' + msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 +']';							
 			}	
 		}		
 	//生成漏斗图
@@ -1229,54 +1265,37 @@
 		        containLabel: true
 		    },
 		    xAxis : [
-		        {
-		            type : 'value'
-		        }
+				        {
+				            type : 'category',
+				            data :['总客户','已分配','覆盖跟踪','已激活','产单']
+				        }
 		    ],
 		    yAxis : [
-		        {
-		            type : 'category',
-		            name: '单位:千',
-		            axisTick : {show: false},
-		            data : ['产单','已激活','覆盖跟踪','已分配','总客户']
-		        }
+				        {
+				            type : 'value',
+				            name: '单位:千',
+				            min: (parseInt(LostValue[0]/100) >= 0)?(parseInt(LostValue[0]/100)+1)*100:(parseInt(LostValue[0]/100)-1)*100,
+				            max: (parseInt(WantValue[WantValue.length-1]/100)+2)*100,
+				            interval: 200,
+				            axisLabel: {
+				                formatter: '{value} K'
+				            }
+				        }
 		    ],
 		    series : [
 		        {
 		            name:'成功',
 		            type:'bar',
-		            label: {
-		                normal: {
-		                    show: true,
-		                    position: 'inside',
-		                    textStyle:{
-		                    	color:'#000'
-		                    }
-		                }
-		            },
 		            data:eval("("+strSuccess+ ")")
 		        },
 		        {
 		            name:'意向',
 		            type:'bar',
-		            stack: '总量',
-		            label: {
-		                normal: {
-		                    show: true
-		                }
-		            },
 		            data:eval("("+strWant+ ")")
 		        },
 		        {
 		            name:'流失',
 		            type:'bar',
-		            stack: '总量',
-		            label: {
-		                normal: {
-		                    show: true,
-		                    position: 'left'
-		                }
-		            },
 		            data:eval("("+strLost+ ")")
 		        }
 		    ]

@@ -263,7 +263,7 @@
 	
 	var myChart01 = echarts.init(worldMapContainer01,'infographic');
 	var myChart02 = echarts.init(worldMapContainer02,'infographic');
-	var myChart03 = echarts.init(worldMapContainer03);
+	var myChart03 = echarts.init(worldMapContainer03,'infographic');
 	
 	
 	//加载数据
@@ -823,6 +823,25 @@
 	var setPara_Student = "";
 	var pageSize_Student = 10;
 	var currentCount_Student = 0;	
+	
+	//冒泡
+	function bubbleSort(Value){
+		var temp = 0;
+		for (var i = 0; i < Value.length; i++)
+		{
+			for (var j = 0; j < Value.length - i; j++)
+			{
+				if (Value[j] > Value[j + 1])
+				{
+					temp = Value[j + 1];
+					Value[j + 1] = Value[j];
+					Value[j] = temp;
+				}
+			}
+		};
+		
+		return Value;
+	};
 
 	//填充表格数据 预报读咨询 学习中心 
 	function fillTable_Student(msg) {
@@ -856,20 +875,35 @@
 						strGauge += '{"value":"'+msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_PER + '","name":"预报读转化率"}]';
 				};
 				
-				strWant += msg[key].test.resultSet[o].FUNNEL_SELL_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT/1000 +']';
+				//取最大值
+				var WantValue = [msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_READ_WANT/1000,
+				                msg[key].test.resultSet[o].FUNNEL_SELL_WANT/1000];
 				
-				strSuccess += msg[key].test.resultSet[o].FUNNEL_SELL_SUCCESS/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_SUCCESS/1000 + 
+				WantValue = bubbleSort(WantValue);
+				//取最小值
+				var LostValue = [msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST/1000 , 
+				 				msg[key].test.resultSet[o].FUNNEL_FLLOW_LOST/1000 , 
+				 				msg[key].test.resultSet[o].FUNNEL_READ_LOST/1000 , 
+				 				msg[key].test.resultSet[o].FUNNEL_SELL_LOST/1000 ];
+				
+				LostValue = bubbleSort(LostValue);				
+				
+				strWant += msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_WANT/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_SELL_WANT/1000 +']';
+				
+				strSuccess += msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_SUCCESS/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_SUCCESS/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_SUCCESS/1000 +']';	
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_SUCCESS/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_SELL_SUCCESS/1000 +']';	
 						
-				strLost += msg[key].test.resultSet[o].FUNNEL_SELL_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_READ_LOST/1000 + 
+				strLost += msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST/1000 +']';							
+						',' + msg[key].test.resultSet[o].FUNNEL_READ_LOST/1000 + 
+						',' + msg[key].test.resultSet[o].FUNNEL_SELL_LOST/1000 +']';							
 			}	
 		}		
 	//生成漏斗图
@@ -1034,7 +1068,7 @@
 		            restore: {},
 		            saveAsImage: {}
 		        }
-		    },		    
+		    },
 		    legend: {
 		        data:['意向', '成功', '流失']
 		    },
@@ -1046,53 +1080,36 @@
 		    },
 		    xAxis : [
 		        {
-		            type : 'value'
+		            type : 'category',
+		            data : ['预报读','预报读跟踪','报读','缴费']
 		        }
 		    ],
 		    yAxis : [
 		        {
-		            type : 'category',
+		            type : 'value',
 		            name: '单位:千',
-		            axisTick : {show: false},
-		            data : ['缴费','报读','预报读跟踪','预报读']
+		            min: (parseInt(LostValue[0]/100) >= 0)?(parseInt(LostValue[0]/100)+1)*100:(parseInt(LostValue[0]/100)-1)*100,
+		            max: (parseInt(WantValue[WantValue.length-1]/100)+2)*100,
+		            interval: 400,
+		            axisLabel: {
+		                formatter: '{value} K'
+		            }
 		        }
 		    ],
 		    series : [
 		        {
 		            name:'成功',
 		            type:'bar',
-		            label: {
-		                normal: {
-		                    show: true,
-		                    position: 'inside',
-		                    textStyle:{
-		                    	color:'#000'
-		                    }
-		                }
-		            },
 		            data:eval("("+strSuccess+ ")")
 		        },
 		        {
 		            name:'意向',
 		            type:'bar',
-		            stack: '总量',
-		            label: {
-		                normal: {
-		                    show: true
-		                }
-		            },
 		            data:eval("("+strWant+ ")")
 		        },
 		        {
 		            name:'流失',
 		            type:'bar',
-		            stack: '总量',
-		            label: {
-		                normal: {
-		                    show: true,
-		                    position: 'left'
-		                }
-		            },
 		            data:eval("("+strLost+ ")")
 		        }
 		    ]
