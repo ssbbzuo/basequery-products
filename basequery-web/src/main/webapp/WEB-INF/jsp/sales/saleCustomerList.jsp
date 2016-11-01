@@ -156,6 +156,7 @@
         <th>规模</th>
         <th>性质</th>
         <th>合作状态</th>
+        <th>服务人员</th>
         <th>激活时间</th>
         <th>创建时间</th>
         </tr>
@@ -174,6 +175,7 @@
 		          <td>${resultSet.personsScale }<c:if test="${ empty resultSet.personsScale }">暂无</c:if></td>
 		          <td>${resultSet.customerPropName }<c:if test="${ empty resultSet.customerPropName }">暂无</c:if></td>
 		          <td>${resultSet.cooperateStatusName }<c:if test="${ empty resultSet.cooperateStatusName }">暂无</c:if></td>
+		          <td>${resultSet.staffName }<c:if test="${ empty resultSet.staffName }">暂无</c:if></td>
 		         <td><fmt:formatDate  value="${resultSet.activateDt }"  type="both" pattern="yyyy-MM-dd " /></td>
 		         <td><fmt:formatDate  value="${resultSet.createdDt }"  type="both" pattern="yyyy-MM-dd " /></td>
         </tr>

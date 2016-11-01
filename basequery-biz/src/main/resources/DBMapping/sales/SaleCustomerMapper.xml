@@ -19,6 +19,7 @@
 		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
 		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
 		<result column="ADMIN_LOGIN_ACCOUNT_ID" property="staffId" jdbcType="VARCHAR" />
+		<result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
@@ -51,7 +52,8 @@
 				CITY_NAME,
 				DISTRICT,
 				DISTRICT_NAME ,
-				ADMIN_LOGIN_ACCOUNT_ID
+				ADMIN_LOGIN_ACCOUNT_ID,
+				STAFF_NAME
 			FROM 
 				DM_SALE_CUSTOMER
 		  WHERE 1=1 

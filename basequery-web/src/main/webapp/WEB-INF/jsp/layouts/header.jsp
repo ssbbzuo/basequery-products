@@ -78,7 +78,7 @@
 			              </a>
 			              <ul class="treeview-menu">
 
-			                <li><a href="#"><i class="fa fa-circle-o"></i>账号管理</a></li>
+			               <!--  <li><a href="#"><i class="fa fa-circle-o"></i>账号管理</a></li> -->
 			                <li><a href="<%=request.getContextPath() %>/userList"><i class="fa fa-user"></i>用户管理</a></li>
 			              </ul>
 			            </li>

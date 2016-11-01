@@ -17,7 +17,7 @@ public class SaleCustomerTest extends SpringEnv {
 		QueryCondition queryCondition = new QueryCondition();
 		queryCondition.setMaxQuantity(10);
 		queryCondition.setStartIndex(0);
-		String result = EEBeanUtils.object2Json(service.query(queryCondition));
+		String result = EEBeanUtils.object2Json(service.query("1110885E53BC48A09A27212FD2C63143",queryCondition));
 		System.out.println("result----"+result);
 		
 	}
