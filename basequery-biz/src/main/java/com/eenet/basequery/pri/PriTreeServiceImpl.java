@@ -172,7 +172,11 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 				cache = new ArrayList<String>();
 			}
 			if (wholePriCache == null) {
-				wholePriCache = new ArrayList<String>();
+				List<String>  list = priTreeDaoService.getMyPriTree(uid, type.ordinal() + 1);
+				if (list!=null && list.size()>0) 
+					wholePriCache = list;
+				else
+					wholePriCache = new ArrayList<String>();
 			}
 			String[] arr = addIds.split(",");
 			if (arr.length > 0) {
@@ -232,6 +236,7 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 			List<String> cache = RedisClient.getObject("PRI_TREE" + uid + pId + type.name(), List.class);
 			
 			List<String>  wholePriCache = RedisClient.getObject("WHOLE_PRI_TREE" + uid+type.name(), List.class);
+			
 
 			if (cache != null) {
 				String[] arr = removeIds.split(",");
@@ -259,7 +264,7 @@ public class PriTreeServiceImpl extends SimpleBizImpl implements PriTreeService 
 				}
 
 				if (wholePriCache.size() > 0) {
-					RedisClient.setObject("WHOLE_PRI_TREE" + uid+type.name(), cache, -1);
+					RedisClient.setObject("WHOLE_PRI_TREE" + uid+type.name(), wholePriCache, -1);
 				} else {
 
 					RedisClient.remove("WHOLE_PRI_TREE" + uid+type.name());
