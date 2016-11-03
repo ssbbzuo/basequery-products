@@ -20,48 +20,8 @@
 		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
 		<result column="ADMIN_LOGIN_ACCOUNT_ID" property="staffId" jdbcType="VARCHAR" />
 		<result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_LINKMAN" property="customerLinkMan" jdbcType="VARCHAR" />
 	</resultMap>
-
-	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
-		<![CDATA[
-			SELECT
-				COUNT(1)
-			FROM 
-				DM_SALE_CUSTOMER
-		  WHERE 1=1 
-		]]>
-		<include refid="com.eenet.base.${db.type}.query_quote" />
-	</select>
-	
-	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
-		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
-		<![CDATA[
-			SELECT
-				CUSTOMER_NAME,
-				CUSTOMER_CODE,
-				PERSONS_SCALE,
-				CUSTOMER_PROP,
-				CUSTOMER_PROP_NAME,
-				COOPERATE_STATUS,
-				COOPERATE_STATUS_NAME,
-				ACTIVATE_DT,
-				CREATED_DT,
-				PROVINCE,
-				PROVINCE_NAME,
-				CITY,
-				CITY_NAME,
-				DISTRICT,
-				DISTRICT_NAME ,
-				ADMIN_LOGIN_ACCOUNT_ID,
-				STAFF_NAME
-			FROM 
-				DM_SALE_CUSTOMER
-		  WHERE 1=1 
-		]]>
-		<include refid="com.eenet.base.${db.type}.query_quote" />
-		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
-		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
-	</select>
 
 
 <select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
@@ -105,7 +65,9 @@
 				CITY_NAME,
 				DISTRICT,
 				DISTRICT_NAME ,
-				ADMIN_LOGIN_ACCOUNT_ID
+				ADMIN_LOGIN_ACCOUNT_ID,
+				STAFF_NAME,
+				CUSTOMER_LINKMAN
 			FROM 
 				DM_SALE_CUSTOMER
 		  WHERE 1=1  

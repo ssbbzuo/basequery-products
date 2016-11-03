@@ -50,6 +50,7 @@ public class SaleCustomerServiceImpl extends SimpleBizImpl implements SaleCustom
 			List<String> priTreeList = priTreeService.getPriTreeByType(curUserId, PrivilegeType.STAFFPRI);
 			if(priTreeList!=null&&!priTreeList.isEmpty()){
 				String rangeFrom = priTreeList.toString().substring(1, priTreeList.toString().length()-1);
+				System.out.println(rangeFrom);
 				condition.addCondition(new ConditionItem("staffId",RangeType.IN,rangeFrom,""));
 			}
 		}
@@ -60,5 +61,5 @@ public class SaleCustomerServiceImpl extends SimpleBizImpl implements SaleCustom
 	public  Class<SaleCustomer> getPojoCLS() {
 		return SaleCustomer.class;
 	}
-
+	
 }

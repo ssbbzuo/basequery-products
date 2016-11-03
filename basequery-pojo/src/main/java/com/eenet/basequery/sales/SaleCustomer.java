@@ -25,6 +25,13 @@ public class SaleCustomer extends BaseEntity{
 	private String districtName;//区名称
 	private String staffId;//该客户的服务人员ID
 	private String staffName;//该客户的服务人员名称
+	private String customerLinkMan;//客户联系人
+	public String getCustomerLinkMan() {
+		return customerLinkMan;
+	}
+	public void setCustomerLinkMan(String customerLinkMan) {
+		this.customerLinkMan = customerLinkMan;
+	}
 	public String getStaffName() {
 		return staffName;
 	}
