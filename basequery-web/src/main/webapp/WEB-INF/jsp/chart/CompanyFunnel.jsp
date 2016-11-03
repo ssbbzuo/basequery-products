@@ -481,7 +481,6 @@
 
 		//删除表格数据
 		$("div#jsontotable-str-"+setStr).remove();
-		$("div#allData").append('<div id="div#jsontotable-'+setStr+'"></div>');
 		//添加表格div
 		$("div#jsontotable-"+setStr).append('<div id="jsontotable-str-'+setStr+'"></div>');
 		//生成表格数据
@@ -492,6 +491,7 @@
 		$("div#pageToolbar-"+setStr).remove();
 		//添加表格div
 		$("div#pageTool-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
+		//$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
 		
 		//加载分页工具
 		$('#pageToolbar-'+setStr).Paging({pagesize:eval("pageSize_" + setStr),current:((eval("currentCount_" + setStr)/eval("pageSize_" + setStr))+1),count:total,toolbar:true,
@@ -1079,11 +1079,11 @@
 						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_SUCCESS/1000 + 						
 						',' + msg[key].test.resultSet[o].FUNNEL_PRODUCE_SUCCESS/1000 +']';	
 						
-				strLost += msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST/1000 + 
-						',' + msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 + 						
-						',' + msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 +']';							
+				strLost += Math.abs(msg[key].test.resultSet[o].FUNNEL_WILL_LOST)/1000 + 
+						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_AGREE_LOST)/1000 + 
+						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST)/1000 + 
+						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST)/1000 + 						
+						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST)/1000 +']';							
 			}	
 		}		
 	//生成漏斗图
@@ -1256,7 +1256,7 @@
 		        }
 		    },		    
 		    legend: {
-		        data:['意向', '成功', '流失']
+		        data:[ '成功', '流失']
 		    },
 		    grid: {
 		        left: '3%',
@@ -1274,11 +1274,11 @@
 				        {
 				            type : 'value',
 				            name: '单位:千',
-				            min: (parseInt(LostValue[0]/100)-1)*100,
-				            max: (parseInt(WantValue[WantValue.length-1]/100)+2)*100,
-				            interval: 200,
+				            min: 0,
+				            max: (parseInt(WantValue[WantValue.length-1]/100)+1)*100,
+				            interval: 50,
 				            axisLabel: {
-				                formatter: '{value} K'
+				                formatter: '{value} '
 				            }
 				        }
 		    ],
@@ -1286,16 +1286,13 @@
 		        {
 		            name:'成功',
 		            type:'bar',
+		            stack: '总量',
 		            data:eval("("+strSuccess+ ")")
-		        },
-		        {
-		            name:'意向',
-		            type:'bar',
-		            data:eval("("+strWant+ ")")
 		        },
 		        {
 		            name:'流失',
 		            type:'bar',
+		            stack: '总量',
 		            data:eval("("+strLost+ ")")
 		        }
 		    ]
