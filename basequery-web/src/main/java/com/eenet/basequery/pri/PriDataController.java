@@ -116,26 +116,32 @@ public class PriDataController {
 	@RequestMapping(value="/getMyPri")
 	@ResponseBody
 	public List<String> getMyPri(String userId,String id,int type){
+		PrivilegeType privilegeType = null;
 		if (EEBeanUtils.isNULL(id)) {	
 			switch (type) {
 				case 1:
 					id =  "100000000";
+					privilegeType =  PrivilegeType.AREAPRI;
 					break;
 				case 2:
 					id =  "ISNULL";
+					privilegeType =   PrivilegeType.NETWORKPRI;  
 					break;
 				case 3:
 					id =  "ISNULL";
+					privilegeType =  PrivilegeType.STAFFPRI ; 
 					break;
 				case 4:
 					id =  "ISNULL";
+					privilegeType =  PrivilegeType.CHANELPRI ; 
 					break;
 				case 5:
 					id =  "ISNULL";
+					privilegeType =  PrivilegeType.LEARNCENTERPRI ; 
 					break;
 			}
 		}
-		List<String>  myPriTree = priTreeService.getMyPriTree(userId,id,type);
+		List<String>  myPriTree = priTreeService.getMyPriTree(userId,id,privilegeType);
 		return  myPriTree;
 	}
 	
@@ -191,6 +197,9 @@ public class PriDataController {
 			break;
 		case 4:
 			privilegeType =   PrivilegeType.CHANELPRI; 
+			break;
+		case 5:
+			privilegeType =  PrivilegeType.LEARNCENTERPRI ; 
 			break;
 		}
 		

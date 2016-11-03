@@ -152,6 +152,7 @@
         <th><input type="checkbox" class="select-all"></th>
         <th>客户</th>
         <th>客户编码</th>
+        <th>客户联系人</th>
         <th>区域</th>     
         <th>规模</th>
         <th>性质</th>
@@ -169,6 +170,7 @@
 		          <td><input type="checkbox"></td>
 		      	  <td>${resultSet.customerName }<c:if test="${ empty resultSet.customerName }">暂无</c:if></td>
 		          <td>	${resultSet.customerCode }<c:if test="${ empty resultSet.customerCode }">暂无</c:if></td>
+		          <td>	${resultSet.customerLinkMan }<c:if test="${ empty resultSet.customerLinkMan }">暂无</c:if></td>
 		          <td>	${resultSet.provinceName }${resultSet.cityName }${resultSet.districtName }
 		          		<c:if test="${ empty resultSet.provinceName &&  empty resultSet.cityName  && empty resultSet.districtName }">暂无</c:if>
 		          	</td>
