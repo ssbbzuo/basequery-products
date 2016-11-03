@@ -8,28 +8,46 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>远程教育数据中心</title>
 <jsp:include page="/WEB-INF/jsp/common/jslibs.jsp"/>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/static/plugins/zTree/css/zTreeStyle/metro.css">
-<script
-		src="<%=request.getContextPath()%>/static/plugins/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/zTree/css/zTreeStyle/metro.css">
+<script src="<%=request.getContextPath()%>/static/plugins/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/static/plugins/zTree/js/jquery.ztree.exhide.min.js"></script>
 </head>
 <body class="inner-page-body">
 <section class="content">
+
+
   <div class="box">
+	
      <div class="box-body">
-            <div class="form-group">
-              <div class="col-sm-3">
-              	<input type="hidden"  value="rollStatus"  name="conditions[6].fieldName"/> 
-              	<input type="hidden"  value="EQUAL"  name="conditions[6].rangeType"/> 
-                  <select  id="priType" class="form-control" name="conditions[6].rangeFrom" onchange="changePriType()">
-                  <option value="1" <c:if test="${queryCondition.conditions[6].rangeFrom == '1'}" >selected</c:if> >区域</option>
-                  <option value="2" <c:if test="${queryCondition.conditions[6].rangeFrom == '2'}" >selected</c:if> >网院</option>
-                  <option value="3" <c:if test="${queryCondition.conditions[6].rangeFrom == '3'}" >selected</c:if> >人员</option>
-                  <option value="4" <c:if test="${queryCondition.conditions[6].rangeFrom == '4'}" >selected</c:if> >渠道</option>
-                  <option value="5" <c:if test="${queryCondition.conditions[6].rangeFrom == '5'}" >selected</c:if> >学习中心</option>
-                </select>
-       	 	</div>
-      	</div>
+	     <div class="row" > 
+	            <div class="form-group">
+	              <div class="col-sm-4">
+	              	<input type="hidden"  value="rollStatus"  name="conditions[6].fieldName"/> 
+	              	<input type="hidden"  value="EQUAL"  name="conditions[6].rangeType"/> 
+	                  <select  id="priType" class="form-control" name="conditions[6].rangeFrom" onchange="changePriType()">
+	                  <option value="1" <c:if test="${queryCondition.conditions[6].rangeFrom == '1'}" >selected</c:if> >区域</option>
+	                  <option value="2" <c:if test="${queryCondition.conditions[6].rangeFrom == '2'}" >selected</c:if> >网院</option>
+	                  <option value="3" <c:if test="${queryCondition.conditions[6].rangeFrom == '3'}" >selected</c:if> >人员</option>
+	                  <option value="4" <c:if test="${queryCondition.conditions[6].rangeFrom == '4'}" >selected</c:if> >渠道</option>
+	                  <option value="5" <c:if test="${queryCondition.conditions[6].rangeFrom == '5'}" >selected</c:if> >学习中心</option>
+	                </select>
+	       	 	</div>
+	       	 	</div>
+	      	</div>
+    </div> 
+     <div class="box-body">
+	     <div class="row" > 
+	        
+	       	 	</div>
+	       	 	<div class="row" > 
+	       	 	 <div class="col-sm-2" style="border-top:0;">
+				      <div><a  class="btn btn-default" onclick="showMyPri()">已赋予权限</a></div>
+				 </div>
+				 	<div class="col-sm-2" style="border-top:0;">
+				      <div><a   class="btn btn-default" onclick="showAllPri()">所有权限</a></div>
+				     </div>
+				 </div>
+	      	</div>
     </div> 
     </div> 
 
@@ -166,6 +184,25 @@
 				nodes[i].checkedOld = nodes[i].checked;
 			}
 		}
+    	
+    	function showMyPri(){
+    		var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+			nodes = zTree.getNodesByParam("checked", false);
+    		if (nodes.length == 0) {
+				return;
+			}
+			zTree.hideNodes(nodes);
+    	}
+    	
+    	function showAllPri(){
+    		var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+			nodes = zTree.getNodesByParam("isHidden", true);
+    		if (nodes.length == 0) {
+				return;
+			}
+			zTree.showNodes(nodes);
+    	}
+    	
        
 </script>
 </html>
