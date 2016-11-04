@@ -15,6 +15,12 @@
 		<result column="EMAIL_STATUS" property="emailStatus" jdbcType="VARCHAR" />
 		<result column="EMAIL_STATUS_NAME" property="emailStatusName" jdbcType="VARCHAR" />
 		<result column="CREATED_DT" property="createdDt" jdbcType="DATE" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
@@ -92,7 +98,13 @@
 				FOLLOW_TYPE_NAME,
 				EMAIL_STATUS,
 				EMAIL_STATUS_NAME,
-				CREATED_DT
+				CREATED_DT,
+				PROVINCE,
+				PROVINCE_NAME,
+				CITY,
+				CITY_NAME,
+				DISTRICT,
+				DISTRICT_NAME 
 			FROM 
 				DM_SALE_CUSTOMERFOLLOW
 		  WHERE 1=1 

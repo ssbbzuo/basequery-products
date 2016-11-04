@@ -1,6 +1,7 @@
 //区域（省市区）组装
 var localObj = window.location;
 var contextPath = localObj.pathname.split("/")[1];
+if(contextPath!="basequery-web")contextPath="";
 var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
 $(function(){
 	  /**获取当前省市区值**/
