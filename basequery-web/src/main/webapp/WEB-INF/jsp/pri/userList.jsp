@@ -61,6 +61,15 @@
     </div> 
     </div> 
   
+
+	
+     <div id ="message"></div>
+	
+ 
+	
+	
+ 
+	
   
   <div class="box margin-bottom-none">
     <div class="box-header ">
@@ -68,15 +77,6 @@
         <button type="button" class="btn   btn-success btn-outport" onclick="createUser()"><i class="fa fa-fw fa-sign-out"></i>新增用户</button>
       </div>
     </div>
-    
-	<div id="success" class="alert alert-success" style="display: none">
-		<strong>新增成功！</strong>
-	</div>
-	
-	<div id="error" class="alert alert-danger"   style="display: none">
-		<strong>新增失败！</strong>
-	</div>
-    
     <div class="box-body">
       <table id="dtable" class="table table-bordered table-striped table-container">
 	      <thead>
@@ -300,6 +300,15 @@
          
 </body>
 <script>
+	var successPrefix = '<div class="alert alert-success alert-dismissable"> <button type="button" class="close" data-dismiss="alert"  aria-hidden="true">  &times; </button>   ';
+	var errorPrefix = '<div class="alert alert-error alert-dismissable"> <button type="button" class="close" data-dismiss="alert"  aria-hidden="true">  &times; </button>   ';
+	
+	var suffix = '</div>';
+
+
+
+	   
+
     $("#createdDtId01").datepicker({language: 'zh-CN', autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
     $("#createdDtId02").datepicker({language: 'zh-CN',autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
         onSelect: function(dateText,inst){  
@@ -325,7 +334,15 @@
     	 $.post("<%=request.getContextPath() %>/initAdminUserLoginPassword",  $("#initForm").serialize(),
   			   function(data){
 		  		   $("#init").modal("hide");
-		  		   
+		  		   if(data.successful){
+		  			 	$("#message").empty();
+				  		$("#message").append(successPrefix +'初始化密码成功！' +suffix);
+				  		hiddenMessage();
+		  		   }else{
+		  			    $("#message").empty();
+				  		$("#message").append(errorPrefix +'初始化密码失败！              '  +data.messages +suffix);
+				  		hiddenMessage();
+		  		   }
 		  	}, "json");
 		    	
     }
@@ -352,16 +369,50 @@
 	   $.post("<%=request.getContextPath() %>/saveUser",  $("#ffAdd").serialize(),
 			   function(data){
 		   		if(data.successful){
-		   			$("#success").show();
-		   			$("#error").hide();
 			   		$("#add").modal("hide");
-			   		$("#form").submit();
+			   		a=setInterval(sumitQueryuser,2000);
+			   		$("#message").empty();
+			  		$("#message").append(successPrefix +'新增用户成功！' +suffix);
 		   		}else{
-		   			$("#error").show();
-		   			$("#success").hide();
+		   			$("#message").empty();
+			  		$("#message").append(errorPrefix +'新增用户失败！              '  +data.messages +suffix);
+			  		hiddenMessage();
 		   		}
+		   		
+		   	 
 	}, "json");
   }
+   var a ;
+   function hiddenMessage(){
+	   a=setInterval(clear,3000);
+   }
+   
+   function clear(){
+	   $("#message").empty();
+	   if(a){
+		   clearInterval(a);
+	   }
+   }
+   
+   function sumitQueryuser(){
+	   if(a){
+		   clearInterval(a);
+	   }
+	   $("#form").submit();
+   }
+   
+   
+   $("#birthday").datepicker({language: 'zh-CN',autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
+       onSelect: function(dateText,inst){  
+           var time=dateText.split("-");  
+           var year = time[0];  
+           var month = time[1];  
+           var day = time[2];  
+           $("#birthday").datepicker(  
+               'option', 'minDate', new Date(year, month - 1, day)  
+           );  
+       },defaultDate:new Date()
+   });  
     
     
 

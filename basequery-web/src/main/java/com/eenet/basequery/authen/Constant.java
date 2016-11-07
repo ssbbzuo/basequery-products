@@ -1,5 +1,8 @@
 package com.eenet.basequery.authen;
 
+import com.eenet.util.cryptography.EncryptException;
+import com.eenet.util.cryptography.MD5Util;
+
 public class Constant {
 
 	public static final String appId = "ED11244595E14383A995E6AB819B77F8";//平台应用ID
@@ -25,6 +28,18 @@ public class Constant {
 	
 	
 	public static String adminUserLoginInfoSession = "adminUserLoginInfo";
+	public static void main(String[] args) throws EncryptException {
+		System.out.println(MD5Util.encrypt("nyz0413"));
+		System.out.println(MD5Util.encrypt("123456"));
+		System.out.println(MD5Util.encrypt("a1b2c3d4"));
+		System.out.println(MD5Util.encrypt("id11141303."));
+		System.out.println(MD5Util.encrypt("wwww8050"));
+		System.out.println(MD5Util.encrypt("342303"));
+		System.out.println(MD5Util.encrypt("667331"));
+		System.out.println(MD5Util.encrypt("082784"));
+		System.out.println(MD5Util.encrypt("060415"));
+		System.out.println(MD5Util.encrypt("890907"));
+	}
 	
 	
 }

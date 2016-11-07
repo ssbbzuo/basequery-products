@@ -55,6 +55,7 @@
 <!--     </div>  -->
     </div> 
   
+  <div id ="message"></div>
   
   <div class="box margin-bottom-none">
     <div class="box-header ">
@@ -175,6 +176,12 @@
          
 </body>
 <script>
+
+	var successPrefix = '<div class="alert alert-success alert-dismissable"> <button type="button" class="close" data-dismiss="alert"  aria-hidden="true">  &times; </button>   ';
+	var errorPrefix = '<div class="alert alert-error alert-dismissable"> <button type="button" class="close" data-dismiss="alert"  aria-hidden="true">  &times; </button>   ';
+	
+	var suffix = '</div>';
+
     $("#createdDtId01").datepicker({language: 'zh-CN', autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'});  
     $("#createdDtId02").datepicker({language: 'zh-CN',autoclose: true, todayHighlight: true,format:'yyyy-mm-dd',
         onSelect: function(dateText,inst){  
@@ -194,8 +201,23 @@
     function createAccount(){
     	 $.post("<%=request.getContextPath() %>/saveAccount",  $("#ffAdd").serialize(),
 	  			   function(data){
-	  		   $("#add").modal("hide");
-	  		   $("#form").submit();
+    		 console.info(data.successful && !data.RSBizCode);
+			   	$("#add").modal("hide");
+    		 	if(data.successful && !data.RSBizCode){
+			   		a=setInterval(sumitQueryaccount,2000);
+			   		$("#message").empty();
+			  		$("#message").append(successPrefix +'新增账户成功！' +suffix);
+		   		}else{
+		   			$("#message").empty();
+		   			if(!data.RSBizCode){
+		   				("#message").append(errorPrefix +'新增账户失败！              '  +data.messages +suffix);
+		   			}else  if( data.RSBizCode.code == 'AB0001'){
+				  		$("#message").append(errorPrefix +'新增账户失败！              '  +data.RSBizCode.info +suffix);
+		   			}else{
+		   				$("#message").append(errorPrefix +'新增账户失败！              '  +data.RSBizCode.info +'! 该账户绑定人员：'+data.userInfo.name +suffix);
+		   			}
+			  		hiddenMessage();
+		   		}
 	  	}, "json");
     }
     function setRole(id){
@@ -208,6 +230,26 @@
    function toCreateAccount(){
 	   $("#ffAdd")[0].reset();
 	   $("#add").modal("show");
+   }
+   
+   var a ;
+   
+   function sumitQueryaccount(){
+	   if(a){
+		   clearInterval(a);
+	   }
+	   $("#form").submit();
+   }
+   
+   function hiddenMessage(){
+	   a=setInterval(clear,3000);
+   }
+   
+   function clear(){
+	   $("#message").empty();
+	   if(a){
+		   clearInterval(a);
+	   }
    }
    
  

@@ -19,7 +19,7 @@ public interface PriTreeService {
 
 	public int removePri(String uid, String pId, String removeIds, int type);
 
-	public List<String> getMyPriTree(String userId, String pid, int type);
+	public List<String> getMyPriTree(String userId, String pid, PrivilegeType type);
 
 	public  Map<String, List<String>> getWholePri(String uid);
 
