@@ -66,8 +66,6 @@
                     		</li>                   		
 				          </ul>
                     </li>
-                    
-                    <c:if test="${adminUserLoginInfo.loginAccount =='admin'}">
                      <li class="treeview">
 			          <a href="#">
 			            <i class="fa fa-dashboard"></i> <span>权限管理</span>
@@ -96,10 +94,6 @@
 			            </li>
 			          </ul>
 			        </li>
-                    </c:if>
-			        
-			        
-			        
                   </ul>
                 </li>
                 <%--
@@ -244,7 +238,7 @@
 			              	<c:if test="${not empty adminUserLoginInfo.userInfo.cardPhoto}">
 			              		<img src="${adminUserLoginInfo.userInfo.cardPhoto }" 	class="user-image" alt="User Image">
 			              	</c:if>
-							<span class="hidden-xs">${adminUserLoginInfo.userInfo.name}  </span> </a>
+							<span class="hidden-xs">${adminUserLoginInfo.userInfo.name}</span> </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">

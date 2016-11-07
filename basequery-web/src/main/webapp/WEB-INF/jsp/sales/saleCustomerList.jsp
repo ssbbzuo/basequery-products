@@ -27,13 +27,13 @@
   <div class="box">
      <div class="box-body">
      	<form method="post">
-	    <div class="box-footer fr left120" style="border-top:0;">
+	    <div class="box-footer fr col-md-2" style="border-top:0;">
 	      <div><button type="button" class="btn btn-primary">搜索</button></div>
 	      <div class="margin_t20"><button type="button" class="btn btn-default down_btn">高级搜索</button></div>
 	    </div>
     
-      <div class="form-horizontal oh slide_box">
-        <div class="row reset-form-horizontal pad-t15">
+      <div class="form-horizontal oh slide_box col-md-10">
+        <div class="row reset-form-horizontal pad-t10">
           
        		<div class="col-md-12	">
 				<div class="form-group">
@@ -189,12 +189,15 @@
            </c:choose>
       </tbody>
       </table>
-      <jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
+      <div class="pageBox">
+      	<jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
+      </div>
       </form>
     </div>
   </div>
-<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
+
 </section>
+<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 </body>
 <script>
 	$("#createdDtId01").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'})

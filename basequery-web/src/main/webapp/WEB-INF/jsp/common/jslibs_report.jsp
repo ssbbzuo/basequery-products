@@ -17,7 +17,7 @@
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/iCheck/all.css">
 <!-- datepicker --> 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datepicker/datepicker3.css">
+<!-- <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datepicker/datepicker3.css"> -->
 <!-- DataTables -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datatables/dataTables.bootstrap.css">
 <!-- jquery-confirm 
@@ -27,9 +27,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/AdminLTE.min.css">
 <!-- jquery-ui -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/jQueryUI/css/jquery-ui.css">
-<!-- custom css -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/base.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/page.css">
 <!-- retrunTop css -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/static/plugins/returnTop/css/returnTop.css">
@@ -45,7 +42,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/datepicker3.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/styles.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/font-awesome.css">	
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/font-awesome.css">
+<!-- custom css -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/static/dist/css/page.css">	
 <style type="text/css">
 .slide_box{height: 150px;}
 </style>

@@ -10,206 +10,211 @@
 <jsp:include page="/WEB-INF/jsp/common/jslibs_report.jsp" />
 </head>
 <body>
-<div class="col-lg-12 main">
-	<div class="box" >
-		<div class="box-body">
-			<div class="col-md-12">
-				<div class="form-group">
-					<div class="col-md-4 grid_box1">		
-						<input id="create_dt_from" type="text" class="form-control"  placeholder="预报读时间从">	
-					</div>				
-					<div class="col-md-4 grid_box1">				
-							<input id="create_dt_to" type="text" class="form-control"  placeholder="预报读时间至">						
+	<div class="content main">
+		<div class="box" >
+			<div class="clearfix time-search">
+				<!--<div class="col-md-12">
+					<div class="form-group">
 					</div>
-					<div class="col-md-3">
-						<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
-						<button id="reset" type="button" class="btn btn-default"><i class="fa fa-refresh"></i>  清空</button>
-					</div>
+				</div>-->
+				<div class="col-md-4 grid_box1">
+					<input id="create_dt_from" type="text" class="form-control"  placeholder="预报读时间从">	
+				</div>				
+				<div class="col-md-4 grid_box1">				
+						<input id="create_dt_to" type="text" class="form-control"  placeholder="预报读时间至">						
+				</div>
+				<div class="col-md-4">
+					<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
+					<button id="reset" type="button" class="btn btn-default"><i class="fa fa-refresh"></i>  重置</button>
 				</div>
 			</div>
 		</div>
+	
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default" >
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-line-chart"></i> -->
+						<span class="pht-span">预报漏斗信息图</span>
+					</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main01" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-pie-chart"></i> -->
+						<span class="pht-span">仪表盘信息图</span>
+					</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main02"></div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-pie-chart"></i> -->
+						<span class="pht-span">预报漏斗信息图</span>
+					</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main03"></div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div><!--/.row-->	
+	
+		<div class="box margin-bottom-none">
+			<div class="clearfix">
+				<div id="container-FRead">
+					<!--Horizontal Tab-->
+					<div id="FRead">
+						<ul class="resp-tabs-list hor_1">
+							<li><i class="fa fa-university"></i>网院</li>
+							<li><i class="fa fa-graduation-cap"></i>学习中心</li>
+							<li><i class="fa fa-home"></i>客户</li>
+							<li><i class="fa fa-user"></i>招生顾问</li>						
+						</ul>
+						<div class="resp-tabs-container hor_1">
+							<div id="jsontotable-FReadColleges">
+								<!-- 加载表格 -->
+								<div id="pageTool-FReadColleges"> <!-- 加载分页控件 --> </div>
+							</div>	
+							
+							<div id="jsontotable-FReadLearnCenter">
+								<!-- 加载表格 -->		
+								<div id="pageTool-FReadLearnCenter"> <!-- 加载分页控件 --> </div>					
+							</div>
+							<div id="jsontotable-FReadCompany">
+								<!-- 加载表格 -->
+								<div id="pageTool-FReadCompany"> <!-- 加载分页控件 --> </div>						
+							</div>
+							<div id="jsontotable-FReadSaleman">
+								<!-- 加载表格 -->
+								<div id="pageTool-FReadSaleman"> <!-- 加载分页控件 --> </div>						
+							</div>						
+						</div>
+					</div>
+					<div id="nested-tabInfo-FRead" class="nested-tabInfo">
+						当前选择: <span class="tabName">网院</span>			
+					</div>
+				</div><!-- container-FRead -->
+				
+				<div id="container-Fllow">
+					<!--Horizontal Tab-->
+					<div id="Fllow">
+						<ul class="resp-tabs-list hor_1">
+							<li><i class="fa fa-university"></i>网院</li>
+							<li><i class="fa fa-graduation-cap"></i>学习中心</li>
+							<li><i class="fa fa-home"></i>客户</li>
+							<li><i class="fa fa-users"></i>班主任</li>						
+						</ul>
+						<div class="resp-tabs-container hor_1">
+							<div id="jsontotable-FllowColleges">
+								<!-- 加载表格 -->
+								<div id="pageTool-FllowColleges"> <!-- 加载分页控件 --> </div>
+							</div>	
+							
+							<div id="jsontotable-FllowLearnCenter">
+								<!-- 加载表格 -->		
+								<div id="pageTool-FllowLearnCenter"> <!-- 加载分页控件 --> </div>					
+							</div>
+							<div id="jsontotable-FllowCompany">
+								<!-- 加载表格 -->
+								<div id="pageTool-FllowCompany"> <!-- 加载分页控件 --> </div>						
+							</div>
+							<div id="jsontotable-FllowLearnCenterUser">
+								<!-- 加载表格 -->
+								<div id="pageTool-FllowLearnCenterUser"> <!-- 加载分页控件 --> </div>						
+							</div>						
+						</div>
+					</div>
+					<div id="nested-tabInfo-Fllow" class="nested-tabInfo">
+						当前选择: <span class="tabName">网院</span>			
+					</div>
+				</div><!-- containerFllow -->	
+				
+				<div id="container-Read">
+					<!--Horizontal Tab-->
+					<div id="Read">
+						<ul class="resp-tabs-list hor_1">
+							<li><i class="fa fa-university"></i>网院</li>
+							<li><i class="fa fa-graduation-cap"></i>学习中心</li>
+							<li><i class="fa fa-home"></i>客户</li>
+							<li><i class="fa fa-users"></i>班主任</li>						
+						</ul>
+						<div class="resp-tabs-container hor_1">
+							<div id="jsontotable-ReadColleges">
+								<!-- 加载表格 -->
+								<div id="pageTool-ReadColleges"> <!-- 加载分页控件 --> </div>
+							</div>	
+							
+							<div id="jsontotable-ReadLearnCenter">
+								<!-- 加载表格 -->		
+								<div id="pageTool-ReadLearnCenter"> <!-- 加载分页控件 --> </div>					
+							</div>
+							<div id="jsontotable-ReadCompany">
+								<!-- 加载表格 -->
+								<div id="pageTool-ReadCompany"> <!-- 加载分页控件 --> </div>						
+							</div>
+							<div id="jsontotable-ReadLearnCenterUser">
+								<!-- 加载表格 -->
+								<div id="pageTool-ReadLearnCenterUser"> <!-- 加载分页控件 --> </div>						
+							</div>						
+						</div>
+					</div>
+					<div id="nested-tabInfo-Read" class="nested-tabInfo">
+						当前选择: <span class="tabName">网院</span>			
+					</div>
+				</div><!-- containerRead -->	
+				
+				<div id="container-Sell">
+					<!--Horizontal Tab-->
+					<div id="Sell">
+						<ul class="resp-tabs-list hor_1">
+							<li><i class="fa fa-university"></i>网院</li>
+							<li><i class="fa fa-graduation-cap"></i>学习中心</li>
+							<li><i class="fa fa-home"></i>客户</li>
+							<li><i class="fa fa-users"></i>班主任</li>						
+						</ul>
+						<div class="resp-tabs-container hor_1">
+							<div id="jsontotable-SellColleges">
+								<!-- 加载表格 -->
+								<div id="pageTool-SellColleges"> <!-- 加载分页控件 --> </div>
+							</div>	
+							
+							<div id="jsontotable-SellLearnCenter">
+								<!-- 加载表格 -->		
+								<div id="pageTool-SellLearnCenter"> <!-- 加载分页控件 --> </div>					
+							</div>
+							<div id="jsontotable-SellCompany">
+								<!-- 加载表格 -->
+								<div id="pageTool-SellCompany"> <!-- 加载分页控件 --> </div>						
+							</div>
+							<div id="jsontotable-SellLearnCenterUser">
+								<!-- 加载表格 -->
+								<div id="pageTool-SellLearnCenterUser"> <!-- 加载分页控件 --> </div>						
+							</div>						
+						</div>
+					</div>
+					<div id="nested-tabInfo-Sell" class="nested-tabInfo">
+						当前选择: <span class="tabName">网院</span>			
+					</div>
+				</div><!-- containerRead -->							
+			</div>
+		
+		</div><!-- main -->	
+		
 	</div>
-
-	<div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-default" >
-				<div class="panel-heading"><i class="fa fa-line-chart"></i></div>
-				<div class="panel-body">
-					<div class="canvas-wrapper">
-						<div class="chart" id="main01" ></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
-				<div class="panel-body">
-					<div class="canvas-wrapper">
-						<div class="chart" id="main02"></div>
-					</div>
-				</div>
-			</div>
-		</div>	
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
-				<div class="panel-body">
-					<div class="canvas-wrapper">
-						<div class="chart" id="main03"></div>
-					</div>
-				</div>
-			</div>
-		</div>	
-	</div><!--/.row-->	
-
-		
-	
-		
-
-	<div class="box">
-		<div class="box-body">
-			<div id="container-FRead">
-				<!--Horizontal Tab-->
-				<div id="FRead">
-					<ul class="resp-tabs-list hor_1">
-						<li><i class="fa fa-university"></i>网院</li>
-						<li><i class="fa fa-graduation-cap"></i>学习中心</li>
-						<li><i class="fa fa-home"></i>客户</li>
-						<li><i class="fa fa-user"></i>招生顾问</li>						
-					</ul>
-					<div class="resp-tabs-container hor_1">
-						<div id="jsontotable-FReadColleges">
-							<!-- 加载表格 -->
-							<div id="pageTool-FReadColleges"> <!-- 加载分页控件 --> </div>
-						</div>	
-						
-						<div id="jsontotable-FReadLearnCenter">
-							<!-- 加载表格 -->		
-							<div id="pageTool-FReadLearnCenter"> <!-- 加载分页控件 --> </div>					
-						</div>
-						<div id="jsontotable-FReadCompany">
-							<!-- 加载表格 -->
-							<div id="pageTool-FReadCompany"> <!-- 加载分页控件 --> </div>						
-						</div>
-						<div id="jsontotable-FReadSaleman">
-							<!-- 加载表格 -->
-							<div id="pageTool-FReadSaleman"> <!-- 加载分页控件 --> </div>						
-						</div>						
-					</div>
-				</div>
-				<div id="nested-tabInfo-FRead">
-					当前选择: <span class="tabName">网院</span>			
-				</div>
-			</div><!-- container-FRead -->
-			
-			<div id="container-Fllow">
-				<!--Horizontal Tab-->
-				<div id="Fllow">
-					<ul class="resp-tabs-list hor_1">
-						<li><i class="fa fa-university"></i>网院</li>
-						<li><i class="fa fa-graduation-cap"></i>学习中心</li>
-						<li><i class="fa fa-home"></i>客户</li>
-						<li><i class="fa fa-users"></i>班主任</li>						
-					</ul>
-					<div class="resp-tabs-container hor_1">
-						<div id="jsontotable-FllowColleges">
-							<!-- 加载表格 -->
-							<div id="pageTool-FllowColleges"> <!-- 加载分页控件 --> </div>
-						</div>	
-						
-						<div id="jsontotable-FllowLearnCenter">
-							<!-- 加载表格 -->		
-							<div id="pageTool-FllowLearnCenter"> <!-- 加载分页控件 --> </div>					
-						</div>
-						<div id="jsontotable-FllowCompany">
-							<!-- 加载表格 -->
-							<div id="pageTool-FllowCompany"> <!-- 加载分页控件 --> </div>						
-						</div>
-						<div id="jsontotable-FllowLearnCenterUser">
-							<!-- 加载表格 -->
-							<div id="pageTool-FllowLearnCenterUser"> <!-- 加载分页控件 --> </div>						
-						</div>						
-					</div>
-				</div>
-				<div id="nested-tabInfo-Fllow">
-					当前选择: <span class="tabName">网院</span>			
-				</div>
-			</div><!-- containerFllow -->	
-			
-			<div id="container-Read">
-				<!--Horizontal Tab-->
-				<div id="Read">
-					<ul class="resp-tabs-list hor_1">
-						<li><i class="fa fa-university"></i>网院</li>
-						<li><i class="fa fa-graduation-cap"></i>学习中心</li>
-						<li><i class="fa fa-home"></i>客户</li>
-						<li><i class="fa fa-users"></i>班主任</li>						
-					</ul>
-					<div class="resp-tabs-container hor_1">
-						<div id="jsontotable-ReadColleges">
-							<!-- 加载表格 -->
-							<div id="pageTool-ReadColleges"> <!-- 加载分页控件 --> </div>
-						</div>	
-						
-						<div id="jsontotable-ReadLearnCenter">
-							<!-- 加载表格 -->		
-							<div id="pageTool-ReadLearnCenter"> <!-- 加载分页控件 --> </div>					
-						</div>
-						<div id="jsontotable-ReadCompany">
-							<!-- 加载表格 -->
-							<div id="pageTool-ReadCompany"> <!-- 加载分页控件 --> </div>						
-						</div>
-						<div id="jsontotable-ReadLearnCenterUser">
-							<!-- 加载表格 -->
-							<div id="pageTool-ReadLearnCenterUser"> <!-- 加载分页控件 --> </div>						
-						</div>						
-					</div>
-				</div>
-				<div id="nested-tabInfo-Read">
-					当前选择: <span class="tabName">网院</span>			
-				</div>
-			</div><!-- containerRead -->	
-			
-			<div id="container-Sell">
-				<!--Horizontal Tab-->
-				<div id="Sell">
-					<ul class="resp-tabs-list hor_1">
-						<li><i class="fa fa-university"></i>网院</li>
-						<li><i class="fa fa-graduation-cap"></i>学习中心</li>
-						<li><i class="fa fa-home"></i>客户</li>
-						<li><i class="fa fa-users"></i>班主任</li>						
-					</ul>
-					<div class="resp-tabs-container hor_1">
-						<div id="jsontotable-SellColleges">
-							<!-- 加载表格 -->
-							<div id="pageTool-SellColleges"> <!-- 加载分页控件 --> </div>
-						</div>	
-						
-						<div id="jsontotable-SellLearnCenter">
-							<!-- 加载表格 -->		
-							<div id="pageTool-SellLearnCenter"> <!-- 加载分页控件 --> </div>					
-						</div>
-						<div id="jsontotable-SellCompany">
-							<!-- 加载表格 -->
-							<div id="pageTool-SellCompany"> <!-- 加载分页控件 --> </div>						
-						</div>
-						<div id="jsontotable-SellLearnCenterUser">
-							<!-- 加载表格 -->
-							<div id="pageTool-SellLearnCenterUser"> <!-- 加载分页控件 --> </div>						
-						</div>						
-					</div>
-				</div>
-				<div id="nested-tabInfo-Sell">
-					当前选择: <span class="tabName">网院</span>			
-				</div>
-			</div><!-- containerRead -->							
-		</div>
 	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
-	</div><!-- main -->	
-	
-</div>
-	
 
 <script type="text/javascript">	
 
@@ -418,6 +423,7 @@
 
 		//删除表格数据
 		$("div#jsontotable-str-"+setStr).remove();
+	
 		//添加表格div
 		$("div#jsontotable-"+setStr).append('<div id="jsontotable-str-'+setStr+'"></div>');
 		//生成表格数据
@@ -427,8 +433,7 @@
 		});						
 		$("div#pageToolbar-"+setStr).remove();
 		//添加表格div
-		$("div#pageTool-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
-		//$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
+		$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
 		
 		//加载分页工具
 		$('#pageToolbar-'+setStr).Paging({pagesize:eval("pageSize_" + setStr),current:((eval("currentCount_" + setStr)/eval("pageSize_" + setStr))+1),count:total,toolbar:true,
@@ -438,7 +443,7 @@
 					eval("pageSize_" + setStr + "=" +  size);
 					pageData();	
 				}	
-		});			
+		});
 	};	
 
 	//json传送数据
@@ -905,10 +910,11 @@
 						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_READ_LOST)/1000 + 
 						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_SELL_LOST)/1000 +']';							
 			}	
-		}		
+		}
 	//生成漏斗图
-	myChart01.setOption(option = {			
-		    tooltip: {
+	myChart01.setOption(option = {
+			color: ['#59afe8', '#51bcc3', '#a3d75b', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
+			tooltip: {
 		        formatter: function(StudentMsg){
 		        	console.log(StudentMsg);
 		        	var a = "";
@@ -949,50 +955,50 @@
 		    },
 		    calculable: true,
 		    series: [
-		        {
-		            name:'漏斗图',
-		            type:'funnel',
-		            left: '1%',
-		            top: 60,				     
-		            bottom: 60,
-		            width: '80%',
-		            sort: 'funnel',
-		            gap: 10,
-		            label: {
-		                normal: {
-		                    show: true,
-		                    position: 'inside',
-		                    formatter: "{b} : {c}",
-		                    textStyle:{
-		                    	color:'#000'
-		                    }
-		                },
-		                emphasis: {
-		                    textStyle: {
-		                        fontSize: 20,
-		                        color:'#000'
-		                    }
-		                }
-		            },
-		            labelLine: {
-		                normal: {
-		                    length: 10,
-		                    lineStyle: {
-		                        width: 1,
-		                        type: 'solid'
-		                    }
-		                }
-		            },
-		            itemStyle: {
-		                normal: {
-		                    borderColor: '#fff',
-		                    borderWidth: 1
-		                }
-		            },
-		            data: eval("("+strFunnel+ ")")
-		        }
-		    ]
-		});
+				        {
+				            name:'漏斗图',
+				            type:'funnel',
+				            left: '1%',
+				            top: 60,				     
+				            bottom: 60,
+				            width: '80%',
+				            sort: 'funnel',
+				            gap: 10,
+				            label: {
+				                normal: {
+				                    show: true,
+				                    position: 'inside',
+				                    formatter: "{b} : {c}",
+				                    textStyle:{
+				                    	color:'#000'
+				                    }
+				                },
+				                emphasis: {
+				                    textStyle: {
+				                        fontSize: 20,
+				                        color:'#000'
+				                    }
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    length: 10,
+				                    lineStyle: {
+				                        width: 1,
+				                        type: 'solid'
+				                    }
+				                }
+				            },
+				            itemStyle: {
+				                normal: {
+				                    borderColor: '#fff',
+				                    borderWidth: 1
+				                }
+				            },
+				            data: eval("("+strFunnel+ ")")
+				        }
+				    ]
+				});
 		//生成仪表盘
 		myChart02.setOption(option = {
 			tooltip : {
@@ -1035,7 +1041,7 @@
 		            splitNumber: 10,       // 分割段数，默认为5
 		            axisLine: {            // 坐标轴线
 		                lineStyle: {       // 属性lineStyle控制线条样式
-		                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+		                    color: [[0.2, '#51bcc3'],[0.8, '#a3d75b'],[1, '#fba407']], 
 		                    width: 8
 		                }		                
 		            },
@@ -1053,8 +1059,9 @@
 		    ]
 		});	
 		//生成条形图
-		myChart03.setOption(option = { 
-		    tooltip : {
+		myChart03.setOption(option = {
+			color: ['#59afe8', '#51bcc3', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
+			tooltip : {
 		        trigger: 'axis',
 		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
 		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'

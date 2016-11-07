@@ -22,8 +22,25 @@
       </div>
     </div>
     <div class="page" data-id="0">
-        <iframe src="<%=request.getContextPath() %>/getFunnel" frameborder="0" scrolling="auto"  
-       					 style="min-height: 1000px;"  allowtransparency="true"></iframe>
+        <iframe src="<%=request.getContextPath() %>/getFunnel" frameborder="0" scrolling="auto"  allowtransparency="true" id="IndexIframe"></iframe>
+        <!-- <script>
+	        function iframe(){
+				var iframe = document.getElementById("IndexIframe");
+				if(iframe.attachEvent){
+					iframe.attachEvent("onload", function(){
+						iframe.style.height =  iframe.contentWindow.document.documentElement.scrollHeight;
+					});
+					return;
+				}else{
+					iframe.onload = function(){
+						iframe.style.height = iframe.contentDocument.body.scrollHeight;
+					};
+					return;				 
+				}
+				
+			}
+			iframe();
+		</script> -->
     </div> 
   </div>
 </div>

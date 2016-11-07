@@ -10,22 +10,18 @@
 <jsp:include page="/WEB-INF/jsp/common/jslibs_report.jsp" />
 </head>
 <body>
-<div class="col-lg-12 main">
+<div class="content main">
 	<div class="box" >
-		<div class="box-body">
-			<div class="col-md-12">
-				<div class="form-group">
-					<div class="col-md-4 grid_box1">		
-						<input id="create_dt_from" type="text" class="form-control"  placeholder="创建时间从">	
-					</div>				
-					<div class="col-md-4 grid_box1">				
-							<input id="create_dt_to" type="text" class="form-control"  placeholder="创建时间至">						
-					</div>
-					<div class="col-md-3">
-						<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
-						<button id="reset" type="button" class="btn btn-default"><i class="fa fa-refresh"></i>  清空</button>
-					</div>
-				</div>
+		<div class="clearfix time-search">
+			<div class="col-md-4 grid_box1">		
+				<input id="create_dt_from" type="text" class="form-control"  placeholder="创建时间从">	
+			</div>				
+			<div class="col-md-4 grid_box1">				
+					<input id="create_dt_to" type="text" class="form-control"  placeholder="创建时间至">						
+			</div>
+			<div class="col-md-3">
+				<button id="search" type="button" class="btn btn-primary"><i class="fa fa-search"></i>  搜索</button>
+				<button id="reset" type="button" class="btn btn-default"><i class="fa fa-refresh"></i>  重置</button>
 			</div>
 		</div>
 	</div>
@@ -65,8 +61,8 @@
 
 	
 
-	<div class="box">
-		<div class="box-body">
+	<div class="box margin-bottom-none">
+		<div class="clearfix">
 			<div id="container-Will">
 				<!--Horizontal Tab-->
 				<div id="Will">
@@ -91,7 +87,7 @@
 						</div>					
 					</div>
 				</div>
-				<div id="nested-tabInfo-Will">
+				<div id="nested-tabInfo-Will" class="nested-tabInfo">
 					当前选择: <span class="tabName">市场人员</span>			
 				</div>
 			</div><!-- container-Will -->
@@ -119,7 +115,7 @@
 						</div>												
 					</div>
 				</div>
-				<div id="nested-tabInfo-Agree">
+				<div id="nested-tabInfo-Agree" class="nested-tabInfo">
 					当前选择: <span class="tabName">市场人员</span>			
 				</div>
 			</div><!-- containerAgree -->	
@@ -158,7 +154,7 @@
 						</div>										
 					</div>
 				</div>
-				<div id="nested-tabInfo-Affirm">
+				<div id="nested-tabInfo-Affirm" class="nested-tabInfo">
 					当前选择: <span class="tabName">市场人员</span>			
 				</div>
 			</div><!-- containerAffirm-->	
@@ -197,7 +193,7 @@
 						</div>												
 					</div>
 				</div>
-				<div id="nested-tabInfo-Execute">
+				<div id="nested-tabInfo-Execute" class="nested-tabInfo">
 					当前选择: <span class="tabName">市场人员</span>			
 				</div>
 			</div><!-- containerExecute -->		
@@ -236,16 +232,16 @@
 						</div>												
 					</div>
 				</div>
-				<div id="nested-tabInfo-Produce">
+				<div id="nested-tabInfo-Produce" class="nested-tabInfo">
 					当前选择: <span class="tabName">市场人员性质</span>			
 				</div>
 			</div><!-- containerExecute -->									
 		</div>
-	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
+	
 	</div><!-- main -->	
 	
 </div>
-	
+<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 
 <script type="text/javascript">	
 
@@ -481,6 +477,7 @@
 
 		//删除表格数据
 		$("div#jsontotable-str-"+setStr).remove();
+	
 		//添加表格div
 		$("div#jsontotable-"+setStr).append('<div id="jsontotable-str-'+setStr+'"></div>');
 		//生成表格数据
@@ -490,8 +487,7 @@
 		});						
 		$("div#pageToolbar-"+setStr).remove();
 		//添加表格div
-		$("div#pageTool-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
-		//$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
+		$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
 		
 		//加载分页工具
 		$('#pageToolbar-'+setStr).Paging({pagesize:eval("pageSize_" + setStr),current:((eval("currentCount_" + setStr)/eval("pageSize_" + setStr))+1),count:total,toolbar:true,
@@ -501,7 +497,7 @@
 					eval("pageSize_" + setStr + "=" +  size);
 					pageData();	
 				}	
-		});			
+		});
 	};	
 
 	//json传送数据
@@ -1014,7 +1010,7 @@
 		return Value;
 	};
 
-	//填充表格数据 预报读咨询 学习中心 
+	//填充表格数据
 	function fillTable_Company(msg) {
 		// data: ['预报读','预报读跟踪','报读','缴费']
 		var strFunnel = '[';
@@ -1088,7 +1084,8 @@
 		}		
 	//生成漏斗图
 	myChart01.setOption(option = {			
-		    tooltip: {
+			color: ['#59afe8', '#51bcc3', '#a3d75b', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
+			tooltip: {
 		        formatter: function(StudentMsg){
 		        	console.log(StudentMsg);
 		        	var a = "";
@@ -1221,7 +1218,7 @@
 		            splitNumber: 10,       // 分割段数，默认为5
 		            axisLine: {            // 坐标轴线
 		                lineStyle: {       // 属性lineStyle控制线条样式
-		                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+		                	color: [[0.2, '#51bcc3'],[0.8, '#a3d75b'],[1, '#fba407']], 
 		                    width: 8
 		                }		                
 		            },
@@ -1240,7 +1237,8 @@
 		});	
 		//生成条形图
 		myChart03.setOption(option = { 
-		    tooltip : {
+			color: ['#59afe8', '#51bcc3', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
+			tooltip : {
 		        trigger: 'axis',
 		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
 		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'

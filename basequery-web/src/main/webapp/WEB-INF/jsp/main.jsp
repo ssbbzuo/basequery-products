@@ -49,6 +49,21 @@
         <script src="<%=request.getContextPath() %>/static/https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="<%=request.getContextPath() %>/static/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<!-- jQuery 2.1.4 --> 
+<!--[if gte IE 9]>
+	<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<![endif]--> 
+
+<!--[if !IE]><!--> 
+<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script> 
+<!--<![endif]--> 
+
+<!--[if lt IE 9]>
+		<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jquery-1.9.0.min.js"></script>
+	<![endif]--> 
+
+<script src="<%=request.getContextPath() %>/static/plugins/jQueryUI/jquery-ui.min.js"></script> 
 </head>
 <body class="hold-transition fixed skin-blue sidebar-mini">
 <div class="wrapper"> 
@@ -74,20 +89,7 @@
   <p style="padding:20px 10px;margin:0;"> 本管理系统支持IE9以上版本浏览器，为了获取更好的体验，建议
     使用Firefox、Chrome、Opera等浏览器。 </p>
 </div>
-<!-- jQuery 2.1.4 --> 
-<!--[if gte IE 9]>
-	<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<![endif]--> 
 
-<!--[if !IE]><!--> 
-<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jQuery-2.1.4.min.js"></script> 
-<!--<![endif]--> 
-
-<!--[if lt IE 9]>
-		<script src="<%=request.getContextPath() %>/static/plugins/jQuery/jquery-1.9.0.min.js"></script>
-	<![endif]--> 
-
-<script src="<%=request.getContextPath() %>/static/plugins/jQueryUI/jquery-ui.min.js"></script> 
 
 <!--[if lt IE 9]>
 	<script>

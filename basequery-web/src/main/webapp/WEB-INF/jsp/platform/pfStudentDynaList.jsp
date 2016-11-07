@@ -187,7 +187,9 @@
            </c:choose>
       </tbody>
       </table>
-      <jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
+      <div class="pageBox">
+      	<jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
+      </div>
       </form>
     </div>
   </div>

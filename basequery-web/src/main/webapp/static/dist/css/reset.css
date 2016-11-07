@@ -7,7 +7,7 @@
 .f12{font-size:12px !important;}.f14{font-size:14px !important;}.f16{font-size:16px !important;}.text-no-bold{font-weight:normal !important}.text-left2{text-align:left !important;}
 .pad-t5{padding-top:5px;}.pad-t10{padding-top:10px;}.pad20{padding:20px !important;}.margin_t5{margin-top:5px;}.left10{margin-left:10px;}.margin_r10{margin-right:10px;}.margin_r15{margin-right:15px;}.margin_t10{margin-top:10px;}.margin_b10{margin-bottom:10px;}.margin_b15{margin-bottom:15px !important;}.margin_b20{margin-bottom:20px !important;}.margin_t20{margin-top:20px !important;}.nomargin{margin: 0 !important}.nopadding{padding: 0 !important}.no-pad-left{padding-left:0 !important}.no-pad-top{padding-top:0 !important}.inlineblock{display:inline-block !important;}.nobg{background:none !important;}.table-block{display:table;}.table-row{display:table-row;}.table-cell-block{display:table-cell;}.vertical-mid{vertical-align:middle;}.oh{overflow:hidden;}.full-width{width:100% !important;}.pos-rel{position:relative;}.offset-margin-tb-15{margin-top: -5px;margin-bottom: -5px;}
 
-/* 去除input:number在-webkit内核下显示有上下箭头 */
+/* 鍘婚櫎input:number鍦�-webkit鍐呮牳涓嬫樉绀烘湁涓婁笅绠ご */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
     -webkit-appearance: none !important;
@@ -218,11 +218,11 @@ body.inner-page-body{background-color: #ecf0f5;}
 	.pageing-info{text-align:right;padding:10px 0;}
 }
 
-/* --首页-- */
+/* --棣栭〉-- */
 .ion-total-person:before{content: "\f4f8";}
 .ion-open-book:before{content: "\f4f9";}
 .ion-user-group:before{content: "\e100";}
-/*代办事项*/
+/*浠ｅ姙浜嬮」*/
 .agency-list li{background-color:#f4f4f4;padding: 5px 10px;position:relative;border-radius:3px;margin:2px 0;}
 .agency-list-width-pad10 li{padding: 10px;}
 .agency-list li .label{margin-right:10px;font-weight:normal;font-size:12px;}
@@ -231,14 +231,14 @@ body.inner-page-body{background-color: #ecf0f5;}
 .agency-link{display:none;position:absolute;right:10px;top:5px;background-color:#f4f4f4;}
 .agency-list-width-pad10 li .agency-link{top:9px;}
 .agency-list li:hover .agency-link{display:block;}
-/*通知公告*/
+/*閫氱煡鍏憡*/
 .note-list li{margin-bottom:15px;}
 .note-list li:last-child{margin-bottom:0;}
 .note-list li a{display:block;clear:both;color:#333;}
 .note-list li a:hover > *{color:#3c8dbc;}
 .note-list span.pull-left{color:#666;}
 .note-list .note-tit{display:block;overflow:hidden;height:20px;white-space:nowrap;text-overflow:ellipsis}
-/*学员情况*/
+/*瀛﹀憳鎯呭喌*/
 .chat-dot{font-size:12px;}
 .chat-dot li{white-space:nowrap;}
 .chat-dot li:before{display:inline-block;width:10px;height:10px;content:' ';margin-right:5px;}
@@ -247,7 +247,7 @@ body.inner-page-body{background-color: #ecf0f5;}
 .chat-dot3:before{background-color:#da70d6;}
 .chat-dot4:before{background-color:#32cd32;}
 .chat-dot5:before{background-color:#6696ed;}
-/* --教学计划-- */
+/* --鏁欏璁″垝-- */
 .score-list{margin-bottom:0;margin-top:10px;}
 @media (max-width:991px){
 	.score-list{margin-bottom:10px;margin-top:0;}
@@ -282,7 +282,7 @@ body.inner-page-body{background-color: #ecf0f5;}
 .tips-box{z-index: 1111;top: 50%;left: 50%;position:fixed;box-shadow: 0px 2px 10px #ccc;}
 .tips-box .close{display:none;}
 
-/* --新增学员-- */
+/* --鏂板瀛﹀憳-- */
 .upload-image-box{width:160px;}
 .upload-image-container{height:140px;border:#eff1f3 1px solid;border-bottom:0 none;background-color:#fbfdff;text-align:center;display:table;width:100%;}
 .upload-image-container .table-cell-block{vertical-align:middle;text-align:center !important;}
@@ -291,7 +291,7 @@ body.inner-page-body{background-color: #ecf0f5;}
 .upfile-tips{vertical-align: top;padding-top: 20px;padding-left: 20px;color:#999999;font-size:12px;}
 .input-group-select{width: auto !important;border-right:0;padding-left: 5px;padding-right: 5px;background-color:#f5f5f5;}
 
-/* --查看/编辑学员信息-- */
+/* --鏌ョ湅/缂栬緫瀛﹀憳淇℃伅-- */
 .min-width-90px{min-width:90px;}
 .content-group{margin:30px 0;}
 .cnt-box-header{padding: 0 0 10px 0;}
@@ -312,12 +312,12 @@ body.inner-page-body{background-color: #ecf0f5;}
 .row-offset-3px{margin-left:-3px !important;margin-right:-3px !important;}
 .row-offset-3px > div{padding-left:3px !important;padding-right:3px !important;}
 
-/* --版权设置-- */
+/* --鐗堟潈璁剧疆-- */
 .nav-tabs-custom.no-shadow >.nav-tabs>li:first-of-type.active>a{border-left-color: #f4f4f4;}
 .copyright-tbl .table-row  > .table-cell-block{padding:20px 15px;}
 .copyright-tbl .table-row  > .table-cell-block:nth-child(1){vertical-align:middle;text-align:right;width:20%;}
 
-/* --院校设定-- */
+/* --闄㈡牎璁惧畾-- */
 .width-border-dashed{border:#ebebeb 1px dashed;}
 .school-set-list input{border:0 none;background:none;padding:0;outline:none !important;width:7em;font-weight:bold;line-height: 1;border-bottom:1px dashed #fff;display:none;}
 .school-set-list input::-webkit-input-placeholder{color: #fff;font-weight:normal;}
@@ -328,7 +328,7 @@ color: #fff;font-weight:normal;}
 .school-set-list > li:last-child{border:#3c8dbc 1px dashed;width:56px;text-align:center;height:34px;line-height:34px;vertical-align: middle;color:#3c8dbc;font-size: 30px;cursor:pointer;border-radius:3px;margin-left:5px;}
 .school-set-list > li:last-child:before{content:'+';}
 
-/* --分配教师-- */
+/* --鍒嗛厤鏁欏笀-- */
 .distribut-teacher{margin:30px 0px;padding:0 10px;}
 .distribut-teacher .table-cell-block:nth-child(1),
 .distribut-teacher .table-cell-block:nth-child(3){
@@ -345,9 +345,9 @@ color: #fff;font-weight:normal;}
 .distribut-teacher-list li  > .checkbox label{display:block;}
 .distribut-teacher-list li:hover{background-color:#ebf7ff}
 
-/* --开课流程-- */
+/* --寮�璇炬祦绋�-- */
 
-/*第一流程*/
+/*绗竴娴佺▼*/
 .open-course-progression-tabs{font-size:16px;color:#999999;counter-reset:process;border-bottom:#f5f5f5 1px solid;}
 .open-course-progression-tabs li{counter-increment:process;position:relative;float:left;padding-right:80px;white-space:nowrap;width: 30%;}
 .open-course-progression-tabs li:nth-child(1){}
@@ -381,7 +381,7 @@ color: #fff;font-weight:normal;}
 .select-major-box .table-row  > .table-cell-block:first-child{width:100px;padding-right:0;}
 .select-major-box .table-row:last-child .table-cell-block{padding-bottom:0;}
 .has-select-major li{margin:5px 0}
-/*第二流程*/
+/*绗簩娴佺▼*/
 .semester-list > div{margin-top:10px;margin-bottom:10px;}
 .semester-list > div > div{text-align:center;padding:5px 5px;}
 .semester-list .fa{margin-left:10px;}
@@ -404,7 +404,7 @@ color: #fff;font-weight:normal;}
 
 .dtable-container .dataTable{margin-bottom: 0 !important;margin-top: 0 !important;}
 
-/* --添加学籍异动-- */
+/* --娣诲姞瀛︾睄寮傚姩-- */
 .min-height-240{min-height:240px;}
 .stu-info-change-tbl .table-cell-block{padding:7px 0;}
 .stu-info-change-tbl .table-cell-block:first-child{text-align:right;padding-right:10px;white-space:nowrap;width:80px;}
@@ -413,14 +413,17 @@ color: #fff;font-weight:normal;}
 	.stu-info-change-arrow{margin-top:0;}
 }
 
-/* --文章详情-- */
+/* --鏂囩珷璇︽儏-- */
 .article-title{font-size:22px;color:#3c8dbc;text-align:center;font-weight:bold;margin-bottom:20px;}
 .table-cnt-center th,.table-cnt-center td{text-align:center !important;vertical-align:middle !important;}
 
-/* --制定学年度任务-- */
+/* --鍒跺畾瀛﹀勾搴︿换鍔�-- */
 .btn-add-task{outline:none !important;box-shadow:none !important;}
 .btn-add-task-label{display:inline-block;margin-left:10px;}
-.btn-add-task-label:before{content:'添加任务'}
+.btn-add-task-label:before{content:'娣诲姞浠诲姟'}
 
+/*2016-11-02 my*/
+.page-left-btn .fa, .page-right-btn .fa{padding-top: 12px;}
+body{font-family: "Microsoft YaHei",'STHeiti';}
 
 

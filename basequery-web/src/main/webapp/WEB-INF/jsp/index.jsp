@@ -10,7 +10,100 @@
 <jsp:include page="/WEB-INF/jsp/common/jslibs_report.jsp" />
 </head>
 <body>
-	<div class="col-lg-12 main">
+	<div class="content main">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-line-chart"></i> -->
+						<span class="pht-span">学员数据 </span>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-4 panel-body">
+							<img src="http://www.qq1234.org/uploads/allimg/141204/3_141204141215_2.jpg" alt="img" width="100" class="xue-header" >
+						</div>
+						<div class="col-md-8 panel-body xue-data">
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-line-chart"></i> -->
+						<span class="pht-span">学员数据 </span>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-4 panel-body">
+							<img src="http://www.qq1234.org/uploads/allimg/141204/3_141204141215_2.jpg" alt="img" width="100" class="xue-header" >
+						</div>
+						<div class="col-md-8 panel-body xue-data">
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+							<div class="col-md-6">
+								<p>
+									<span>196,510</span><br>
+									现有学员
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 
 		<div class="row">
 			<div class="col-xs-12 col-md-4 col-lg-3">
 				<div class="panel panel-blue panel-widget ">
@@ -64,10 +157,29 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->	
-		
-					
-		<div class="row">
+		</div>
+		 -->
+		<div class="box">
+			<ul class="tabList order-list">
+				<li>
+					<a href="javascript:" class="on">年度 </a>
+				</li>
+				<li>
+					<a href="javascript:">本年</a>
+				</li>
+				<li>
+					<a href="javascript:">本月 </a>
+				</li>
+			</ul>
+			<div class="tabBox order-box">
+				<div class="tbCont">
+					<div class="main-chart" id="main1" ></div>
+				</div>
+				<div class="tbCont" style="display:none;">2</div>
+				<div class="tbCont" style="display:none;">3</div>
+			</div>
+		</div>
+		<!--<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading"><i class="fa fa-bar-chart-o"></i></div>
@@ -78,34 +190,14 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->	
-		
-		<div class="row">
-			<div class="col-md-4">
-				<div class="panel panel-default" >
-					<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<div class="chart" id="main2" ></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="panel panel-default">
-					<div class="panel-heading"><i class="fa fa-area-chart"></i></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<div class="chart" id="main3"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->			
+		</div>/.row-->	
+
+					
 
 	
 		
-	<div class="row">	
+	<div class="row">
+		<!-- 
 	     <div class="col-md-8 span_3">
 			  <div class="bs-example1" data-example-id="contextual-table">
 			    <table class="table">
@@ -175,9 +267,9 @@
 			      </tbody>
 			    </table>
 			   </div>
-		   </div>	
+		   </div> -->
 		   
-	   <div class="col-md-4 span_4">
+	   <div class="span_4">
 		 <div class="col_2">
 		  <div class="box_1">
 		   <div class="col-md-6 col_1_of_2 span_1_of_2">
@@ -225,20 +317,71 @@
 		</div>		   
 	   </div><!--/.row-->	
 	
-	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />				
+	<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default" >
+					<!--
+					<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main2" ></div>
+						</div>
+					</div>
+					-->
+					<ul class="tabList order-list">
+						<li>
+							<a href="javascript:" class="on">本年</a>
+						</li>
+						<li>
+							<a href="javascript:">本月 </a>
+						</li>
+					</ul>
+					<div class="tabBox order-box">
+						<div class="tbCont">
+							<div class="main-chart" id="main2" ></div>
+						</div>
+						<div class="tbCont" style="display:none;">2</div>
+					</div>
+					
+				</div>
+			</div>
+			<!--
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-area-chart"></i></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<div class="chart" id="main3"></div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div><!--/.row-->
+		
+		<div class="box margin-bottom-none">
+			<div class="box-body">
+				<table class="table table-bordered table-striped table-container"><thead><tr><th>网院</th><th>预报读咨询单数</th></tr></thead><tbody><tr><td>未知</td><td>1100185</td></tr><tr><td>ee专业技术人员远程教育网</td><td>85544</td></tr><tr><td>专业技术人员继续教育网络学院</td><td>5302</td></tr><tr><td>国家开放大学（广州）实验学院</td><td>2056</td></tr><tr><td>华南理工大学继续教育学院</td><td>549</td></tr><tr><td>国家开放大学实验学院</td><td>485</td></tr><tr><td>国家开放大学在线教育社会教育与职业培训</td><td>234</td></tr><tr><td>华东理工大学</td><td>203</td></tr><tr><td>广东领航职业教育网络学院</td><td>56</td></tr><tr><td>广东外语外贸大学专业技术人员继续教育网</td><td>37</td></tr></tbody></table>
+				
+			</div>
+		</div>
+		
+			
 	</div><!--/.main-->
+	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
 	
+	
+
 <script>
 
 	var worldMapContainer1 = document.getElementById('main1');
 	var worldMapContainer2 = document.getElementById('main2');
-	var worldMapContainer3 = document.getElementById('main3');
+	//var worldMapContainer3 = document.getElementById('main3');
 
 	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 	var resizeWorldMapContainer = function () {		    
 	    worldMapContainer1.style.height = document.body.clientWidth*0.2+'px';
 	    worldMapContainer2.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer3.style.height = document.body.clientWidth*0.2+'px';
+	    //worldMapContainer3.style.height = document.body.clientWidth*0.2+'px';
 	};
 	
 	//设置容器高宽
@@ -246,18 +389,19 @@
 	
 	var myChart01 = echarts.init(worldMapContainer1);
 	var myChart02 = echarts.init(worldMapContainer2, 'shine');
-	var myChart03 = echarts.init(worldMapContainer3, 'macarons');
+	//var myChart03 = echarts.init(worldMapContainer3, 'macarons');
 	
-	myChart01.setOption(option01 = { 
+	myChart01.setOption(option01 = {
+			color: ['#59afe8', '#51bcc3', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
 		    title : {
-		        text: '某地区蒸发量和降水量',
+		        text: '年度学生与订单趋势分析',
 		        subtext: '纯属虚构'
 		    },
 		    tooltip : {
 		        trigger: 'axis'
 		    },
 		    legend: {
-		        data:['蒸发量','降水量']
+		        data:['学生数','订单数']
 		    },
 		    toolbox: {
 		        show : true,
@@ -282,7 +426,7 @@
 		    ],
 		    series : [
 		        {
-		            name:'蒸发量',
+		            name:'学生数',
 		            type:'bar',
 		            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
 		            markPoint : {
@@ -298,7 +442,7 @@
 		            }
 		        },
 		        {
-		            name:'降水量',
+		            name:'订单数',
 		            type:'bar',
 		            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
 		            markPoint : {
@@ -317,7 +461,8 @@
         });//myChart01.setOption	
         
     	myChart02.setOption(option02 = { 
-    		    title : {
+    			color: ['#f8bf7d', '#ffd2c2', '#9dc5c4', '#dee5e5', '#d48484', '#3c8dbc', '#59afe8'],
+    			title : {
     		        text: '某站点用户访问来源',
     		        subtext: '纯属虚构',
     		        x:'center'
@@ -329,7 +474,7 @@
     		    legend: {
     		        orient: 'vertical',
     		        left: 'left',
-    		        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+    		        data: ['其他','领航外语','高教社考研','国开职业教育','专继教育','领航计划','广州实验学校 ']
     		    },
     		    series : [
     		        {
@@ -338,11 +483,13 @@
     		            radius : '55%',
     		            center: ['50%', '60%'],
     		            data:[
-    		                {value:335, name:'直接访问'},
-    		                {value:310, name:'邮件营销'},
-    		                {value:234, name:'联盟广告'},
-    		                {value:135, name:'视频广告'},
-    		                {value:1548, name:'搜索引擎'}
+    		                {value:335, name:'国开职业教育'},
+    		                {value:310, name:'高教社考研'},
+    		                {value:234, name:'领航外语'},
+    		                {value:135, name:'其他'},
+    		                {value:350, name:'专继教育'},
+    		                {value:500, name:'领航计划'},
+    		                {value:1548, name:'广州实验学校'}
     		            ],
     		            itemStyle: {
     		                emphasis: {
@@ -355,6 +502,7 @@
     		    ]
             });//myChart02.setOption
             
+            /*
         	myChart03.setOption(option03 = { 
         		    title: {
         		        text: '堆叠区域图'
@@ -432,18 +580,31 @@
         		        }
         		    ]
                 });//myChart03.setOption            
-        
+        */
 		//图表自适应屏幕
 		setTimeout(function() {
 			window.onresize = function() {
 				resizeWorldMapContainer();
 				myChart01.resize();
 				myChart02.resize();
-				myChart03.resize();
+				//myChart03.resize();
 				
 			}
 		}, 200)//setTimeout        
-	
-</script>	
+		
+</script>
+<!-- Tab 切换 -->
+<!-- <script src="/basequery-web/static/plugins/jQueryUI/jquery-ui.min.js"></script>-->
+<script>
+	$(function($) {
+		$('.tabList > li').on('click',function(){
+			var index=$(this).index();
+			$(this).siblings('li').children('a').removeClass('on');
+			$(this).children('a').addClass('on');
+			$(this).parents('.tabList').next('.tabBox').children('.tbCont').eq(index).show().siblings().hide();
+			return false;
+		});
+	});
+</script>
 </body>
 </html>
