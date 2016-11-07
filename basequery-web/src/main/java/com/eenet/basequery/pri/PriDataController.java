@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.dubbo.rpc.Result;
 import com.eenet.authen.AdminUserCredential;
 import com.eenet.authen.AdminUserCredentialBizService;
+import com.eenet.authen.AdminUserLoginAccount;
+import com.eenet.authen.AdminUserLoginAccountBizService;
 import com.eenet.base.SimpleResponse;
 import com.eenet.base.SimpleResultSet;
 import com.eenet.base.query.ConditionItem;
@@ -37,6 +39,10 @@ public class PriDataController {
 	@Autowired
 	private AdminUserInfoBizService adminUserInfoBizService;
 	
+	@Autowired
+	private AdminUserLoginAccountBizService adminUserLoginAccountBizService;
+	
+	
 	
 	@RequestMapping(value="/userList")
 	public String userList(QueryCondition queryCondition,Pagination pagination ,Model model){
@@ -54,12 +60,36 @@ public class PriDataController {
 	@ResponseBody
 	public AdminUserInfo saveUser(AdminUserInfo userInfo,Model model){
 		
-		AdminUserInfo result = adminUserInfoBizService.save(userInfo);
+		AdminUserInfo result = adminUserInfoBizService.save(userInfo);//调用服务增加用户
 		if (result.isSuccessful()) {
-			userInfoService.save(result,true);
+			result = userInfoService.save(result,true);//本地增加用户
+			if (result.isSuccessful()) {
+				
+				QueryCondition queryCondition = new QueryCondition();
+				queryCondition.setMaxQuantity(-1);
+				ConditionItem atidItem = new ConditionItem("userInfo.atid", RangeType.EQUAL, result.getAtid(), null);
+				queryCondition.addCondition(atidItem);
+				SimpleResultSet<AdminUserLoginAccount>  accountResult  = adminUserLoginAccountBizService.query(queryCondition);//查询账号
+				if (accountResult.isSuccessful()) {
+					List<AdminUserLoginAccount> list = accountResult.getResultSet();
+					
+					for (int i = 0; i < list.size(); i++) {
+						adminUserLoginAccountBizService.registeAdminUserLoginAccount(list.get(i));
+					}
+				}
+			}
 		}
 		return result;
 	}
+	
+	
+	@RequestMapping(value="/getinfo")
+	@ResponseBody
+	public AdminUserInfo saveUser(String id ){
+			
+		return adminUserInfoBizService.get(id);
+	}
+	
 	
 	
 	
@@ -121,19 +151,15 @@ public class PriDataController {
 			switch (type) {
 				case 1:
 					id =  "100000000";
-					privilegeType =  PrivilegeType.AREAPRI;
 					break;
 				case 2:
 					id =  "ISNULL";
-					privilegeType =   PrivilegeType.NETWORKPRI;  
 					break;
 				case 3:
 					id =  "ISNULL";
-					privilegeType =  PrivilegeType.STAFFPRI ; 
 					break;
 				case 4:
 					id =  "ISNULL";
-					privilegeType =  PrivilegeType.CHANELPRI ; 
 					break;
 				case 5:
 					id =  "ISNULL";
@@ -141,6 +167,24 @@ public class PriDataController {
 					break;
 			}
 		}
+		
+		switch (type) {
+		case 1:
+			privilegeType =  PrivilegeType.AREAPRI;
+			break;
+		case 2:
+			privilegeType =   PrivilegeType.NETWORKPRI;  
+			break;
+		case 3:
+			privilegeType =  PrivilegeType.STAFFPRI ; 
+			break;
+		case 4:
+			privilegeType =  PrivilegeType.CHANELPRI ; 
+			break;
+		case 5:
+			privilegeType =  PrivilegeType.LEARNCENTERPRI ; 
+			break;
+	}
 		List<String>  myPriTree = priTreeService.getMyPriTree(userId,id,privilegeType);
 		return  myPriTree;
 	}

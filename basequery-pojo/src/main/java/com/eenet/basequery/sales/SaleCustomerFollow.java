@@ -20,6 +20,41 @@ public class SaleCustomerFollow extends BaseEntity{
 	private String emailStatus;//邮件跟进状态编码
 	private String emailStatusName;//邮件跟进状态
 	private Date createdDt;//创建时间
+	private String province;//省份编码
+	private String provinceName;//省份
+	private String city;//市编码
+	private String cityName;//市
+	private String district;//区编码
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getProvinceName() {
+		return provinceName;
+	}
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 	public String getOperatorId() {
 		return operatorId;
 	}

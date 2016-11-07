@@ -18,8 +18,9 @@ import com.eenet.baseinfo.user.AdminUserInfo;
 public class AuthenUtils {
 
 	public static void main(String[] a) throws IllegalArgumentException, Exception {
-		HashMap<String, String> tokenMap = grantToken(grantCode());
+//		HashMap<String, String> tokenMap = grantToken(grantCode());
 		// getAdminUserInfo(tokenMap.get("userId"),tokenMap.get("accessToken"));
+		System.out.println( AuthenUtils.encrypt(Constant.appSecretKey + "##" + System.currentTimeMillis()));
 
 	}
 

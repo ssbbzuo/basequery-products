@@ -94,7 +94,7 @@
 		     	 AND  (
 		     	   (MARKETER_ID IS NULL  AND SALEMAN_ID IS NULL AND HEAD_TEACHER_ID IS NULL )
 		   		   ]]>
-		   <if test="marketerId != null  and  salemanId != null  and  headTeacherId == null "  >
+		   <if test="marketerId != null  and  salemanId != null "  >
 		   		<![CDATA[   OR (  MARKETER_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
@@ -104,7 +104,7 @@
 						<![CDATA[#{id,jdbcType=VARCHAR}]]>
 				</foreach> 	<![CDATA[   AND   HEAD_TEACHER_ID  IS NULL 	 ) ]]>
 		    </if>
-		     <if test="marketerId != null  and  salemanId == null  and  headTeacherId != null "  >
+		     <if test="marketerId != null  and  headTeacherId != null "  >
 		   		<![CDATA[   OR (  MARKETER_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
@@ -114,14 +114,14 @@
 						<![CDATA[#{id,jdbcType=VARCHAR}]]>
 				</foreach> 	<![CDATA[   AND   SALEMAN_ID  IS NULL 	 ) ]]>
 		    </if>
-		    <if test="marketerId != null  and  salemanId == null  and  headTeacherId == null "  >
+		    <if test="marketerId != null  "  >
 		   		<![CDATA[   OR (  MARKETER_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="marketerId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
 			    </foreach> 	<![CDATA[  AND  	]]>
 			    	<![CDATA[    HEAD_TEACHER_ID  IS NULL   AND   SALEMAN_ID  IS NULL 	 ) ]]>
 		    </if>
-		     <if test="salemanId != null  and  marketerId  == null  and  headTeacherId != null "  >
+		     <if test="salemanId != null  and  headTeacherId != null "  >
 		   		<![CDATA[   OR (  SALEMAN_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
@@ -131,14 +131,14 @@
 						<![CDATA[#{id,jdbcType=VARCHAR}]]>
 				</foreach> 	<![CDATA[   AND   MARKETER_ID  IS NULL 	 ) ]]>
 		    </if>
-		      <if test="salemanId != null  and  marketerId  == null  and  headTeacherId == null "  >
+		      <if test="salemanId != null  "  >
 		   		<![CDATA[   OR (  SALEMAN_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="salemanId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
 			    </foreach> 	<![CDATA[  AND  	]]>
 			    	<![CDATA[    HEAD_TEACHER_ID  IS NULL   AND   MARKETER_ID  IS NULL 	 ) ]]>
 		    </if>
-		    <if test="headTeacherId != null  and  marketerId  == null  and  salemanId == null "  >
+		    <if test="headTeacherId != null  "  >
 		   		<![CDATA[   OR (  HEAD_TEACHER_ID  IN  	]]>
 			    <foreach item="id" index="index" collection="headTeacherId" open="(" separator="," close=")">
 					<![CDATA[#{id,jdbcType=VARCHAR}]]>
