@@ -17,7 +17,7 @@
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/iCheck/all.css">
 <!-- datepicker --> 
-<!-- <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datepicker/datepicker3.css"> -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datepicker/datepicker3.css">
 <!-- DataTables -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/static/plugins/datatables/dataTables.bootstrap.css">
 <!-- jquery-confirm 
@@ -40,7 +40,7 @@
 	
 <!-- jqueryBuildTable -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/datepicker3.css">
+<!-- <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/datepicker3.css"> -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/styles.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/font-awesome.css">
 <!-- custom css -->

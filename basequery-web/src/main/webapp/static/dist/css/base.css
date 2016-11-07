@@ -223,8 +223,8 @@ input.form-control:-ms-input-placeholder {color: #999;}
 .resp-tabs-list li{padding:15px;font-weight: normal;color:#999;background: #fff !important;}
 .resp-tabs-list li i{margin-right:4px;}
 .table-bordered{border: 1px solid #eee;}
-.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border: 1px solid #eee;font-size: 12px;color: #888;}
-.table-bordered>thead>tr>th {height: auto;font-size: 14px;font-weight: normal;color: #454545;}
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border: 1px solid #eee;font-size: 12px;color: #666;}
+.table-bordered>thead>tr>th {height: auto;font-size: 14px;font-weight: normal;color: #454545;vertical-align: top;}
 .nested-tabInfo{padding: 0 15px 15px 15px;color: #888;font-size: 12px;}
 label{font-weight:normal;}
 .form-control{border-radius: 4px; border-color: #eee;}

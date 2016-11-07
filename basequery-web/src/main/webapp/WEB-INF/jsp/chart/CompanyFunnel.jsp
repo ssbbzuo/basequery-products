@@ -29,7 +29,10 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="panel panel-default" >
-				<div class="panel-heading"><i class="fa fa-line-chart"></i></div>
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-pie-chart"></i> -->
+						<span class="pht-span">客户漏斗图</span>
+					</div>
 				<div class="panel-body">
 					<div class="canvas-wrapper">
 						<div class="chart" id="main01" ></div>
@@ -39,7 +42,10 @@
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-pie-chart"></i> -->
+						<span class="pht-span">客户仪表盘</span>
+					</div>
 				<div class="panel-body">
 					<div class="canvas-wrapper">
 						<div class="chart" id="main02"></div>
@@ -49,7 +55,10 @@
 		</div>		
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
+					<div class="panel-heading-title">
+						<!-- <i class="fa fa-pie-chart"></i> -->
+						<span class="pht-span">客户柱状图</span>
+					</div>
 				<div class="panel-body">
 					<div class="canvas-wrapper">
 						<div class="chart" id="main03"></div>
@@ -270,6 +279,9 @@
            );  
        }  
    });  		
+   
+	$("#create_dt_from").datepicker({language: 'zh-CN', clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd'})
+	$("#create_dt_to").datepicker({language: 'zh-CN',clearBtn: true,autoclose: true, todayHighlight: true,format:'yyyy-mm-dd' })
 
 	var name = "";
 	
@@ -1285,12 +1297,14 @@
 		            name:'成功',
 		            type:'bar',
 		            stack: '总量',
+		            barWidth : 40,//柱图宽度
 		            data:eval("("+strSuccess+ ")")
 		        },
 		        {
 		            name:'流失',
 		            type:'bar',
 		            stack: '总量',
+		            barWidth : 40,//柱图宽度
 		            data:eval("("+strLost+ ")")
 		        }
 		    ]

@@ -35,7 +35,7 @@
 				<div class="panel panel-default" >
 					<div class="panel-heading-title">
 						<!-- <i class="fa fa-line-chart"></i> -->
-						<span class="pht-span">预报漏斗信息图</span>
+						<span class="pht-span">学员漏斗图</span>
 					</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
@@ -48,7 +48,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading-title">
 						<!-- <i class="fa fa-pie-chart"></i> -->
-						<span class="pht-span">仪表盘信息图</span>
+						<span class="pht-span">学员仪表盘</span>
 					</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
@@ -61,7 +61,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading-title">
 						<!-- <i class="fa fa-pie-chart"></i> -->
-						<span class="pht-span">预报漏斗信息图</span>
+						<span class="pht-span">学员柱状图</span>
 					</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
@@ -1108,6 +1108,7 @@
 		            name:'成功',
 		            type:'bar',
 		            stack: '总量',
+		            barWidth : 40,//柱图宽度
 		            data:eval("("+strSuccess+ ")")
 		        },
 
@@ -1115,6 +1116,7 @@
 		            name:'流失',
 		            type:'bar',
 		            stack: '总量',
+		            barWidth : 40,//柱图宽度
 		            data:eval("("+strLost+ ")")
 		        }
 		    ]
