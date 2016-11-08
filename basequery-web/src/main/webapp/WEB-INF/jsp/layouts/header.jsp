@@ -66,6 +66,9 @@
                     		</li>                   		
 				          </ul>
                     </li>
+                    
+                    <c:if test="${adminUserLoginInfo.loginAccount =='admin'}">
+                    
                      <li class="treeview">
 			          <a href="#">
 			            <i class="fa fa-dashboard"></i> <span>权限管理</span>
@@ -94,6 +97,9 @@
 			            </li>
 			          </ul>
 			        </li>
+			        
+			        </c:if>
+			        
                   </ul>
                 </li>
                 <%--
