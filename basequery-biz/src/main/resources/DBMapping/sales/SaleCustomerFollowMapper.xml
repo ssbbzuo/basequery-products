@@ -79,7 +79,7 @@
 		    	)
 		    ]]>
 		    
-		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+		<include refid="com.eenet.basequery.sales.SaleCustomerFollow.queryList_quto" />
 	</select>
 	
 	
@@ -120,9 +120,9 @@
 		    	)
 		    ]]>
 		    
-			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<include refid="com.eenet.basequery.sales.SaleCustomerFollow.queryList_quto" />
 			<![CDATA[  ORDER BY OPERATOR_DT  DESC   ]]>
-			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+			<include refid="com.eenet.basequery.sales.SaleCustomerFollow.queryList_rowNum_quote_suffix" />
 	</select>
 	
 	<sql id="queryList_quto">

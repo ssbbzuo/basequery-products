@@ -71,10 +71,10 @@
             <div class="form-group">
               <label class="control-label col-sm-3">跟踪结果</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="followResult"  name="conditions[5].fieldName"/> 
-              	<input type="hidden"  value="EQUAL"  name="conditions[5].rangeType"/> 
-                <select class="form-control" name="conditions[5].rangeFrom">
-						<eenet:sysdata typeCode="FOLLOW_RESULT"  curValue="${queryCondition.conditions[5].rangeFrom}"></eenet:sysdata>
+              	<input type="hidden"  value="followResult"  name="conditions[4].fieldName"/> 
+              	<input type="hidden"  value="EQUAL"  name="conditions[4].rangeType"/> 
+                <select class="form-control" name="conditions[4].rangeFrom">
+						<eenet:sysdata typeCode="FOLLOW_RESULT"  curValue="${queryCondition.conditions[4].rangeFrom}"></eenet:sysdata>
                 </select>
               </div>
             </div>
@@ -99,17 +99,18 @@
               </div>
             </div>
           </div>
+          <%--
           <div class="col-md-12">
             <div class="form-group">
               <label class="control-label col-sm-3">学习中心</label>
               <div class="col-sm-9">
-              	<input type="hidden"  value="learncenterName"  name="conditions[4].fieldName"/> 
-              	<input type="hidden"  value="INCLUDE"  name="conditions[4].rangeType"/> 
-                 <input type="text" class="form-control "   value="${queryCondition.conditions[4].rangeFrom}"  name="conditions[4].rangeFrom">
+              	<input type="hidden"  value="learncenterName"  name="conditions[5].fieldName"/> 
+              	<input type="hidden"  value="INCLUDE"  name="conditions[5].rangeType"/> 
+                 <input type="text" class="form-control "   value="${queryCondition.conditions[5].rangeFrom}"  name="conditions[5].rangeFrom">
               </div>
             </div>
           </div>
-          
+           --%>
         </div>
       </div>
     </div> 

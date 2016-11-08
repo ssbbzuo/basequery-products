@@ -93,7 +93,7 @@
 		    	)
 		    ]]>
 		    
-		<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+		<include refid="com.eenet.basequery.learncenter.LCReserveFollow.queryList_quto" />
 	</select>
 	
 	
@@ -146,9 +146,9 @@
 		    	)
 		    ]]>
 		    
-			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_quto" />
+			<include refid="com.eenet.basequery.learncenter.LCReserveFollow.queryList_quto" />
 			<![CDATA[  ORDER BY CREATED_DT  DESC   ]]>
-			<include refid="com.eenet.basequery.learncenter.LCReserveOrder.queryList_rowNum_quote_suffix" />
+			<include refid="com.eenet.basequery.learncenter.LCReserveFollow.queryList_rowNum_quote_suffix" />
 	</select>
 	
 	<sql id="queryList_quto">
