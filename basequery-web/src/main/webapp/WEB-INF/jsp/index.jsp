@@ -379,8 +379,8 @@
 
 	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
 	var resizeWorldMapContainer = function () {		    
-	    worldMapContainer1.style.height = document.body.clientWidth*0.2+'px';
-	    worldMapContainer2.style.height = document.body.clientWidth*0.2+'px';
+	    worldMapContainer1.style.height = document.body.clientWidth*0.25+'px';
+	    worldMapContainer2.style.height = document.body.clientWidth*0.25+'px';
 	    //worldMapContainer3.style.height = document.body.clientWidth*0.2+'px';
 	};
 	
@@ -391,74 +391,107 @@
 	var myChart02 = echarts.init(worldMapContainer2, 'shine');
 	//var myChart03 = echarts.init(worldMapContainer3, 'macarons');
 	
-	myChart01.setOption(option01 = {
-			color: ['#59afe8', '#51bcc3', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
-		    title : {
-		        text: '年度学生与订单趋势分析',
-		        subtext: '纯属虚构'
-		    },
-		    tooltip : {
-		        trigger: 'axis'
-		    },
-		    legend: {
-		        data:['学生数','订单数']
-		    },
-		    toolbox: {
-		        show : true,
-		        feature : {
-		            dataView : {show: true, readOnly: false},
-		            magicType : {show: true, type: ['line', 'bar']},
-		            restore : {show: true},
-		            saveAsImage : {show: true}
-		        }
-		    },
-		    calculable : true,
-		    xAxis : [
-		        {
-		            type : 'category',
-		            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
-		        }
-		    ],
-		    yAxis : [
-		        {
-		            type : 'value'
-		        }
-		    ],
-		    series : [
-		        {
-		            name:'学生数',
-		            type:'bar',
-		            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-		            markPoint : {
-		                data : [
-		                    {type : 'max', name: '最大值'},
-		                    {type : 'min', name: '最小值'}
-		                ]
-		            },
-		            markLine : {
-		                data : [
-		                    {type : 'average', name: '平均值'}
-		                ]
-		            }
-		        },
-		        {
-		            name:'订单数',
-		            type:'bar',
-		            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-		            markPoint : {
-		                data : [
-		                    {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
-		                    {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
-		                ]
-		            },
-		            markLine : {
-		                data : [
-		                    {type : 'average', name : '平均值'}
-		                ]
-		            }
-		        }
-		    ]
-        });//myChart01.setOption	
+	myChart01.setOption(option = {
+        		color: ['#59afe8', '#333', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
+        		title: {
+    		        text: '年度学生与订单趋势分析',
+    		        subtext: '纯属虚构'
+    		    },
+    		    tooltip: {
+    		        trigger: 'axis'
+    		    },
+    		    legend: {
+    		        data:['订单数', '学生数']
+    		    },
+    		    toolbox: {
+    		        show: true,
+    		        feature: {
+    		            dataView: {readOnly: false},
+    		            restore: {},
+    		            saveAsImage: {}
+    		        }
+    		    },
+    		    dataZoom: {
+    		        show: false,
+    		        start: 0,
+    		        end: 100
+    		    },
+    		    xAxis: [
+    		        {
+    		            type: 'category',
+    		            boundaryGap: true,
+    		            data: (function (){
+    		                var now = new Date();
+    		                var res = [];
+    		                var len = 16;
+    		                while (len--) {
+    		                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+    		                    now = new Date(now - 2000);
+    		                }
+    		                return res;
+    		            })()
+    		        },
+    		        {
+    		            type: 'category',
+    		            boundaryGap: true,
+    		            data: (function (){
+    		                var res = [];
+    		                var len = 16;
+    		                while (len--) {
+    		                    res.push(len + 1);
+    		                }
+    		                return res;
+    		            })()
+    		        }
+    		    ],
+    		    yAxis: [
+    		        {
+    		            type: 'value',
+    		            scale: true,
+    		            name: '价格',
+    		            max: 30,
+    		            min: 0,
+    		            boundaryGap: [0.2, 0.2]
+    		        },
+    		        {
+    		            type: 'value',
+    		            scale: true,
+    		            name: '预购量',
+    		            max: 1200,
+    		            min: 0,
+    		            boundaryGap: [0.2, 0.2]
+    		        }
+    		    ],
+    		    series: [
+    		        {
+    		            name:'学生数',
+    		            type:'bar',
+    		            xAxisIndex: 1,
+    		            yAxisIndex: 1,
+    		            data:(function (){
+    		                var res = [];
+    		                var len = 16;
+    		                while (len--) {
+    		                    res.push(Math.round(Math.random() * 1000));
+    		                }
+    		                return res;
+    		            })()
+    		        },
+    		        {
+    		            name:'订单数',
+    		            type:'line',
+    		            data:(function (){
+    		                var res = [];
+    		                var len = 0;
+    		                while (len < 16) {
+    		                    res.push((Math.random()*10 + 5).toFixed(1) - 0);
+    		                    len++;
+    		                }
+    		                return res;
+    		            })()
+    		        }
+    		    ]
+    		});//myChart01.setOption	
         
     	myChart02.setOption(option02 = { 
     			color: ['#f8bf7d', '#ffd2c2', '#9dc5c4', '#dee5e5', '#d48484', '#3c8dbc', '#59afe8'],

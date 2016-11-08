@@ -1066,14 +1066,14 @@
 				                msg[key].test.resultSet[o].FUNNEL_PRODUCE_WANT/1000];
 				
 				WantValue = bubbleSort(WantValue);
+				var BarMax = parseInt(WantValue[WantValue.length-1]) < 10 ? parseInt(WantValue[WantValue.length-1])+1 : parseInt(WantValue[WantValue.length-1]);
+				var BarInterval = parseInt(WantValue[WantValue.length-1]) < 10 ? 2 : parseInt(WantValue[WantValue.length-1]/5);
 				//取最小值
 				var LostValue = [msg[key].test.resultSet[o].FUNNEL_WILL_LOST/1000 , 
 				 				msg[key].test.resultSet[o].FUNNEL_AGREE_LOST/1000 , 
 				 				msg[key].test.resultSet[o].FUNNEL_AFFIRM_LOST/1000 ,
 				 				msg[key].test.resultSet[o].FUNNEL_EXECUTE_LOST/1000 ,
 				 				msg[key].test.resultSet[o].FUNNEL_PRODUCE_LOST/1000 ];
-				
-				LostValue = bubbleSort(LostValue);
 				
 				strWant += msg[key].test.resultSet[o].FUNNEL_WILL_WANT/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_AGREE_WANT/1000 + 
@@ -1285,8 +1285,8 @@
 				            type : 'value',
 				            name: '单位:千',
 				            min: 0,
-				            max: (parseInt(WantValue[WantValue.length-1]/100)+1)*100,
-				            interval: 50,
+				            max: BarMax,
+				            interval: BarInterval,
 				            axisLabel: {
 				                formatter: '{value} '
 				            }

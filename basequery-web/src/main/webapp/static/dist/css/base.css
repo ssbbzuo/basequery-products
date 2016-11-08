@@ -244,4 +244,6 @@ label{font-weight:normal;}
 
 .pageBox{text-align:center;padding-top: 8px;}
 .pageBox .page-container{display: inline-block;}
+.box-body{padding:15px;}  
+.callout{border-left:none;}
 

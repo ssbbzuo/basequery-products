@@ -887,14 +887,17 @@
 				                msg[key].test.resultSet[o].FUNNEL_SELL_WANT/1000];
 				
 				WantValue = bubbleSort(WantValue);
+				
+				var BarMax = parseInt(WantValue[WantValue.length-1]) < 10 ? parseInt(WantValue[WantValue.length-1])+1 : parseInt(WantValue[WantValue.length-1]);
+				var BarInterval = parseInt(WantValue[WantValue.length-1]) < 10 ? 2 : parseInt(WantValue[WantValue.length-1]/5);
+				//alert(BarMax);
+				//alert(BarInterval);
 				//取最小值
 				var LostValue = [msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_LOST/1000 , 
 				 				msg[key].test.resultSet[o].FUNNEL_FLLOW_LOST/1000 , 
 				 				msg[key].test.resultSet[o].FUNNEL_READ_LOST/1000 , 
 				 				msg[key].test.resultSet[o].FUNNEL_SELL_LOST/1000 ];
-				
-				LostValue = bubbleSort(LostValue);				
-				
+
 				strWant += msg[key].test.resultSet[o].FUNNEL_FORECAST_READ_WANT/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_FLLOW_WANT/1000 + 
 						',' + msg[key].test.resultSet[o].FUNNEL_READ_WANT/1000 + 
@@ -911,6 +914,7 @@
 						',' + Math.abs(msg[key].test.resultSet[o].FUNNEL_SELL_LOST)/1000 +']';							
 			}	
 		}
+		
 	//生成漏斗图
 	myChart01.setOption(option = {
 			color: ['#59afe8', '#51bcc3', '#a3d75b', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
@@ -995,7 +999,7 @@
 				                    borderWidth: 1
 				                }
 				            },
-				            data: eval("("+strFunnel+ ")")
+				            data: eval("("+(strFunnel.length == 0 ? 0 : strFunnel )+ ")")
 				        }
 				    ]
 				});
@@ -1058,6 +1062,7 @@
 		        }
 		    ]
 		});	
+		
 		//生成条形图
 		myChart03.setOption(option = {
 			color: ['#59afe8', '#51bcc3', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
@@ -1096,8 +1101,8 @@
 		            type : 'value',
 		            name: '单位:千',
 		            min: 0,
-		            max: (parseInt(WantValue[WantValue.length-1]/100)+2)*100,
-		            interval: 200,
+		            max: BarMax,
+		            interval: BarInterval,
 		            axisLabel: {
 		                formatter: '{value} '
 		            }
