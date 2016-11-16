@@ -40,7 +40,7 @@
 	
 <!-- jqueryBuildTable -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/datepicker3.css"> -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/jquery.circliful.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/styles.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/css/font-awesome.css">
 <!-- custom css -->
@@ -126,3 +126,4 @@
 <script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/jquery.jsontotable.min.js"></script>
 <script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/easypiechart-data.js"></script>
 <script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/easypiechart.js"></script>
+<script src="<%=request.getContextPath()%>/static/plugins/jqueryBuildTable/jquery.circliful.min.js"></script>

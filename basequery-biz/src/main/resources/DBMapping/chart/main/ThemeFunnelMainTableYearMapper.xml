@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.main.ThemeFunnelMainTableYear" >
+	<resultMap type="com.eenet.basequery.chart.main.ThemeFunnelMainTableYear" id="default">
+		<result column="COUNT_BEFOREYEAR" property="COUNT_BEFOREYEAR" jdbcType="VARCHAR" />
+		<result column="COUNT_THISYEAR" property="COUNT_THISYEAR" jdbcType="VARCHAR" />
+		<result column="COUNT_ALL" property="COUNT_ALL" jdbcType="VARCHAR" />
+		<result column="STUDENT_PER" property="STUDENT_PER" jdbcType="VARCHAR" />
+		<result column="DIM_CODE_NAME" property="DIM_CODE_NAME" jdbcType="VARCHAR" />
+		<result column="CODE_NAME" property="CODE_NAME" jdbcType="VARCHAR" />		
+		<result column="CREATED_DT" property="CREATED_DT" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)
+			FROM DM_FACT_MAIN_TABLEYEAR A LEFT JOIN DM_FACT_MAIN_PIE_THISYEAR B ON (A.DIM_CODE_NAME = B.DIM_CODE_NAME)
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />				
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT A.COUNT_BEFOREYEAR,A.COUNT_THISYEAR,A.STUDENT_PER,A.DIM_CODE_NAME,A.CREATED_DT,
+				B.DIM_CODE_NAME AS CODE_NAME,
+				A.COUNT_BEFOREYEAR+A.COUNT_THISYEAR AS COUNT_ALL
+			FROM DM_FACT_MAIN_TABLEYEAR A LEFT JOIN DM_FACT_MAIN_PIE_THISYEAR B ON (A.DIM_CODE_NAME = B.DIM_CODE_NAME)
+			WHERE 1=1
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>

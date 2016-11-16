@@ -19,9 +19,6 @@
         <mapper resource="DBMapping/sys/SysdataMapper.xml" />  
         <mapper resource="DBMapping/increment/IncrementMapper.xml" />   
         <mapper resource="DBMapping/sqlquery/QuerySqlMapper.xml" />   
-        <mapper resource="DBMapping/chart/TestMapper.xml"/> 
-        <mapper resource="DBMapping/chart/Test02Mapper.xml"/>
-        <mapper resource="DBMapping/chart/Test03Mapper.xml"/>
         
         <!-- 预报读 -->
         <mapper resource="DBMapping/chart/ThemeFunnelFReadCollegesMapper.xml"/>     
@@ -72,7 +69,18 @@
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProducePSMapper.xml"/>            
         <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyProduceStructuresMapper.xml"/>    
         <!-- 客户漏斗主图 -->
-        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyMapper.xml"/>                 
+        <mapper resource="DBMapping/chart/company/ThemeFunnelCompanyMapper.xml"/>   
+        <!-- 主页面 -->           
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainNumberMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainBarAllMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainBarYearMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainBarMonthMapper.xml"/>                        
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainPieYearMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainPieMonthMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainTableYearMapper.xml"/>
+        <mapper resource="DBMapping/chart/main/ThemeFunnelMainTableYearMonthMapper.xml"/>            
+        
+        
         
         <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
         <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  

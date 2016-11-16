@@ -232,7 +232,7 @@ label{font-weight:normal;}
 .datepicker .table>thead>tr>th, .datepicker .table>tbody>tr>th, .datepicker .table>tfoot>tr>th, .datepicker .table>thead>tr>td, .datepicker .table>tbody>tr>td, .datepicker .table>tfoot>tr>td{border:none;}
 
 .xue-header{border-radius: 1000px;}
-.xue-data span{color:#3c8dbc;font-size:20px;}
+.xue-data span{color:#000;font-size:20px;}
 
 .order-list{margin-bottom:0;}
 .order-list li{float:left;}
@@ -246,4 +246,4 @@ label{font-weight:normal;}
 .pageBox .page-container{display: inline-block;}
 .box-body{padding:15px;}  
 .callout{border-left:none;}
-
+.tbCont{background: #fff;overflow: hidden;}

@@ -41,13 +41,7 @@
 	
 	<!-- sql查询页面信息-->
 	<dubbo:service interface="com.eenet.basequery.sqlquery.QuerySqlService" ref="querySqlService" />
-	
-	<!-- test -->
- 	<dubbo:service ref="chartService" interface="com.eenet.basequery.chart.ChartService"/> 
-	<!-- test02 -->
- 	<dubbo:service ref="chart02Service" interface="com.eenet.basequery.chart.Chart02Service"/> 
-	<!-- test02 -->
- 	<dubbo:service ref="FunnelService" interface="com.eenet.basequery.chart.FunnelService"/>
+
  
  	<!-- 预报读阶段 -->
  	<dubbo:service ref="ThemeFunnelFReadCollegesService" interface="com.eenet.basequery.chart.ThemeFunnelFReadCollegesService"/>
@@ -99,7 +93,16 @@
  	<dubbo:service ref="ThemeFunnelCompanyProducePSService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProducePSService"/>
  	<dubbo:service ref="ThemeFunnelCompanyProduceStructuresService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyProduceStructuresService"/>
  	<!-- 客户漏斗主表 -->
- 	<dubbo:service ref="ThemeFunnelCompanyService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyService"/> 	 	  	 	 	 	  	 	  		
+ 	<dubbo:service ref="ThemeFunnelCompanyService" interface="com.eenet.basequery.chart.company.ThemeFunnelCompanyService"/> 	 	 
+ 	<!-- 主页面 -->
+ 	<dubbo:service ref="ThemeFunnelMainNumberService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainNumberService"/>
+ 	<dubbo:service ref="ThemeFunnelMainBarAllService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainBarAllService"/>  
+ 	<dubbo:service ref="ThemeFunnelMainBarYearService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainBarYearService"/>  
+ 	<dubbo:service ref="ThemeFunnelMainBarMonthService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainBarMonthService"/>  
+ 	<dubbo:service ref="ThemeFunnelMainPieYearService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainPieYearService"/>
+ 	<dubbo:service ref="ThemeFunnelMainPieMonthService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainPieMonthService"/>  
+ 	<dubbo:service ref="ThemeFunnelMainTableYearService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainTableYearService"/>  
+ 	<dubbo:service ref="ThemeFunnelMainTableYearMonthService" interface="com.eenet.basequery.chart.main.ThemeFunnelMainTableYearMonthService"/>    	 	 	 	  	 	 	 	 	  	 	  		
  
  	<!-- 用户信息-->
 	<dubbo:service interface="com.eenet.basequery.pri.UserInfoService" ref="userInfoService" />

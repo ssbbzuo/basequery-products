@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="page" data-id="0">
-        <iframe src="<%=request.getContextPath() %>/getFunnel" frameborder="0" scrolling="auto"  allowtransparency="true" id="IndexIframe"></iframe>
+        <iframe src="<%=request.getContextPath() %>/index" frameborder="0" scrolling="auto"  allowtransparency="true" id="IndexIframe"></iframe>
         <!-- <script>
 	        function iframe(){
 				var iframe = document.getElementById("IndexIframe");

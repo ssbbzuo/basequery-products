@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eenet.basequery.chart.main.ThemeFunnelMainNumber" >
+	<resultMap type="com.eenet.basequery.chart.main.ThemeFunnelMainNumber" id="default">
+		<result column="COUNT_STUDENT" property="COUNT_STUDENT" jdbcType="VARCHAR" />
+		<result column="COUNT_READ_STUDENT" property="COUNT_READ_STUDENT" jdbcType="VARCHAR" />
+		<result column="COUNT_NEW_STUDENT" property="COUNT_NEW_STUDENT" jdbcType="VARCHAR" />
+		<result column="COUNT_NEW_READ_STUDENT" property="COUNT_NEW_READ_STUDENT" jdbcType="VARCHAR" />				
+		<result column="COUNT_STUDY_STUDENT" property="COUNT_STUDY_STUDENT" jdbcType="VARCHAR" />
+		<result column="COUNT_CUSTOMER" property="COUNT_CUSTOMER" jdbcType="VARCHAR" />
+		<result column="COUNT_WORK_CUSTOMER" property="COUNT_WORK_CUSTOMER" jdbcType="VARCHAR" />
+		<result column="COUNT_NEW_CUSTOMER" property="COUNT_NEW_CUSTOMER" jdbcType="VARCHAR" />		
+		<result column="COUNT_NEW_WORK_CUSTOMER" property="COUNT_NEW_WORK_CUSTOMER" jdbcType="VARCHAR" />
+		<result column="COUNT_STUDY_CUSTOMER" property="COUNT_STUDY_CUSTOMER" jdbcType="VARCHAR" />				
+	</resultMap>
+	
+	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<![CDATA[
+			SELECT COUNT(1)			
+			FROM DM_FACT_MAIN_NUMBER
+			WHERE 1=1 
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />	
+	</select>
+	
+	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
+		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
+		<![CDATA[
+			SELECT 	COUNT_STUDENT,-- 现有学员
+							COUNT_READ_STUDENT,-- 已报读学员
+							COUNT_NEW_STUDENT,-- 新增学员
+							COUNT_NEW_READ_STUDENT,-- 新增报读学员
+							COUNT_STUDY_STUDENT,-- 在读学员
+							COUNT_CUSTOMER,-- 现有客户数
+							COUNT_WORK_CUSTOMER,-- 合作客户数
+							COUNT_NEW_CUSTOMER,-- 新增客户数
+							COUNT_NEW_WORK_CUSTOMER,-- 新增合作客户数
+							COUNT_STUDY_CUSTOMER -- 在读学员客户
+			FROM DM_FACT_MAIN_NUMBER
+			WHERE 1=1 		  		
+		]]>
+		<include refid="com.eenet.base.${db.type}.query_quote" />
+		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
+		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />		
+	</select>
+
+</mapper>

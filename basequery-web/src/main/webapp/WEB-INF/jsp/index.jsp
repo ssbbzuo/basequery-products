@@ -13,152 +13,70 @@
 	<div class="content main">
 		<div class="row">
 			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading-title">
-						<!-- <i class="fa fa-line-chart"></i> -->
-						<span class="pht-span">学员数据 </span>
-					</div>
+				<div class="panel panel-primary">
+				    <div class="panel-heading">
+				        <div class="panel-heading"><i class="fa fa-search" aria-hidden="true"></i> 学员数据 </div>
+				    </div>		
 					<div class="panel-body">
-						<div class="col-md-4 panel-body">
-							<img src="http://www.qq1234.org/uploads/allimg/141204/3_141204141215_2.jpg" alt="img" width="100" class="xue-header" >
+						<div class="col-md-4 panel-body">							
+							<a class="btn btn-info" style="text-shadow: black 5px 3px 3px;">
+								<i class="fa fa-address-card fa-5x"></i></a>
 						</div>
-						<div class="col-md-8 panel-body xue-data">
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
+						<div class="col-md-8 panel-body xue-data" id = 'Number01'>
+							<!-- 加载学员信息 -->
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading-title">
-						<!-- <i class="fa fa-line-chart"></i> -->
-						<span class="pht-span">学员数据 </span>
-					</div>
+				<div class="panel panel-primary">
+				    <div class="panel-heading">
+				    	<div class="panel-heading"><i class="fa fa-search" aria-hidden="true"></i> 客户数据 </div>
+				    </div>						
 					<div class="panel-body">
 						<div class="col-md-4 panel-body">
-							<img src="http://www.qq1234.org/uploads/allimg/141204/3_141204141215_2.jpg" alt="img" width="100" class="xue-header" >
+						<a class="btn btn-info" style="text-shadow: black 5px 3px 3px;">
+							<i class="fa fa-handshake-o fa-5x"></i></a>
 						</div>
-						<div class="col-md-8 panel-body xue-data">
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
-							<div class="col-md-6">
-								<p>
-									<span>196,510</span><br>
-									现有学员
-								</p>
-							</div>
+						<div class="col-md-8 panel-body xue-data" id = 'Number02'>
+							<!-- 加载客户信息 -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- 
+		
 		<div class="row">
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="panel panel-blue panel-widget ">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<li class="fa fa-user fa-4x"></li>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">3695864</div>
-							<div class="text-muted">现有学员</div>
-						</div>
-					</div>
+		   <div class="col-xs-6 col-md-3">	   
+				<div class="panel panel-default" >			
+					<center>
+						<div id="studentPer"  data-info="学员增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#59afe8" data-bgcolor="#eee"></div>
+					</center>																	
+				</div>
+		   </div>
+		   <div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<center>
+						<div id="newstudentPer" data-info="报读学员增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#fba407" data-bgcolor="#eee"></div>
+					</center>								
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="panel panel-orange panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<em class="fa fa-home fa-4x"></em>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">152369</div>
-							<div class="text-muted">现有企业</div>
-						</div>
-					</div>
+		   <div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<center>
+						<div  id="companyPer" data-info="客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#cd4870" data-bgcolor="#eee"></div>
+					</center>											
 				</div>
-			</div>
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="panel panel-teal panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<li class="fa fa-user-plus fa-4x"></li>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">326598</div>
-							<div class="text-muted">新增学员</div>
-						</div>
-					</div>
+			</div>		   
+		   <div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<center>
+						<div id="newcompanyPer" data-info="合作客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#d4df5a" data-bgcolor="#eee"></div>
+					</center>													
 				</div>
-			</div>
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="panel panel-red panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<li class="fa fa-plus-circle fa-4x"></li>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">3269</div>
-							<div class="text-muted">新增企业</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			</div>				   
 		</div>
-		 -->
+			
 		<div class="box">
 			<ul class="tabList order-list">
 				<li>
@@ -173,198 +91,83 @@
 			</ul>
 			<div class="tabBox order-box">
 				<div class="tbCont">
-					<div class="main-chart" id="main1" ></div>
+					<div class="tab-pane fade in active" id="main1" ></div>
 				</div>
-				<div class="tbCont" style="display:none;">2</div>
-				<div class="tbCont" style="display:none;">3</div>
-			</div>
-		</div>
-		<!--<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading"><i class="fa fa-bar-chart-o"></i></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<div class="main-chart" id="main1" ></div>
-						</div>
-					</div>
+				<div class="tbCont" style="height:0;">
+					<div class="tab-pane fade in active" id="main2" ></div>
+				</div>
+				<div class="tbCont" style="height:0;">
+					<div class="tab-pane fade in active" id="main3" ></div>
 				</div>
 			</div>
-		</div>/.row-->	
-
-					
-
-	
+		</div>			
 		
-	<div class="row">
-		<!-- 
-	     <div class="col-md-8 span_3">
-			  <div class="bs-example1" data-example-id="contextual-table">
-			    <table class="table">
-			      <thead>
-			        <tr>
-			          <th>#</th>
-			          <th>Column heading</th>
-			          <th>Column heading</th>
-			          <th>Column heading</th>
-			        </tr>
-			      </thead>
-			      <tbody>
-			        <tr class="active">
-			          <th scope="row">1</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">2</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr class="success">
-			          <th scope="row">3</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">4</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr class="info">
-			          <th scope="row">5</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">6</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr class="warning">
-			          <th scope="row">7</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr>
-			          <th scope="row">8</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			        <tr class="danger">
-			          <th scope="row">9</th>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			          <td>Column content</td>
-			        </tr>
-			      </tbody>
-			    </table>
-			   </div>
-		   </div> -->
-		   
-	   <div class="span_4">
-		 <div class="col_2">
-		  <div class="box_1">
-		   <div class="col-md-6 col_1_of_2 span_1_of_2">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>学员增长率:</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
-						</div>
-					</div>
-				</div>
-		   </div>
-		   <div class="col-md-6 col_1_of_2 span_1_of_2">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>企业增长率:</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
-						</div>
-					</div>
-				</div>
-		   </div>
-		   <div class="clearfix"> </div>
-		 </div>
-		 <div class="box_1">
-		   <div class="col-md-6 col_1_of_2 span_1_of_2">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>课程完成率:</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
-						</div>
-					</div>
-				</div>
-		   </div>
-		   <div class="col-md-6 col_1_of_2 span_1_of_2">
- 				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>项目完成率:</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
-						</div>
-					</div>
-				</div>
-		   </div>
-		   <div class="clearfix"> </div>
-		   </div>
-		  </div>
-		</div>		   
-	   </div><!--/.row-->	
-	
-	<div class="row">
-			<div class="col-md-12">
+
+		<div class="row">
+			<div class="col-md-5">
+			
 				<div class="panel panel-default" >
-					<!--
-					<div class="panel-heading"><i class="fa fa-pie-chart"></i></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<div class="chart" id="main2" ></div>
-						</div>
-					</div>
-					-->
 					<ul class="tabList order-list">
 						<li>
 							<a href="javascript:" class="on">本年</a>
-						</li>
+						</li>						
 						<li>
 							<a href="javascript:">本月 </a>
-						</li>
+						</li>						
 					</ul>
 					<div class="tabBox order-box">
-						<div class="tbCont">
-							<div class="main-chart" id="main2" ></div>
+						<div class="tbCont">							
+							<div class="btn btn-link" href="javascript:" id="refreshTableYear"><i class="fa fa-refresh" aria-hidden="true"> 刷新</i></div>	
+							<div class="main-chart" id="main4" ></div>
 						</div>
-						<div class="tbCont" style="display:none;">2</div>
+						<div class="tbCont"  style="height:0;">							
+							<div class="btn btn-link" href="javascript:"  id="refreshTableYearMonth"><i class="fa fa-refresh" aria-hidden="true"> 刷新</i></div>
+							<div class="main-chart" id="main5" ></div>
+						</div>
 					</div>
-					
+					<div style="display: none;" id="CODE_NAME"></div>
 				</div>
 			</div>
-			<!--
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"><i class="fa fa-area-chart"></i></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<div class="chart" id="main3"></div>
+			<div class="col-md-7" >
+				<div class="col_2">
+					<div class="panel panel-primary" id="container-TableYear">
+						<div class="panel-heading"><i class="fa fa-list" aria-hidden="true"></i> 网院信息</div>
+						<div class="panel panel-default">
+							<div id="TableYear">
+								<div class="resp-tabs-container hor_1">
+									<div id="jsontotable-TableYear" >
+										<!-- 加载表格 -->
+										<div id="pageTool-TableYear"> <!-- 加载分页控件 --> 										
+										</div>															
+									</div>		
+				
+								</div>
+								<br>
+							</div>					
 						</div>
-					</div>
+					</div>						
+					<div class="panel panel-primary" id="container-TableYearMonth">
+						<div class="panel-heading">
+								<i class="fa fa-list" aria-hidden="true"></i> 网院信息				
+						</div>												
+						<div class="panel panel-default">
+							<div id="TableYearMonth">
+								<div class="resp-tabs-container hor_1">
+									<div id="jsontotable-TableYearMonth" >
+										<!-- 加载表格 -->
+										<div id="pageTool-TableYearMonth"> <!-- 加载分页控件 --> 										
+										</div>																			
+									</div>						
+								</div>
+								<br>
+							</div>					
+						</div>
+					</div>						
 				</div>
-			</div>-->
+			</div>		 
 		</div><!--/.row-->
 		
-		<div class="box margin-bottom-none">
-			<div class="box-body">
-				<table class="table table-bordered table-striped table-container"><thead><tr><th>网院</th><th>预报读咨询单数</th></tr></thead><tbody><tr><td>未知</td><td>1100185</td></tr><tr><td>ee专业技术人员远程教育网</td><td>85544</td></tr><tr><td>专业技术人员继续教育网络学院</td><td>5302</td></tr><tr><td>国家开放大学（广州）实验学院</td><td>2056</td></tr><tr><td>华南理工大学继续教育学院</td><td>549</td></tr><tr><td>国家开放大学实验学院</td><td>485</td></tr><tr><td>国家开放大学在线教育社会教育与职业培训</td><td>234</td></tr><tr><td>华东理工大学</td><td>203</td></tr><tr><td>广东领航职业教育网络学院</td><td>56</td></tr><tr><td>广东外语外贸大学专业技术人员继续教育网</td><td>37</td></tr></tbody></table>
-				
-			</div>
-		</div>
-		
+
 			
 	</div><!--/.main-->
 	<jsp:include page="/WEB-INF/jsp/layouts/footer.jsp" />
@@ -372,258 +175,736 @@
 	
 
 <script>
+	$(function() { 
+		//加载数据
+		pageData();
+		//重新初始化
+		initPage();
+		$("#container-TableYearMonth").hide();
+		
 
-	var worldMapContainer1 = document.getElementById('main1');
-	var worldMapContainer2 = document.getElementById('main2');
-	//var worldMapContainer3 = document.getElementById('main3');
+	});
+	
+	$("#refreshTableYear").click(function(){
+		pageSize_TableYear = 10;
+		currentCount_TableYear = 0;	
+		$("div#CODE_NAME").empty();	
+		buildFunc("TableYear",name);	
+	});
+	
+	$("#refreshTableYearMonth").click(function(){
+		pageSize_TableYearMonth = 10;
+		currentCount_TableYearMonth = 0;	
+		$("div#CODE_NAME").empty();	
+		buildFunc("TableYearMonth",name);			
+	});	
 
-	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-	var resizeWorldMapContainer = function () {		    
-	    worldMapContainer1.style.height = document.body.clientWidth*0.25+'px';
-	    worldMapContainer2.style.height = document.body.clientWidth*0.25+'px';
-	    //worldMapContainer3.style.height = document.body.clientWidth*0.2+'px';
+	var initFunnelData = ['Number','BarAll','BarYear','BarMonth','PieYear','PieMonth','TableYear','TableYearMonth'];
+
+	/*=========================================公用部分=========================================*/
+	//冒泡
+	function bubbleSort(Value){
+		var temp = 0;
+		for (var i = 0; i < Value.length; i++)
+		{
+			for (var j = 0; j < Value.length - i; j++)
+			{
+				if (Value[j] > Value[j + 1])
+				{
+					temp = Value[j + 1];
+					Value[j + 1] = Value[j];
+					Value[j] = temp;
+				}
+			}
+		};
+		
+		return Value;
+	};	
+	
+	//加载数据
+	function pageData(){
+		for(var i = 0 ; i < initFunnelData.length ; i ++){
+			eval('setPara_'+initFunnelData[i]+' ="'+initFunnelData[i]+'";'+
+				'buildFunc(setPara_'+initFunnelData[i]+');');
+		}					
+	};
+	//重新初始化
+	function initPage(){
+		for(var i = 0 ; i < initFunnelData.length ; i ++){
+			eval('pageSize_'+initFunnelData[i]+' = 10;');
+			eval('currentCount_'+initFunnelData[i]+' = 0;');
+		}	
+	}		
+	//json传送数据
+	function buildFunc(setPara){
+		eval('function ' +setPara + '(){'+
+				'var jsonDate = {'+
+				'"CODE_NAME" :$("#DIM_CODE_NAME").val(),'+
+				'"currentCount" : eval("currentCount_'+ setPara + '"),'+
+				'"pageSize" : eval("pageSize_'	+ setPara + '")};'+		
+				'$.ajax({'+
+					'url : "<%=request.getContextPath()%>/ThemeFunnelMain'+setPara+'",'+			
+					'type : "post",'+
+					'contentType:"application/json;charset=UTF-8",'+
+					'data : JSON.stringify(jsonDate),'+
+					'success : function(msg) {'+
+						'console.log(msg);'+
+						'eval("fillTable_'+ setPara +' (msg)");'+			
+					'}});};'	
+		);
+		eval(setPara+"();");
 	};
 	
+	var totalCount = 0;//总条数
+	
+	function fillData(setStr,str,currentCount,pageSize,total){
+		//删除表格数据
+		$("div#jsontotable-str-"+setStr).remove();		
+
+	
+		//添加表格div
+		$("div#jsontotable-"+setStr).append('<div id="jsontotable-str-'+setStr+'"></div>');
+		//生成表格数据
+		$.jsontotable(str, {
+			id: "#jsontotable-str-"+setStr,
+			className: "table table-bordered table-striped table-container"
+		});						
+		$("div#pageToolbar-"+setStr).remove();
+		//添加表格div
+		$("div#jsontotable-"+setStr).append('<div id="pageToolbar-'+setStr+'"></div>');
+		
+		//加载分页工具
+		$('#pageToolbar-'+setStr).Paging({pagesize:eval("pageSize_" + setStr),current:((eval("currentCount_" + setStr)/eval("pageSize_" + setStr))+1),count:total,
+			callback:function(page,size,count){
+					console.log(arguments);		
+					eval("currentCount_" + setStr + "=" +  ((page-1)*size)); 
+					eval("pageSize_" + setStr + "=" +  size);
+					pageData();		
+				}	
+		});
+	};	
+	
+	/*=========================================Echarts参数设置=========================================*/
+	/*-------------柱状图-------------*/
+	//年度
+	var worldMapContainer1 = document.getElementById('main1');
+	//本年
+	var worldMapContainer2 = document.getElementById('main2');
+	//本月
+	var worldMapContainer3 = document.getElementById('main3');
+	/*-------------饼图-------------*/
+	//本年
+	var worldMapContainer4 = document.getElementById('main4');
+	//本月
+	var worldMapContainer5 = document.getElementById('main5');
+	
+
+	//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+	var resizeWorldMapContainer = function () {		
+		/*-------------柱状图-------------*/
+		//年度
+	    worldMapContainer1.style.height = document.body.clientWidth*0.25+'px';
+	  	//本年
+	    worldMapContainer2.style.height = document.body.clientWidth*0.25+'px';
+	  	//本月
+	    worldMapContainer3.style.height = document.body.clientWidth*0.25+'px';
+		/*-------------饼图-------------*/
+	  	//本年
+	    //worldMapContainer4.style.height = window.document.getElementById('TableYear').offsetHeight-55+'px';
+		worldMapContainer4.style.height = '358px';
+	  	//本月
+	    worldMapContainer5.style.height = '358px';
+	  	
+
+	};
+		
 	//设置容器高宽
 	resizeWorldMapContainer();	
 	
-	var myChart01 = echarts.init(worldMapContainer1);
-	var myChart02 = echarts.init(worldMapContainer2, 'shine');
-	//var myChart03 = echarts.init(worldMapContainer3, 'macarons');
+	/*-------------柱状图-------------*/
+	//年度
+	var myChart01 = echarts.init(worldMapContainer1,'macarons');
+	//本年
+	var myChart02 = echarts.init(worldMapContainer2,'macarons');
+	//本月
+	var myChart03 = echarts.init(worldMapContainer3,'macarons');
+	/*-------------饼图-------------*/
+	//本年
+	var myChart04 = echarts.init(worldMapContainer4,'macarons');
+	//本月
+	var myChart05 = echarts.init(worldMapContainer5,'macarons');
 	
-	myChart01.setOption(option = {
-        		color: ['#59afe8', '#333', '#fba407', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
-        		title: {
-    		        text: '年度学生与订单趋势分析',
-    		        subtext: '纯属虚构'
-    		    },
-    		    tooltip: {
-    		        trigger: 'axis'
-    		    },
-    		    legend: {
-    		        data:['订单数', '学生数']
-    		    },
-    		    toolbox: {
-    		        show: true,
-    		        feature: {
-    		            dataView: {readOnly: false},
-    		            restore: {},
-    		            saveAsImage: {}
-    		        }
-    		    },
-    		    dataZoom: {
-    		        show: false,
-    		        start: 0,
-    		        end: 100
-    		    },
-    		    xAxis: [
-    		        {
-    		            type: 'category',
-    		            boundaryGap: true,
-    		            data: (function (){
-    		                var now = new Date();
-    		                var res = [];
-    		                var len = 16;
-    		                while (len--) {
-    		                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-    		                    now = new Date(now - 2000);
-    		                }
-    		                return res;
-    		            })()
-    		        },
-    		        {
-    		            type: 'category',
-    		            boundaryGap: true,
-    		            data: (function (){
-    		                var res = [];
-    		                var len = 16;
-    		                while (len--) {
-    		                    res.push(len + 1);
-    		                }
-    		                return res;
-    		            })()
-    		        }
-    		    ],
-    		    yAxis: [
-    		        {
-    		            type: 'value',
-    		            scale: true,
-    		            name: '价格',
-    		            max: 30,
-    		            min: 0,
-    		            boundaryGap: [0.2, 0.2]
-    		        },
-    		        {
-    		            type: 'value',
-    		            scale: true,
-    		            name: '预购量',
-    		            max: 1200,
-    		            min: 0,
-    		            boundaryGap: [0.2, 0.2]
-    		        }
-    		    ],
-    		    series: [
-    		        {
-    		            name:'学生数',
-    		            type:'bar',
-    		            xAxisIndex: 1,
-    		            yAxisIndex: 1,
-    		            data:(function (){
-    		                var res = [];
-    		                var len = 16;
-    		                while (len--) {
-    		                    res.push(Math.round(Math.random() * 1000));
-    		                }
-    		                return res;
-    		            })()
-    		        },
-    		        {
-    		            name:'订单数',
-    		            type:'line',
-    		            data:(function (){
-    		                var res = [];
-    		                var len = 0;
-    		                while (len < 16) {
-    		                    res.push((Math.random()*10 + 5).toFixed(1) - 0);
-    		                    len++;
-    		                }
-    		                return res;
-    		            })()
-    		        }
-    		    ]
-    		});//myChart01.setOption	
-        
-    	myChart02.setOption(option02 = { 
-    			color: ['#f8bf7d', '#ffd2c2', '#9dc5c4', '#dee5e5', '#d48484', '#3c8dbc', '#59afe8'],
-    			title : {
-    		        text: '某站点用户访问来源',
-    		        subtext: '纯属虚构',
-    		        x:'center'
-    		    },
-    		    tooltip : {
-    		        trigger: 'item',
-    		        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    		    },
-    		    legend: {
-    		        orient: 'vertical',
-    		        left: 'left',
-    		        data: ['其他','领航外语','高教社考研','国开职业教育','专继教育','领航计划','广州实验学校 ']
-    		    },
-    		    series : [
-    		        {
-    		            name: '访问来源',
-    		            type: 'pie',
-    		            radius : '55%',
-    		            center: ['50%', '60%'],
-    		            data:[
-    		                {value:335, name:'国开职业教育'},
-    		                {value:310, name:'高教社考研'},
-    		                {value:234, name:'领航外语'},
-    		                {value:135, name:'其他'},
-    		                {value:350, name:'专继教育'},
-    		                {value:500, name:'领航计划'},
-    		                {value:1548, name:'广州实验学校'}
-    		            ],
-    		            itemStyle: {
-    		                emphasis: {
-    		                    shadowBlur: 10,
-    		                    shadowOffsetX: 0,
-    		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-    		                }
-    		            }
-    		        }
-    		    ]
-            });//myChart02.setOption
-            
-            /*
-        	myChart03.setOption(option03 = { 
-        		    title: {
-        		        text: '堆叠区域图'
-        		    },
-        		    tooltip : {
-        		        trigger: 'axis'
-        		    },
-        		    legend: {
-        		        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-        		    },
-        		    toolbox: {
-        		        feature: {
-        		            saveAsImage: {}
-        		        }
-        		    },
-        		    grid: {
-        		        left: '3%',
-        		        right: '4%',
-        		        bottom: '3%',
-        		        containLabel: true
-        		    },
-        		    xAxis : [
-        		        {
-        		            type : 'category',
-        		            boundaryGap : false,
-        		            data : ['周一','周二','周三','周四','周五','周六','周日']
-        		        }
-        		    ],
-        		    yAxis : [
-        		        {
-        		            type : 'value'
-        		        }
-        		    ],
-        		    series : [
-        		        {
-        		            name:'邮件营销',
-        		            type:'line',
-        		            stack: '总量',
-        		            areaStyle: {normal: {}},
-        		            data:[120, 132, 101, 134, 90, 230, 210]
-        		        },
-        		        {
-        		            name:'联盟广告',
-        		            type:'line',
-        		            stack: '总量',
-        		            areaStyle: {normal: {}},
-        		            data:[220, 182, 191, 234, 290, 330, 310]
-        		        },
-        		        {
-        		            name:'视频广告',
-        		            type:'line',
-        		            stack: '总量',
-        		            areaStyle: {normal: {}},
-        		            data:[150, 232, 201, 154, 190, 330, 410]
-        		        },
-        		        {
-        		            name:'直接访问',
-        		            type:'line',
-        		            stack: '总量',
-        		            areaStyle: {normal: {}},
-        		            data:[320, 332, 301, 334, 390, 330, 320]
-        		        },
-        		        {
-        		            name:'搜索引擎',
-        		            type:'line',
-        		            stack: '总量',
-        		            label: {
-        		                normal: {
-        		                    show: true,
-        		                    position: 'top'
-        		                }
-        		            },
-        		            areaStyle: {normal: {}},
-        		            data:[820, 932, 901, 934, 1290, 1330, 1320]
-        		        }
-        		    ]
-                });//myChart03.setOption            
-        */
+	
+	/*=========================================主页(数字)=========================================*/
+	var a = 0;
+	var setPara_Number = "";
+	var pageSize_Number = 10;
+	var currentCount_Number = 0;	
+	function fillTable_Number(msg) {
+		var studentPer = 0;
+		var companyPer = 0;
+		var newstudentPer = 0;
+		var newcompanyPer = 0;
+		//清空数字		
+		$("div#Number01").empty();
+		$("div#Number02").empty();
+		
+		var strNumber01 = '[';
+		for(var key in msg){	
+			for ( var o in msg[key].test.resultSet) {			
+				$("div#Number01").append(
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_STUDENT+'</span><br>累计学员</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_READ_STUDENT+'</span><br>累计已报读学员</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_STUDENT+'</span><br>今年新增学员</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_READ_STUDENT+'</span><br>今年新增报读学员</p></div>'+
+						'<div class="col-md-6"><p><span>'+"-"+'</span><br>累计在读学员</p></div>'
+						);
+				
+				$("div#Number02").append(
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_CUSTOMER+'</span><br>累计客户数</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_WORK_CUSTOMER+'</span><br>累计合作客户数</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_CUSTOMER+'</span><br>今年新增客户数</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_WORK_CUSTOMER+'</span><br>今年新增合作客户数</p></div>'+
+						'<div class="col-md-6"><p><span>'+"-"+'</span><br>累计在读学员客户</p></div>'
+						);				
+				
+				studentPer = (msg[key].test.resultSet[o].COUNT_NEW_STUDENT / msg[key].test.resultSet[o].COUNT_STUDENT *100).toFixed(2);
+				companyPer = (msg[key].test.resultSet[o].COUNT_NEW_CUSTOMER / msg[key].test.resultSet[o].COUNT_CUSTOMER *100).toFixed(2);
+				newstudentPer = (msg[key].test.resultSet[o].COUNT_NEW_READ_STUDENT / msg[key].test.resultSet[o].COUNT_READ_STUDENT *100).toFixed(2);
+				newcompanyPer = (msg[key].test.resultSet[o].COUNT_NEW_WORK_CUSTOMER / msg[key].test.resultSet[o].COUNT_WORK_CUSTOMER *100).toFixed(2);				
+			}
+		}
+		$('#studentPer').attr("data-text",studentPer +"%").attr("data-percent",studentPer);		
+		$('#companyPer').attr("data-text",companyPer + "%").attr("data-percent",companyPer);		
+		$('#newstudentPer').attr("data-text",newstudentPer+"%").attr("data-percent",newstudentPer);		
+		$('#newcompanyPer').attr("data-text",newcompanyPer+"%").attr("data-percent",newcompanyPer);
+		
+		if(a == 0){
+			$('#studentPer').circliful();
+			$('#companyPer').circliful();
+			$('#newstudentPer').circliful();
+			$('#newcompanyPer').circliful();
+			a += 1;
+		}
+		
+	};
+
+	/*=========================================主页(柱状图)=========================================*/
+	var setPara_BarAll = "";
+	var pageSize_BarAll = 10;
+	var currentCount_BarAll = 0;	
+	var number = 1000;
+
+	// 年度
+	function fillTable_BarAll(msg) {	
+		var strYear = '[';
+		var strStudent = '[';
+		var strOrder = '[';	
+		var studentList = [];
+		var orderList = [];
+		
+		for(var key in msg){	
+			for ( var o in msg[key].test.resultSet) {			
+				strYear += msg[key].test.resultSet[o].DIM_YEAR+',';
+				strStudent += msg[key].test.resultSet[o].COUNT_STUDENT/number+',';
+				strOrder += msg[key].test.resultSet[o].COUNT_ORDER/number+',';	
+				
+				studentList.push(msg[key].test.resultSet[o].COUNT_STUDENT/number);
+				orderList.push(msg[key].test.resultSet[o].COUNT_ORDER/number);
+			}
+		}
+		
+		strYear = strYear.substring(0,strYear.length-1)+']';
+		strStudent = strStudent.substring(0,strStudent.length-1)+']';
+		strOrder = strOrder.substring(0,strOrder.length-1)+']';
+		
+		studentList = bubbleSort(studentList);
+		var studentMax = parseInt(studentList[studentList.length-1]) < 10 ? parseInt(studentList[studentList.length-1])+1 : parseInt(studentList[studentList.length-1]);
+		var studentInterval = parseInt(studentList[studentList.length-1]) < 10 ? 2 : parseInt(studentList[studentList.length-1]/5);
+		
+		orderList = bubbleSort(orderList);
+		var orderMax = parseInt(orderList[orderList.length-1]) < 10 ? parseInt(orderList[orderList.length-1])+1 : parseInt(orderList[orderList.length-1]);
+		var orderInterval = parseInt(orderList[orderList.length-1]) < 10 ? 2 : parseInt(orderList[orderList.length-1]/5);
+		
+		myChart01.setOption(option = {
+				color: ['#59afe8', '#cd4870', '#fba407', '#fec42c', '#dd4444', '#d4df5a'],
+				title: {
+			        text: '年度学生与订单趋势分析'
+			    },
+				tooltip: {
+			        trigger: 'axis'
+			    },
+			    animationEasing:'bounceOut',
+			    toolbox: {
+			        feature: {
+			            dataView: {show: true, readOnly: false},
+			            magicType: {show: true, type: ['line', 'bar']},
+			            restore: {show: true},
+			            saveAsImage: {show: true}
+			        }
+			    },
+			    legend: {
+			        data:['学生数','订单数']
+			    },
+			    xAxis: [
+			        {
+			            type: 'category',
+			            data: eval("("+(strYear)+ ")")
+			        }
+			    ],
+			    yAxis: [
+			        {
+			            type: 'value',
+			            name: '学生数',
+			            min: 0,
+			            max: studentMax,
+			            interval: studentInterval,
+			            axisLabel: {
+			                formatter: '{value} K'
+			            }
+			        },
+			        {
+			            type: 'value',
+			            name: '订单数',
+			            min: 0,
+			            max: orderMax,
+			            interval: orderInterval,
+			            axisLabel: {
+			                formatter: '{value} K'
+			            }
+			        }
+			    ],
+			    series: [
+			        {
+			            name:'学生数',
+			            type:'bar',
+			            barWidth : 40,//柱图宽度
+			            data:eval("("+(strStudent)+ ")")
+			        },
+			        {
+			            name:'订单数',
+			            type:'line',
+			            yAxisIndex: 1,
+			            data:eval("("+(strOrder)+ ")")
+			        }
+			    ]
+	    	});//myChart01.setOption			
+		};	
+		
+		var setPara_BarYear = "";
+		var pageSize_BarYear = 10;
+		var currentCount_BarYear = 0;
+		
+		// 本年
+		function fillTable_BarYear(msg) {	
+			var strYear = '[';
+			var strStudent = '[';
+			var strOrder = '[';	
+			var studentList = [];
+			var orderList = [];
+			
+			for(var key in msg){	
+				for ( var o in msg[key].test.resultSet) {			
+					strYear += msg[key].test.resultSet[o].DIM_MONTH+',';
+					strStudent += msg[key].test.resultSet[o].COUNT_STUDENT/number+',';
+					strOrder += msg[key].test.resultSet[o].COUNT_ORDER/number+',';	
+					
+					studentList.push(msg[key].test.resultSet[o].COUNT_STUDENT/number);
+					orderList.push(msg[key].test.resultSet[o].COUNT_ORDER/number);
+				}
+			}
+			
+			strYear = strYear.substring(0,strYear.length-1)+']';
+			strStudent = strStudent.substring(0,strStudent.length-1)+']';
+			strOrder = strOrder.substring(0,strOrder.length-1)+']';
+			
+			studentList = bubbleSort(studentList);
+			var studentMax = parseInt(studentList[studentList.length-1]) < 10 ? parseInt(studentList[studentList.length-1])+1 : parseInt(studentList[studentList.length-1]);
+			var studentInterval = parseInt(studentList[studentList.length-1]) < 10 ? 2 : parseInt(studentList[studentList.length-1]/5);
+			
+			orderList = bubbleSort(orderList);
+			var orderMax = parseInt(orderList[orderList.length-1]) < 10 ? parseInt(orderList[orderList.length-1])+1 : parseInt(orderList[orderList.length-1]);
+			var orderInterval = parseInt(orderList[orderList.length-1]) < 10 ? 2 : parseInt(orderList[orderList.length-1]/5);
+			
+			myChart02.setOption(option = {
+					color: ['#59afe8', '#cd4870', '#fba407', '#fec42c', '#dd4444', '#d4df5a'],
+					title: {
+				        text: '本年学生与订单趋势分析'
+				    },
+					tooltip: {
+				        trigger: 'axis'
+				    },
+				    animationEasing:'bounceOut',
+				    toolbox: {
+				        feature: {
+				            dataView: {show: true, readOnly: false},
+				            magicType: {show: true, type: ['line', 'bar']},
+				            restore: {show: true},
+				            saveAsImage: {show: true}
+				        }
+				    },
+				    legend: {
+				        data:['学生数','订单数']
+				    },
+				    xAxis: [
+				        {
+				            type: 'category',
+				            data: eval("("+(strYear)+ ")")
+				        }
+				    ],
+				    yAxis: [
+				        {
+				            type: 'value',
+				            name: '学生数',
+				            min: 0,
+				            max: studentMax,
+				            interval: studentInterval,
+				            axisLabel: {
+				                formatter: '{value} K'
+				            }
+				        },
+				        {
+				            type: 'value',
+				            name: '订单数',
+				            min: 0,
+				            max: orderMax,
+				            interval: orderInterval,
+				            axisLabel: {
+				                formatter: '{value} K'
+				            }
+				        }
+				    ],
+				    series: [
+				        {
+				            name:'学生数',
+				            type:'bar',
+				            barWidth : 40,//柱图宽度
+				            data:eval("("+(strStudent)+ ")")
+				        },
+				        {
+				            name:'订单数',
+				            type:'line',
+				            yAxisIndex: 1,
+				            data:eval("("+(strOrder)+ ")")
+				        }
+				    ]
+		    	});//myChart02.setOption			
+			};	
+			
+			var setPara_BarMonth = "";
+			var pageSize_BarMonth = 10;
+			var currentCount_BarMonth = 0;
+			
+			//本月
+			function fillTable_BarMonth(msg) {	
+				var strYear = '[';
+				var strStudent = '[';
+				var strOrder = '[';	
+				var studentList = [];
+				var orderList = [];
+				
+				for(var key in msg){	
+					for ( var o in msg[key].test.resultSet) {			
+						strYear += msg[key].test.resultSet[o].DIM_DATE+',';
+						strStudent += msg[key].test.resultSet[o].COUNT_STUDENT/number+',';
+						strOrder += msg[key].test.resultSet[o].COUNT_ORDER/number+',';	
+						
+						studentList.push(msg[key].test.resultSet[o].COUNT_STUDENT/number);
+						orderList.push(msg[key].test.resultSet[o].COUNT_ORDER/number);
+					}
+				}
+				
+				strYear = strYear.substring(0,strYear.length-1)+']';
+				strStudent = strStudent.substring(0,strStudent.length-1)+']';
+				strOrder = strOrder.substring(0,strOrder.length-1)+']';
+				
+				studentList = bubbleSort(studentList);
+				var studentMax = parseInt(studentList[studentList.length-1]) < 10 ? parseInt(studentList[studentList.length-1])+1 : parseInt(studentList[studentList.length-1]);
+				var studentInterval = parseInt(studentList[studentList.length-1]) < 10 ? 2 : parseInt(studentList[studentList.length-1]/5);
+				
+				orderList = bubbleSort(orderList);
+				var orderMax = parseInt(orderList[orderList.length-1]) < 10 ? parseInt(orderList[orderList.length-1])+1 : parseInt(orderList[orderList.length-1]);
+				var orderInterval = parseInt(orderList[orderList.length-1]) < 10 ? 2 : parseInt(orderList[orderList.length-1]/5);
+				
+				myChart03.setOption(option = {
+						color: ['#59afe8', '#cd4870', '#fba407', '#fec42c', '#dd4444', '#d4df5a'],
+						title: {
+					        text: '本月学生与订单趋势分析'
+					    },
+						tooltip: {
+					        trigger: 'axis'
+					    },
+					    animationEasing:'bounceOut',
+					    toolbox: {
+					        feature: {
+					            dataView: {show: true, readOnly: false},
+					            magicType: {show: true, type: ['line', 'bar']},
+					            restore: {show: true},
+					            saveAsImage: {show: true}
+					        }
+					    },
+					    legend: {
+					        data:['学生数','订单数']
+					    },
+					    xAxis: [
+					        {
+					            type: 'category',
+					            data: eval("("+(strYear)+ ")")
+					        }
+					    ],
+					    yAxis: [
+					        {
+					            type: 'value',
+					            name: '学生数',
+					            min: 0,
+					            max: studentMax,
+					            interval: studentInterval,
+					            axisLabel: {
+					                formatter: '{value} K'
+					            }
+					        },
+					        {
+					            type: 'value',
+					            name: '订单数',
+					            min: 0,
+					            max: orderMax,
+					            interval: orderInterval,
+					            axisLabel: {
+					                formatter: '{value} K'
+					            }
+					        }
+					    ],
+					    series: [
+					        {
+					            name:'学生数',
+					            type:'bar',
+					            barWidth : 20,//柱图宽度
+					            data:eval("("+(strStudent)+ ")")
+					        },
+					        {
+					            name:'订单数',
+					            type:'line',
+					            yAxisIndex: 1,
+					            data:eval("("+(strOrder)+ ")")
+					        }
+					    ]
+			    	});//myChart03.setOption			
+				};				
+				
+	/*=========================================主页(饼图)=========================================*/
+	//本年
+	var setPara_PieYear = "";
+	var pageSize_PieYear = 10;
+	var currentCount_PieYear = 0;
+			
+	function fillTable_PieYear(msg) {	
+			var strPieYear = '[';
+			var strCodeName = '[';
+			
+			for(var key in msg){	
+				for ( var o in msg[key].test.resultSet) {	
+					strPieYear +='{"value":"'+msg[key].test.resultSet[o].COUNT_THISYEAR+
+						'","name":"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'"},';
+					strCodeName += '"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'",';
+				}
+			}
+			
+			strPieYear = strPieYear.substring(0,strPieYear.length-1)+']';
+			strCodeName = strCodeName.substring(0,strCodeName.length-1)+']';			
+
+			
+			myChart04.setOption(option = {
+					//color: ['#f8bf7d', '#ffd2c2', '#9dc5c4', '#dee5e5', '#d48484', '#3c8dbc', '#59afe8'],
+	    			title : {
+	    		        text: '网院学员占比',
+	    		        x:'center'
+	    		    },
+	    		    tooltip : {
+	    		        trigger: 'item',
+	    		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    		    },
+	    		    legend: {
+	    		    	bottom: '10',
+	    		        data: eval("("+(strCodeName)+ ")")
+	    		    },
+	    		    series : [
+	    		        {
+	    		            name: '学员数据',
+	    		            type: 'pie',
+	    		            radius : '55%',
+	    		            data:eval("("+(strPieYear)+ ")"),
+				            label: {
+				                normal: {
+				                    show: true,
+				                    formatter: "{b}:{d}%"
+				                },
+				                emphasis: {
+				                    textStyle: {
+				                        fontSize: 20
+				                    }
+				                }
+				            },
+	    		            itemStyle: {
+	    		                emphasis: {
+	    		                    shadowBlur: 10,
+	    		                    shadowOffsetX: 0,
+	    		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	    		                }
+	    		            }
+	    		        }
+	    		    ]
+		    	});//myChart04.setOption			
+			};					
+
+			//月
+			var setPara_PieMonth = "";
+			var pageSize_PieMonth = 10;
+			var currentCount_PieMonth = 0;
+					
+			function fillTable_PieMonth(msg) {	
+					var strPieMonth = '[';
+					var strCodeName = '[';
+					
+					for(var key in msg){	
+						for ( var o in msg[key].test.resultSet) {	
+							strPieMonth +='{"value":"'+msg[key].test.resultSet[o].COUNT_THISMONTH+
+								'","name":"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'"},';
+							strCodeName += '"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'",';
+						}
+					}
+					
+					strPieMonth = strPieMonth.substring(0,strPieMonth.length-1)+']';
+					strCodeName = strCodeName.substring(0,strCodeName.length-1)+']';			
+
+					
+					myChart05.setOption(option = {
+							//color: ['#f8bf7d', '#ffd2c2', '#9dc5c4', '#dee5e5', '#d48484', '#3c8dbc', '#59afe8'],
+			    			title : {
+			    		        text: '网院学员占比',
+			    		        x:'center'
+			    		    },
+			    		    tooltip : {
+			    		        trigger: 'item',
+			    		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+			    		    },
+			    		    legend: {			    		  
+			    		    	bottom: '10',
+			    		        data: eval("("+(strCodeName)+ ")")
+			    		    },
+			    		    series : [
+			    		        {
+			    		            name: '学员数据',
+			    		            type: 'pie',
+			    		            radius : '55%',
+			    		            data:eval("("+(strPieMonth)+ ")"),
+						            label: {
+						                normal: {
+						                    show: true,
+						                    formatter: "{b}:{d}%"
+						                },
+						                emphasis: {
+						                    textStyle: {
+						                        fontSize: 20
+						                    }
+						                }
+						            },
+			    		            itemStyle: {
+			    		                emphasis: {
+			    		                    shadowBlur: 10,
+			    		                    shadowOffsetX: 0,
+			    		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+			    		                }
+			    		            }
+			    		        }
+			    		    ]
+				    	});//myChart04.setOption			
+					};						
+           
 		//图表自适应屏幕
 		setTimeout(function() {
 			window.onresize = function() {
 				resizeWorldMapContainer();
 				myChart01.resize();
 				myChart02.resize();
-				//myChart03.resize();
-				
+				myChart03.resize();
+				myChart04.resize();
+				myChart05.resize();
 			}
 		}, 200)//setTimeout        
+		
+		myChart04.on('click',function(params) {
+			var name = "";
+			for ( var key in params) {
+				if (key == "data") {
+					name = params[key]["name"];
+				}
+			}		
+			pageSize_TableYear = 10;
+			currentCount_TableYear = 0;	
+			$("div#CODE_NAME").empty();
+			$("div#CODE_NAME").append('<input id="DIM_CODE_NAME" type="text" class="form-control" value="'+name+'" placeholder="网院">');
+			buildFunc("TableYear");			
+		});		
+		
+		myChart05.on('click',function(params) {
+			var name = "";
+			for ( var key in params) {
+				if (key == "data") {
+					name = params[key]["name"];
+				}
+			}		
+			pageSize_TableYearMonth = 10;
+			currentCount_TableYearMonth = 0;	
+			$("div#CODE_NAME").empty();
+			$("div#CODE_NAME").append('<input id="DIM_CODE_NAME" type="text" style="display: none;" class="form-control" value="'+name+'" placeholder="网院">');
+			buildFunc("TableYearMonth",name);			
+		});			
+		
+	/*=========================================主页(表格)=========================================*/	
+	/*-----------------------------------------年份-----------------------------------------*/
+	var setPara_TableYear = "";
+	var pageSize_TableYear = 10;
+	var currentCount_TableYear = 0;	
+	//填充表格数据 预报读咨询 学习中心 
+	function fillTable_TableYear(msg) {
+		var str = '[{"Title1": "网院", "Title2": "日期", "Title3": "本年报读学员数", "Title4": "往年累计报读学员数", "Title5": "目前报读学员数", "Title6": "本年新增占比"},';
+		for(var key in msg){	
+			totalCount = msg[key].test.count;	
+			for ( var o in msg[key].test.resultSet) {		
+				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'",'+
+					'"Column2":"'+msg[key].test.resultSet[o].CREATED_DT+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].COUNT_THISYEAR+'",'+
+					'"Column4":"'+msg[key].test.resultSet[o].COUNT_BEFOREYEAR+'",'+
+					'"Column5":"'+msg[key].test.resultSet[o].COUNT_ALL+'",'+
+					'"Column6":"'+msg[key].test.resultSet[o].STUDENT_PER+'%"},';	
+			}	
+		}			
+		str = (str.substring(0,str.length-1))+']';
+
+		fillData(setPara_TableYear,str,eval("currentCount_" + setPara_TableYear),eval("pageSize_" + setPara_TableYear),totalCount);		
+		
+	};		
+	
+	/*-----------------------------------------年月-----------------------------------------*/
+	var setPara_TableYearMonth = "";
+	var pageSize_TableYearMonth = 10;
+	var currentCount_TableYearMonth = 0;	
+	//填充表格数据 预报读咨询 学习中心 
+	function fillTable_TableYearMonth(msg) {
+		var str = '[{"Title1": "网院", "Title2": "日期", "Title3": "本月报读学员数", "Title4": "上月报读学员数", "Title5": "环比"},';
+		for(var key in msg){	
+			totalCount = msg[key].test.count;	
+			for ( var o in msg[key].test.resultSet) {		
+				str +='{"Column1":"'+msg[key].test.resultSet[o].DIM_CODE_NAME+'",'+
+					'"Column2":"'+msg[key].test.resultSet[o].CREATED_DT+'",'+
+					'"Column3":"'+msg[key].test.resultSet[o].COUNT_THISMONTH+'",'+
+					'"Column4":"'+msg[key].test.resultSet[o].COUNT_BEFOREMONTH+'",'+
+					'"Column5":"'+msg[key].test.resultSet[o].STUDENT_PER+'%"},';	
+			}	
+		}			
+		str = (str.substring(0,str.length-1))+']';	
+		fillData(setPara_TableYearMonth,str,eval("currentCount_" + setPara_TableYearMonth),eval("pageSize_" + setPara_TableYearMonth),totalCount);
+	};			
 		
 </script>
 <!-- Tab 切换 -->
@@ -632,9 +913,19 @@
 	$(function($) {
 		$('.tabList > li').on('click',function(){
 			var index=$(this).index();
+			switch(index){
+				case 0:
+					$("#container-TableYear").show();
+					$("#container-TableYearMonth").hide();
+					break;
+				case 1:
+					$("#container-TableYear").hide();
+					$("#container-TableYearMonth").show();
+					break;
+			};
 			$(this).siblings('li').children('a').removeClass('on');
 			$(this).children('a').addClass('on');
-			$(this).parents('.tabList').next('.tabBox').children('.tbCont').eq(index).show().siblings().hide();
+			$(this).parents('.tabList').next('.tabBox').children('.tbCont').eq(index).css({"height":"auto"}).siblings().css({"height":"0"});
 			return false;
 		});
 	});

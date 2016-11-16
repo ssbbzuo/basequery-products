@@ -86,18 +86,6 @@
 			<property name="querySqlDaoService" ref="querySqlDaoService" />
 	</bean>	
 	
-	<!-- test -->
- <bean class="com.eenet.basequery.chart.ChartServiceImpl" id="chartService"> 
- 		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean> 
-<!-- test02 -->
- <bean class="com.eenet.basequery.chart.Chart02ServiceImpl" id="chart02Service"> 
- 		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean> 
-<!-- test02 -->
- <bean class="com.eenet.basequery.chart.FunnelServiceImpl" id="FunnelService"> 
- 		<property ref="GenericDAO" name="baseDAOService"/> 
- </bean>
  
  <!-- 预报读阶段-->
  <bean class="com.eenet.basequery.chart.ThemeFunnelFReadCollegesServiceImpl" id="ThemeFunnelFReadCollegesService"> 
@@ -229,7 +217,32 @@
  <bean class="com.eenet.basequery.chart.company.ThemeFunnelCompanyServiceImpl" id="ThemeFunnelCompanyService"> 
  		<property ref="GenericDAO" name="baseDAOService"/> 
  </bean> 
-
+  <!--  主页面 -->
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainNumberServiceImpl" id="ThemeFunnelMainNumberService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainBarAllServiceImpl" id="ThemeFunnelMainBarAllService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>  
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainBarYearServiceImpl" id="ThemeFunnelMainBarYearService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainBarMonthServiceImpl" id="ThemeFunnelMainBarMonthService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainPieYearServiceImpl" id="ThemeFunnelMainPieYearService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainPieMonthServiceImpl" id="ThemeFunnelMainPieMonthService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean>  
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainTableYearServiceImpl" id="ThemeFunnelMainTableYearService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+ <bean class="com.eenet.basequery.chart.main.ThemeFunnelMainTableYearMonthServiceImpl" id="ThemeFunnelMainTableYearMonthService"> 
+ 		<property ref="GenericDAO" name="baseDAOService"/> 
+ </bean> 
+   
  
  
  	<bean id="priTreeDaoService" class="com.eenet.basequery.pri.dao.impl.PriTreeDaoServiceImpl">
