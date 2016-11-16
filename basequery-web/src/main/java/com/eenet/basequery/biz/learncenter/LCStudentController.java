@@ -31,6 +31,7 @@ public class LCStudentController {
 		model.addAttribute("resultMap", result);
 		pagination.setTotal(result.getCount());
 		model.addAttribute("pagination", pagination);
+		System.out.println("");
 		return "learncenter/lcStudentList";
 	}
 	
