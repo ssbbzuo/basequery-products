@@ -15,7 +15,7 @@ public class LCReserveOrderTest extends SpringEnv {
 		QueryCondition queryCondition = new QueryCondition();
 		queryCondition.setMaxQuantity(10);
 		queryCondition.setStartIndex(0);
-		String result = EEBeanUtils.object2Json(service.query(queryCondition));
+		String result = EEBeanUtils.object2Json(service.query("",queryCondition));
 		System.out.println("result----"+result);
 	}
 }
