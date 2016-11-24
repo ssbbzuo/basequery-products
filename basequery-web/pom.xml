@@ -114,7 +114,6 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20160212</version>
-			<type>bundle</type>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
