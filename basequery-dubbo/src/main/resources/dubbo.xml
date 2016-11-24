@@ -15,7 +15,7 @@
 	<dubbo:application name="eenet.basequery.provider" />
 	
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol name="dubbo" port="${dubbo.port}"/><!-- host="172.16.165.220" -->
+	<dubbo:protocol name="dubbo" port="${dubbo.port}" file="dubbo/dubbo_${dubbo.port}.cache"/><!-- host="172.16.165.220" -->
 	
 	<!-- 使用zookeeper注册中心进行注册 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
