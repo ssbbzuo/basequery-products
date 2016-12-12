@@ -114,7 +114,6 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20160212</version>
-			<type>bundle</type>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -125,7 +124,6 @@
 			<groupId>eenet.security.oauth2</groupId>
 			<artifactId>pojo</artifactId>
 			<version>${authen-framework.version}</version>
-			<type>bundle</type>
 		</dependency>
   </dependencies>
   
