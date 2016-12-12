@@ -71,7 +71,7 @@ public class MainController {
 		
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("YEAR_SK", Rank.DESC));
+		listOrder.add(new OrderBy("DIM_YEAR", Rank.ASC));
 		queryCondition.setOrderBySet(listOrder);	
 
 		SimpleResultSet<ThemeFunnelMainBarAll> result = ThemeFunnelMainBarAllservice.getTest(queryCondition);
@@ -91,7 +91,7 @@ public class MainController {
 		
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("MONTH_SK", Rank.DESC));
+		listOrder.add(new OrderBy("DIM_MONTH", Rank.ASC));
 		queryCondition.setOrderBySet(listOrder);	
 
 		SimpleResultSet<ThemeFunnelMainBarYear> result = ThemeFunnelMainBarYearservice.getTest(queryCondition);
@@ -111,7 +111,7 @@ public class MainController {
 		
 		// 添加排序条件
 		List<OrderBy> listOrder = new ArrayList<OrderBy>();
-		listOrder.add(new OrderBy("DATE_SK", Rank.DESC));
+		listOrder.add(new OrderBy("DIM_DATE", Rank.ASC));
 		queryCondition.setOrderBySet(listOrder);	
 
 		SimpleResultSet<ThemeFunnelMainBarMonth> result = ThemeFunnelMainBarMonthservice.getTest(queryCondition);
