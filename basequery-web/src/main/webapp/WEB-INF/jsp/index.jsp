@@ -14,12 +14,17 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-primary">
+					<!-- 
 				    <div class="panel-heading">
 				        <div class="panel-heading"><i class="fa fa-search" aria-hidden="true"></i> 学员数据 </div>
-				    </div>		
+				    </div>
+				     -->
+				    <div class="panel-heading-title">
+						<span class="pht-span">学员数据</span>
+					</div>
 					<div class="panel-body">
 						<div class="col-md-4 panel-body">							
-							<a class="btn btn-info" style="text-shadow: black 5px 3px 3px;">
+							<a class="btn btn-info">
 								<i class="fa fa-address-card fa-5x"></i></a>
 						</div>
 						<div class="col-md-8 panel-body xue-data" id = 'Number01'>
@@ -30,12 +35,17 @@
 			</div>
 			<div class="col-md-6">
 				<div class="panel panel-primary">
+					<!-- 
 				    <div class="panel-heading">
 				    	<div class="panel-heading"><i class="fa fa-search" aria-hidden="true"></i> 客户数据 </div>
-				    </div>						
+				    </div>
+				     -->
+				    <div class="panel-heading-title">
+						<span class="pht-span">客户数据</span>
+					</div>
 					<div class="panel-body">
 						<div class="col-md-4 panel-body">
-						<a class="btn btn-info" style="text-shadow: black 5px 3px 3px;">
+						<a class="btn btn-info">
 							<i class="fa fa-handshake-o fa-5x"></i></a>
 						</div>
 						<div class="col-md-8 panel-body xue-data" id = 'Number02'>
@@ -57,21 +67,21 @@
 		   <div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<center>
-						<div id="newstudentPer" data-info="报读学员增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#fba407" data-bgcolor="#eee"></div>
+						<div id="newstudentPer" data-info="报读学员增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#51bcc3" data-bgcolor="#eee"></div>
 					</center>								
 				</div>
 			</div>
 		   <div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<center>
-						<div  id="companyPer" data-info="客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#cd4870" data-bgcolor="#eee"></div>
+						<div  id="companyPer" data-info="客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#a3d75b" data-bgcolor="#eee"></div>
 					</center>											
 				</div>
 			</div>		   
 		   <div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<center>
-						<div id="newcompanyPer" data-info="合作客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#d4df5a" data-bgcolor="#eee"></div>
+						<div id="newcompanyPer" data-info="合作客户增长率" data-dimension="180" data-width="20" data-fontsize="25"  data-fgcolor="#fba407" data-bgcolor="#eee"></div>
 					</center>													
 				</div>
 			</div>				   
@@ -80,7 +90,7 @@
 		<div class="box">
 			<ul class="tabList order-list">
 				<li>
-					<a href="javascript:" class="on">年度 </a>
+					<a href="javascript:" class="on">年度</a>
 				</li>
 				<li>
 					<a href="javascript:">本年</a>
@@ -131,26 +141,30 @@
 			<div class="col-md-7" >
 				<div class="col_2">
 					<div class="panel panel-primary" id="container-TableYear">
-						<div class="panel-heading"><i class="fa fa-list" aria-hidden="true"></i> 网院信息</div>
-						<div class="panel panel-default">
+						<!-- <div class="panel-heading"><i class="fa fa-list" aria-hidden="true"></i> 网院信息</div> -->
+						<div class="panel-heading-title">
+							<span class="pht-span">网院信息</span>
+						</div>
+						<div class="panel panel-default panel-body">
 							<div id="TableYear">
 								<div class="resp-tabs-container hor_1">
 									<div id="jsontotable-TableYear" >
 										<!-- 加载表格 -->
 										<div id="pageTool-TableYear"> <!-- 加载分页控件 --> 										
 										</div>															
-									</div>		
-				
+									</div>
 								</div>
-								<br>
 							</div>					
 						</div>
 					</div>						
 					<div class="panel panel-primary" id="container-TableYearMonth">
-						<div class="panel-heading">
+						<!-- <div class="panel-heading">
 								<i class="fa fa-list" aria-hidden="true"></i> 网院信息				
-						</div>												
-						<div class="panel panel-default">
+						</div> -->
+						<div class="panel-heading-title">
+							<span class="pht-span">网院信息</span>
+						</div>
+						<div class="panel panel-default panel-body">
 							<div id="TableYearMonth">
 								<div class="resp-tabs-container hor_1">
 									<div id="jsontotable-TableYearMonth" >
@@ -159,7 +173,6 @@
 										</div>																			
 									</div>						
 								</div>
-								<br>
 							</div>					
 						</div>
 					</div>						
@@ -311,9 +324,9 @@
 		/*-------------饼图-------------*/
 	  	//本年
 	    //worldMapContainer4.style.height = window.document.getElementById('TableYear').offsetHeight-55+'px';
-		worldMapContainer4.style.height = '358px';
+		worldMapContainer4.style.height = '368px';
 	  	//本月
-	    worldMapContainer5.style.height = '358px';
+	    worldMapContainer5.style.height = '368px';
 	  	
 
 	};
@@ -361,10 +374,10 @@
 						);
 				
 				$("div#Number02").append(
-						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_CUSTOMER+'</span><br>累计客户数</p></div>'+
-						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_WORK_CUSTOMER+'</span><br>累计合作客户数</p></div>'+
-						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_CUSTOMER+'</span><br>今年新增客户数</p></div>'+
-						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_WORK_CUSTOMER+'</span><br>今年新增合作客户数</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_CUSTOMER+'</span><br>累计客户</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_WORK_CUSTOMER+'</span><br>累计合作客户</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_CUSTOMER+'</span><br>今年新增客户</p></div>'+
+						'<div class="col-md-6"><p><span>'+msg[key].test.resultSet[o].COUNT_NEW_WORK_CUSTOMER+'</span><br>今年新增合作客户</p></div>'+
 						'<div class="col-md-6"><p><span>'+"-"+'</span><br>累计在读学员客户</p></div>'
 						);				
 				
@@ -427,7 +440,7 @@
 		var orderInterval = parseInt(orderList[orderList.length-1]) < 10 ? 2 : parseInt(orderList[orderList.length-1]/5);
 		
 		myChart01.setOption(option = {
-				color: ['#59afe8', '#cd4870', '#fba407', '#fec42c', '#dd4444', '#d4df5a'],
+				color: ['#59afe8', '#a3d75b', '#fba407', '#fec42c', '#dd4444', '#d4df5a'],
 				title: {
 			        text: '年度学生与订单趋势分析'
 			    },
