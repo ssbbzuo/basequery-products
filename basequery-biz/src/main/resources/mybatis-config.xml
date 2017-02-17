@@ -84,6 +84,8 @@
         
         <mapper resource="DBMapping/pri/UserInfoMapper.xml"/>
         <mapper resource="DBMapping/pri/PriTreeMapper.xml"/>  
-        <mapper resource="DBMapping/pri/AccountInfoMapper.xml"/>  
+        <mapper resource="DBMapping/pri/AccountInfoMapper.xml"/> 
+        <!-- 数据呈报 -->
+        <mapper resource="DBMapping/datareport/DRStudentDataReportMapper.xml" /> 
 	</mappers>
 </configuration>
