@@ -66,6 +66,11 @@
                     		</li>                   		
 				          </ul>
                     </li>
+                    <li class="treeview"> <a href="#"> <i class="fa fa-search"></i> <span>数据呈报管理</span> <i class="fa fa-angle-left pull-right"></i> </a>
+		                   <ul class="treeview-menu menu-open" style="display: none;">
+				             <li><a href="<%=request.getContextPath() %>/datareport/query"><i class="fa fa-male"></i>学员信息查询</a></li>
+				          </ul>
+                    </li>
                     
                     <c:if test="${adminUserLoginInfo.loginAccount =='admin'}">
                     
