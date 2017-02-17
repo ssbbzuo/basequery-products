@@ -66,6 +66,186 @@ public class DRStudentDataReport extends BaseEntity{
 //	private String  orderFrom; //信息来源
 	private String  signupStatus; //报读状态
 //	private String  DATA_DT; //数据日期
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getIdCord() {
+		return idCord;
+	}
+	public void setIdCord(String idCord) {
+		this.idCord = idCord;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getAtId() {
+		return atId;
+	}
+	public void setAtId(String atId) {
+		this.atId = atId;
+	}
+	public String getPaymentId() {
+		return paymentId;
+	}
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	public String getMergerPayNo() {
+		return mergerPayNo;
+	}
+	public void setMergerPayNo(String mergerPayNo) {
+		this.mergerPayNo = mergerPayNo;
+	}
+	public String getPayMeans() {
+		return payMeans;
+	}
+	public void setPayMeans(String payMeans) {
+		this.payMeans = payMeans;
+	}
+	public String getPayStatus() {
+		return payStatus;
+	}
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
+	}
+	public String getDataDt() {
+		return dataDt;
+	}
+	public void setDataDt(String dataDt) {
+		this.dataDt = dataDt;
+	}
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getCollegesCode() {
+		return collegesCode;
+	}
+	public void setCollegesCode(String collegesCode) {
+		this.collegesCode = collegesCode;
+	}
+	public String getCollegesName() {
+		return collegesName;
+	}
+	public void setCollegesName(String collegesName) {
+		this.collegesName = collegesName;
+	}
+	public String getSignupLevel() {
+		return signupLevel;
+	}
+	public void setSignupLevel(String signupLevel) {
+		this.signupLevel = signupLevel;
+	}
+	public String getSpecialtyId() {
+		return specialtyId;
+	}
+	public void setSpecialtyId(String specialtyId) {
+		this.specialtyId = specialtyId;
+	}
+	public String getReguserId() {
+		return reguserId;
+	}
+	public void setReguserId(String reguserId) {
+		this.reguserId = reguserId;
+	}
+	public String getIsDataR() {
+		return isDataR;
+	}
+	public void setIsDataR(String isDataR) {
+		this.isDataR = isDataR;
+	}
+	public String getIsRegist() {
+		return isRegist;
+	}
+	public void setIsRegist(String isRegist) {
+		this.isRegist = isRegist;
+	}
+	public String getIsDataG() {
+		return isDataG;
+	}
+	public void setIsDataG(String isDataG) {
+		this.isDataG = isDataG;
+	}
+	public String getStudNo() {
+		return studNo;
+	}
+	public void setStudNo(String studNo) {
+		this.studNo = studNo;
+	}
+	public String getIsCheck() {
+		return isCheck;
+	}
+	public void setIsCheck(String isCheck) {
+		this.isCheck = isCheck;
+	}
+	public String getDataAudit() {
+		return dataAudit;
+	}
+	public void setDataAudit(String dataAudit) {
+		this.dataAudit = dataAudit;
+	}
+	public String getSignupId() {
+		return signupId;
+	}
+	public void setSignupId(String signupId) {
+		this.signupId = signupId;
+	}
+	public String getOrderSn() {
+		return orderSn;
+	}
+	public void setOrderSn(String orderSn) {
+		this.orderSn = orderSn;
+	}
+	public String getAddDate() {
+		return addDate;
+	}
+	public void setAddDate(String addDate) {
+		this.addDate = addDate;
+	}
+	public String getLearncenterCode() {
+		return learncenterCode;
+	}
+	public void setLearncenterCode(String learncenterCode) {
+		this.learncenterCode = learncenterCode;
+	}
+	public String getLearncenterName() {
+		return learncenterName;
+	}
+	public void setLearncenterName(String learncenterName) {
+		this.learncenterName = learncenterName;
+	}
+	public String getSignupStatus() {
+		return signupStatus;
+	}
+	public void setSignupStatus(String signupStatus) {
+		this.signupStatus = signupStatus;
+	}
 
 	
 }
