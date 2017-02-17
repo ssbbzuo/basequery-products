@@ -265,4 +265,9 @@
 	<bean id="accountInfoService" class="com.eenet.basequery.pri.AccountInfoServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
 	</bean>
+	
+    <!-- 数据呈报-->
+	<bean id="dRStudentDataReportService" class="com.eenet.basequery.datareport.DRStudentDataReportServiceImpl">
+			<property name="baseDAOService" ref="GenericDAO" />
+	</bean>
 </beans>

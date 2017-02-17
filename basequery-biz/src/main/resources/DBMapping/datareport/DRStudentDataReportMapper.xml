@@ -2,32 +2,147 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.eenet.basequery.datareport.DRStudentDataReport" >
 	<resultMap type="com.eenet.basequery.datareport.DRStudentDataReport" id="default">
-		<result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
-		<result column="STUDENT_NAME" property="studentName" jdbcType="VARCHAR" />
-		<result column="POST" property="post" jdbcType="VARCHAR" />
-		<result column="SEX" property="sex" jdbcType="VARCHAR" />
-		<result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
-		<result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
-		<result column="AGE" property="age" jdbcType="VARCHAR" />
-		<result column="DEGREE" property="degree" jdbcType="VARCHAR" />
-		<result column="DEGREE_NAME" property="degreeName" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
 		<result column="ID_CARD" property="idCard" jdbcType="VARCHAR" />
-		<result column="UNIT_CODE" property="unitCode" jdbcType="VARCHAR" />
-		<result column="CREATED_DT" property="createdDt" jdbcType="VARCHAR" />
-		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
-		<result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
-		<result column="CITY" property="city" jdbcType="VARCHAR" />
-		<result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
-		<result column="DISTRICT" property="district" jdbcType="VARCHAR" />
-		<result column="DISTRICT_NAME" property="districtName" jdbcType="VARCHAR" />
+		<result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+		<result column="ATID" property="atId" jdbcType="VARCHAR" />
+		
+		<result column="PAYMENT_ID" property="paymentId" jdbcType="VARCHAR" />
+		<result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+		<result column="MERGER_PAY_NO" property="mergerPayNo" jdbcType="VARCHAR" />
+		<result column="PAY_MEANS" property="payMeans" jdbcType="VARCHAR" />
+		<result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR" />
+		
+	    <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+		<result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+		<result column="COLLEGES_CODE" property="collegesCode" jdbcType="VARCHAR" />
+		<result column="COLLEGES_NAME" property="collegesName" jdbcType="VARCHAR" />
+		<result column="SIGNUP_LEVEL" property="signupLevel" jdbcType="VARCHAR" />
+		<result column="SPECIALTY_ID" property="specialtyId" jdbcType="VARCHAR" />
+
+		<result column="REGUSER_ID" property="reguserId" jdbcType="VARCHAR" />
+		<result column="IS_DATA_R" property="isDataR" jdbcType="VARCHAR" />
+		<result column="IS_REGIST" property="isRegist" jdbcType="VARCHAR" />
+		<result column="IS_DATA_G" property="isDataG" jdbcType="VARCHAR" />
+		<result column="STUD_NO" property="studNo" jdbcType="VARCHAR" />
+		<result column="IS_CHECK" property="isCheck" jdbcType="VARCHAR" />
+		<result column="DATA_AUDIT" property="dataAudit" jdbcType="VARCHAR" />
+		
+		<result column="SIGNUP_ID" property="signupId" jdbcType="VARCHAR" />
+		<result column="ORDER_SN" property="orderSn" jdbcType="VARCHAR" />
+		<result column="DATA_DT" property="dataDt" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_CODE" property="learncenterCode" jdbcType="VARCHAR" />
+		<result column="LEARNCENTER_NAME" property="learncenterName" jdbcType="VARCHAR" />
+		<result column="SIGNUP_STATUS" property="signupStatus" jdbcType="VARCHAR" />
+
 	</resultMap>
+	<!-- 查询总数量 -->
+	<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
+		<![CDATA[
+			SELECT
+				COUNT(DISTINCT USER_ID)
+			FROM BD_STUD_INFO s 
+    LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
+    LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
+    LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
+    LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
+		 WHERE 1=1 
+		]]>
+		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_quto" />
+	</select>
+	<!-- 查询数据 -->
+	<select id="queryList" resultMap="default" parameterType="map">
+		<![CDATA[
+SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
+		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,
+		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
+		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
+		g.SIGNUP_ID,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
+ FROM BD_STUD_INFO s 
+    LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
+    LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
+    LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
+    LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
+		  WHERE 1=1 
+		]]>
+		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_quto" />
+		 <![CDATA[  ORDER BY s.DATA_DT  DESC   ]]>
+		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_rowNum_quote_suffix" />
+	</select>
+	<!-- 通用查询条件 -->
+	<sql id="queryList_quto">
+
+		<if test="userName != null and userName != '' " >
+			AND s.USER_NAME like CONCAT('%',#{userName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="idCard != null and idCard != '' " >
+			AND s.ID_CARD like CONCAT('%',#{idCard,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="mobile != null and mobile != '' " >
+			AND s.MOBILE like CONCAT('%',#{mobile,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="mergerPayNo != null and mergerPayNo != '' " >
+			AND p.MERGER_PAY_NO like CONCAT('%',#{mergerPayNo,jdbcType=VARCHAR},'%')
+		</if>
+		
+		<if test="collegesName != null and collegesName != '' " >
+			AND pr.COLLEGES_NAME like CONCAT('%',#{collegesName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="productName != null and productName != '' " >
+			AND pr.PRODUCT_NAME like CONCAT('%',#{productName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="learncenterName != null and learncenterName != '' " >
+			AND g.LEARNCENTER_NAME like CONCAT('%',#{learncenterName,jdbcType=VARCHAR},'%') 
+		</if>
+
+		<if test="orderSn != null and orderSn != '' " >
+			AND g.ORDER_SN like CONCAT('%',#{orderSn,jdbcType=VARCHAR},'%')
+		</if>
+		<!-- 下单时间 -->
+		<if test="createdDt != null and createdDt != '' " >
+			<![CDATA[
+			AND p.DATA_DT >= #{createdDt,jdbcType=DATE}	and  p.DATA_DT <= #{createdDtTo,jdbcType=DATE}
+			]]>
+		</if>
+		<!-- 下面是各种状态的条件查询 -->
+		<if test="payMeans != null and payMeans != '' "  >
+			 AND p.PAY_MEANS = #{payMeans,jdbcType=VARCHAR}
+		</if>
+		<!-- 缴费状态 -->
+		<if test="payStatus != null and payStatus != '' " >
+			AND p.PAY_STATUS= #{payStatus,jdbcType=VARCHAR}
+		</if>
+		<!-- 报读状态 -->
+		<if test="signupStatus != null and signupStatus != '' " >
+			AND g.SIGNUP_STATUS= #{signupStatus,jdbcType=VARCHAR}
+		</if>
+		<!-- 学籍状态 -->
+		<if test="registerStatus != null and registerStatus != '' " >
+			AND r.IS_DATA_R= #{registerStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="isRegist != null and isRegist != '' " >
+			AND r.IS_REGIST= #{isRegist,jdbcType=VARCHAR}
+		</if>
+		<if test="isDataG != null and isDataG != '' " >
+			AND r.IS_DATA_G= #{isDataG,jdbcType=VARCHAR}
+		</if>
+		
+	</sql>
+	<sql id="queryList_rowNum_quote_suffix">
+		  LIMIT #{startIndex,jdbcType=NUMERIC} , #{maxQuantity,jdbcType=NUMERIC} 
+	</sql>
 	
-	<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
+		<select id="query_count" resultType="java.lang.Integer" parameterType="com.eenet.base.dao.SQLCondition">
 		<![CDATA[
 			SELECT
 				COUNT(1)
 			FROM
-				DM_LC_STUDENT
+				BD_STUD_INFO s 
+    LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
+    LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
+    LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
+    LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
 		 WHERE 1=1 
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />
@@ -36,27 +151,16 @@
 	<select id="query" resultMap="default" parameterType="com.eenet.base.dao.SQLCondition">
 		<include refid="com.eenet.base.${db.type}.rowNum_query_prefix" />
 		<![CDATA[
-			SELECT
-				STUDENT_ID,
-				STUDENT_NAME,
-				POST,
-				SEX,
-				MOBILE,
-				BIRTHDAY,
-			  	AGE,
-				DEGREE,
-				DEGREE_name,
-				ID_CARD,
-				UNIT_CODE,
-				CREATED_DT,
-				PROVINCE,
-				PROVINCE_NAME,
-				CITY,
-				CITY_NAME,
-				DISTRICT,
-				DISTRICT_NAME
-			FROM
-				DM_LC_STUDENT
+SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
+		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,
+		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
+		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
+		g.SIGNUP_ID,g.ORDER_SN,g.ADD_DATE,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
+ FROM BD_STUD_INFO s 
+    LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
+    LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
+    LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
+    LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
 		  WHERE 1=1 
 		]]>
 		<include refid="com.eenet.base.${db.type}.query_quote" />

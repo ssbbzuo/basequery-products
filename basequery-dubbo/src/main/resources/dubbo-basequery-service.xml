@@ -111,4 +111,6 @@
 	
 	<!-- 账户信息-->
 	<dubbo:service interface="com.eenet.basequery.pri.AccountInfoService" ref="accountInfoService" />
+	<!-- 数据呈报-->
+	<dubbo:service interface="com.eenet.basequery.datareport.DRStudentDataReportService" ref="dRStudentDataReportService" />
 </beans>
