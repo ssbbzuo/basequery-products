@@ -14,6 +14,7 @@
 	<section class="content">
 		<div class="box">
 		    <div class="box-body">
+		      <form method="post" action="<%=request.getContextPath()%>/datareport/query.action">
 			    <div class="box-footer fr col-md-2" style="border-top:0;">
 					<div><button type="button" class="btn btn-primary">搜索</button></div>
 					<div class="pad-t15"><button type="button" class="btn btn-default">重置</button></div>
@@ -111,8 +112,11 @@
 								<div class="col-sm-11 condition-state">
 									<a class="bx-btn cur">不限</a>
 									<div class="sib">
-										<a class="zt-btn">未报读</a>
-										<a class="zt-btn">已报读</a>
+										<a class="zt-btn" onclick="changeStatusValue('#signupStatus01','N');">未报读</a>
+										<a class="zt-btn" onclick="changeStatusValue('#signupStatus01','Y');">已报读</a>
+									    <input type="hidden"  value="signupStatus"  name="conditions[8].fieldName"/> 
+					              	    <input type="hidden"  value="INCLUDE"  name="conditions[8].rangeType"/> 
+					                    <input type="hidden" class="form-control" id="signupStatus01"  value="${queryCondition.conditions[8].rangeFrom}"  name="conditions[8].rangeFrom">
 									</div>
 								</div>
 				            </div>
@@ -134,6 +138,9 @@
 										<a class="zt-btn wzf-a">已付定金</a>
 										<a class="zt-btn wzf-a">未付定金</a>
 										<span>）</span>
+										<input type="hidden"  value="payStatus"  name="conditions[9].fieldName"/> 
+					              	    <input type="hidden"  value="INCLUDE"  name="conditions[9].rangeType"/> 
+					                    <input type="hidden" class="form-control" id="payStatus01"  value="${queryCondition.conditions[9].rangeFrom}"  name="conditions[9].rangeFrom">
 									</div>
 								</div>
 				            </div>
@@ -203,13 +210,23 @@
 								<div class="col-sm-11 condition-state">
 									<a class="bx-btn cur">不限</a>
 									<div class="sib">
-										<a class="zt-btn">已交资料</a>
+										<a class="zt-btn" onclick="">已交资料</a>
 										<a class="zt-btn">未交资料</a>
 										<a class="zt-btn">资料不齐</a>
+										<input type="hidden"  value="isDataR"  name="conditions[10].fieldName"/> 
+					              	    <input type="hidden"  value="INCLUDE"  name="conditions[10].rangeType"/> 
+					                    <input type="hidden" class="form-control" id="isDataR01"  value="${queryCondition.conditions[10].rangeFrom}"  name="conditions[10].rangeFrom">
+					                    
+					                     <input type="hidden"  value="isDataG"  name="conditions[11].fieldName"/> 
+					              	    <input type="hidden"  value="INCLUDE"  name="conditions[11].rangeType"/> 
+					                    <input type="hidden" class="form-control" id="isDataG01"  value="${queryCondition.conditions[11].rangeFrom}"  name="conditions[11].rangeFrom">
 									</div>
 									<div class="sib">
 										<a class="zt-btn">已入学籍</a>
 										<a class="zt-btn">未入学籍</a>
+										 <input type="hidden"  value="isRegist"  name="conditions[12].fieldName"/> 
+					              	    <input type="hidden"  value="INCLUDE"  name="conditions[12].rangeType"/> 
+					                    <input type="hidden" class="form-control" id="isRegist01"  value="${queryCondition.conditions[12].rangeFrom}"  name="conditions[12].rangeFrom">
 									</div>
 								</div>
 				            </div>
@@ -278,6 +295,7 @@
 				    </div>
         		</div>
 		    </div>
+		    </form>
 		</div>
 		<div class="callout callout-info">
 		    <p>根据查询条件找到学员为：82人</p>
@@ -327,292 +345,86 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			        <tr>
-			          <td>1</td>
-			          <td>梁晓婷</td>
-			          <td>13725278090</td>
-			          <td>440181199809031845</td>
-			          <td>1999087732648</td>
-			          <td>领航学习中心</td>
-			          <td>国家开放大学（广州）实验学院</td>
-			          <td>工商管理（专升本）</td>
-			          <td>2017-01-01</td>
-			        </tr>
-			        <tr>
-			          <td>1/状态</td>
-			          <td colspan="8">
-				          <div class="result-box">
-				          	<div class="result-list">
-				          		<span class="result-sp">报读</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已报读</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">缴费</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">学籍</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<!--  
-				          	<div class="result-list">
-				          		<span class="result-sp">咨询</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">优惠</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">入读</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">补贴</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">学习</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">考试</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">毕业</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	-->
-				          </div>
-			          </td>
-			        </tr>
-			        <tr>
-			          <td>1</td>
-			          <td>梁晓婷</td>
-			          <td>13725278090</td>
-			          <td>440181199809031845</td>
-			          <td>1999087732648</td>
-			          <td>领航学习中心</td>
-			          <td>国家开放大学（广州）实验学院</td>
-			          <td>工商管理（专升本）</td>
-			          <td>2017-01-01</td>
-			        </tr>
-			        <tr>
-			          <td>1/状态</td>
-			          <td colspan="8">
-				          <div class="result-box">
-				          	<div class="result-list">
-				          		<span class="result-sp">咨询</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">报读</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">优惠</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">缴费</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">入读</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">补贴</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">学籍</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">学习</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">考试</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          	<div class="result-list">
-				          		<span class="result-sp">毕业</span>
-				          		<ul class="result-ul">
-				          			<li><i class="rl-1">√</i>已咨询</li>
-				          			<li><i class="rl-2">×</i>已跟进</li>
-				          			<li><i class="rl-3">!</i>已跟进</li>
-				          		</ul>
-				          		<span class="result-line">➞</span>
-				          	</div>
-				          </div>
-			          </td>
-			        </tr>
+			        <c:choose>
+				       <c:when test="${not empty resultMap.resultSet }">
+				         <c:forEach items="${resultMap.resultSet }" var="resultSet">
+					         <tr>
+					          <td>${resultSet.index+1 }</td>
+					          <td>${resultSet.userName }</td>
+					          <td>${resultSet.mobile }</td>
+					          <td>${resultSet.idCord }</td>
+					          <td>${resultSet.orderId }</td>
+					          <td>${resultSet.learncenterName }</td>
+					          <td>${resultSet.collegesName }</td>
+					          <td>${resultSet.productName }</td>
+					          <td></td>
+					        </tr>
+					        <tr>
+					          <td>${resultSet.index+1 }/状态</td>
+					          <td colspan="9">
+						          <div class="result-box">
+						          	<div class="result-list">
+						          		<span class="result-sp">报读</span>
+						          		<ul class="result-ul">
+						          		  <c:choose>
+						          		    <c:when test="${resultSet.signupStatus=='Y' }">
+							          			<li><i class="rl-1">√</i>已报读</li>
+							          			<li><i class="rl-2">×</i>未报读</li>
+						          		    </c:when>
+						          		    <c:otherwise>
+						          		    	<li><i class="rl-1">×</i>已报读</li>
+							          			<li><i class="rl-2">√</i>未报读</li>
+						          		    </c:otherwise>
+						          		  </c:choose>
+						          		</ul>
+						          		<span class="result-line">➞</span>
+						          	</div>
+						          	<div class="result-list">
+						          		<span class="result-sp">缴费</span>
+						          		<ul class="result-ul">
+						          		  <c:choose>
+						          		    <c:when test="${resultSet.payStatus=='11' or resultSet.payStatus=='12' or resultSet.payStatus=='13'}">
+							          			<li><i class="rl-1">√</i>已支付</li>
+							          			<li><i class="rl-2">×</i>未支付</li>
+						          		    </c:when>
+						          		    <c:otherwise>
+						          		    	<li><i class="rl-1">×</i>已支付</li>
+							          			<li><i class="rl-2">√</i>未支付</li>
+						          		    </c:otherwise>
+						          		  </c:choose>
+						          		</ul>
+						          		<span class="result-line">➞</span>
+						          	</div>
+						          	<div class="result-list">
+						          		<span class="result-sp">学籍</span>
+						          		<ul class="result-ul">
+						          		  <c:choose>
+						          		    <c:when test="${resultSet.isRegist=='2' }">
+							          			<li><i class="rl-1">√</i>已入学籍</li>
+							          			<li><i class="rl-2">×</i>未入学籍</li>
+						          		    </c:when>
+						          		    <c:otherwise>
+						          		    	<li><i class="rl-1">×</i>已入学籍</li>
+							          			<li><i class="rl-2">√</i>未入学籍</li>
+						          		    </c:otherwise>
+						          		  </c:choose>
+						          		</ul>
+						          		<span class="result-line">➞</span>
+						          	</div>
+						       
+						          </div>
+					          </td>
+					        </tr>
+				         </c:forEach>
+				       </c:when>
+				       <c:otherwise>
+				          <td colspan="9" align="center">暂无数据</td>
+				       </c:otherwise>
+			        </c:choose>
 			      </tbody>
 			      </table>
 				<div class="pageBox">
-					<div class="page-container page-container-sm margin_t10 clearfix">
-						<input type="hidden"  value="0" name="indexCurrent">
-						<input type="hidden"  value="1" name="pageCurrent">
-						<div class="pageing-info">
-							<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
-								1900111条，共 190012 页，到第
-								<input type="text" id="page" name="page" class="form-control jump-page-input" value="2" onkeyup="changeNumber()" onblur="changeNumber()">
-								页
-								<button class="btn btn-block btn-default sure-btn" onclick="toPage(document.forms[0].page.value)">
-									确定
-								</button>
-							</div>
-						</div>
-						<div class="pageing-list">
-							<div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-								<ul class="pagination">
-									<li class="paginate_button previous disabled" id="DataTables_Table_0_previous">
-										<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">
-											上一页
-										</a>
-									</li>
-									<li class="paginate_button active">
-										<a href="javascript:toPage('1');" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">
-											1
-										</a>
-									</li>
-									<li class="paginate_button ">
-										<a href="javascript:toPage('2');" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">
-											2
-										</a>
-									</li>
-									<li class="paginate_button ">
-										<a href="javascript:toPage('3');" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">
-											3
-										</a>
-									</li>
-									<li class="paginate_button next" id="DataTables_Table_0_next">
-										<a href="javascript:toPage('2');" aria-controls="DataTables_Table_0" data-dt-idx="100" tabindex="0">
-											下一页
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<script>
-					function toPage(index) {
-					    if (index == "") {
-					        alert("请输入跳转的页面数！");
-					        return;
-					    }
-						if(isNaN(document.forms[0].page.value)) {
-							alert("跳转页面必须为数值型");
-							return;
-						}
-						if(index == 0){
-					    	index = 1;
-					    }
-						 if (index > 190012)
-					    		document.forms[0].pageCurrent.value = "190012" ;
-					    	else
-					    		document.forms[0].pageCurrent.value = index;
-					    document.forms[0].submit();
-					}
-					</script>
+					<jsp:include page="/WEB-INF/jsp/common/pagination.jsp"/>
 				</div>
 			</div>
 		</div>
@@ -742,6 +554,12 @@
 	    });
 
   });
+</script>
+<script type="text/javascript">
+  function changeStatusValue(id,dataValue){
+	  $(id).val(dataValue);
+	  document.forms[0].submit();
+  }
 </script>
 
 </html>
