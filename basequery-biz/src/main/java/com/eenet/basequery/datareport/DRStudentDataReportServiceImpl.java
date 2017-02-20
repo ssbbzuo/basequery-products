@@ -74,4 +74,10 @@ public class DRStudentDataReportServiceImpl extends BaseDAOImpl implements DRStu
 		}
 		return rangeINList;
 	}
+
+	@Override
+	public SimpleResultSet<DRStudentDataReport> queryDetail(QueryCondition queryCondition) {
+		System.out.println("------------------------queryDetail---------------");
+		return null;
+	}
 }
