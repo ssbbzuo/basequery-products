@@ -15,19 +15,39 @@ import com.eenet.basequery.page.Pagination;
 @RequestMapping("/datareport")
 public class DRStudentDataReportController {
 	
-//	@Autowired
-//	private DRStudentDataReportService drStudentDataReportService;
+	@Autowired
+	private DRStudentDataReportService dRStudentDataReportService;
 	
 	@RequestMapping(value="/query")
 	public String query(HttpSession session,QueryCondition queryCondition,Pagination pagination ,Model model){
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
-//		SimpleResultSet<DRStudentDataReport> result = drStudentDataReportService.query(queryCondition);
-//		pagination.setTotal(result.getCount());
-//		model.addAttribute("resultMap", result);
-//		model.addAttribute("Pagination", pagination);
+		SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.query(queryCondition);
+		pagination.setTotal(result.getCount());
+		model.addAttribute("resultMap", result);
+		model.addAttribute("Pagination", pagination);
 		
 		return "datareport/DRStudentList";
 	}
-
+/**
+ * 详情
+ * @param session
+ * @param queryCondition
+ * @param pagination
+ * @param model
+ * @return
+ */
+	@RequestMapping(value="/detail")
+	public String detail(HttpSession session,QueryCondition queryCondition,Pagination pagination ,Model model){
+		queryCondition.setMaxQuantity(pagination.getPageSize());
+		queryCondition.setStartIndex(pagination.getIndexCurrent());
+		SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.query(queryCondition);
+		pagination.setTotal(result.getCount());
+		model.addAttribute("resultMap", result);
+		model.addAttribute("Pagination", pagination);
+		
+		SimpleResultSet<DRStudentDataReport> result = drStudentDataReportService.queryDetail(queryCondition);
+		return "datareport/DRStudentDetail";
+	}
+	
 }
