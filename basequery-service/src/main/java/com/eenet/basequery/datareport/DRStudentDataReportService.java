@@ -11,4 +11,6 @@ public interface DRStudentDataReportService {
 	 * @return
 	 */
 	public SimpleResultSet<DRStudentDataReport> query(QueryCondition condition);
+
+	public SimpleResultSet<DRStudentDataReport> queryDetail(QueryCondition queryCondition);
 }
