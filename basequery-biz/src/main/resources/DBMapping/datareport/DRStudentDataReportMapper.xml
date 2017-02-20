@@ -109,24 +109,28 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<if test="payMeans != null and payMeans != '' "  >
 			 AND p.PAY_MEANS = #{payMeans,jdbcType=VARCHAR}
 		</if>
-		<!-- 缴费状态 -->
+		<!-- 缴费状态,取第一位为1的即为支付，为0的即为未支付 -->
 		<if test="payStatus != null and payStatus != '' " >
-			AND p.PAY_STATUS= #{payStatus,jdbcType=VARCHAR}
+			AND p.PAY_STATUS like CONCAT('',#{payStatus,jdbcType=VARCHAR},'%')
 		</if>
-		<!-- 报读状态 -->
+		<!-- 报读状态,N/O未报读，Y已报读-->
 		<if test="signupStatus != null and signupStatus != '' " >
 			AND g.SIGNUP_STATUS= #{signupStatus,jdbcType=VARCHAR}
 		</if>
 		<!-- 学籍状态 -->
-		<if test="registerStatus != null and registerStatus != '' " >
-			AND r.IS_DATA_R= #{registerStatus,jdbcType=VARCHAR}
+		<!-- 已交资料标识：为Ｙ已交资料，其他(N/O)为未交资料 -->
+		<if test="isDataR != null and isDataR != '' " >
+			AND r.IS_DATA_R= #{isDataR,jdbcType=VARCHAR}
 		</if>
-		<if test="isRegist != null and isRegist != '' " >
-			AND r.IS_REGIST= #{isRegist,jdbcType=VARCHAR}
-		</if>
+		<!-- 资料齐全标识：为Ｙ已齐全，其他(N/O)为未齐全 -->
 		<if test="isDataG != null and isDataG != '' " >
 			AND r.IS_DATA_G= #{isDataG,jdbcType=VARCHAR}
 		</if>
+		<!-- 已入学籍标识：已入学籍：2,3,4,6，未入学籍：1,5,7 -->
+		<if test="isRegist != null and isRegist != '' " >
+			AND r.IS_REGIST= #{isRegist,jdbcType=VARCHAR}
+		</if>
+
 		
 	</sql>
 	<sql id="queryList_rowNum_quote_suffix">
