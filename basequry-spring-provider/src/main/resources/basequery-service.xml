@@ -267,7 +267,11 @@
 	</bean>
 	
     <!-- 数据呈报-->
-	<bean id="dRStudentDataReportService" class="com.eenet.basequery.datareport.DRStudentDataReportServiceImpl">
+     <bean id="drStudentDataReportDaoService" class="com.eenet.basequery.datareport.dao.impl.DRStudentDataReportDaoServiceImpl">
+ 		<property name="batisSession" ref="batisSession" />
+ 	</bean>
+	<bean id="drStudentDataReportService" class="com.eenet.basequery.datareport.DRStudentDataReportServiceImpl">
 			<property name="baseDAOService" ref="GenericDAO" />
+			<property name="drStudentDataReportDaoService" ref="drStudentDataReportDaoService" />
 	</bean>
 </beans>
