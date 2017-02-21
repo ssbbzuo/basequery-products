@@ -30,7 +30,7 @@ public class DRStudentDataReportServiceImpl extends SimpleBizImpl implements DRS
 		if(condition.getOrderBySet()== null ||condition.getOrderBySet().isEmpty()){
 			ArrayList<OrderBy> orderList = new ArrayList<OrderBy>();
 			OrderBy order = new OrderBy();
-			order.setAttName("createdDt");
+			order.setAttName("dataDt");
 			order.setRank(Rank.DESC);
 			orderList.add(order);
 			condition.setOrderBySet(orderList);
