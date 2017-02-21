@@ -1,7 +1,5 @@
 package com.eenet.basequery.datareport;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
@@ -42,13 +40,13 @@ public class DRStudentDataReportController {
 		queryCondition.setStartIndex(pagination.getIndexCurrent());*/
 		if(StringUtils.isNotBlank(request.getParameter("atId"))){
 			
-			ConditionItem item =new ConditionItem("ATID", RangeType.EQUAL, "c5191431cc6443ab8a1e4efc4eb521ff", "");
+			ConditionItem item =new ConditionItem("atId", RangeType.EQUAL, request.getParameter("atId"), "");
 			queryCondition.addCondition(item);
 			//SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.query(queryCondition);
 			SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.queryDetail(queryCondition);
 			/*pagination.setTotal(result.getCount());*/
 			model.addAttribute("resultMap", result);
-			System.out.println(result);
+			//System.out.println(result);
 		}
 		
 		return "datareport/DRStudentDetail";

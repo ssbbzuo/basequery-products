@@ -38,7 +38,7 @@
 								</div>
 								<label class="control-label col-sm-1">订单号</label>
 								<div class="col-sm-3">
-									<input type="hidden"  value="orderId"  name="conditions[2].fieldName"/> 
+									<input type="hidden"  value="orderSn"  name="conditions[2].fieldName"/> 
 					              	<input type="hidden"  value="INCLUDE"  name="conditions[2].rangeType"/> 
 					                <input type="text" class="form-control"   value="${queryCondition.conditions[2].rangeFrom}"  name="conditions[2].rangeFrom">
 								</div>
@@ -352,7 +352,7 @@
 					          <td>${resultSet.userName }</td>
 					          <td>${resultSet.mobile }</td>
 					          <td>${resultSet.idCard }</td>
-					          <td>${resultSet.orderId }</td>
+					          <td>${resultSet.orderSn }</td>
 					          <td>${resultSet.learncenterName }</td>
 					          <td>${resultSet.collegesName }</td>
 					          <td>${resultSet.productName }</td>

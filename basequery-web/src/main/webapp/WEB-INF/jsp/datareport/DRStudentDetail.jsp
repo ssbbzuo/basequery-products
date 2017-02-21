@@ -31,16 +31,20 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			        <tr>
-			          <td>梁晓婷</td>
-			          <td>13725278090</td>
-			          <td>440181199809031845</td>
-			          <td>1999087732648</td>
-			          <td>领航学习中心</td>
-			          <td>国家开放大学（广州）实验学院</td>
-			          <td>工商管理（专升本）</td>
-			          <td>2017-01-01</td>
-			        </tr>
+			         <c:if test="${not empty resultMap.resultSet }">
+				         <c:forEach items="${resultMap.resultSet }" var="resultSet" varStatus="st" begin="0" end="0">
+					         <tr>
+					          <td>${resultSet.userName }</td>
+					          <td>${resultSet.mobile }</td>
+					          <td>${resultSet.idCard }</td>
+					          <td>${resultSet.orderSn }</td>
+					          <td>${resultSet.learncenterName }</td>
+					          <td>${resultSet.collegesName }</td>
+					          <td>${resultSet.productName }</td>
+					          <td>${resultSet.dataDt }</td>
+					        </tr>
+					        </c:forEach>
+					  </c:if>
 			      </tbody>
 			      </table>
 			</div>
@@ -51,7 +55,7 @@
                 <button type="button" class="btn btn-default drop-down-all">全部展开 ▾</button>
 			</div>
 			<div class="panel-body">
-				<div class="zt-list">
+				<!-- <div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 咨询
 					</div>
@@ -103,7 +107,7 @@
 					      </tbody>
 					    </table>
 				    </div>
-				</div>
+				</div> -->
 				<div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 报读
@@ -112,52 +116,39 @@
 						<table class="table table-bordered table-striped table-container margin-bottom-none">
 					      <thead>
 					        <tr>
-					          <th>咨询时间</th>
-					          <th>来源</th>
-					          <th>跟进类型</th>
-					          <th>跟进状态</th>
-					          <th>备注信息</th>
-					          <th>跟进人信息</th>
+					          <th>报读日期</th>
+					          <th>订单号</th>
+					          <th>报读院校</th>
+					          <th>报读专业</th>
+					          <th>层级</th>
+					          <th>缴费方式</th>
+					          <th>缴费情况</th>
+					          <th>来源信息</th>
 					        </tr>
 					      </thead>
 					      <tbody>
 					        <tr>
-					          <td>
-					          	<p>2017-01-01 12:00</p>
-					          	<p>2017-01-01 12:00</p>
-					          	<p>2017-01-01 12:00</p>
-					          </td>
-					          <td>
-					          	<p>广东职工教育网</p>
-					          	<p>广东职工教育网</p>
-					          	<p>广东职工教育网</p>
-					          </td>
-					          <td>
-					          	<p>主动回访</p>
-					          	<p>主动回访</p>
-					          	<p>主动回访</p>
-					          </td>
-					          <td>
-					          	<p>已跟进</p>
-					          	<p>已跟进</p>
-					          	<p>已跟进</p>
-					          </td>
-					          <td>
-					          	<p>学员希望报读大专学历，但对课程有疑问</p>
-					          	<p>回访学员，学员表示需要继续了解才报读</p>
-					          	<p>学员有较强报读意愿，近期报读</p>
-					          </td>
-					          <td>
-					          	<p>张三丰 （133448888888）</p>
-					          	<p>张三丰 （133448888888）</p>
-					          	<p>张三丰 （133448888888）</p>
-					          </td>
+					          <c:if test="${not empty resultMap.resultSet }">
+				         <c:forEach items="${resultMap.resultSet }" var="resultSet" varStatus="st" begin="0" end="0">
+					         <tr>
+					          <td>${resultSet.addDate }</td>
+					          <td>${resultSet.orderSn }</td>
+					          
+					          <td>${resultSet.learncenterName }</td>
+					          <td>${resultSet.collegesName }</td>
+					          <td>${resultSet.signupLevel }</td>
+					          <td>${resultSet.payMeans }</td>
+					          <td>${resultSet.payStatus }</td>
+					          <td></td>
+					        </tr>
+					        </c:forEach>
+					  </c:if>
 					        </tr>
 					      </tbody>
 					    </table>
 				    </div>
 				</div>
-				<div class="zt-list">
+				<!-- <div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 优惠
 					</div>
@@ -209,7 +200,7 @@
 					      </tbody>
 					    </table>
 				    </div>
-				</div>
+				</div> -->
 				<div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 缴费
@@ -218,22 +209,22 @@
 						缴费
 				    </div>
 				</div>
-				<div class="zt-list">
+				<!-- <div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 入读
 					</div>
 					<div class="zt-tab">
 						入读
 				    </div>
-				</div>
-				<div class="zt-list">
+				</div> -->
+				<!-- <div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 补贴
 					</div>
 					<div class="zt-tab">
 						补贴
 				    </div>
-				</div>
+				</div> -->
 				<div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 学籍
@@ -242,7 +233,7 @@
 						学籍
 				    </div>
 				</div>
-				<div class="zt-list">
+				<!-- <div class="zt-list">
 					<div class="zt-title">
 						<span> ▾</span> 学习
 					</div>
@@ -265,19 +256,19 @@
 					<div class="zt-tab">
 						毕业
 				    </div>
-				</div>
+				</div> -->
 			</div>
             <ul class="zt-nav">
-                <li>咨询</li>
+                <!-- <li>咨询</li> -->
                 <li>报读</li>
-                <li>优惠</li>
+                <!-- <li>优惠</li> -->
                 <li>缴费</li>
-                <li>入读</li>
-                <li>补贴</li>
+                <!-- <li>入读</li>
+                <li>补贴</li> -->
                 <li>学籍</li>
-                <li>学习</li>
+               <!--  <li>学习</li>
                 <li>考试</li>
-                <li>毕业</li>
+                <li>毕业</li> -->
             </ul>
 		</div>
 	</section>
