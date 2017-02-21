@@ -130,7 +130,7 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<if test="isRegist != null and isRegist =='2' " >
 			AND r.IS_REGIST= #{isRegist,jdbcType=VARCHAR}
 		</if>
-		<if test="isRegist != null and isRegist =='N' " >
+		<if test="isRegist != null and isRegist =='-1' " >
 			<![CDATA[ AND (r.IS_REGIST <>'2' OR r.IS_REGIST IS NULL)]]>
 		</if>
 		
