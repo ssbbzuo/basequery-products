@@ -102,7 +102,7 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<!-- 下单时间 -->
 		<if test="dataDt != null and dataDt != '' " >
 			<![CDATA[
-			AND p.DATA_DT >= DATE_FORMAT(dataDt,'%Y-%m-%d') and p.DATA_DT <= DATE_FORMAT(dataDt,'%Y-%m-%d')
+			AND g.ADD_DATE >= DATE_FORMAT(dataDt,'%Y-%m-%d') and g.ADD_DATE <= DATE_FORMAT(dataDt,'%Y-%m-%d')
 			]]>
 		</if>
 		<!-- 下面是各种状态的条件查询 -->
