@@ -1,5 +1,7 @@
 package com.eenet.basequery.datareport;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eenet.base.SimpleResultSet;
+import com.eenet.base.query.ConditionItem;
 import com.eenet.base.query.QueryCondition;
 import com.eenet.basequery.page.Pagination;
 
@@ -23,6 +26,7 @@ public class DRStudentDataReportController {
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
 		SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.query(queryCondition);
+		
 		pagination.setTotal(result.getCount());
 		model.addAttribute("resultMap", result);
 		model.addAttribute("Pagination", pagination);
