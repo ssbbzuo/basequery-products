@@ -174,10 +174,11 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
 
+	
 	<select id="queryDetailList" resultMap="default" parameterType="map">
 		<![CDATA[
 SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
-		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,
+		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,p.PAY_MEANS,p.PAY_STATUS,  p.`REC_AMT`,p.`PAY_DATE`,
 		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
 		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
 		g.SIGNUP_ID,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
@@ -187,10 +188,9 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
     LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
     LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
 		  WHERE 1=1 
-		]]>
+		  ]]>
 		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_quto" />
-		 <![CDATA[  ORDER BY s.DATA_DT  DESC   ]]>
+		 <![CDATA[ ORDER BY s.DATA_DT  DESC   ]]>
 		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_rowNum_quote_suffix" />
 	</select>
-	
 </mapper>
