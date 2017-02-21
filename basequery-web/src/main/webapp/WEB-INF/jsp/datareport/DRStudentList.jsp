@@ -108,12 +108,12 @@
 					    -->
 					    <div class="col-md-12">
 				            <div class="form-group">
-				            	<label class="control-label col-sm-1">报读状态</label>
+				            	<label class="control-label col-sm-1">报读状态 </label>
 								<div class="col-sm-11 condition-state">
-									<a class="bx-btn cur">不限</a>
+									<a class="bx-btn <c:if test="${empty queryCondition.conditions[8].rangeFrom}">cur</c:if>" onclick="changeStatusValue('#signupStatus01','');">不限</a>
 									<div class="sib">
-										<a class="zt-btn" onclick="changeStatusValue('#signupStatus01','N');">未报读</a>
-										<a class="zt-btn" onclick="changeStatusValue('#signupStatus01','Y');">已报读</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[8].rangeFrom =='N'}">cur</c:if> " onclick="changeStatusValue('#signupStatus01','N');">未报读</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[8].rangeFrom =='Y'}">cur</c:if> " onclick="changeStatusValue('#signupStatus01','Y');">已报读</a>
 									    <input type="hidden"  value="signupStatus"  name="conditions[8].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[8].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="signupStatus01"  value="${queryCondition.conditions[8].rangeFrom}"  name="conditions[8].rangeFrom">
@@ -125,18 +125,18 @@
 				            <div class="form-group">
 				            	<label class="control-label col-sm-1">缴费状态</label>
 								<div class="col-sm-11 condition-state">
-									<a class="bx-btn cur">不限</a>
+									<a class="bx-btn <c:if test="${empty queryCondition.conditions[9].rangeFrom}">cur</c:if>" onclick="changeStatusValue('#payStatus01','');">不限</a>
 									<div class="sib zf-box">
-										<a class="zt-btn yzf" onclick="changeStatusValue('#payStatus01','11');">已支付</a>
+										<a class="zt-btn yzf <c:if test="${queryCondition.conditions[9].rangeFrom =='1'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','1');">已支付</a>
 										<span>（</span>
-										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','11');">全额</a>
-										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','12');">分期</a>
-										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','13');">学年</a>
+										<a class="zt-btn yzf-a <c:if test="${queryCondition.conditions[9].rangeFrom =='11'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','11');">全额</a>
+										<a class="zt-btn yzf-a <c:if test="${queryCondition.conditions[9].rangeFrom =='12'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','12');">分期</a>
+										<a class="zt-btn yzf-a <c:if test="${queryCondition.conditions[9].rangeFrom =='13'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','13');">学年</a>
 										<span>）</span>
-										<a class="zt-btn wzf" onclick="changeStatusValue('#payStatus01','00');">未支付</a>
+										<a class="zt-btn wzf <c:if test="${queryCondition.conditions[9].rangeFrom =='00'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','00');">未支付</a>
 										<span>（</span>
-										<a class="zt-btn wzf-a" onclick="changeStatusValue('#payStatus01','01');">已付定金</a>
-										<a class="zt-btn wzf-a" onclick="changeStatusValue('#payStatus01','02');">未付定金</a>
+										<a class="zt-btn wzf-a <c:if test="${queryCondition.conditions[9].rangeFrom =='01'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','01');">已付定金</a>
+										<a class="zt-btn wzf-a <c:if test="${queryCondition.conditions[9].rangeFrom =='02'}">cur</c:if>" onclick="changeStatusValue('#payStatus01','02');">未付定金</a>
 										<span>）</span>
 										<input type="hidden"  value="payStatus"  name="conditions[9].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[9].rangeType"/> 
@@ -208,11 +208,11 @@
 				            <div class="form-group">
 				            	<label class="control-label col-sm-1">学籍状态</label>
 								<div class="col-sm-11 condition-state">
-									<a class="bx-btn cur">不限</a>
+									<a class="bx-btn <c:if test="${empty queryCondition.conditions[10].rangeFrom and empty queryCondition.conditions[11].rangeFrom and empty queryCondition.conditions[12].rangeFrom}">cur</c:if>" onclick="clearnRegistStatus();">不限</a>
 									<div class="sib">
-										<a class="zt-btn" onclick="changeStatusValue('#isDataR01','Y');">已交资料</a>
-										<a class="zt-btn" onclick="changeStatusValue('#isDataR01','N');">未交资料</a>
-										<a class="zt-btn" onclick="changeStatusValue('#isDataG01','Y');">资料不齐</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[10].rangeFrom =='Y'}">cur</c:if>" onclick="changeDataStatus('#isDataR01','#isDataG01','Y');">已交资料</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[10].rangeFrom =='N'}">cur</c:if>" onclick="changeDataStatus('#isDataR01','#isDataG01','N');">未交资料</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[11].rangeFrom =='Y'}">cur</c:if>" onclick="changeDataStatus('#isDataG01','#isDataR01','Y');">资料不齐</a>
 										<input type="hidden"  value="isDataR"  name="conditions[10].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[10].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="isDataR01"  value="${queryCondition.conditions[10].rangeFrom}"  name="conditions[10].rangeFrom">
@@ -222,8 +222,8 @@
 					                    <input type="hidden" class="form-control" id="isDataG01"  value="${queryCondition.conditions[11].rangeFrom}"  name="conditions[11].rangeFrom">
 									</div>
 									<div class="sib">
-										<a class="zt-btn" onclick="changeStatusValue('#isRegist01','2');">已入学籍</a>
-										<a class="zt-btn" onclick="changeStatusValue('#isRegist01','N');">未入学籍</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[12].rangeFrom =='2'}">cur</c:if>" onclick="changeStatusValue('#isRegist01','2');">已入学籍</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[12].rangeFrom =='N'}">cur</c:if>" onclick="changeStatusValue('#isRegist01','N');">未入学籍</a>
 										 <input type="hidden"  value="isRegist"  name="conditions[12].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[12].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="isRegist01"  value="${queryCondition.conditions[12].rangeFrom}"  name="conditions[12].rangeFrom">
@@ -558,6 +558,20 @@
 <script type="text/javascript">
   function changeStatusValue(id,dataValue){
 	  $(id).val(dataValue);
+	  document.forms[0].submit();
+  }
+  
+  //清楚学籍的状态值
+  function clearnRegistStatus(){
+	  $("#isDataR01").val("");
+	  $("#isDataG01").val("");
+	  $("#isRegist01").val("");
+	  document.forms[0].submit();
+  }
+  
+  function changeDataStatus(id01,id02,value01){
+	  $(id01).val(value01);
+	  $(id02).val("");
 	  document.forms[0].submit();
   }
 </script>
