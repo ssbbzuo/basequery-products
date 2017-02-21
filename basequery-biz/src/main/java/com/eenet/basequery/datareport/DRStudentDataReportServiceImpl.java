@@ -41,7 +41,10 @@ public class DRStudentDataReportServiceImpl extends SimpleBizImpl implements DRS
 	@Override
 	public SimpleResultSet<DRStudentDataReport> queryDetail(QueryCondition queryCondition) {
 		System.out.println("------------------------queryDetail---------------");
-		return null;
+		//String fieldName, RangeType rangeType, String rangeFrom, String rangeTo
+		
+		return drStudentDataReportDaoService.queryDetailList(queryCondition);
+		
 	}
 	
 	public Class<DRStudentDataReport> getPojoCLS() {

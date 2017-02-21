@@ -34,6 +34,17 @@ public class DRStudentDataReportDaoServiceImpl extends BaseDAOImpl implements DR
 		getBatisSession().clearCache();
 		return resultSet;
 	}
+	public SimpleResultSet<DRStudentDataReport>  queryDetailList(String atid) {
+		SimpleResultSet<DRStudentDataReport> resultSet = new SimpleResultSet<DRStudentDataReport>();
+		Map<String,String> sqlMap = new HashMap<String,String>();
+		sqlMap.put("atId",atid);
+		List<DRStudentDataReport> resultList=getBatisSession().selectList(getNamespace()+".queryDetailList", sqlMap);
+		
+		resultSet.setResultSet(resultList);
+		getBatisSession().clearCache();
+		return resultSet;
+	}
+	
 	
 	private Map<String,Object> genSqlMap(QueryCondition condition){
 		Map<String,Object> sqlMap = new HashMap<String,Object>();
@@ -71,6 +82,17 @@ public class DRStudentDataReportDaoServiceImpl extends BaseDAOImpl implements DR
 			}
 		}
 		return rangeINList;
+	}
+
+	@Override
+	public SimpleResultSet<DRStudentDataReport> queryDetailList(QueryCondition queryCondition) {
+		SimpleResultSet<DRStudentDataReport> resultSet = new SimpleResultSet<DRStudentDataReport>();
+		Map<String,Object> sqlMap = genSqlMap(queryCondition);
+		List<DRStudentDataReport> resultList=getBatisSession().selectList(getNamespace()+".queryDetailList", sqlMap);
+		
+		resultSet.setResultSet(resultList);
+		getBatisSession().clearCache();
+		return resultSet;
 	}
 
 }
