@@ -223,7 +223,7 @@
 									</div>
 									<div class="sib">
 										<a class="zt-btn <c:if test="${queryCondition.conditions[12].rangeFrom =='2'}">cur</c:if>" onclick="changeStatusValue('#isRegist01','2');">已入学籍</a>
-										<a class="zt-btn <c:if test="${queryCondition.conditions[12].rangeFrom =='N'}">cur</c:if>" onclick="changeStatusValue('#isRegist01','N');">未入学籍</a>
+										<a class="zt-btn <c:if test="${queryCondition.conditions[12].rangeFrom =='-1'}">cur</c:if>" onclick="changeStatusValue('#isRegist01','-1');">未入学籍</a>
 										 <input type="hidden"  value="isRegist"  name="conditions[12].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[12].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="isRegist01"  value="${queryCondition.conditions[12].rangeFrom}"  name="conditions[12].rangeFrom">
