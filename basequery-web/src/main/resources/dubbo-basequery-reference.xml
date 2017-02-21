@@ -122,7 +122,8 @@
 	<dubbo:reference id="IdentityAuthenticationBizService" interface="com.eenet.authen.IdentityAuthenticationBizService"/>
 	<dubbo:reference id="AdminUserInfoBizService" interface="com.eenet.baseinfo.user.AdminUserInfoBizService"/>
 	
-	
+	<!-- 数据呈报-->
+	<dubbo:reference id="dRStudentDataReportService" interface="com.eenet.basequery.datareport.DRStudentDataReportService"/>
 	
 	
 </beans>										  
