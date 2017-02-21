@@ -41,7 +41,14 @@ public class DRStudentDataReportServiceImpl extends SimpleBizImpl implements DRS
 	@Override
 	public SimpleResultSet<DRStudentDataReport> queryDetail(QueryCondition queryCondition) {
 		System.out.println("------------------------queryDetail---------------");
-		
+		if(queryCondition.getOrderBySet()== null ||queryCondition.getOrderBySet().isEmpty()){
+			ArrayList<OrderBy> orderList = new ArrayList<OrderBy>();
+			OrderBy order = new OrderBy();
+			order.setAttName("createdDt");
+			order.setRank(Rank.DESC);
+			orderList.add(order);
+			queryCondition.setOrderBySet(orderList);
+		}
 		return drStudentDataReportDaoService.queryDetailList(queryCondition);
 		
 	}
