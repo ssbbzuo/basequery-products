@@ -10,7 +10,7 @@ public class DRStudentDataReport extends BaseEntity{
 	private static final long serialVersionUID = -4540913346929793572L;
 	private String userId;//学员ID
 	private String userName;//学员名称
-	private String idCord;//身份证
+	private String idCard;//身份证
 	private String mobile;//手机
 //	private Date dataDt;//创建时间
 	private String atId;//公用库学员ID
@@ -78,11 +78,11 @@ public class DRStudentDataReport extends BaseEntity{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getIdCord() {
-		return idCord;
+	public String getIdCard() {
+		return idCard;
 	}
-	public void setIdCord(String idCord) {
-		this.idCord = idCord;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 	public String getMobile() {
 		return mobile;

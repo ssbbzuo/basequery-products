@@ -1,5 +1,7 @@
 package com.eenet.basequery.datareport;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +28,7 @@ public class DRStudentDataReportController {
 		queryCondition.setMaxQuantity(pagination.getPageSize());
 		queryCondition.setStartIndex(pagination.getIndexCurrent());
 		SimpleResultSet<DRStudentDataReport> result = dRStudentDataReportService.query(queryCondition);
+		
 		pagination.setTotal(result.getCount());
 		model.addAttribute("resultMap", result);
 		model.addAttribute("Pagination", pagination);
