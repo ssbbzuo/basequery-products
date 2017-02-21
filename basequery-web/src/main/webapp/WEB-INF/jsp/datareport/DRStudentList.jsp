@@ -11,10 +11,10 @@
 <script type="text/javascript"  src="<%=request.getContextPath()%>/static/dist/js/area.js"></script>
 </head>
 <body class="inner-page-body">
+  <form method="post" action="<%=request.getContextPath()%>/datareport/query.action">
 	<section class="content">
 		<div class="box">
 		    <div class="box-body">
-		      <form method="post" action="<%=request.getContextPath()%>/datareport/query.action">
 			    <div class="box-footer fr col-md-2" style="border-top:0;">
 					<div><button type="button" class="btn btn-primary">搜索</button></div>
 					<div class="pad-t15"><button type="button" class="btn btn-default">重置</button></div>
@@ -32,7 +32,7 @@
 								</div>
 								<label class="control-label col-sm-1">身份证</label>
 								<div class="col-sm-3">
-									<input type="hidden"  value="idCord"  name="conditions[1].fieldName"/> 
+									<input type="hidden"  value="idCard"  name="conditions[1].fieldName"/> 
 					              	<input type="hidden"  value="INCLUDE"  name="conditions[1].rangeType"/> 
 					                <input type="text" class="form-control"   value="${queryCondition.conditions[1].rangeFrom}"  name="conditions[1].rangeFrom">
 								</div>
@@ -127,16 +127,16 @@
 								<div class="col-sm-11 condition-state">
 									<a class="bx-btn cur">不限</a>
 									<div class="sib zf-box">
-										<a class="zt-btn yzf">已支付</a>
+										<a class="zt-btn yzf" onclick="changeStatusValue('#payStatus01','11');">已支付</a>
 										<span>（</span>
-										<a class="zt-btn yzf-a">全额</a>
-										<a class="zt-btn yzf-a">分期</a>
-										<a class="zt-btn yzf-a">学年</a>
+										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','11');">全额</a>
+										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','12');">分期</a>
+										<a class="zt-btn yzf-a" onclick="changeStatusValue('#payStatus01','13');">学年</a>
 										<span>）</span>
-										<a class="zt-btn wzf">未支付</a>
+										<a class="zt-btn wzf" onclick="changeStatusValue('#payStatus01','00');">未支付</a>
 										<span>（</span>
-										<a class="zt-btn wzf-a">已付定金</a>
-										<a class="zt-btn wzf-a">未付定金</a>
+										<a class="zt-btn wzf-a" onclick="changeStatusValue('#payStatus01','01');">已付定金</a>
+										<a class="zt-btn wzf-a" onclick="changeStatusValue('#payStatus01','02');">未付定金</a>
 										<span>）</span>
 										<input type="hidden"  value="payStatus"  name="conditions[9].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[9].rangeType"/> 
@@ -210,9 +210,9 @@
 								<div class="col-sm-11 condition-state">
 									<a class="bx-btn cur">不限</a>
 									<div class="sib">
-										<a class="zt-btn" onclick="">已交资料</a>
-										<a class="zt-btn">未交资料</a>
-										<a class="zt-btn">资料不齐</a>
+										<a class="zt-btn" onclick="changeStatusValue('#isDataR01','Y');">已交资料</a>
+										<a class="zt-btn" onclick="changeStatusValue('#isDataR01','N');">未交资料</a>
+										<a class="zt-btn" onclick="changeStatusValue('#isDataG01','Y');">资料不齐</a>
 										<input type="hidden"  value="isDataR"  name="conditions[10].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[10].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="isDataR01"  value="${queryCondition.conditions[10].rangeFrom}"  name="conditions[10].rangeFrom">
@@ -222,8 +222,8 @@
 					                    <input type="hidden" class="form-control" id="isDataG01"  value="${queryCondition.conditions[11].rangeFrom}"  name="conditions[11].rangeFrom">
 									</div>
 									<div class="sib">
-										<a class="zt-btn">已入学籍</a>
-										<a class="zt-btn">未入学籍</a>
+										<a class="zt-btn" onclick="changeStatusValue('#isRegist01','2');">已入学籍</a>
+										<a class="zt-btn" onclick="changeStatusValue('#isRegist01','N');">未入学籍</a>
 										 <input type="hidden"  value="isRegist"  name="conditions[12].fieldName"/> 
 					              	    <input type="hidden"  value="INCLUDE"  name="conditions[12].rangeType"/> 
 					                    <input type="hidden" class="form-control" id="isRegist01"  value="${queryCondition.conditions[12].rangeFrom}"  name="conditions[12].rangeFrom">
@@ -295,10 +295,9 @@
 				    </div>
         		</div>
 		    </div>
-		    </form>
 		</div>
 		<div class="callout callout-info">
-		    <p>根据查询条件找到学员为：82人</p>
+		    <p>根据查询条件找到学员为：${pagination.total }人</p>
 		</div>
 		<div class="box margin-bottom-none">
 			<!-- <div class="box-header with-border">
@@ -347,20 +346,20 @@
 			      <tbody>
 			        <c:choose>
 				       <c:when test="${not empty resultMap.resultSet }">
-				         <c:forEach items="${resultMap.resultSet }" var="resultSet">
+				         <c:forEach items="${resultMap.resultSet }" var="resultSet" varStatus="st">
 					         <tr>
-					          <td>${resultSet.index+1 }</td>
+					          <td>${st.index+1 }</td>
 					          <td>${resultSet.userName }</td>
 					          <td>${resultSet.mobile }</td>
-					          <td>${resultSet.idCord }</td>
+					          <td>${resultSet.idCard }</td>
 					          <td>${resultSet.orderId }</td>
 					          <td>${resultSet.learncenterName }</td>
 					          <td>${resultSet.collegesName }</td>
 					          <td>${resultSet.productName }</td>
-					          <td></td>
+					          <td>${resultSet.dataDt }</td>
 					        </tr>
 					        <tr>
-					          <td>${resultSet.index+1 }/状态</td>
+					          <td>${st.index+1 }/状态</td>
 					          <td colspan="9">
 						          <div class="result-box">
 						          	<div class="result-list">
@@ -428,6 +427,7 @@
 				</div>
 			</div>
 		</div>
+	  </form>
 	</section>
 	<footer class="site-footer">
 		<span>远程教育数据中心</span>

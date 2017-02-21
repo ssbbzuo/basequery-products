@@ -64,10 +64,10 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
     LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
     LEFT JOIN BD_STUD_REGIST_INFO r ON s.ATID=r.ATID
     LEFT JOIN BD_STUD_SIGNUP_INFO g ON s.ATID=g.ATID
-		  WHERE 1=1　
-		]]>
+		  WHERE 1=1 
+		  ]]>
 		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_quto" />
-		 <![CDATA[  ORDER BY s.DATA_DT  DESC   ]]>
+		 <![CDATA[ ORDER BY s.DATA_DT  DESC   ]]>
 		<include refid="com.eenet.basequery.datareport.DRStudentDataReport.queryList_rowNum_quote_suffix" />
 	</select>
 	<!-- 通用查询条件 -->
@@ -102,7 +102,7 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<!-- 下单时间 -->
 		<if test="dataDt != null and dataDt != '' " >
 			<![CDATA[
-			AND p.DATA_DT >= #{dataDt,jdbcType=DATE} and p.DATA_DT <= #{dataDt,jdbcType=DATE}
+			AND p.DATA_DT >= DATE_FORMAT(dataDt,'%Y-%m-%d') and p.DATA_DT <= DATE_FORMAT(dataDt,'%Y-%m-%d')
 			]]>
 		</if>
 		<!-- 下面是各种状态的条件查询 -->
