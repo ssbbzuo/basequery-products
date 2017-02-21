@@ -173,7 +173,6 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		<include refid="com.eenet.base.${db.type}.orderBy_quote" />
 		<include refid="com.eenet.base.${db.type}.rowNum_quote_suffix" />
 	</select>
-
 	
 	<select id="queryDetailList" resultMap="default" parameterType="map">
 		<![CDATA[
