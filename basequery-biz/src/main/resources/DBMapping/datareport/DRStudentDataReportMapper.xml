@@ -13,6 +13,7 @@
 		<result column="MERGER_PAY_NO" property="mergerPayNo" jdbcType="VARCHAR" />
 		<result column="PAY_MEANS" property="payMeans" jdbcType="VARCHAR" />
 		<result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR" />
+		<result column="ADD_DATE" property="addDate" jdbcType="VARCHAR" />
 		
 	    <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
 		<result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
@@ -54,11 +55,11 @@
 	<!-- 查询数据 -->
 	<select id="queryList" resultMap="default" parameterType="map">
 		<![CDATA[
-SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
+SELECT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,
 		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
 		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
-		g.SIGNUP_ID,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
+		g.SIGNUP_ID,date_format(g.ADD_DATE,'%Y-%c-%d %h:%i:%s') as ADD_DATE,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
  FROM BD_STUD_INFO s 
     LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
     LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
@@ -104,9 +105,9 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 			AND g.ORDER_SN like CONCAT('%',#{orderSn,jdbcType=VARCHAR},'%')
 		</if>
 		<!-- 下单时间 -->
-		<if test="dataDt != null and dataDt != '' " >
+		<if test="addDate != null and addDate != '' " >
 			<![CDATA[
-			AND g.ADD_DATE >= DATE_FORMAT(dataDt,'%Y-%m-%d') and g.ADD_DATE <= DATE_FORMAT(dataDt,'%Y-%m-%d')
+			AND g.ADD_DATE >= DATE_FORMAT(addDate,'%Y-%m-%d') and g.ADD_DATE <= DATE_FORMAT(addDate,'%Y-%m-%d')
 			]]>
 		</if>
 		<!-- 下面是各种状态的条件查询 -->
@@ -165,7 +166,7 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,
 		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
 		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
-		g.SIGNUP_ID,g.ORDER_SN,g.ADD_DATE,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
+		g.SIGNUP_ID,date_format(g.ADD_DATE,'%Y-%c-%d %h:%i:%s') as ADD_DATE,g.ORDER_SN,g.ADD_DATE,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
  FROM BD_STUD_INFO s 
     LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
     LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
@@ -184,7 +185,7 @@ SELECT DISTINCT s.USER_ID,s.USER_NAME,s.ID_CARD,s.MOBILE,s.ATID,
 		p.PAYMENT_ID,p.ORDER_ID,p.MERGER_PAY_NO,p.PAY_MEANS,p.PAY_STATUS,p.PAY_MEANS,p.PAY_STATUS,  p.`REC_AMT`,p.`PAY_DATE`,
 		pr.PRODUCT_ID,pr.PRODUCT_NAME,pr.COLLEGES_CODE,pr.COLLEGES_NAME,pr.SIGNUP_LEVEL,pr.SPECIALTY_ID,
 		r.REGUSER_ID,r.IS_DATA_R,r.IS_REGIST,r.IS_DATA_G,r.STUD_NO,r.IS_CHECK,r.DATA_AUDIT,
-		g.SIGNUP_ID,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
+		g.SIGNUP_ID,date_format(g.ADD_DATE,'%Y-%c-%d %h:%i:%s') as ADD_DATE,g.ORDER_SN,date_format(g.DATA_DT,'%Y-%c-%d %h:%i:%s') as DATA_DT,g.SIGNUP_STATUS,g.LEARNCENTER_CODE,g.LEARNCENTER_NAME 
  FROM BD_STUD_INFO s 
     LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
     LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
