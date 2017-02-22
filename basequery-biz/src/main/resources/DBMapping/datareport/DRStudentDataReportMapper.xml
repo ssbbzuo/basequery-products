@@ -41,7 +41,7 @@
 	<select id="queryList_count" resultType="java.lang.Integer" parameterType="map">
 		<![CDATA[
 			SELECT
-				COUNT(DISTINCT USER_ID)
+				COUNT(USER_ID)
 			FROM BD_STUD_INFO s 
     LEFT JOIN BD_STUD_PAY_INFO p ON s.ATID=p.ATID
     LEFT JOIN BD_PROD_INFO pr ON p.product_id=pr.product_id
